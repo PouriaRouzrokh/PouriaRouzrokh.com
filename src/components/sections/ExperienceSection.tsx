@@ -1,3 +1,5 @@
+import { SectionHeading } from "@/components/ui/section-heading";
+
 export default function ExperienceSection() {
   // In a real implementation, this would fetch data from experience.json
   const experienceItems = [
@@ -8,8 +10,8 @@ export default function ExperienceSection() {
       description: [
         "Led research projects on deep learning for medical imaging.",
         "Developed and deployed predictive models achieving 95% accuracy.",
-        "Mentored junior researchers and engineers."
-      ]
+        "Mentored junior researchers and engineers.",
+      ],
     },
     {
       role: "Research Assistant",
@@ -18,23 +20,29 @@ export default function ExperienceSection() {
       description: [
         "Contributed to the development of algorithms for natural language processing.",
         "Published findings in peer-reviewed journals.",
-        "Presented research at international conferences."
-      ]
-    }
+        "Presented research at international conferences.",
+      ],
+    },
   ];
 
   return (
     <section className="py-8" id="experience">
-      <h2 className="text-2xl md:text-3xl font-bold mb-6">Experience</h2>
+      <SectionHeading
+        title="Experience"
+        subtitle="Professional roles and accomplishments"
+      />
       <div className="space-y-6">
         {experienceItems.map((item, index) => (
-          <div key={index} className="bg-card rounded-lg p-6 shadow-sm">
+          <div
+            key={index}
+            className="bg-card rounded-lg p-6 shadow-sm border hover:shadow-md transition-shadow duration-300"
+          >
             <div className="flex flex-col md:flex-row md:justify-between md:items-start gap-2">
               <div>
                 <h3 className="text-xl font-semibold">{item.role}</h3>
                 <p className="text-muted-foreground">{item.organization}</p>
               </div>
-              <span className="text-sm bg-muted px-3 py-1 rounded-full">
+              <span className="text-sm bg-muted px-3 py-1 rounded-full border">
                 {item.years}
               </span>
             </div>
@@ -42,13 +50,13 @@ export default function ExperienceSection() {
               {Array.isArray(item.description) ? (
                 item.description.map((point, i) => (
                   <li key={i} className="pl-4 relative">
-                    <span className="absolute left-0">•</span>
+                    <span className="absolute left-0 text-primary">•</span>
                     {point}
                   </li>
                 ))
               ) : (
                 <li className="pl-4 relative">
-                  <span className="absolute left-0">•</span>
+                  <span className="absolute left-0 text-primary">•</span>
                   {item.description}
                 </li>
               )}
@@ -58,4 +66,4 @@ export default function ExperienceSection() {
       </div>
     </section>
   );
-} 
+}
