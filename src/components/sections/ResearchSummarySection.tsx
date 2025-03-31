@@ -1,12 +1,33 @@
 import Link from "next/link";
 import { SectionHeading } from "@/components/ui/section-heading";
+import { ResearchData, ProfileData } from "@/lib/types";
 
-export default function ResearchSummarySection() {
-  // In a real implementation, this would fetch data from research.json
+interface ResearchSummarySectionProps {
+  researchData: ResearchData;
+  profileData: ProfileData;
+}
+
+export default function ResearchSummarySection({
+  researchData,
+  profileData,
+}: ResearchSummarySectionProps) {
+  const research = researchData || {
+    total_articles: 0,
+    total_citations: 0,
+    metrics: { h_index: 0, citations: 0, i10_index: 0 },
+  };
+
+  const profile = profileData || { interests: [] };
+
+  // Console logs for debugging
+  console.log("Research data:", researchData);
+  console.log("Profile data:", profileData);
+
+  // Use the research data for metrics
   const researchMetrics = {
-    publications: 25,
-    citations: 450,
-    h_index: 9,
+    publications: research.total_articles,
+    citations: research.total_citations,
+    h_index: research.metrics?.h_index || 0,
   };
 
   return (
@@ -60,21 +81,20 @@ export default function ResearchSummarySection() {
       <div className="bg-muted p-6 rounded-lg border">
         <h3 className="text-xl font-semibold mb-3">Research Interests</h3>
         <div className="flex flex-wrap gap-2">
-          <span className="bg-background px-3 py-1 text-sm rounded-full border">
-            Machine Learning
-          </span>
-          <span className="bg-background px-3 py-1 text-sm rounded-full border">
-            Computer Vision
-          </span>
-          <span className="bg-background px-3 py-1 text-sm rounded-full border">
-            Natural Language Processing
-          </span>
-          <span className="bg-background px-3 py-1 text-sm rounded-full border">
-            Medical Imaging
-          </span>
-          <span className="bg-background px-3 py-1 text-sm rounded-full border">
-            Healthcare AI
-          </span>
+          {profile.interests && profile.interests.length > 0 ? (
+            profile.interests.map((interest, index) => (
+              <span
+                key={index}
+                className="bg-background px-3 py-1 text-sm rounded-full border"
+              >
+                {interest}
+              </span>
+            ))
+          ) : (
+            <span className="text-muted-foreground">
+              No research interests available
+            </span>
+          )}
         </div>
       </div>
     </section>

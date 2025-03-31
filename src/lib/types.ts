@@ -1,15 +1,22 @@
 // Profile data types
 export interface ProfileData {
   name: string;
-  tagline: string;
-  bio: string;
-  photoUrl: string;
+  title: string;
   email: string;
-  location: string;
-  cvUrl?: string;
-  credentials: string[];
-  affiliations: Affiliation[];
-  socialMedia: SocialMedia[];
+  bio: string;
+  shortBio: string;
+  image: string;
+  social: {
+    twitter: string;
+    github: string;
+    linkedin: string;
+    googleScholar: string;
+  };
+  skills: {
+    category: string;
+    items: string[];
+  }[];
+  interests: string[];
 }
 
 export interface Affiliation {
@@ -91,4 +98,4 @@ export interface BlogPostFrontmatter {
   tags: string[];
   summary: string;
   slug: string;
-} 
+}

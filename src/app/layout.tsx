@@ -11,6 +11,41 @@ export const metadata: Metadata = {
   title: "Pouria Rouzrokh - AI Researcher | Developer | Innovator",
   description:
     "Personal portfolio of Pouria Rouzrokh, featuring research, projects, and blog posts about AI and development.",
+  keywords: [
+    "AI",
+    "Research",
+    "Machine Learning",
+    "Development",
+    "Portfolio",
+    "Biomedical Informatics",
+  ],
+  authors: [{ name: "Pouria Rouzrokh" }],
+  creator: "Pouria Rouzrokh",
+  metadataBase: new URL(process.env.NEXT_PUBLIC_APP_URL || "https://pouria.ai"),
+  openGraph: {
+    type: "website",
+    locale: "en_US",
+    url: "https://pouria.ai",
+    title: "Pouria Rouzrokh - AI Researcher | Developer | Innovator",
+    description:
+      "Personal portfolio of Pouria Rouzrokh, showcasing AI research, projects, and expertise",
+    siteName: "Pouria Rouzrokh's Portfolio",
+    images: [
+      {
+        url: "/og-image.jpg",
+        width: 1200,
+        height: 630,
+        alt: "Pouria Rouzrokh Portfolio",
+      },
+    ],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Pouria Rouzrokh - AI Researcher | Developer | Innovator",
+    description:
+      "Personal portfolio of Pouria Rouzrokh, showcasing AI research, projects, and expertise",
+    images: ["/og-image.jpg"],
+  },
 };
 
 export default function RootLayout({
