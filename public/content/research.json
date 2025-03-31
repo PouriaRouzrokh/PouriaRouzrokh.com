@@ -1,0 +1,52 @@
+{
+  "author": "Pouria Rouzrokh",
+  "metrics": {
+    "citations": 450,
+    "h_index": 9,
+    "i10_index": 8,
+    "cited_by_5_years": 380
+  },
+  "articles": [
+    {
+      "title": "Deep Learning Applications in Medical Image Analysis: A Comprehensive Review",
+      "authors": ["Rouzrokh, P.", "Smith, J.", "Johnson, A."],
+      "year": 2023,
+      "journal": "Journal of Medical Imaging",
+      "volume": "10",
+      "number": "2",
+      "pages": "123-145",
+      "abstract": "This review examines the latest advancements in deep learning techniques applied to medical image analysis across various modalities including MRI, CT, and X-ray. We discuss current challenges and future directions in the field.",
+      "num_citations": 45,
+      "url": "https://example.org/journal/10.1234/medical.2023.0101",
+      "doi": "10.1234/medical.2023.0101",
+      "bibtex": "@article{rouzrokh2023deep, title={Deep Learning Applications in Medical Image Analysis: A Comprehensive Review}, author={Rouzrokh, P. and Smith, J. and Johnson, A.}, journal={Journal of Medical Imaging}, volume={10}, number={2}, pages={123--145}, year={2023}, publisher={Medical Society Publishing}}"
+    },
+    {
+      "title": "Transformer-Based Models for Clinical Text Classification",
+      "authors": ["Rouzrokh, P.", "Williams, R."],
+      "year": 2022,
+      "journal": "Conference on Natural Language Processing in Healthcare",
+      "abstract": "We present a novel approach to clinical text classification using transformer-based models. Our method achieves state-of-the-art performance on multiple benchmark datasets while reducing computational requirements.",
+      "num_citations": 32,
+      "url": "https://example.org/proceedings/10.5678/nlp.2022.0202",
+      "doi": "10.5678/nlp.2022.0202",
+      "bibtex": "@inproceedings{rouzrokh2022transformer, title={Transformer-Based Models for Clinical Text Classification}, author={Rouzrokh, P. and Williams, R.}, booktitle={Conference on Natural Language Processing in Healthcare}, pages={210--220}, year={2022}}"
+    },
+    {
+      "title": "A Novel Framework for Automated Diagnosis of Pulmonary Diseases Using Deep Convolutional Networks",
+      "authors": ["Rouzrokh, P.", "Brown, T.", "Garcia, M.", "Cohen, S."],
+      "year": 2021,
+      "journal": "IEEE Transactions on Medical Imaging",
+      "volume": "40",
+      "number": "3",
+      "pages": "334-349",
+      "abstract": "This paper introduces a novel deep learning framework for automated diagnosis of pulmonary diseases from chest X-rays and CT scans. Our approach combines convolutional neural networks with attention mechanisms to focus on relevant anatomical regions.",
+      "num_citations": 78,
+      "url": "https://example.org/ieee/10.9012/tmi.2021.0303",
+      "doi": "10.9012/tmi.2021.0303",
+      "bibtex": "@article{rouzrokh2021novel, title={A Novel Framework for Automated Diagnosis of Pulmonary Diseases Using Deep Convolutional Networks}, author={Rouzrokh, P. and Brown, T. and Garcia, M. and Cohen, S.}, journal={IEEE Transactions on Medical Imaging}, volume={40}, number={3}, pages={334--349}, year={2021}, publisher={IEEE}}"
+    }
+  ],
+  "total_articles": 3,
+  "total_citations": 155
+} 

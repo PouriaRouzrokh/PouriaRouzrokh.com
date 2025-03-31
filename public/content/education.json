@@ -1,0 +1,23 @@
+[
+  {
+    "degree": "PhD in Biomedical Informatics",
+    "institution": "Example University",
+    "years": "2018 - 2022",
+    "description": "Dissertation focused on machine learning applications in medical imaging.",
+    "logoUrl": "https://res.cloudinary.com/example/image/upload/v1234/university_logo.png"
+  },
+  {
+    "degree": "MSc in Computer Science",
+    "institution": "Another University",
+    "years": "2016 - 2018",
+    "description": "Specialized in Artificial Intelligence.",
+    "logoUrl": "https://res.cloudinary.com/example/image/upload/v1234/another_university_logo.png"
+  },
+  {
+    "degree": "BSc in Computer Engineering",
+    "institution": "First University",
+    "years": "2012 - 2016",
+    "description": "Foundations in computer science and engineering.",
+    "logoUrl": "https://res.cloudinary.com/example/image/upload/v1234/first_university_logo.png"
+  }
+] 

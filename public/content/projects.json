@@ -1,0 +1,36 @@
+[
+  {
+    "title": "AI Medical Image Analyzer",
+    "slug": "ai-image-analyzer",
+    "description": "A web application using deep learning to detect anomalies in X-ray images. This project demonstrates the application of convolutional neural networks to medical diagnostics, potentially speeding up the diagnosis process.",
+    "technologies": ["Python", "TensorFlow", "Flask", "React", "Docker"],
+    "imageUrl": "https://res.cloudinary.com/example/image/upload/v1234/ai_medical_analyzer.jpg",
+    "githubUrl": "https://github.com/yourusername/ai-image-analyzer",
+    "liveUrl": "https://ai-image-analyzer.example.com"
+  },
+  {
+    "title": "Natural Language Processing for EHRs",
+    "slug": "nlp-ehr",
+    "description": "A system that uses NLP techniques to extract meaningful information from electronic health records. The project aims to improve information retrieval from unstructured medical texts.",
+    "technologies": ["Python", "PyTorch", "spaCy", "BERT", "FastAPI"],
+    "imageUrl": "https://res.cloudinary.com/example/image/upload/v1234/nlp_ehr.jpg",
+    "githubUrl": "https://github.com/yourusername/nlp-ehr"
+  },
+  {
+    "title": "Portfolio Website",
+    "slug": "portfolio-website",
+    "description": "Personal portfolio built with Next.js, TypeScript, and TailwindCSS, featuring automated research updates through Python scripts and GitHub Actions.",
+    "technologies": ["Next.js", "TypeScript", "TailwindCSS", "shadcn/ui", "Vercel", "Python"],
+    "imageUrl": "https://res.cloudinary.com/example/image/upload/v1234/portfolio_website.jpg",
+    "githubUrl": "https://github.com/yourusername/pouria-ai"
+  },
+  {
+    "title": "Healthcare Data Analytics Dashboard",
+    "slug": "healthcare-analytics",
+    "description": "An interactive dashboard for visualizing and analyzing healthcare data. Provides insights into patient outcomes, treatment efficacy, and resource allocation.",
+    "technologies": ["React", "D3.js", "Node.js", "Express", "MongoDB"],
+    "imageUrl": "https://res.cloudinary.com/example/image/upload/v1234/healthcare_dashboard.jpg",
+    "githubUrl": "https://github.com/yourusername/healthcare-analytics",
+    "liveUrl": "https://healthcare-analytics.example.com"
+  }
+] 

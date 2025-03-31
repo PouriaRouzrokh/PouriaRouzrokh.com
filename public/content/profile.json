@@ -1,0 +1,26 @@
+{
+  "name": "Pouria Rouzrokh",
+  "tagline": "AI Researcher | Developer | Innovator",
+  "bio": "A brief professional biography highlighting key interests and expertise in artificial intelligence, machine learning, and their applications in healthcare and beyond. This will be expanded with your actual bio.",
+  "photoUrl": "https://res.cloudinary.com/example/image/upload/v1234/placeholder_profile.jpg",
+  "email": "your.email@example.com",
+  "location": "City, Country",
+  "cvUrl": "/path/to/your/cv.pdf",
+  "credentials": ["PhD in Biomedical Informatics", "MSc in Computer Science"],
+  "affiliations": [
+    {
+      "name": "Your University/Department",
+      "url": "https://university.example.com",
+      "logoUrl": "https://res.cloudinary.com/example/image/upload/v1234/affiliation_logo.png"
+    }
+  ],
+  "socialMedia": [
+    { "platform": "LinkedIn", "url": "https://linkedin.com/in/yourprofile" },
+    { "platform": "GitHub", "url": "https://github.com/yourusername" },
+    { "platform": "Twitter", "url": "https://twitter.com/yourusername" },
+    {
+      "platform": "GoogleScholar",
+      "url": "https://scholar.google.com/citations?user=YOUR_SCHOLAR_ID"
+    }
+  ]
+} 

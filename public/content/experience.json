@@ -1,0 +1,37 @@
+[
+  {
+    "role": "Senior AI Researcher",
+    "organization": "Tech Innovations Inc.",
+    "years": "2022 - Present",
+    "description": [
+      "Led research projects on deep learning for medical imaging.",
+      "Developed and deployed predictive models achieving 95% accuracy.",
+      "Mentored junior researchers and engineers.",
+      "Published research findings in top-tier journals and conferences."
+    ],
+    "logoUrl": "https://res.cloudinary.com/example/image/upload/v1234/tech_innovations_logo.png"
+  },
+  {
+    "role": "Research Assistant",
+    "organization": "Example University Lab",
+    "years": "2019 - 2022",
+    "description": [
+      "Contributed to the development of algorithms for natural language processing.",
+      "Published findings in peer-reviewed journals.",
+      "Presented research at international conferences.",
+      "Collaborated with interdisciplinary teams on healthcare AI applications."
+    ],
+    "logoUrl": "https://res.cloudinary.com/example/image/upload/v1234/example_lab_logo.png"
+  },
+  {
+    "role": "Software Engineering Intern",
+    "organization": "Tech Startup",
+    "years": "Summer 2018",
+    "description": [
+      "Developed web applications using React and Node.js.",
+      "Implemented machine learning models for predictive analytics.",
+      "Participated in agile development processes and sprint planning."
+    ],
+    "logoUrl": "https://res.cloudinary.com/example/image/upload/v1234/tech_startup_logo.png"
+  }
+] 
