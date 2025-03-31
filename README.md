@@ -101,6 +101,42 @@ Content will be managed through a combination of automated scripts and manual up
 - total_articles: Total number of articles found (number).
 - total_citations: Sum of num_citations across all articles (number, calculated by the script).
 
+**Python Environment Setup**:
+
+1. Create a virtual environment:
+
+   ```bash
+   python -m venv venv
+   ```
+
+2. Activate the virtual environment:
+
+   ```bash
+   # On macOS/Linux
+   source venv/bin/activate
+
+   # On Windows
+   venv\Scripts\activate
+   ```
+
+3. Install the required dependencies:
+
+   ```bash
+   pip install -r requirements.txt
+   ```
+
+4. Run the script manually:
+
+   ```bash
+   python utils/scholarly_data_fetcher.py
+   ```
+
+   Alternatively, use the provided shell script:
+
+   ```bash
+   ./utils/update_research_data.sh
+   ```
+
 **Update Process**: A scheduled GitHub Action will run weekly:
 
 1. Check out the repository.

@@ -1,37 +1,62 @@
-[
-  {
-    "role": "Senior AI Researcher",
-    "organization": "Tech Innovations Inc.",
-    "years": "2022 - Present",
-    "description": [
-      "Led research projects on deep learning for medical imaging.",
-      "Developed and deployed predictive models achieving 95% accuracy.",
-      "Mentored junior researchers and engineers.",
-      "Published research findings in top-tier journals and conferences."
-    ],
-    "logoUrl": "https://res.cloudinary.com/example/image/upload/v1234/tech_innovations_logo.png"
-  },
-  {
-    "role": "Research Assistant",
-    "organization": "Example University Lab",
-    "years": "2019 - 2022",
-    "description": [
-      "Contributed to the development of algorithms for natural language processing.",
-      "Published findings in peer-reviewed journals.",
-      "Presented research at international conferences.",
-      "Collaborated with interdisciplinary teams on healthcare AI applications."
-    ],
-    "logoUrl": "https://res.cloudinary.com/example/image/upload/v1234/example_lab_logo.png"
-  },
-  {
-    "role": "Software Engineering Intern",
-    "organization": "Tech Startup",
-    "years": "Summer 2018",
-    "description": [
-      "Developed web applications using React and Node.js.",
-      "Implemented machine learning models for predictive analytics.",
-      "Participated in agile development processes and sprint planning."
-    ],
-    "logoUrl": "https://res.cloudinary.com/example/image/upload/v1234/tech_startup_logo.png"
-  }
-] 
+{
+  "positions": [
+    {
+      "title": "Senior Research Scientist",
+      "company": "AI Medical Research Institute",
+      "location": "San Francisco, CA",
+      "years": "2022 - Present",
+      "description": "Leading research initiatives in applying deep learning to medical images and electronic health records for predictive analytics. Heading a team of 5 researchers focusing on early disease detection models.",
+      "achievements": [
+        "Developed an AI system that improved early detection of lung cancer by 30%",
+        "Secured $1.2M in research funding",
+        "Published 3 papers in top-tier medical AI journals",
+        "Filed 2 patents for novel AI diagnostic algorithms"
+      ],
+      "logo": "/images/logos/ai-medical.png",
+      "technologies": ["Python", "TensorFlow", "PyTorch", "DICOM", "HL7 FHIR"]
+    },
+    {
+      "title": "Research Associate",
+      "company": "University Hospital Research Center",
+      "location": "Seattle, WA",
+      "years": "2018 - 2022",
+      "description": "Conducted research on applications of machine learning in healthcare as part of my PhD program. Collaborated with clinical departments to implement and validate AI models in real-world healthcare settings.",
+      "achievements": [
+        "Developed an NLP system to extract insights from clinical notes",
+        "Created a machine learning pipeline for predicting patient readmissions",
+        "Collaborated with 3 clinical departments on AI integration projects",
+        "Mentored 4 graduate students on healthcare AI projects"
+      ],
+      "logo": "/images/logos/university-hospital.png",
+      "technologies": ["R", "Python", "SQL", "Hadoop", "Scikit-learn"]
+    },
+    {
+      "title": "Software Engineering Intern",
+      "company": "HealthTech Innovations",
+      "location": "San Jose, CA",
+      "years": "Summer 2017",
+      "description": "Developed backend services for a healthcare analytics platform. Implemented data processing pipelines for medical data and created APIs for frontend consumption.",
+      "achievements": [
+        "Built RESTful APIs that improved data retrieval performance by 40%",
+        "Implemented a machine learning model for medical code prediction",
+        "Created comprehensive documentation for the API endpoints"
+      ],
+      "logo": "/images/logos/healthtech.png",
+      "technologies": ["Node.js", "Express", "MongoDB", "Docker", "AWS"]
+    }
+  ],
+  "volunteering": [
+    {
+      "title": "Technical Advisor",
+      "organization": "Medical AI for Developing Countries",
+      "years": "2020 - Present",
+      "description": "Providing technical guidance on implementing low-resource AI solutions for medical diagnostics in developing countries."
+    },
+    {
+      "title": "Workshop Instructor",
+      "organization": "AI in Healthcare Meetup",
+      "years": "2019 - 2022",
+      "description": "Conducting monthly workshops on ML/AI applications in healthcare for a community of 500+ professionals."
+    }
+  ]
+}
