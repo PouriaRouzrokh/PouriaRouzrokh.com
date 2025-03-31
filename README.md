@@ -132,7 +132,7 @@ Note: The Python script should be placed in the utils/ directory within the proj
   "credentials": ["PhD in Biomedical Informatics", "MSc in Computer Science"],
   "affiliations": [
     {
-      "name": "Your University/Company",
+      "name": "Your University/Department",
       "url": "https://university.example.com",
       "logoUrl": "https://res.cloudinary.com/<your_cloud_name>/image/upload/vXXXX/affiliation_logo.png" // Optional
     }
@@ -188,7 +188,7 @@ Note: The Python script should be placed in the utils/ directory within the proj
 [
   {
     "role": "Senior AI Researcher",
-    "company": "Tech Innovations Inc.",
+    "organization": "Tech Innovations Inc.",
     "years": "2022 - Present",
     "description": [
       "Led research projects on deep learning for...",
@@ -199,7 +199,7 @@ Note: The Python script should be placed in the utils/ directory within the proj
   },
   {
     "role": "Research Assistant",
-    "company": "Example University Lab",
+    "organization": "Example University Lab",
     "years": "2019 - 2022",
     "description": [
       "Contributed to the development of algorithms for...",
