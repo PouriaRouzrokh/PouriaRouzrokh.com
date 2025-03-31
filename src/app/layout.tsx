@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
-import "@/styles/globals.css";
+import "@/app/globals.css";
 import Navbar from "@/components/layout/Navbar";
 import Footer from "@/components/layout/Footer";
 import { ThemeProvider } from "@/components/layout/ThemeProvider";
@@ -9,7 +9,8 @@ const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
   title: "Pouria Rouzrokh - AI Researcher | Developer | Innovator",
-  description: "Personal portfolio of Pouria Rouzrokh, featuring research, projects, and blog posts about AI and development.",
+  description:
+    "Personal portfolio of Pouria Rouzrokh, featuring research, projects, and blog posts about AI and development.",
 };
 
 export default function RootLayout({
