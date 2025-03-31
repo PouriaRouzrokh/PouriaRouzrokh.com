@@ -17,78 +17,60 @@ import {
 export const revalidate = 3600;
 
 export default async function Home() {
-  try {
-    // Fetch all data on the server
-    const [profile, education, research, experience, achievements] =
-      await Promise.all([
-        getProfile(),
-        getEducation(),
-        getResearch(),
-        getExperience(),
-        getAchievements(),
-      ]);
+  // Fetch all data on the server
+  const [profile, education, research, experience, achievements] =
+    await Promise.all([
+      getProfile(),
+      getEducation(),
+      getResearch(),
+      getExperience(),
+      getAchievements(),
+    ]);
 
-    // Debug logging
-    console.log("Server-side data fetched:");
-    console.log("Profile:", JSON.stringify(profile).substring(0, 200) + "...");
-    console.log(
-      "Education:",
-      JSON.stringify(education).substring(0, 200) + "..."
-    );
-    console.log(
-      "Research:",
-      JSON.stringify(research).substring(0, 200) + "..."
-    );
-    console.log(
-      "Experience:",
-      JSON.stringify(experience).substring(0, 200) + "..."
-    );
-    console.log(
-      "Achievements:",
-      JSON.stringify(achievements).substring(0, 200) + "..."
-    );
+  // Debug logging
+  console.log("Server-side data fetched:");
+  console.log("Profile:", JSON.stringify(profile).substring(0, 200) + "...");
+  console.log(
+    "Education:",
+    JSON.stringify(education).substring(0, 200) + "..."
+  );
+  console.log("Research:", JSON.stringify(research).substring(0, 200) + "...");
+  console.log(
+    "Experience:",
+    JSON.stringify(experience).substring(0, 200) + "..."
+  );
+  console.log(
+    "Achievements:",
+    JSON.stringify(achievements).substring(0, 200) + "..."
+  );
 
-    return (
-      <div className="container mx-auto px-4 py-8">
-        <HeroSection profileData={profile} />
+  return (
+    <div className="container mx-auto px-4 py-8">
+      <HeroSection profileData={profile} />
 
-        <SectionDivider />
+      <SectionDivider />
 
-        <div className="pt-4">
-          <EducationSection educationData={education} />
-        </div>
-
-        <SectionDivider />
-
-        <div className="pt-4">
-          <ResearchSummarySection
-            researchData={research}
-            profileData={profile}
-          />
-        </div>
-
-        <SectionDivider />
-
-        <div className="pt-4">
-          <ExperienceSection experienceData={experience} />
-        </div>
-
-        <SectionDivider />
-
-        <div className="pt-4">
-          <AchievementsSection achievementsData={achievements} />
-        </div>
+      <div className="pt-4">
+        <EducationSection educationData={education} />
       </div>
-    );
-  } catch (error) {
-    console.error("Error in Home component:", error);
-    return (
-      <div className="container mx-auto px-4 py-8 text-center">
-        <h1 className="text-2xl font-bold mb-4">Error Loading Portfolio</h1>
-        <p className="text-muted-foreground">
-          There was an error loading the portfolio data. Please try again later.
-        </p>
+
+      <SectionDivider />
+
+      <div className="pt-4">
+        <ResearchSummarySection researchData={research} profileData={profile} />
       </div>
-    );
-  }
+
+      <SectionDivider />
+
+      <div className="pt-4">
+        <ExperienceSection experienceData={experience} />
+      </div>
+
+      <SectionDivider />
+
+      <div className="pt-4">
+        <AchievementsSection achievementsData={achievements} />
+      </div>
+    </div>
+  );
 }
