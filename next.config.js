@@ -1,6 +1,5 @@
-import { type NextConfig } from "next";
-
-const config: NextConfig = {
+/** @type {import('next').NextConfig} */
+const nextConfig = {
   images: {
     remotePatterns: [
       {
@@ -15,11 +14,8 @@ const config: NextConfig = {
   },
   // Opt-in to strict mode
   reactStrictMode: true,
-  // Remove React 19's experimental features
-  experimental: {
-    // Enable if you want to try the React Compiler
-    // reactCompiler: true,
-  },
+  // Simple experimental settings
+  experimental: {},
 };
 
-export default config;
+module.exports = nextConfig;
