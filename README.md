@@ -1,66 +1,435 @@
+# Technical Specification: pouria.ai Portfolio Website
+
 ## 1. Project Overview
 
 ### 1.1 Objective
 
-Create a professional portfolio website at pouria.ai showcasing academic and professional achievements.
+To create a professional, modern, and performant personal portfolio website hosted at pouria.ai. The website will showcase Pouria Rouzrokh's academic profile, research achievements, professional experience, projects, and blog posts. A key design goal is to present essential information (introduction, credentials, education, research highlights, experience) concisely on the home page, while providing dedicated sections for detailed exploration of research, projects, and blog content.
 
 ### 1.2 Tech Stack
 
-- Framework: Next.js 15 with App Router
-- Language: TypeScript
-- Styling: TailwindCSS + shadcn/ui
-- Image Hosting: Cloudinary
-- Deployment: Vercel
+- **Framework**: Next.js 15 (App Router)
+- **Language**: TypeScript
+- **Styling**: TailwindCSS with shadcn/ui components
+- **Content**: Primarily JSON and MDX files
+- **Research Data Fetching**: Custom Python script using scholarly and requests (Provided script: ScholarlyDataFetcher)
+- **Image Hosting**: Cloudinary
+- **Contact Form Email**: Resend (or similar transactional email service like SendGrid, AWS SES)
+- **Deployment**: Vercel
+- **Automation**: GitHub Actions (for periodic research data updates)
 
-## 2. Project Structure
+## 2. Site Structure (Pages & Routing)
+
+The website will utilize the Next.js App Router. The primary page structure will be:
 
 ```
 pouria-ai/
 ├── src/
-│   ├── app/                       # Next.js pages
-│   │   ├── page.tsx               # Home page
-│   │   ├── layout.tsx             # Root layout
-│   │   ├── research/              # Research section
-│   │   │   ├── page.tsx
-│   │   │   └── [doi]/page.tsx
-│   │   ├── projects/
-│   │   │   ├── page.tsx
-│   │   │   └── [slug]/page.tsx
-│   │   ├── presentations/
-│   │   │   └── page.tsx
-│   │   ├── blog/
-│   │   │   ├── page.tsx
-│   │   │   └── [slug]/page.tsx
-│   │   ├── experiences/
-│   │   │   └── page.tsx
-│   │   ├── education/
-│   │   │   └── page.tsx
-│   │   ├── mentorship/
-│   │   │   └── page.tsx
-│   │   └── contact/
-│   │       └── page.tsx
-│   ├── components/                # React components
-│   │   ├── layout/                # Layout components
-│   │   │   ├── navbar.tsx
-│   │   │   ├── footer.tsx
-│   │   │   └── theme-toggle.tsx
-│   │   ├── ui/                    # shadcn/ui components
-│   │   └── sections/              # Page sections
-│   │       ├── hero.tsx
-│   │       ├── research-card.tsx
-│   │       └── project-card.tsx
-│   ├── lib/                       # Utilities
-│   │   ├── types.ts               # TypeScript types
-│   │   └── utils.ts               # Utility functions
+│   ├── app/                        # Next.js App Router pages
+│   │   ├── page.tsx               # Home Page (Integrated view)
+│   │   ├── layout.tsx             # Root Layout (Navbar, Footer, ThemeProvider)
+│   │   ├── research/              # Research Section Root
+│   │   │   ├── page.tsx           # Detailed Research List (Searchable, Sortable)
+│   │   │   └── [doi]/page.tsx     # Individual Publication Detail Page (DOI as slug)
+│   │   ├── projects/              # Projects Section Root
+│   │   │   ├── page.tsx           # Projects List Page
+│   │   │   └── [slug]/page.tsx    # Individual Project Detail Page
+│   │   ├── blog/                  # Blog Section Root
+│   │   │   ├── page.tsx           # Blog Post List Page
+│   │   │   └── [slug]/page.tsx    # Individual Blog Post Page
+│   │   ├── contact/               # Contact Section
+│   │   │   └── page.tsx           # Contact Form Page
+│   │   ├── api/                   # API Routes (Optional, if Server Actions aren't used for contact)
+│   │   │   └── contact/
+│   │   │       └── route.ts       # Backend logic for sending contact email
+│   │   └── not-found.tsx          # Custom 404 Page (Recommended)
+│   ├── components/                 # Shared React Components
+│   │   ├── layout/                # Layout specific components
+│   │   │   ├── Navbar.tsx         # Site navigation
+│   │   │   ├── Footer.tsx         # Site footer
+│   │   │   └── ThemeToggle.tsx    # Dark/Light mode switcher (using next-themes)
+│   │   ├── ui/                    # Re-exported or customized shadcn/ui components
+│   │   └── sections/              # Reusable page sections/blocks
+│   │       ├── HeroSection.tsx    # Home: Intro, photo, credentials, affiliations
+│   │       ├── EducationSection.tsx # Home: Displays education history
+│   │       ├── ExperienceSection.tsx# Home: Displays professional experience
+│   │       ├── ResearchSummarySection.tsx # Home: Displays key research metrics
+│   │       ├── ResearchCard.tsx   # Card for individual publication on /research
+│   │       ├── ProjectCard.tsx    # Card for individual project on /projects
+│   │       └── ContactForm.tsx    # Client component for the contact form
+│   ├── lib/                       # Utility functions and types
+│   │   ├── types.ts               # TypeScript type definitions
+│   │   ├── utils.ts               # General utility functions (e.g., date formatting)
+│   │   ├── actions.ts             # Server Actions (Preferred for contact form)
+│   │   └── data-fetching.ts       # Functions to read and parse local data files
 │   └── styles/
-│       └── globals.css
-├── public/                        # Static assets
-│   ├── content/                   # Content files
-│   │   ├── research.json
-│   │   ├── projects.json
-│   │   └── blog/
-│   │       └── [slug].mdx
-│   └── images/
-└── utils/                        # Python utilities
-    └── scholar_scraper.py
+│       └── globals.css            # Global styles and TailwindCSS base layers
+├── public/                        # Static assets served publicly
+│   ├── content/                   # Site content files
+│   │   ├── research.json          # Auto-generated by Python script
+│   │   ├── profile.json           # Manual: Bio, social links, credentials, etc.
+│   │   ├── education.json         # Manual: Education history
+│   │   ├── experience.json        # Manual: Work experience
+│   │   ├── projects.json          # Manual: Project details
+│   │   └── blog/                  # Manual: Blog posts
+│   │       └── example-post.mdx   # Example blog post file
+│   └── images/                    # Static images (e.g., fallback avatar, logos not on Cloudinary)
+│       └── placeholder.png
+├── utils/                         # Utility scripts (e.g., data fetching script)
+│   └── scholarly_data_fetcher.py  # Your Python script to fetch research data
+├── data/                          # (Alternative location for Python script output if not public)
+├── .env.local                     # Environment variables (API Keys, etc. - DO NOT COMMIT)
+├── next.config.mjs                # Next.js configuration
+├── tailwind.config.ts             # TailwindCSS configuration
+├── tsconfig.json                  # TypeScript configuration
+└── vercel.json                    # Vercel deployment configuration (optional, for redirects/headers/image domains)
 ```
+
+## 3. Content Structure & Management
+
+Content will be managed through a combination of automated scripts and manual updates stored in the public/content/ directory.
+
+### 3.1 Research Data (public/content/research.json)
+
+**Source**: Automatically generated and updated by the utils/scholarly_data_fetcher.py script.
+
+**Structure**: A JSON object containing:
+
+- author: Author's name (string).
+- metrics: Object with citations, h_index, i10_index, cited_by_5_years (numbers).
+- articles: An array of publication objects, each including title, authors, year, journal, volume, number, pages, abstract, num_citations, url, doi, bibtex.
+- total_articles: Total number of articles found (number).
+- total_citations: Sum of num_citations across all articles (number, calculated by the script).
+
+**Update Process**: A scheduled GitHub Action will run weekly:
+
+1. Check out the repository.
+2. Set up Python environment.
+3. Install necessary Python dependencies (scholarly, requests, tqdm).
+4. Execute python utils/scholarly_data_fetcher.py. The script should be configured to output to public/content/research.json within the repository structure.
+5. Commit the updated public/content/research.json file if changes are detected.
+6. Push the changes back to the main branch. This will trigger a new deployment on Vercel.
+
+Note: The Python script should be placed in the utils/ directory within the project repository.
+
+### 3.2 Profile Data (public/content/profile.json)
+
+**Source**: Manually created and updated JSON file.
+
+**Purpose**: Contains general information displayed primarily in the Home page Hero section and Footer.
+
+**Example Structure**:
+
+```json
+{
+  "name": "Pouria Rouzrokh",
+  "tagline": "AI Researcher | Developer | Innovator",
+  "bio": "A brief professional biography highlighting key interests and expertise...",
+  "photoUrl": "https://res.cloudinary.com/<your_cloud_name>/image/upload/vXXXX/your_profile_image.jpg",
+  "email": "your.email@example.com",
+  "location": "City, Country",
+  "cvUrl": "/path/to/your/cv.pdf", // Or Cloudinary link
+  "credentials": ["PhD in Biomedical Informatics", "MSc in Computer Science"],
+  "affiliations": [
+    {
+      "name": "Your University/Company",
+      "url": "https://university.example.com",
+      "logoUrl": "https://res.cloudinary.com/<your_cloud_name>/image/upload/vXXXX/affiliation_logo.png" // Optional
+    }
+  ],
+  "socialMedia": [
+    { "platform": "LinkedIn", "url": "https://linkedin.com/in/yourprofile" },
+    { "platform": "GitHub", "url": "https://github.com/yourusername" },
+    { "platform": "Twitter", "url": "https://twitter.com/yourusername" },
+    {
+      "platform": "GoogleScholar",
+      "url": "https://scholar.google.com/citations?user=YOUR_SCHOLAR_ID"
+    }
+  ]
+}
+```
+
+### 3.3 Education Data (public/content/education.json)
+
+**Source**: Manually created and updated JSON file.
+
+**Purpose**: Contains educational background details for the Education section on the Home page.
+
+**Example Structure**:
+
+```json
+[
+  {
+    "degree": "PhD in Biomedical Informatics",
+    "institution": "Example University",
+    "years": "2018 - 2022",
+    "description": "Dissertation focused on machine learning applications in medical imaging.",
+    "logoUrl": "https://res.cloudinary.com/<your_cloud_name>/image/upload/vXXXX/university_logo.png" // Optional
+  },
+  {
+    "degree": "MSc in Computer Science",
+    "institution": "Another University",
+    "years": "2016 - 2018",
+    "description": "Specialized in Artificial Intelligence.",
+    "logoUrl": "..." // Optional
+  }
+]
+```
+
+### 3.4 Experience Data (public/content/experience.json)
+
+**Source**: Manually created and updated JSON file.
+
+**Purpose**: Contains professional work history for the Experience section on the Home page.
+
+**Example Structure**:
+
+```json
+[
+  {
+    "role": "Senior AI Researcher",
+    "company": "Tech Innovations Inc.",
+    "years": "2022 - Present",
+    "description": [
+      "Led research projects on deep learning for...",
+      "Developed and deployed predictive models achieving...",
+      "Mentored junior researchers and engineers."
+    ],
+    "logoUrl": "..." // Optional
+  },
+  {
+    "role": "Research Assistant",
+    "company": "Example University Lab",
+    "years": "2019 - 2022",
+    "description": [
+      "Contributed to the development of algorithms for...",
+      "Published findings in peer-reviewed journals.",
+      "Presented research at international conferences."
+    ],
+    "logoUrl": "..." // Optional
+  }
+]
+```
+
+### 3.5 Projects Data (public/content/projects.json)
+
+**Source**: Manually created and updated JSON file.
+
+**Purpose**: Contains details about personal or professional projects for the /projects page.
+
+**Example Structure**:
+
+```json
+[
+  {
+    "title": "AI Medical Image Analyzer",
+    "slug": "ai-image-analyzer", // Used for URL: /projects/ai-image-analyzer
+    "description": "A web application using deep learning to detect anomalies in X-ray images.",
+    "technologies": ["Python", "TensorFlow", "Flask", "React", "Docker"],
+    "imageUrl": "https://res.cloudinary.com/<your_cloud_name>/image/upload/vXXXX/project_image.jpg",
+    "githubUrl": "https://github.com/yourusername/project-repo", // Optional
+    "liveUrl": "https://project-live-demo.example.com" // Optional
+  },
+  {
+    "title": "Portfolio Website (This Site!)",
+    "slug": "portfolio-website",
+    "description": "Personal portfolio built with Next.js, TypeScript, and TailwindCSS, featuring automated research updates.",
+    "technologies": [
+      "Next.js",
+      "TypeScript",
+      "TailwindCSS",
+      "shadcn/ui",
+      "Vercel",
+      "Python"
+    ],
+    "imageUrl": "...",
+    "githubUrl": "https://github.com/yourusername/pouria-ai"
+  }
+]
+```
+
+### 3.6 Blog Content (public/content/blog/)
+
+**Source**: Manually created and updated MDX (.mdx) files.
+
+**Purpose**: Contains blog posts, allowing for Markdown syntax and embedded React components.
+
+**Structure**: Each file represents a post. Frontmatter (YAML) at the top defines metadata.
+
+**Example File (public/content/blog/my-first-post.mdx)**:
+
+````mdx
+---
+title: "My First Blog Post"
+date: "2024-07-28"
+author: "Pouria Rouzrokh"
+tags: ["Introduction", "Web Development"]
+summary: "A brief summary of the post for list views."
+slug: "my-first-post"
+---
+
+# Welcome to my blog!
+
+This is the content of my first blog post, written in Markdown.
+
+You can even embed React components here if needed.
+
+```typescript
+console.log("Hello, MDX!");
+```
+````
+
+````
+
+### 3.7 Images
+All significant images (profile photo, project previews, logos) should be hosted on Cloudinary for optimization and CDN benefits. URLs will be referenced in the JSON/MDX content files. Static assets like favicons can reside in the public/ folder.
+
+## 4. Core Functionality
+
+### 4.1 Home Page (/)
+
+- Acts as a central hub and introduction.
+- **Hero Section**: Displays name, tagline, photo, brief bio, credentials, affiliations (from profile.json). Includes prominent Call-to-Action buttons (e.g., "View Research", "Contact Me").
+- **Education Section**: Lists education history chronologically (from education.json).
+- **Research Summary Section**: Displays key metrics (Total Publications, Total Citations, H-Index - from research.json metrics) and potentially lists research interests (add to profile.json if desired). Includes a link to the full /research page.
+- **Experience Section**: Lists professional experience chronologically (from experience.json).
+- **Social Links**: Displayed prominently, likely in the Hero section or Footer (from profile.json).
+
+### 4.2 Research Page (/research)
+
+- Displays a comprehensive list of all publications fetched from research.json.
+- Each publication is presented using a ResearchCard component.
+- **Search**: An input field to filter publications by title, authors, or keywords (client-side filtering initially).
+- **Sorting**: Options to sort publications by Year (default, descending), Citations (descending), Title (ascending).
+- Each ResearchCard links to the individual publication page (/research/[doi]).
+
+### 4.3 Individual Publication Page (/research/[doi])
+
+- Dynamically generated page for each publication based on its DOI.
+- Displays detailed information: Full Title, Authors, Abstract, Year, Journal/Conference, Volume/Number/Pages, Citation Count, DOI link, External URL link (if available).
+- Provides the generated BibTeX citation for easy copying.
+
+### 4.4 Projects Page (/projects)
+
+- Displays a grid or list of projects using ProjectCard components (from projects.json).
+- Each card links to the individual project page (/projects/[slug]).
+
+### 4.5 Individual Project Page (/projects/[slug])
+
+- Displays detailed information about a specific project: Title, Description, Technologies Used, Image(s)/Video, Links (GitHub, Live Demo).
+
+### 4.6 Blog Page (/blog)
+
+- Displays a list of blog posts chronologically (newest first), showing title, date, summary, and tags (from MDX frontmatter).
+- Each entry links to the individual blog post page (/blog/[slug]).
+
+### 4.7 Individual Blog Post Page (/blog/[slug])
+
+- Renders the full content of the MDX file.
+- Displays metadata like title, author, date.
+
+### 4.8 Contact Page (/contact)
+
+- Contains a ContactForm component.
+- **Fields**: Title (Required), Name (Optional), Email (Required, for reply), Message Content (Required).
+- **Functionality**:
+  - Uses client-side state (useState) for input values.
+  - Performs basic client-side validation (e.g., check for required fields, valid email format).
+  - On submission, calls a Next.js Server Action (lib/actions.ts).
+  - The Server Action performs server-side validation.
+  - If valid, the Server Action uses the configured email service (e.g., Resend SDK) to send the email content to Pouria's specified email address.
+  - The Server Action returns success or error status to the form.
+  - The form displays appropriate loading, success, or error messages to the user.
+- **Security**: The email service API key must be stored securely in environment variables (.env.local, configured in Vercel).
+
+### 4.9 Theme Toggle
+
+- A button (likely in the Navbar) allows users to switch between light and dark themes.
+- Uses the next-themes library for robust theme management compatible with Next.js App Router and TailwindCSS dark mode (class strategy).
+
+## 5. Technical Implementation Details
+
+### 5.1 Data Fetching
+
+- Server Components will directly read data from the JSON/MDX files in public/content/ using Node.js fs module (e.g., fs.promises.readFile) and path.join(process.cwd(), 'public/content/...'). Helper functions in lib/data-fetching.ts can encapsulate this logic.
+- MDX files will be parsed using a library like next-mdx-remote or @next/mdx.
+
+### 5.2 Components
+Utilize shadcn/ui for accessible and stylable base components (Buttons, Cards, Inputs, Forms, etc.). Create custom composite components as needed (HeroSection, ResearchCard, etc.).
+
+### 5.3 TypeScript
+Employ strict TypeScript throughout the project. Define comprehensive types in lib/types.ts matching the structure of all data sources (research.json, profile.json, etc.).
+
+### 5.4 Styling
+Use TailwindCSS utility classes for styling. Leverage clsx or tailwind-merge for conditional class application. Define theme colors and base styles in globals.css and tailwind.config.ts.
+
+### 5.5 Contact Form Backend
+Prefer Next.js Server Actions for simplicity and colocation of logic. Fallback to API Routes if necessary. Use Zod for validation on the server-side.
+
+## 6. Deployment & Automation
+
+### 6.1 Deployment Platform
+Vercel. Connect the GitHub repository for automatic deployments on push/merge to the main branch.
+
+### 6.2 Domain
+Configure the custom domain pouria.ai (managed via Porkbun) in the Vercel project settings.
+
+### 6.3 Environment Variables
+Store sensitive keys (Email Service API Key, potentially Cloudinary API Key if used server-side) in Vercel's environment variable settings. Use .env.local for local development.
+
+### 6.4 Image Optimization
+Leverage Next.js Image component (next/image) with Cloudinary as the image source. Configure the Cloudinary domain (res.cloudinary.com) in next.config.mjs or vercel.json.
+
+```javascript
+// next.config.mjs
+/** @type {import('next').NextConfig} */
+const nextConfig = {
+  images: {
+    remotePatterns: [
+      {
+        protocol: 'https',
+        hostname: 'res.cloudinary.com',
+        port: '',
+        pathname: '/<your_cloud_name>/**', // Be specific
+      },
+    ],
+  },
+};
+export default nextConfig;
+````
+
+### 6.5 Research Data Automation
+
+Set up a GitHub Actions workflow (.github/workflows/update_research.yml) triggered on a schedule (e.g., cron: '0 0 \* \* 0' for weekly on Sunday at midnight UTC). This workflow runs the utils/scholarly_data_fetcher.py script and commits the updated public/content/research.json.
+
+## 7. SEO (Search Engine Optimization)
+
+### 7.1 Base Metadata
+
+Define default site title, description, keywords, and Open Graph tags in the root layout.tsx using the metadata object.
+
+### 7.2 Dynamic Metadata
+
+Implement the generateMetadata function in dynamic page routes (/research/[doi], /projects/[slug], /blog/[slug]) to generate page-specific titles, descriptions, and Open Graph tags based on the content (e.g., publication title/abstract, project name/description, blog post title/summary).
+
+### 7.3 Sitemap
+
+Consider generating a sitemap.xml file dynamically or at build time to help search engines crawl the site.
+
+### 7.4 robots.txt
+
+Include a public/robots.txt file to guide web crawlers.
+
+## 8. Performance Targets
+
+- **Lighthouse Performance Score**: Aim for > 95.
+- **Core Web Vitals**: Pass (Good) for LCP, FID (or INP), CLS.
+- **Load Times**: Strive for fast load times through Server Components, optimized images, and efficient code.
+
+## 9. Development Guidelines
+
+- **Code Style**: Follow standard TypeScript/React best practices. Use a formatter (Prettier) and linter (ESLint).
+- **Component Design**: Favor Server Components by default. Use Client Components ('use client') only when interactivity or browser APIs are required. Keep components focused and reusable.
+- **File Naming**: PascalCase for React components (ResearchCard.tsx), camelCase or kebab-case for utilities/config files. Use page.tsx, layout.tsx, route.ts as per Next.js conventions.
+- **Accessibility (a11y)**: Adhere to WCAG guidelines. Use semantic HTML and leverage shadcn/ui's accessibility features. Test with screen readers and keyboard navigation.
+- **Version Control**: Use Git with meaningful commit messages.
