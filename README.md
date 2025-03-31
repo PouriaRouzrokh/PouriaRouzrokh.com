@@ -31,9 +31,9 @@ pouria-ai/
 │   │   ├── research/              # Research Section Root
 │   │   │   ├── page.tsx           # Detailed Research List (Searchable, Sortable)
 │   │   │   └── [doi]/page.tsx     # Individual Publication Detail Page (DOI as slug)
-│   │   ├── projects/              # Projects Section Root
-│   │   │   ├── page.tsx           # Projects List Page
-│   │   │   └── [slug]/page.tsx    # Individual Project Detail Page
+│   │   ├── portfolio/             # Portfolio Section Root
+│   │   │   ├── page.tsx           # Portfolio List Page
+│   │   │   └── [slug]/page.tsx    # Individual Portfolio Item Detail Page
 │   │   ├── blog/                  # Blog Section Root
 │   │   │   ├── page.tsx           # Blog Post List Page
 │   │   │   └── [slug]/page.tsx    # Individual Blog Post Page
@@ -55,7 +55,7 @@ pouria-ai/
 │   │       ├── ExperienceSection.tsx# Home: Displays professional experience
 │   │       ├── ResearchSummarySection.tsx # Home: Displays key research metrics
 │   │       ├── ResearchCard.tsx   # Card for individual publication on /research
-│   │       ├── ProjectCard.tsx    # Card for individual project on /projects
+│   │       ├── PortfolioCard.tsx   # Card for individual portfolio item on /portfolio
 │   │       └── ContactForm.tsx    # Client component for the contact form
 │   ├── lib/                       # Utility functions and types
 │   │   ├── types.ts               # TypeScript type definitions
@@ -70,7 +70,7 @@ pouria-ai/
 │   │   ├── profile.json           # Manual: Bio, social links, credentials, etc.
 │   │   ├── education.json         # Manual: Education history
 │   │   ├── experience.json        # Manual: Work experience
-│   │   ├── projects.json          # Manual: Project details
+│   │   ├── portfolio.json          # Manual: Portfolio details
 │   │   └── blog/                  # Manual: Blog posts
 │   │       └── example-post.mdx   # Example blog post file
 │   └── images/                    # Static images (e.g., fallback avatar, logos not on Cloudinary)
@@ -97,9 +97,9 @@ Content will be managed through a combination of automated scripts and manual up
 
 - author: Author's name (string).
 - metrics: Object with citations, h_index, i10_index, cited_by_5_years (numbers).
-- articles: An array of publication objects, each including title, authors, year, journal, volume, number, pages, abstract, num_citations, url, doi, bibtex.
-- total_articles: Total number of articles found (number).
-- total_citations: Sum of num_citations across all articles (number, calculated by the script).
+- portfolio: An array of publication objects, each including title, authors, year, journal, volume, number, pages, abstract, num_citations, url, doi, bibtex.
+- total_portfolio: Total number of portfolio items found (number).
+- total_citations: Sum of num_citations across all portfolio items (number, calculated by the script).
 
 **Python Environment Setup**:
 
@@ -247,11 +247,11 @@ Note: The Python script should be placed in the utils/ directory within the proj
 ]
 ```
 
-### 3.5 Projects Data (public/content/projects.json)
+### 3.5 Projects Data (public/content/portfolio.json)
 
 **Source**: Manually created and updated JSON file.
 
-**Purpose**: Contains details about personal or professional projects for the /projects page.
+**Purpose**: Contains details about personal or professional projects for the /portfolio page.
 
 **Example Structure**:
 
@@ -259,7 +259,7 @@ Note: The Python script should be placed in the utils/ directory within the proj
 [
   {
     "title": "AI Medical Image Analyzer",
-    "slug": "ai-image-analyzer", // Used for URL: /projects/ai-image-analyzer
+    "slug": "ai-image-analyzer", // Used for URL: /portfolio/ai-image-analyzer
     "description": "A web application using deep learning to detect anomalies in X-ray images.",
     "technologies": ["Python", "TensorFlow", "Flask", "React", "Docker"],
     "imageUrl": "https://res.cloudinary.com/<your_cloud_name>/image/upload/vXXXX/project_image.jpg",
@@ -331,7 +331,16 @@ All significant images (profile photo, project previews, logos) should be hosted
 - **Experience Section**: Lists professional experience chronologically (from experience.json).
 - **Social Links**: Displayed prominently, likely in the Hero section or Footer (from profile.json).
 
-### 4.2 Research Page (/research)
+### 4.2 Portfolio Page (/portfolio)
+
+- Displays a grid or list of projects using PortfolioCard components (from portfolio.json).
+- Each card links to the individual portfolio item page (/portfolio/[slug]).
+
+### 4.3 Individual Portfolio Item Page (/portfolio/[slug])
+
+- Displays detailed information about a specific portfolio item: Title, Description, Technologies Used, Image(s)/Video, Links (GitHub, Live Demo).
+
+### 4.4 Research Page (/research)
 
 - Displays a comprehensive list of all publications fetched from research.json.
 - Each publication is presented using a ResearchCard component.
@@ -339,20 +348,11 @@ All significant images (profile photo, project previews, logos) should be hosted
 - **Sorting**: Options to sort publications by Year (default, descending), Citations (descending), Title (ascending).
 - Each ResearchCard links to the individual publication page (/research/[doi]).
 
-### 4.3 Individual Publication Page (/research/[doi])
+### 4.5 Individual Publication Page (/research/[doi])
 
 - Dynamically generated page for each publication based on its DOI.
 - Displays detailed information: Full Title, Authors, Abstract, Year, Journal/Conference, Volume/Number/Pages, Citation Count, DOI link, External URL link (if available).
 - Provides the generated BibTeX citation for easy copying.
-
-### 4.4 Projects Page (/projects)
-
-- Displays a grid or list of projects using ProjectCard components (from projects.json).
-- Each card links to the individual project page (/projects/[slug]).
-
-### 4.5 Individual Project Page (/projects/[slug])
-
-- Displays detailed information about a specific project: Title, Description, Technologies Used, Image(s)/Video, Links (GitHub, Live Demo).
 
 ### 4.6 Blog Page (/blog)
 
@@ -446,7 +446,7 @@ Define default site title, description, keywords, and Open Graph tags in the roo
 
 ### 7.2 Dynamic Metadata
 
-Implement the generateMetadata function in dynamic page routes (/research/[doi], /projects/[slug], /blog/[slug]) to generate page-specific titles, descriptions, and Open Graph tags based on the content (e.g., publication title/abstract, project name/description, blog post title/summary).
+Implement the generateMetadata function in dynamic page routes (/research/[doi], /portfolio/[slug], /blog/[slug]) to generate page-specific titles, descriptions, and Open Graph tags based on the content (e.g., publication title/abstract, portfolio item name/description, blog post title/summary).
 
 ### 7.3 Sitemap
 

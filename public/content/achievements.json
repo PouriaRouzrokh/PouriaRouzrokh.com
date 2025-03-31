@@ -1,0 +1,36 @@
+{
+  "awards": [
+    {
+      "title": "Best Paper Award",
+      "organization": "International Conference on Medical Imaging",
+      "year": "2022",
+      "description": "Awarded for pioneering research on deep learning applications in diagnostic radiology."
+    },
+    {
+      "title": "Young Investigator Grant",
+      "organization": "National Institutes of Health",
+      "year": "2021",
+      "description": "Competitive $150,000 research grant for innovative AI approaches in healthcare."
+    },
+    {
+      "title": "Excellence in Teaching",
+      "organization": "Stanford University",
+      "year": "2020",
+      "description": "Recognized for exceptional teaching and mentorship of graduate students."
+    }
+  ],
+  "honors": [
+    {
+      "title": "Rising Star in AI",
+      "organization": "AI Society",
+      "year": "2023",
+      "description": "Selected as one of 30 rising stars in artificial intelligence research globally."
+    },
+    {
+      "title": "Outstanding Reviewer",
+      "organization": "Journal of Biomedical Informatics",
+      "year": "2022",
+      "description": "Recognized for high-quality peer reviews contributing to academic excellence."
+    }
+  ]
+}

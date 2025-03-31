@@ -2,12 +2,14 @@ import HeroSection from "@/components/sections/HeroSection";
 import EducationSection from "@/components/sections/EducationSection";
 import ResearchSummarySection from "@/components/sections/ResearchSummarySection";
 import ExperienceSection from "@/components/sections/ExperienceSection";
+import AchievementsSection from "@/components/sections/AchievementsSection";
 import { SectionDivider } from "@/components/ui/section-divider";
 import {
   getProfile,
   getEducation,
   getResearch,
   getExperience,
+  getAchievements,
 } from "@/lib/data-fetching";
 
 // This makes Next.js statically generate this page at build time
@@ -17,12 +19,14 @@ export const revalidate = 3600;
 export default async function Home() {
   try {
     // Fetch all data on the server
-    const [profile, education, research, experience] = await Promise.all([
-      getProfile(),
-      getEducation(),
-      getResearch(),
-      getExperience(),
-    ]);
+    const [profile, education, research, experience, achievements] =
+      await Promise.all([
+        getProfile(),
+        getEducation(),
+        getResearch(),
+        getExperience(),
+        getAchievements(),
+      ]);
 
     // Debug logging
     console.log("Server-side data fetched:");
@@ -38,6 +42,10 @@ export default async function Home() {
     console.log(
       "Experience:",
       JSON.stringify(experience).substring(0, 200) + "..."
+    );
+    console.log(
+      "Achievements:",
+      JSON.stringify(achievements).substring(0, 200) + "..."
     );
 
     return (
@@ -63,6 +71,12 @@ export default async function Home() {
 
         <div className="pt-4">
           <ExperienceSection experienceData={experience} />
+        </div>
+
+        <SectionDivider />
+
+        <div className="pt-4">
+          <AchievementsSection achievementsData={achievements} />
         </div>
       </div>
     );

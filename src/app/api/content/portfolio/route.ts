@@ -11,7 +11,7 @@ export async function GET() {
     let data: PortfolioItem[] = [];
     try {
       data = JSON.parse(fileContents);
-      console.log("Projects data (from portfolio.json):", data);
+      console.log("Portfolio data from file:", data);
     } catch (parseError) {
       console.error("Error parsing portfolio JSON:", parseError);
     }

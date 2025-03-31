@@ -162,27 +162,27 @@ Based on the technical specification, here's a comprehensive step-by-step plan t
 - Dynamic routing based on DOI functions properly
 - BibTeX generation and copy feature works
 
-## Phase 6: Projects Section Development
+## Phase 6: Portfolio Section Development
 
-### Step 1: Project Card Component
+### Step 1: Portfolio Card Component
 
-1. Design and implement ProjectCard.tsx component
+1. Design and implement PortfolioCard.tsx component
 2. Add interactive elements and styling
 
-### Step 2: Projects Listing Page
+### Step 2: Portfolio Listing Page
 
-1. Implement app/projects/page.tsx
+1. Implement app/portfolio/page.tsx
 2. Create grid or list layout for projects
 3. Set up metadata for SEO
 
-### Step 3: Individual Project Page
+### Step 3: Individual Portfolio Item Page
 
-1. Implement app/projects/[slug]/page.tsx
+1. Implement app/portfolio/[slug]/page.tsx
 2. Create project detail layout
 3. Add technology tags and interactive elements
 4. Set up dynamic metadata generation
 
-### Checkpoint 6: Projects Section Validation
+### Checkpoint 6: Portfolio Section Validation
 
 - Projects page loads and displays all projects
 - Grid/list layout is responsive

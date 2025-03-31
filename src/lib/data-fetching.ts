@@ -5,7 +5,8 @@ import {
   EducationItem,
   ExperienceItem,
   ResearchData,
-  ProjectItem,
+  PortfolioItem,
+  AchievementItem,
   BlogPostFrontmatter,
 } from "./types";
 
@@ -32,10 +33,8 @@ interface RawEducationData {
   degrees?: Array<{
     degree: string;
     institution: string;
-    location?: string;
     years: string;
     description: string;
-    achievements?: string[];
     logo?: string;
     [key: string]: unknown;
   }>;
@@ -65,6 +64,24 @@ interface RawExperienceData {
     title: string;
     organization: string;
     years: string;
+    description: string;
+    [key: string]: unknown;
+  }>;
+  [key: string]: unknown;
+}
+
+interface RawAchievementData {
+  awards?: Array<{
+    title: string;
+    organization: string;
+    year: string;
+    description: string;
+    [key: string]: unknown;
+  }>;
+  honors?: Array<{
+    title: string;
+    organization: string;
+    year: string;
     description: string;
     [key: string]: unknown;
   }>;
@@ -226,6 +243,63 @@ export async function getExperience(): Promise<ExperienceItem[]> {
   return [];
 }
 
+// Achievements data
+export async function getAchievements(): Promise<AchievementItem[]> {
+  // For client components, fetch data from an API route
+  if (typeof window !== "undefined") {
+    const response = await fetch("/api/content/achievements");
+    if (!response.ok) throw new Error("Failed to fetch achievements data");
+    return response.json();
+  }
+
+  // Server-side call
+  const achievementsData = readJsonFile<RawAchievementData>(
+    "public/content/achievements.json"
+  );
+  let results: AchievementItem[] = [];
+
+  // Extract and process awards
+  if (
+    achievementsData &&
+    achievementsData.awards &&
+    Array.isArray(achievementsData.awards)
+  ) {
+    const awards = achievementsData.awards.map((item) => ({
+      title: item.title,
+      organization: item.organization,
+      year: item.year,
+      description: item.description,
+      category: "Award",
+    }));
+    results = [...results, ...awards];
+  }
+
+  // Extract and process honors
+  if (
+    achievementsData &&
+    achievementsData.honors &&
+    Array.isArray(achievementsData.honors)
+  ) {
+    const honors = achievementsData.honors.map((item) => ({
+      title: item.title,
+      organization: item.organization,
+      year: item.year,
+      description: item.description,
+      category: "Honor",
+    }));
+    results = [...results, ...honors];
+  }
+
+  // Sort by year (descending)
+  results.sort((a, b) => {
+    const yearA = parseInt(a.year);
+    const yearB = parseInt(b.year);
+    return yearB - yearA;
+  });
+
+  return results;
+}
+
 // Research data
 export async function getResearch(): Promise<ResearchData> {
   // For client components, fetch data from an API route
@@ -253,18 +327,21 @@ export async function getResearch(): Promise<ResearchData> {
   };
 }
 
-// Projects data
-export async function getProjects(): Promise<ProjectItem[]> {
+// Portfolio data (renamed from Projects)
+export async function getPortfolio(): Promise<PortfolioItem[]> {
   // For client components, fetch data from an API route
   if (typeof window !== "undefined") {
-    const response = await fetch("/api/content/projects");
-    if (!response.ok) throw new Error("Failed to fetch projects data");
+    const response = await fetch("/api/content/portfolio");
+    if (!response.ok) throw new Error("Failed to fetch portfolio data");
     return response.json();
   }
 
   // Server-side call
-  return readJsonFile<ProjectItem[]>("public/content/projects.json");
+  return readJsonFile<PortfolioItem[]>("public/content/portfolio.json");
 }
+
+// For backward compatibility
+export const getProjects = getPortfolio;
 
 // Blog posts
 export async function getBlogPosts(): Promise<BlogPostFrontmatter[]> {

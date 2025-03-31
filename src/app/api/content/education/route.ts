@@ -7,10 +7,8 @@ import { EducationItem } from "@/lib/types";
 interface RawDegree {
   degree: string;
   institution: string;
-  location?: string;
   years: string;
   description: string;
-  achievements?: string[];
   logo?: string;
 }
 

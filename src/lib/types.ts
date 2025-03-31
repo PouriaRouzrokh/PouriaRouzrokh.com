@@ -48,6 +48,15 @@ export interface ExperienceItem {
   logoUrl?: string;
 }
 
+// Achievement data types
+export interface AchievementItem {
+  title: string;
+  organization: string;
+  year: string;
+  description: string;
+  category: string; // "Award" or "Honor"
+}
+
 // Research data types
 export interface ResearchData {
   author: string;
@@ -79,8 +88,8 @@ export interface Article {
   bibtex: string;
 }
 
-// Project data types
-export interface ProjectItem {
+// Portfolio data types (renamed from Project)
+export interface PortfolioItem {
   title: string;
   slug: string;
   description: string;
@@ -89,6 +98,9 @@ export interface ProjectItem {
   githubUrl?: string;
   liveUrl?: string;
 }
+
+// For backward compatibility
+export type ProjectItem = PortfolioItem;
 
 // Blog post frontmatter
 export interface BlogPostFrontmatter {

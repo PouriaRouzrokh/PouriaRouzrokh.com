@@ -4,6 +4,7 @@ import Link from "next/link";
 import Image from "next/image";
 import { ProfileData } from "@/lib/types";
 import { useState } from "react";
+import { SocialLinks } from "@/components/ui/social-links";
 
 interface HeroSectionProps {
   profileData: ProfileData;
@@ -17,6 +18,12 @@ export default function HeroSection({ profileData }: HeroSectionProps) {
     bio: "Welcome to my portfolio website.",
     interests: [],
     image: "/placeholder-profile.jpg",
+    social: {
+      twitter: "",
+      github: "",
+      linkedin: "",
+      googleScholar: "",
+    },
   };
 
   // State to handle image loading failures
@@ -63,6 +70,11 @@ export default function HeroSection({ profileData }: HeroSectionProps) {
             >
               Contact Me
             </Link>
+          </div>
+
+          {/* Social Media Links */}
+          <div className="pt-4">
+            <SocialLinks social={profile.social} className="mt-2" />
           </div>
         </div>
         <div className="flex justify-center md:justify-end">
