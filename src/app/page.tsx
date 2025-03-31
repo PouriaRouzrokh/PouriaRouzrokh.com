@@ -27,23 +27,6 @@ export default async function Home() {
       getAchievements(),
     ]);
 
-  // Debug logging
-  console.log("Server-side data fetched:");
-  console.log("Profile:", JSON.stringify(profile).substring(0, 200) + "...");
-  console.log(
-    "Education:",
-    JSON.stringify(education).substring(0, 200) + "..."
-  );
-  console.log("Research:", JSON.stringify(research).substring(0, 200) + "...");
-  console.log(
-    "Experience:",
-    JSON.stringify(experience).substring(0, 200) + "..."
-  );
-  console.log(
-    "Achievements:",
-    JSON.stringify(achievements).substring(0, 200) + "..."
-  );
-
   return (
     <div className="container mx-auto px-4 py-8">
       <HeroSection profileData={profile} />
