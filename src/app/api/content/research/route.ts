@@ -1,7 +1,7 @@
 import { NextResponse } from "next/server";
 import fs from "fs";
 import path from "path";
-import { ResearchData } from "@/lib/types";
+import { ResearchData, Article } from "@/lib/types";
 
 export async function GET() {
   try {
@@ -14,6 +14,25 @@ export async function GET() {
       const jsonData = JSON.parse(fileContents);
       console.log("Raw research data:", jsonData);
 
+      // Get articles array
+      const articles = Array.isArray(jsonData.articles)
+        ? jsonData.articles
+        : [];
+
+      // Use processed totals from the JSON file if available, otherwise calculate from articles
+      const totalArticles =
+        jsonData.total_articles_processed ||
+        jsonData.total_articles ||
+        articles.length;
+
+      const totalCitations =
+        jsonData.total_citations_processed ||
+        jsonData.total_citations ||
+        articles.reduce(
+          (sum: number, article: Article) => sum + (article.num_citations || 0),
+          0
+        );
+
       // Ensure the data has the required structure
       data = {
         author: jsonData.author || "Researcher",
@@ -22,9 +41,9 @@ export async function GET() {
           h_index: 0,
           i10_index: 0,
         },
-        articles: Array.isArray(jsonData.articles) ? jsonData.articles : [],
-        total_articles: jsonData.total_articles || 0,
-        total_citations: jsonData.total_citations || 0,
+        articles,
+        total_articles: totalArticles,
+        total_citations: totalCitations,
       };
     } catch (parseError) {
       console.error("Error parsing research JSON:", parseError);

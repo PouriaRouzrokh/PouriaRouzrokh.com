@@ -114,6 +114,8 @@ interface RawResearchData {
   }>;
   total_articles?: number;
   total_citations?: number;
+  total_articles_processed?: number;
+  total_citations_processed?: number;
   [key: string]: unknown;
 }
 
@@ -314,6 +316,26 @@ export async function getResearch(): Promise<ResearchData> {
     "public/content/research.json"
   );
 
+  // Calculate total articles and citations if not provided
+  const articles = Array.isArray(researchData.articles)
+    ? researchData.articles
+    : [];
+
+  // Use processed totals from the JSON file if available, otherwise calculate from articles
+  const totalArticles =
+    researchData.total_articles_processed ||
+    researchData.total_articles ||
+    articles.length;
+
+  const totalCitations =
+    researchData.total_citations_processed ||
+    researchData.total_citations ||
+    articles.reduce(
+      (sum: number, article: { num_citations: number }) =>
+        sum + (article.num_citations || 0),
+      0
+    );
+
   return {
     author: researchData.author || "Researcher",
     metrics: {
@@ -321,9 +343,9 @@ export async function getResearch(): Promise<ResearchData> {
       h_index: researchData.metrics?.h_index || 0,
       i10_index: researchData.metrics?.i10_index || 0,
     },
-    articles: Array.isArray(researchData.articles) ? researchData.articles : [],
-    total_articles: researchData.total_articles || 0,
-    total_citations: researchData.total_citations || 0,
+    articles,
+    total_articles: totalArticles,
+    total_citations: totalCitations,
   };
 }
 

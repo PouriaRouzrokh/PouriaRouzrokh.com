@@ -5,60 +5,134 @@ from typing import Dict, List, Optional, Union
 from scholarly import scholarly
 from tqdm.auto import tqdm
 from pathlib import Path
+import logging
+
+# Configure logging
+logging.basicConfig(level=logging.INFO, format='%(asctime)s - %(levelname)s - %(message)s')
 
 class ScholarlyDataFetcher:
+    # Add a default email for CrossRef polite pool (replace if needed)
+    CROSSREF_MAILTO = "your.email@example.com" # IMPORTANT: Replace with your actual email
+
     def __init__(self, author_name: str, output_path: Union[str, Path]):
         self.author_name = author_name
         self.output_path = Path(output_path)
         self.author_data = None
         self.author_metrics = None
         self.articles = []
+        # Use a session for potential connection pooling and default headers
+        self.session = requests.Session()
+        self.session.headers.update({
+            'User-Agent': f'ScholarlyDataFetcher/1.0 (mailto:{self.CROSSREF_MAILTO})',
+            'Accept': 'application/json'
+        })
+
 
     def fetch_author_data(self) -> None:
         """Fetch and fill author data from Google Scholar."""
-        search_query = scholarly.search_author(self.author_name)
-        first_result = next(search_query)
-        self.author_data = scholarly.fill(first_result)
+        logging.info(f"Searching for author: {self.author_name}")
+        try:
+            search_query = scholarly.search_author(self.author_name)
+            # It's safer to check if the iterator yields anything
+            first_result = next(search_query, None)
+            if first_result is None:
+                logging.error(f"Author '{self.author_name}' not found.")
+                raise ValueError(f"Author '{self.author_name}' not found.")
 
-        # Extract author metrics
-        self.author_metrics = {
-            "citations": self.author_data.get('citedby', 0),
-            "h_index": self.author_data.get('hindex', 0),
-            "i10_index": self.author_data.get('i10index', 0),
-            "cited_by_5_years": self.author_data.get('citedby5y', 0),
-        }
+            logging.info(f"Found author: {first_result.get('name')}. Fetching details...")
+            # Increase timeout for potentially slow fill operations
+            self.author_data = scholarly.fill(first_result, sections=['basics', 'indices', 'publications'], publication_limit=None) # Fetch all publications
+            logging.info(f"Successfully fetched data for {self.author_data.get('name')}")
+
+            # Extract author metrics more safely
+            self.author_metrics = {
+                "citations": self.author_data.get('citedby', 0),
+                "h_index": self.author_data.get('hindex', 0),
+                "i10_index": self.author_data.get('i10index', 0),
+                "cited_by_5_years": self.author_data.get('citedby5y', 0),
+            }
+        except StopIteration:
+             logging.error(f"Author '{self.author_name}' not found after initial search.")
+             raise ValueError(f"Author '{self.author_name}' not found.")
+        except Exception as e:
+            logging.error(f"An error occurred during author data fetching: {e}", exc_info=True)
+            raise
 
     def fetch_article_data(self) -> None:
         """Fetch detailed data for all author's publications."""
         if not self.author_data:
             raise ValueError("Author data not fetched. Call fetch_author_data() first.")
 
-        print("Fetching detailed article data...")
-        self.articles = [
-            scholarly.fill(article)
-            for article in tqdm(self.author_data['publications'])
-        ]
+        publications = self.author_data.get('publications', [])
+        if not publications:
+            logging.warning(f"No publications found for author {self.author_data.get('name')}")
+            self.articles = []
+            return
+
+        logging.info(f"Fetching detailed data for {len(publications)} articles...")
+        filled_articles = []
+        for i, article_stub in enumerate(tqdm(publications, desc="Fetching article details")):
+            try:
+                # Add timeout and retry mechanism if needed, scholarly fill can be flaky
+                filled_article = scholarly.fill(article_stub)
+                filled_articles.append(filled_article)
+                # Optional: Add a small delay to avoid potential rate limits on Google Scholar side
+                # time.sleep(0.5)
+            except Exception as e:
+                title_stub = article_stub.get('bib', {}).get('title', f'Article {i+1}')
+                logging.warning(f"Could not fill details for article: '{title_stub}'. Error: {e}")
+        self.articles = filled_articles
+        logging.info(f"Successfully fetched details for {len(self.articles)} articles.")
+
 
     @staticmethod
-    def get_doi(title: str) -> Optional[str]:
-        """Fetch DOI for an article using CrossRef API."""
+    def get_doi_fallback(session: requests.Session, title: str, authors: Optional[str] = None, year: Optional[Union[str, int]] = None) -> Optional[str]:
+        """
+        Fetch DOI for an article using CrossRef API as a fallback.
+        Uses more specific query parameters if available.
+        """
+        if not title:
+            return None
+
         url = "https://api.crossref.org/works"
+
+        # Construct a more specific query
+        query_parts = [title]
+        if authors:
+            # Extract first author's last name if possible
+            try:
+                first_author_last_name = authors.split(',')[0].split()[-1]
+                query_parts.append(first_author_last_name)
+            except IndexError:
+                query_parts.append(authors.split(',')[0]) # Use whatever is first
+
         params = {
-            'query.title': title,
-            'rows': 1,
-            'select': 'DOI,title'
+            'query.bibliographic': " ".join(query_parts), # More robust query field
+            'rows': 1, # We only want the best match
+            'select': 'DOI,title,author' # Select author too for verification if needed
         }
 
         try:
-            time.sleep(1)  # Respect API rate limits
-            response = requests.get(url, params=params)
-            response.raise_for_status()
+            response = session.get(url, params=params, timeout=10)
+            response.raise_for_status() # Raises HTTPError for bad responses (4xx or 5xx)
 
             data = response.json()
-            return data['message']['items'][0]['DOI'] if data['message']['items'] else None
+            items = data.get('message', {}).get('items', [])
 
-        except (requests.exceptions.RequestException, KeyError) as e:
-            print(f"Error fetching DOI for '{title}': {e}")
+            if items:
+                return items[0].get('DOI')
+            else:
+                logging.info(f"No DOI found on CrossRef for title query: '{params['query.bibliographic']}'")
+                return None
+
+        except requests.exceptions.Timeout:
+             logging.warning(f"Timeout fetching DOI from CrossRef for title: '{title}'")
+             return None
+        except requests.exceptions.RequestException as e:
+            logging.warning(f"Error fetching DOI from CrossRef for title '{title}': {e}")
+            return None
+        except (KeyError, IndexError, TypeError) as e:
+            logging.warning(f"Error parsing CrossRef response for title '{title}': {e}")
             return None
 
     @staticmethod
@@ -68,16 +142,15 @@ class ScholarlyDataFetcher:
         if not isinstance(text, str):
             return ""
 
-        allowed_chars = set(
-            'abcdefghijklmnopqrstuvwxyz'
-            'ABCDEFGHIJKLMNOPQRSTUVWXYZ'
-            '0123456789 ' + allowed_special_chars
-        )
+        # More robust sanitization - allow unicode letters and numbers
+        import re
+        # Keep letters (including unicode), numbers, spaces, and allowed specials
+        allowed_pattern = re.compile(r'[^\w\s' + re.escape(allowed_special_chars) + ']', re.UNICODE)
+        text = allowed_pattern.sub('', text)
 
-        text = ''.join(char for char in str(text).strip() if char in allowed_chars)
-        while '  ' in text:
-            text = text.replace('  ', ' ')
-        return text.strip()
+        # Normalize whitespace
+        text = re.sub(r'\s+', ' ', text).strip()
+        return text
 
     @staticmethod
     def create_bibtex(paper: Dict) -> str:
@@ -85,78 +158,183 @@ class ScholarlyDataFetcher:
         if not isinstance(paper, dict):
             return ""
 
-        # Create citation key
-        first_author = paper.get('authors', '').split(',')[0].split()[-1] if paper.get('authors') else 'Unknown'
+        # Use more robust citation key generation
+        try:
+            first_author = paper.get('authors', '').split(',')[0].split()[-1].lower() if paper.get('authors') else 'unknown'
+            # Sanitize author name for key
+            first_author = ''.join(c for c in first_author if c.isalnum())
+        except IndexError:
+            first_author = 'unknown'
+
         year = str(paper.get('year', ''))
         title_first_word = paper.get('title', '').split()[0].lower() if paper.get('title') else 'untitled'
+        # Sanitize title word for key
+        title_first_word = ''.join(c for c in title_first_word if c.isalnum())
+
+        # Handle potential empty strings
+        if not first_author: first_author = 'unknown'
+        if not year: year = 'nodate'
+        if not title_first_word: title_first_word = 'untitled'
+
         citation_key = f"{first_author}{year}{title_first_word}"
 
-        # Build BibTeX entry
-        fields = ['title', 'authors', 'year', 'journal', 'volume', 'number', 'pages', 'doi', 'url']
-        bibtex = [f"@article{{{citation_key},"]
+        # Standard BibTeX fields mapping (adjust as needed)
+        bib_map = {
+            'title': 'title',
+            'authors': 'author', # BibTeX uses 'author'
+            'year': 'year',
+            'journal': 'journal',
+            'volume': 'volume',
+            'number': 'number',
+            'pages': 'pages',
+            'doi': 'doi',
+            'url': 'url',
+            'abstract': 'abstract', # Can include abstract if desired
+            # Add other fields if available/needed: publisher, booktitle, etc.
+        }
 
-        for field in fields:
-            if paper.get(field):
-                value = str(paper[field]).replace("&", "\\&").replace("_", "\\_")
-                bibtex.append(f"    {field} = {{{value}}},")
+        bibtex = [f"@article{{{citation_key},"] # Default to article, change if needed based on publication type
+
+        # Special handling for authors (needs 'and' separation)
+        if 'authors' in paper and paper['authors']:
+             authors_list = [a.strip() for a in paper['authors'].split(',')]
+             bibtex.append(f"    author = {{{' and '.join(authors_list)}}},")
+
+        # Handle other fields
+        for source_key, bib_key in bib_map.items():
+            if source_key != 'authors' and paper.get(source_key):
+                # Basic BibTeX escaping (needs improvement for complex cases)
+                value = str(paper[source_key])
+                value = value.replace('{', '\\{').replace('}', '\\}')
+                value = value.replace('&', '\\&').replace('%', '\\%').replace('_', '\\_')
+                bibtex.append(f"    {bib_key} = {{{value}}},")
 
         bibtex.append("}")
         return '\n'.join(bibtex)
 
     def process_articles(self) -> List[Dict]:
         """Process and clean article data for frontend consumption."""
-        print("Processing articles...")
+        logging.info("Processing articles...")
         cleaned_articles = []
+        dois_found_scholarly = 0
+        dois_found_crossref = 0
+        dois_missing = 0
 
-        for article in tqdm(self.articles):
+        for article in tqdm(self.articles, desc="Processing articles"):
             bib = article.get('bib', {})
+            title = bib.get('title')
+            if not title: # Skip articles without titles
+                logging.warning("Skipping article with missing title.")
+                continue
+
+            # 1. Try getting DOI directly from scholarly's bib data
+            doi = bib.get('doi')
+
+            if doi:
+                dois_found_scholarly += 1
+            else:
+                # 2. Fallback: Try getting DOI from CrossRef (use the session)
+                logging.info(f"DOI not found in scholarly data for '{title}'. Trying CrossRef fallback.")
+                authors = bib.get('author') # Scholarly uses 'author' field in bib
+                year = bib.get('pub_year')
+                doi = self.get_doi_fallback(self.session, title, authors, year)
+                if doi:
+                    dois_found_crossref += 1
+                else:
+                    dois_missing += 1
+
+            # Prepare authors string
+            authors_str = bib.get('author', '')
+            if isinstance(authors_str, list): # Sometimes author might be a list
+                authors_str = ' and '.join(authors_str)
+            # Convert 'and' separators from scholarly to comma separators for display
+            display_authors = ', '.join(authors_str.split(' and '))
+
+
             cleaned_article = {
-                'title': bib.get('title'),
-                'authors': ', '.join(bib.get('author', '').split(' and ')),
+                'title': title,
+                'authors': display_authors, # Use comma-separated for display
                 'year': bib.get('pub_year'),
-                'journal': bib.get('journal'),
+                'journal': bib.get('journal') or bib.get('venue'), # Sometimes venue holds journal/conf
                 'volume': bib.get('volume'),
                 'number': bib.get('number'),
                 'pages': bib.get('pages'),
+                # Sanitize abstract *before* adding to dict
                 'abstract': self.sanitize_text(bib.get('abstract')),
                 'num_citations': article.get('num_citations'),
-                'url': article.get('pub_url'),
-                'doi': self.get_doi(bib.get('title', ''))
+                # Prefer eprint_url if pub_url is generic (like scholar link)
+                'url': article.get('eprint_url') or article.get('pub_url'),
+                'doi': doi # Use the DOI we found (either from scholarly or CrossRef)
             }
 
-            # Remove None values and generate BibTeX
-            cleaned_article = {k: v for k, v in cleaned_article.items() if v is not None}
-            cleaned_article['bibtex'] = self.create_bibtex(cleaned_article)
+            # Create a dict suitable for BibTeX generation (using 'and' for authors)
+            bibtex_input = cleaned_article.copy()
+            bibtex_input['authors'] = authors_str # Use 'and' separated authors for BibTeX
+
+            # Remove None values before BibTeX generation and final output
+            cleaned_article = {k: v for k, v in cleaned_article.items() if v is not None and v != ''}
+            bibtex_input = {k: v for k, v in bibtex_input.items() if v is not None and v != ''}
+
+            cleaned_article['bibtex'] = self.create_bibtex(bibtex_input)
             cleaned_articles.append(cleaned_article)
 
+        logging.info(f"DOI Source Summary: Found in Scholarly={dois_found_scholarly}, Found via CrossRef={dois_found_crossref}, Missing={dois_missing}")
         return cleaned_articles
 
     def save_to_json(self) -> None:
         """Save processed article data to JSON file."""
-        if not self.author_metrics:
-            raise ValueError("Author metrics not available. Call fetch_author_data() first.")
+        if self.author_metrics is None: # Check against None
+             logging.error("Author metrics not available. Call fetch_author_data() first.")
+             raise ValueError("Author metrics not available. Call fetch_author_data() first.")
+        if not self.articles:
+            logging.warning("No articles were fetched or processed. Saving data without articles.")
+            # Decide if you want to save an empty file or raise error
+            # raise ValueError("No articles fetched. Cannot save.")
 
         cleaned_articles = self.process_articles()
 
+        # Recalculate totals based on cleaned articles actually processed
+        total_processed_articles = len(cleaned_articles)
+        total_processed_citations = sum(article.get('num_citations', 0) for article in cleaned_articles)
+
         output_data = {
-            'author': self.author_name,
+            'author': self.author_data.get('name', self.author_name), # Use fetched name if available
+            'affiliation': self.author_data.get('affiliation', 'N/A'),
+            'google_scholar_id': self.author_data.get('scholar_id', 'N/A'),
             'metrics': self.author_metrics,
             'articles': cleaned_articles,
-            'total_articles': len(cleaned_articles),
-            'total_citations': sum(article.get('num_citations', 0) for article in cleaned_articles)
+            'total_articles_processed': total_processed_articles,
+            'total_citations_processed': total_processed_citations,
+            'fetched_at': time.strftime("%Y-%m-%d %H:%M:%S UTC", time.gmtime()) # Add timestamp
         }
 
         # Create directory if it doesn't exist
         self.output_path.parent.mkdir(parents=True, exist_ok=True)
 
-        with open(self.output_path, 'w', encoding='utf-8') as f:
-            json.dump(output_data, f, indent=2, ensure_ascii=False)
-        print(f"Data saved to {self.output_path}")
+        try:
+            with open(self.output_path, 'w', encoding='utf-8') as f:
+                json.dump(output_data, f, indent=2, ensure_ascii=False)
+            logging.info(f"Data successfully saved to {self.output_path}")
+        except IOError as e:
+            logging.error(f"Failed to write data to {self.output_path}: {e}")
+            raise
+
 
 def main():
     """Main function to run the script."""
-    author_name = 'Pouria Rouzrokh'
-    output_path = Path('public/content/research.json')  # Updated path as per development plan
+    # --- Configuration ---
+    author_name = 'Pouria Rouzrokh' # Example author
+    output_filename = 'research.json'
+    output_dir = Path('public/content')
+    output_path = output_dir / output_filename
+    # --- End Configuration ---
+
+    # Set a polite email for CrossRef - CHANGE THIS
+    ScholarlyDataFetcher.CROSSREF_MAILTO = "pouria.rouzrokh@example.com" # <--- IMPORTANT: CHANGE THIS EMAIL
+
+    if ScholarlyDataFetcher.CROSSREF_MAILTO == "your.email@example.com":
+         logging.warning("Please update the CROSSREF_MAILTO email address in the main function.")
+
 
     fetcher = ScholarlyDataFetcher(author_name, output_path)
 
@@ -164,8 +342,10 @@ def main():
         fetcher.fetch_author_data()
         fetcher.fetch_article_data()
         fetcher.save_to_json()
+    except ValueError as e:
+        logging.error(f"Configuration or Data Error: {e}")
     except Exception as e:
-        print(f"Error occurred: {e}")
+        logging.error(f"An unexpected error occurred: {e}", exc_info=True) # Log full traceback
 
 if __name__ == "__main__":
-    main() 
+    main()
