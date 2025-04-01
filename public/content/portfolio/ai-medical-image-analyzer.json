@@ -6,7 +6,7 @@
   "year": 2022,
   "technologies": ["Python", "TensorFlow", "React", "Docker", "AWS"],
   "projectTags": ["AI & ML", "Healthcare", "Web Application", "Research"],
-  "imageUrl": "/images/portfolio/medical-image-analyzer.jpg",
+  "imageUrl": "https://res.cloudinary.com/dzqiwtbg6/image/upload/v1743546706/lattereview_twh3go.png",
   "githubUrl": "https://github.com/pouria/ai-medical-image-analyzer",
   "liveUrl": "https://medical-image-analyzer.demo.com",
   "publicationUrl": "https://doi.org/10.1016/j.media.2022.102485",

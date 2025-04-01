@@ -11,7 +11,7 @@
     "Web Application",
     "Dashboard"
   ],
-  "imageUrl": "/images/portfolio/analytics-dashboard.jpg",
+  "imageUrl": "https://res.cloudinary.com/dzqiwtbg6/image/upload/v1743546706/lattereview_twh3go.png",
   "liveUrl": "https://healthcare-analytics.demo.com",
   "publicationUrl": "https://doi.org/10.2196/jmir.2023.45761",
   "blogPostUrl": "https://pouria.ai/blog/healthcare-analytics-case-study"

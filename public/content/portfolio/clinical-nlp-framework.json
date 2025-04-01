@@ -6,7 +6,7 @@
   "year": 2021,
   "technologies": ["Python", "PyTorch", "BERT", "Flask", "Neo4j"],
   "projectTags": ["NLP", "Healthcare", "Data Science", "AI & ML"],
-  "imageUrl": "/images/portfolio/clinical-nlp.jpg",
+  "imageUrl": "https://res.cloudinary.com/dzqiwtbg6/image/upload/v1743546706/lattereview_twh3go.png",
   "githubUrl": "https://github.com/pouria/clinical-nlp-framework",
   "publicationUrl": "https://doi.org/10.1093/jamia/ocab042",
   "blogPostUrl": "https://pouria.ai/blog/clinical-nlp-advancements"

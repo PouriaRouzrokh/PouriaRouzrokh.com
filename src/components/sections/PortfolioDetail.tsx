@@ -29,6 +29,9 @@ export function PortfolioDetail({ slug }: PortfolioDetailProps) {
   const [isLoading, setIsLoading] = useState(true);
   const decodedSlug = decodeURIComponent(slug);
 
+  // Determine if image is from Cloudinary
+  const isCloudinaryImage = project?.imageUrl?.includes("res.cloudinary.com");
+
   useEffect(() => {
     console.log("Project slug:", slug);
     console.log("Decoded slug:", decodedSlug);
@@ -120,15 +123,19 @@ export function PortfolioDetail({ slug }: PortfolioDetailProps) {
           </div>
 
           {/* Project Image */}
-          <div className="w-full h-80 relative mb-8 rounded-lg overflow-hidden shadow-md">
-            <Image
-              src={project.imageUrl || "/placeholder-profile.jpg"}
-              alt={project.title}
-              fill
-              className="object-cover"
-              sizes="(max-width: 768px) 100vw, (max-width: 1200px) 1200px, 1200px"
-              priority
-            />
+          <div className="w-full flex justify-center mb-8">
+            <div className="rounded-lg overflow-hidden shadow-md">
+              <Image
+                src={project.imageUrl || "/placeholder-profile.jpg"}
+                alt={project.title}
+                width={1200}
+                height={675}
+                className="max-w-full h-auto"
+                sizes="(max-width: 768px) 100vw, (max-width: 1200px) 1200px, 1200px"
+                quality={isCloudinaryImage ? 90 : 75}
+                priority
+              />
+            </div>
           </div>
 
           {/* Project Overview */}

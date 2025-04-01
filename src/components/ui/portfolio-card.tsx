@@ -38,6 +38,9 @@ export function PortfolioCard({ project, className }: PortfolioCardProps) {
     project.blogPostUrl,
   ].filter(Boolean).length;
 
+  // Determine if image is from Cloudinary
+  const isCloudinaryImage = project.imageUrl?.includes("res.cloudinary.com");
+
   return (
     <Card
       className={cn(
@@ -53,6 +56,8 @@ export function PortfolioCard({ project, className }: PortfolioCardProps) {
           fill
           className="object-cover transition-transform group-hover:scale-105"
           sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+          quality={isCloudinaryImage ? 90 : 75} // Higher quality for Cloudinary optimized images
+          priority={false}
         />
         <div className="absolute inset-0 bg-gradient-to-t from-background/80 to-transparent" />
       </div>
