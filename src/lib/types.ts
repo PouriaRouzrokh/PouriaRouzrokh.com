@@ -1,6 +1,7 @@
 // Profile data types
 export interface ProfileData {
   name: string;
+  credentials?: string;
   title: string;
   email: string;
   bio: string;

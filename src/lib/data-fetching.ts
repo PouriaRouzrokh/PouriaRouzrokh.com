@@ -13,6 +13,7 @@ import {
 // Raw data interfaces
 interface RawProfileData {
   name?: string;
+  credentials?: string;
   title?: string;
   email?: string;
   bio?: string;
@@ -146,6 +147,7 @@ export async function getProfile(): Promise<ProfileData> {
   );
   return {
     name: profileData.name || "Portfolio Owner",
+    credentials: profileData.credentials,
     title: profileData.title || "Professional",
     email: profileData.email || "contact@example.com",
     bio: profileData.bio || "Welcome to my portfolio.",

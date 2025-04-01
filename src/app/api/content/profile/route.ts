@@ -17,6 +17,7 @@ export async function GET() {
       // Ensure the data has the required structure
       data = {
         name: jsonData.name || "Portfolio Owner",
+        credentials: jsonData.credentials,
         title: jsonData.title || "Professional",
         email: jsonData.email || "contact@example.com",
         bio: jsonData.bio || "Welcome to my portfolio.",

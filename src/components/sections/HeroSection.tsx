@@ -32,6 +32,9 @@ export default function HeroSection({ profileData }: HeroSectionProps) {
   );
   const [imgError, setImgError] = useState(false);
 
+  // Split titles by pipe character for better display
+  const titles = profile.title.split(" | ");
+
   // Console log for debugging
   console.log("Profile data in hero:", profileData);
 
@@ -39,16 +42,37 @@ export default function HeroSection({ profileData }: HeroSectionProps) {
     <section className="py-12 md:py-16">
       <div className="grid md:grid-cols-2 gap-8 items-center">
         <div className="space-y-4">
-          <h1 className="text-4xl md:text-5xl font-bold tracking-tight">
-            {profile.name}
-          </h1>
-          <p className="text-xl text-muted-foreground">{profile.title}</p>
-          <div className="py-4">
+          <div>
+            <h1 className="text-4xl md:text-5xl font-bold tracking-tight">
+              {profile.name}
+            </h1>
+            {profile.credentials && (
+              <p className="text-lg md:text-xl text-muted-foreground mt-1">
+                {profile.credentials}
+              </p>
+            )}
+          </div>
+
+          {/* First title with primary styling */}
+          <div>
+            <p className="text-xl font-medium text-primary mb-1">{titles[0]}</p>
+
+            {/* Secondary titles with compact styling */}
+            {titles.length > 1 && (
+              <div className="text-sm text-muted-foreground leading-tight space-y-0.5">
+                {titles.slice(1).map((title, index) => (
+                  <p key={index}>{title}</p>
+                ))}
+              </div>
+            )}
+          </div>
+
+          <div className="py-3">
             <p className="text-lg">{profile.bio}</p>
           </div>
           <div className="flex flex-wrap gap-3 py-2">
             {profile.interests &&
-              profile.interests.slice(0, 2).map((interest, index) => (
+              profile.interests.slice(0, 4).map((interest, index) => (
                 <span
                   key={index}
                   className="bg-secondary px-3 py-1 text-sm rounded-full"
@@ -57,7 +81,7 @@ export default function HeroSection({ profileData }: HeroSectionProps) {
                 </span>
               ))}
           </div>
-          <div className="flex gap-4 pt-4">
+          <div className="flex gap-4 pt-3">
             <Link
               href="/research"
               className="bg-primary text-primary-foreground hover:bg-primary/90 px-4 py-2 rounded-md"
@@ -73,7 +97,7 @@ export default function HeroSection({ profileData }: HeroSectionProps) {
           </div>
 
           {/* Social Media Links */}
-          <div className="pt-4">
+          <div className="pt-3">
             <SocialLinks social={profile.social} className="mt-2" />
           </div>
         </div>
