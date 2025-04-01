@@ -5,18 +5,28 @@ import { PortfolioItem } from "@/lib/types";
 
 export async function GET() {
   try {
-    const filePath = path.join(process.cwd(), "public/content/portfolio.json");
-    const fileContents = fs.readFileSync(filePath, "utf8");
+    const portfolioDir = path.join(process.cwd(), "public/content/portfolio");
+    const files = fs
+      .readdirSync(portfolioDir)
+      .filter((file) => file.endsWith(".json"));
 
-    let data: PortfolioItem[] = [];
-    try {
-      data = JSON.parse(fileContents);
-      console.log("Portfolio data from file:", data);
-    } catch (parseError) {
-      console.error("Error parsing portfolio JSON:", parseError);
+    const portfolioItems: PortfolioItem[] = [];
+
+    for (const file of files) {
+      const filePath = path.join(portfolioDir, file);
+      const fileContents = fs.readFileSync(filePath, "utf8");
+      try {
+        const projectData = JSON.parse(fileContents) as PortfolioItem;
+        portfolioItems.push(projectData);
+      } catch (parseError) {
+        console.error(`Error parsing portfolio file ${file}:`, parseError);
+      }
     }
 
-    return NextResponse.json(data);
+    // Sort by year (most recent first)
+    const sortedItems = portfolioItems.sort((a, b) => b.year - a.year);
+
+    return NextResponse.json(sortedItems);
   } catch (error) {
     console.error("Error reading portfolio data:", error);
     return new NextResponse(

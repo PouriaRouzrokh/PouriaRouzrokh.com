@@ -1,0 +1,14 @@
+{
+  "title": "AI Medical Image Analyzer",
+  "slug": "ai-medical-image-analyzer",
+  "description": "A web application using deep learning to detect anomalies in X-ray images. Developed as part of my PhD research and now open-sourced for broader community use.",
+  "abstract": "The AI Medical Image Analyzer is a comprehensive web-based platform that applies state-of-the-art deep learning techniques to medical imaging analysis. Originally developed during my PhD research, this tool has been refined and open-sourced to serve the broader medical community. The system employs a convolutional neural network architecture trained on over 100,000 labeled X-ray images to identify and highlight potential anomalies with remarkable accuracy.\n\nThe platform features an intuitive user interface allowing medical professionals to upload X-ray images and receive instant analysis with visual heatmaps indicating areas of concern. The underlying models achieve 94% sensitivity and 92% specificity for detecting common thoracic abnormalities, comparable to radiologist performance in controlled studies. The system also generates natural language reports summarizing findings and suggesting potential follow-up actions.\n\nTo ensure privacy compliance, all data processing occurs locally, with optional secure cloud storage for authenticated users. The project has been deployed in three teaching hospitals as a decision support tool and continues to evolve through community contributions.",
+  "year": 2022,
+  "technologies": ["Python", "TensorFlow", "React", "Docker", "AWS"],
+  "projectTags": ["AI & ML", "Healthcare", "Web Application", "Research"],
+  "imageUrl": "/images/portfolio/medical-image-analyzer.jpg",
+  "githubUrl": "https://github.com/pouria/ai-medical-image-analyzer",
+  "liveUrl": "https://medical-image-analyzer.demo.com",
+  "publicationUrl": "https://doi.org/10.1016/j.media.2022.102485",
+  "blogPostUrl": "https://pouria.ai/blog/ai-medical-imaging-deep-dive"
+}

@@ -94,10 +94,15 @@ export interface PortfolioItem {
   title: string;
   slug: string;
   description: string;
+  abstract: string; // Detailed description for individual project pages
+  year: number; // Year tag for the project
   technologies: string[];
+  projectTags: string[]; // Tags for categorizing and filtering projects
   imageUrl: string;
   githubUrl?: string;
   liveUrl?: string;
+  publicationUrl?: string; // URL to related academic publication
+  blogPostUrl?: string; // URL to related blog post
 }
 
 // For backward compatibility

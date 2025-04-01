@@ -360,8 +360,32 @@ export async function getPortfolio(): Promise<PortfolioItem[]> {
     return response.json();
   }
 
-  // Server-side call
-  return readJsonFile<PortfolioItem[]>("public/content/portfolio.json");
+  // Server-side call - read from individual files
+  try {
+    const portfolioDir = path.join(process.cwd(), "public/content/portfolio");
+    const files = fs
+      .readdirSync(portfolioDir)
+      .filter((file) => file.endsWith(".json"));
+
+    const portfolioItems: PortfolioItem[] = [];
+
+    for (const file of files) {
+      const filePath = path.join(portfolioDir, file);
+      const fileContents = fs.readFileSync(filePath, "utf8");
+      try {
+        const projectData = JSON.parse(fileContents) as PortfolioItem;
+        portfolioItems.push(projectData);
+      } catch (parseError) {
+        console.error(`Error parsing portfolio file ${file}:`, parseError);
+      }
+    }
+
+    // Sort by year (most recent first)
+    return portfolioItems.sort((a, b) => b.year - a.year);
+  } catch (error) {
+    console.error("Error reading portfolio files:", error);
+    return [];
+  }
 }
 
 // For backward compatibility

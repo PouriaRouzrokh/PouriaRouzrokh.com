@@ -167,18 +167,20 @@ Based on the technical specification, here's a comprehensive step-by-step plan t
 ### Step 1: Portfolio Card Component
 
 1. Design and implement PortfolioCard.tsx component
-2. Add interactive elements and styling
+2. The portfolio cards should be aesthetically different than the publication cards that come in the research section.
+3. Add interactive elements and styling
 
 ### Step 2: Portfolio Listing Page
 
 1. Implement app/portfolio/page.tsx
 2. Create grid or list layout for projects
-3. Set up metadata for SEO
+3. The listing page should show the title and badge of each project, year, and a two liner description of the project, and a "Learn More" link which should open the individual portfolio item -aka project - page.
+4. Set up metadata for SEO
 
 ### Step 3: Individual Portfolio Item Page
 
 1. Implement app/portfolio/[slug]/page.tsx
-2. Create project detail layout
+2. Create project detail layout (each project should have a title, badge (an image from claudinary), short description (two liner), long description that could be as long as an abstract of a paper or even longer, year, and project links where each link should appear as hyper link and the user should be able to provide both the link and its hyperlink)
 3. Add technology tags and interactive elements
 4. Set up dynamic metadata generation
 
