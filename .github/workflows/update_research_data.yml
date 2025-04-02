@@ -52,4 +52,4 @@ jobs:
           git config --local user.email "action@github.com"
           git config --local user.name "GitHub Action"
           git add public/content/research.json
-          git diff --quiet && git diff --staged --quiet || (git commit -m "Update research data [skip ci]" && git push)
+          git diff --quiet && git diff --staged --quiet || (git commit -m "Update research data" && git push)
