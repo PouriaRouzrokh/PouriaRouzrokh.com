@@ -4,6 +4,7 @@ import "@/app/globals.css";
 import Navbar from "@/components/layout/Navbar";
 import Footer from "@/components/layout/Footer";
 import { ThemeProvider } from "@/components/layout/ThemeProvider";
+import MaintenanceWrapper from "@/components/layout/MaintenanceWrapper";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -48,38 +49,11 @@ export const metadata: Metadata = {
   },
 };
 
-// Check if maintenance mode is enabled (default to false if not set)
-const MAINTENANCE_MODE = process.env.NEXT_PUBLIC_MAINTENANCE_MODE === "true";
-
 export default function RootLayout({
   children,
 }: Readonly<{
   children: React.ReactNode;
 }>) {
-  if (MAINTENANCE_MODE) {
-    return (
-      <html lang="en" suppressHydrationWarning>
-        <body className={inter.className}>
-          <ThemeProvider
-            attribute="class"
-            defaultTheme="system"
-            enableSystem
-            disableTransitionOnChange
-          >
-            <div className="min-h-screen flex flex-col items-center justify-center bg-background p-8 text-center">
-              <h1 className="text-4xl font-bold mb-6">Coming Soon</h1>
-              <p className="text-xl text-muted-foreground max-w-md mb-8">
-                This website is currently under development and will be
-                available soon.
-              </p>
-              <div className="w-24 h-24 border-t-4 border-primary rounded-full animate-spin"></div>
-            </div>
-          </ThemeProvider>
-        </body>
-      </html>
-    );
-  }
-
   return (
     <html lang="en" suppressHydrationWarning>
       <body className={inter.className}>
@@ -89,11 +63,13 @@ export default function RootLayout({
           enableSystem
           disableTransitionOnChange
         >
-          <div className="min-h-screen flex flex-col">
-            <Navbar />
-            <main className="flex-grow">{children}</main>
-            <Footer />
-          </div>
+          <MaintenanceWrapper>
+            <div className="min-h-screen flex flex-col">
+              <Navbar />
+              <main className="flex-grow">{children}</main>
+              <Footer />
+            </div>
+          </MaintenanceWrapper>
         </ThemeProvider>
       </body>
     </html>
