@@ -1,0 +1,11 @@
+name: Simple Test Workflow
+
+on:
+  workflow_dispatch: # Manual trigger only
+
+jobs:
+  hello-world:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Hello World
+        run: echo "Hello, World!"
