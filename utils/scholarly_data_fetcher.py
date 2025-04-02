@@ -331,7 +331,7 @@ def main():
     # --- End Configuration ---
 
     # Get email from environment variable or use default
-    email = os.environ.get('CROSSREF_MAILTO', "your.email@example.com")
+    email = os.environ.get('CROSSREF_MAILTO', "po.rouzrokh@gmail.com")
 
     # Set a polite email for CrossRef
     ScholarlyDataFetcher.CROSSREF_MAILTO = email
