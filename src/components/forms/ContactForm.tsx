@@ -209,81 +209,93 @@ export function ContactForm() {
             )}
           />
 
-          {/* Consultation areas - conditional based on requestConsultation checkbox */}
+          {/* Consultation information - conditional based on requestConsultation checkbox */}
           {requestsConsultation && (
-            <div className="space-y-4 p-4 bg-slate-50 dark:bg-slate-900 rounded-md">
-              <div className="font-medium">Consultation Areas:</div>
-              <FormField
-                control={form.control}
-                name="consultationAreas"
-                render={() => (
-                  <FormItem>
-                    <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
-                      {consultationAreas.map((area) => (
-                        <FormField
-                          key={area}
-                          control={form.control}
-                          name="consultationAreas"
-                          render={({ field }) => {
-                            return (
-                              <FormItem
-                                key={area}
-                                className="flex flex-row items-start space-x-3 space-y-0"
-                              >
-                                <FormControl>
-                                  <Checkbox
-                                    checked={field.value?.includes(area)}
-                                    onCheckedChange={(checked: boolean) => {
-                                      const currentValues = field.value || [];
-                                      if (checked) {
-                                        field.onChange([
-                                          ...currentValues,
-                                          area,
-                                        ]);
-                                      } else {
-                                        field.onChange(
-                                          currentValues.filter(
-                                            (value) => value !== area
-                                          )
-                                        );
-                                      }
-                                    }}
-                                  />
-                                </FormControl>
-                                <FormLabel className="font-normal cursor-pointer">
-                                  {area}
-                                </FormLabel>
-                              </FormItem>
-                            );
-                          }}
-                        />
-                      ))}
-                    </div>
-                    <FormMessage />
-                  </FormItem>
-                )}
-              />
+            <>
+              <div className="text-sm p-3 border border-amber-200 bg-amber-50 dark:border-amber-900 dark:bg-amber-950/50 rounded-md text-amber-800 dark:text-amber-300">
+                <p>
+                  <strong>Note:</strong> Consultation sessions are structured as
+                  a minimum of one hour at $100 per hour and are subject to
+                  availability. Upon review of your request, I will contact you
+                  via email to coordinate a suitable time if the consultation is
+                  feasible.
+                </p>
+              </div>
 
-              {/* Other consultation area - conditional based on "Other" being selected */}
-              {form.watch("consultationAreas")?.includes("Other") && (
+              <div className="space-y-4 p-4 bg-slate-50 dark:bg-slate-900 rounded-md">
+                <div className="font-medium">Consultation Areas:</div>
                 <FormField
                   control={form.control}
-                  name="otherConsultationArea"
-                  render={({ field }) => (
+                  name="consultationAreas"
+                  render={() => (
                     <FormItem>
-                      <FormLabel>Other Area (please specify)</FormLabel>
-                      <FormControl>
-                        <Input
-                          placeholder="Specify other consultation area"
-                          {...field}
-                        />
-                      </FormControl>
+                      <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
+                        {consultationAreas.map((area) => (
+                          <FormField
+                            key={area}
+                            control={form.control}
+                            name="consultationAreas"
+                            render={({ field }) => {
+                              return (
+                                <FormItem
+                                  key={area}
+                                  className="flex flex-row items-start space-x-3 space-y-0"
+                                >
+                                  <FormControl>
+                                    <Checkbox
+                                      checked={field.value?.includes(area)}
+                                      onCheckedChange={(checked: boolean) => {
+                                        const currentValues = field.value || [];
+                                        if (checked) {
+                                          field.onChange([
+                                            ...currentValues,
+                                            area,
+                                          ]);
+                                        } else {
+                                          field.onChange(
+                                            currentValues.filter(
+                                              (value) => value !== area
+                                            )
+                                          );
+                                        }
+                                      }}
+                                    />
+                                  </FormControl>
+                                  <FormLabel className="font-normal cursor-pointer">
+                                    {area}
+                                  </FormLabel>
+                                </FormItem>
+                              );
+                            }}
+                          />
+                        ))}
+                      </div>
                       <FormMessage />
                     </FormItem>
                   )}
                 />
-              )}
-            </div>
+
+                {/* Other consultation area - conditional based on "Other" being selected */}
+                {form.watch("consultationAreas")?.includes("Other") && (
+                  <FormField
+                    control={form.control}
+                    name="otherConsultationArea"
+                    render={({ field }) => (
+                      <FormItem>
+                        <FormLabel>Other Area (please specify)</FormLabel>
+                        <FormControl>
+                          <Input
+                            placeholder="Specify other consultation area"
+                            {...field}
+                          />
+                        </FormControl>
+                        <FormMessage />
+                      </FormItem>
+                    )}
+                  />
+                )}
+              </div>
+            </>
           )}
 
           {/* reCAPTCHA component */}
