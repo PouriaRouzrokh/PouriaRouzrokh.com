@@ -487,34 +487,199 @@ Based on the technical specification, here's a comprehensive step-by-step plan t
 - SEO is properly implemented for both listing and individual posts
 - System works in both development and production environments
 
-## Phase 8: Contact Form Implementation
+# Phase 8: Enhanced Contact Form Implementation
 
-### Step 1: Server Actions
+## Overview
 
-1. Implement lib/actions.ts with contact form submission logic
-2. Set up email service integration (Resend)
-3. Add server-side validation with Zod
+This phase focuses on implementing a secure, feature-rich contact form for the pouria.ai portfolio website. The form will collect visitor information, offer consultation request options, and implement robust security measures to prevent spam and abuse.
 
-### Step 2: Contact Form Component
+## Step 1: Form Requirements and Structure
 
-1. Create ContactForm.tsx as a client component
-2. Implement form state management and validation
-3. Add loading, success, and error states
+### 1.1 Define Form Fields
 
-### Step 3: Contact Page
+- **Subject/Title** (Required): Text input for inquiry topic
+- **Name** (Required): Text input for visitor's full name
+- **Email** (Required): Email input for reply communication
+- **Message** (Required): Textarea for detailed inquiry content
+- **Consultation Request** (Optional): Checkbox to indicate interest in consultation
+- **Consultation Areas** (Conditional): Multi-select checkboxes that appear when consultation is requested:
+  - Research
+  - AI Development
+  - AI Engineering
+  - US Residency and Match
+  - Research Fellowship Application
+  - Radiology AI
+  - Clinical AI
+  - Other (with optional text field)
+- **Honeypot Field** (Hidden): Invisible field to catch bots
 
-1. Implement app/contact/page.tsx
-2. Integrate ContactForm component
-3. Add additional contact information if needed
-4. Set up metadata for SEO
+### 1.2 Form Validation Rules
 
-### Checkpoint 8: Contact Form Validation
+- Subject: Non-empty, maximum length enforcement
+- Name: Non-empty, maximum length enforcement
+- Email: Valid email format validation
+- Message: Minimum length (10 characters), maximum length enforcement
+- Consultation Areas: Required if consultation checkbox is checked
 
-- Contact form renders correctly
-- Client-side validation works properly
-- Server-side validation functions correctly
-- Email service integration works
-- User feedback (loading, success, error states) is implemented
+## Step 2: Email Service Integration (Resend)
+
+### 2.1 Resend Setup
+
+- Create account on Resend.com
+- Verify domain ownership for pouria.ai
+- Generate API key for server-side integration
+- Configure sending domain in Resend dashboard
+
+### 2.2 Environment Configuration
+
+- Add Resend API key to environment variables
+- Configure environment variable in Vercel deployment
+- Add contact recipient email to environment variables
+
+## Step 3: Security Implementation
+
+### 3.1 Server-Side Validation
+
+- Implement comprehensive validation in Server Action
+- Add length limits for all fields
+- Add proper error handling and response formatting
+
+### 3.2 reCAPTCHA Integration
+
+- Register site with Google reCAPTCHA v3
+- Add site key and secret key to environment variables
+- Implement client-side token generation
+- Implement server-side token verification
+
+### 3.3 Rate Limiting
+
+- Set up Redis instance with Upstash for persistence
+- Implement IP-based rate limiting (5 submissions per day)
+- Configure proper error responses for rate-limited requests
+
+### 3.4 Honeypot Trap
+
+- Add hidden form field that should remain empty
+- Implement check in form submission handler
+- Silently reject submissions with filled honeypot
+
+### 3.5 Content Filtering
+
+- Implement basic spam pattern detection
+- Create configurable regex patterns for common spam signals
+- Add server-side filtering before email dispatch
+
+### 3.6 Email Volume Limiting
+
+- Track daily email count in Redis
+- Implement daily sending limits (25 per day)
+- Add appropriate error handling when limits are reached
+
+## Step 4: Frontend Implementation
+
+### 4.1 Form Component Development
+
+- Create a client component for the contact form
+- Implement form fields with proper labeling and accessibility
+- Add conditional logic for consultation-related fields
+
+### 4.2 Form State Management
+
+- Implement form state management
+- Add form field validation with schema integration
+- Create state for form submission status
+- Implement conditional rendering for consultation options
+
+### 4.3 User Experience
+
+- Add loading state during form submission
+- Display validation errors inline
+- Show success/error messages after submission
+- Implement form reset after successful submission
+- Add conditional visibility for consultation-related fields
+
+## Step 5: Backend Implementation
+
+### 5.1 Server Action Development
+
+- Create server action function for form processing
+- Implement security checks before processing
+- Connect with Resend API for email delivery
+
+### 5.2 Email Formatting
+
+- Create email template for contact form submissions
+- Include all submitted form fields in email body
+- Add special formatting for consultation requests
+- Configure proper "From" and "Reply-To" headers
+
+### 5.3 Error Handling
+
+- Implement comprehensive error logging
+- Create user-friendly error messages
+- Handle different types of errors (validation, service, rate limit)
+
+## Step 6: Contact Page Integration
+
+### 6.1 Page Component
+
+- Create contact page in app/contact/page.tsx
+- Add page metadata for SEO
+- Integrate contact form component
+- Add contextual information or instructions
+
+### 6.2 Layout and Styling
+
+- Style form consistent with site design
+- Ensure mobile responsiveness
+- Implement proper spacing and typography
+- Style form status messages appropriately
+
+## Step 7: Testing and Validation
+
+### 7.1 Form Testing
+
+- Test all validation rules and error messages
+- Verify conditional logic for consultation fields
+- Test form submissions with all fields
+- Test honeypot functionality
+
+### 7.2 Email Delivery Testing
+
+- Verify emails are received with proper formatting
+- Check Subject line, From name, and Reply-To functionality
+- Test rendering in various email clients
+- Verify consultation information is properly included
+
+### 7.3 Security Testing
+
+- Test rate limiting functionality
+- Verify reCAPTCHA is working correctly
+- Test spam filtering with test spam messages
+- Ensure form is protected against common attack vectors
+
+## Step 8: Monitoring and Analytics
+
+### 8.1 Email Analytics
+
+- Set up tracking for email delivery rates
+- Monitor for bounces or delivery issues
+- Track form submission volume over time
+
+### 8.2 Security Monitoring
+
+- Implement logging for security events
+- Set up alerts for suspicious activities
+- Create process for reviewing blocked submissions
+
+## Deliverables
+
+1. Contact form component with all required fields and validation
+2. Server action for secure form processing
+3. Resend integration for email delivery
+4. Multi-layered security implementation
+5. Complete contact page with proper styling
+6. Documentation for form maintenance and monitoring
 
 ## Phase 9: SEO and Performance Optimization
 
