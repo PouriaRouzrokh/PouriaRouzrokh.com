@@ -8,6 +8,7 @@ name: Update Research Data
 #    - Daily at midnight UTC: '0 0 * * *'
 #    - Monthly on the 1st: '0 0 1 * *'
 #    - Every 6 hours: '0 */6 * * *'
+# Last updated: 2024-04-02
 
 on:
   schedule:
