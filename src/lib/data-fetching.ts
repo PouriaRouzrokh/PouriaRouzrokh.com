@@ -8,6 +8,7 @@ import {
   PortfolioItem,
   AchievementItem,
   BlogPostFrontmatter,
+  AcknowledgmentItem,
 } from "./types";
 
 // Raw data interfaces
@@ -117,6 +118,19 @@ interface RawResearchData {
   total_citations?: number;
   total_articles_processed?: number;
   total_citations_processed?: number;
+  [key: string]: unknown;
+}
+
+interface RawAcknowledgmentData {
+  mentors?: Array<{
+    name: string;
+    credentials: string;
+    years: string;
+    title: string;
+    affiliation: string;
+    contribution: string;
+    [key: string]: unknown;
+  }>;
   [key: string]: unknown;
 }
 
@@ -423,4 +437,41 @@ export async function getBlogPostBySlug(slug: string): Promise<{
     `Blog post with slug "${slug}" requested, but function not yet implemented`
   );
   return null;
+}
+
+// Acknowledgment data
+export async function getAcknowledgments(): Promise<AcknowledgmentItem[]> {
+  // For client components, fetch data from an API route
+  if (typeof window !== "undefined") {
+    const response = await fetch("/api/content/acknowledgments");
+    if (!response.ok) throw new Error("Failed to fetch acknowledgments data");
+    return response.json();
+  }
+
+  // Server-side call
+  const acknowledgmentData = readJsonFile<RawAcknowledgmentData>(
+    "public/content/acknowledgments.json"
+  );
+
+  // Extract the mentors array and map to AcknowledgmentItem format
+  if (
+    acknowledgmentData &&
+    acknowledgmentData.mentors &&
+    Array.isArray(acknowledgmentData.mentors)
+  ) {
+    return acknowledgmentData.mentors.map((mentor) => ({
+      name: mentor.name,
+      credentials: mentor.credentials,
+      years: mentor.years,
+      title: mentor.title,
+      affiliation: mentor.affiliation,
+      contribution: mentor.contribution,
+    }));
+  }
+
+  console.error(
+    "Acknowledgment data doesn't have the expected structure:",
+    acknowledgmentData
+  );
+  return [];
 }

@@ -3,6 +3,7 @@ import EducationSection from "@/components/sections/EducationSection";
 import ResearchSummarySection from "@/components/sections/ResearchSummarySection";
 import ExperienceSection from "@/components/sections/ExperienceSection";
 import AchievementsSection from "@/components/sections/AchievementsSection";
+import AcknowledgmentsSection from "@/components/sections/AcknowledgmentsSection";
 import { SectionDivider } from "@/components/ui/section-divider";
 import {
   getProfile,
@@ -10,6 +11,7 @@ import {
   getResearch,
   getExperience,
   getAchievements,
+  getAcknowledgments,
 } from "@/lib/data-fetching";
 
 // This makes Next.js statically generate this page at build time
@@ -18,14 +20,21 @@ export const revalidate = 3600;
 
 export default async function Home() {
   // Fetch all data on the server
-  const [profile, education, research, experience, achievements] =
-    await Promise.all([
-      getProfile(),
-      getEducation(),
-      getResearch(),
-      getExperience(),
-      getAchievements(),
-    ]);
+  const [
+    profile,
+    education,
+    research,
+    experience,
+    achievements,
+    acknowledgments,
+  ] = await Promise.all([
+    getProfile(),
+    getEducation(),
+    getResearch(),
+    getExperience(),
+    getAchievements(),
+    getAcknowledgments(),
+  ]);
 
   return (
     <div className="container mx-auto px-4 py-8">
@@ -53,6 +62,12 @@ export default async function Home() {
 
       <div className="pt-4">
         <AchievementsSection achievementsData={achievements} />
+      </div>
+
+      <SectionDivider />
+
+      <div className="pt-4">
+        <AcknowledgmentsSection acknowledgementsData={acknowledgments} />
       </div>
     </div>
   );

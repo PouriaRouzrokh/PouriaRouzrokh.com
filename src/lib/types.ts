@@ -31,6 +31,16 @@ export interface SocialMedia {
   url: string;
 }
 
+// Acknowledgment data types
+export interface AcknowledgmentItem {
+  name: string;
+  credentials: string;
+  years: string;
+  title: string;
+  affiliation: string;
+  contribution: string;
+}
+
 // Education data types
 export interface EducationItem {
   degree: string;

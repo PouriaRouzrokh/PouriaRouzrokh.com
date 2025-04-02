@@ -1,0 +1,84 @@
+{
+  "mentors": [
+    {
+      "name": "Dr. Sarah Johnson",
+      "credentials": "Ph.D., Computer Science",
+      "years": "2015 - 2020",
+      "title": "Research Advisor",
+      "affiliation": "Stanford University",
+      "contribution": "Mentored throughout doctoral research and provided invaluable guidance on machine learning applications in healthcare."
+    },
+    {
+      "name": "Prof. Michael Chen",
+      "credentials": "Ph.D., Electrical Engineering",
+      "years": "2013 - 2018",
+      "title": "Department Chair",
+      "affiliation": "MIT",
+      "contribution": "Supported early career development and facilitated key industry connections."
+    },
+    {
+      "name": "Dr. Emily Rodriguez",
+      "credentials": "Ph.D., Data Science",
+      "years": "2017 - 2022",
+      "title": "Senior Research Scientist",
+      "affiliation": "Google AI",
+      "contribution": "Collaborated on several breakthrough publications and provided mentorship on research methodology."
+    },
+    {
+      "name": "Prof. James Wilson",
+      "credentials": "Ph.D., Mathematics",
+      "years": "2010 - 2014",
+      "title": "Undergraduate Advisor",
+      "affiliation": "University of California, Berkeley",
+      "contribution": "Early mentor who sparked interest in computational mathematics and encouraged graduate studies."
+    },
+    {
+      "name": "Lisa Patel",
+      "credentials": "MBA, M.S. Computer Science",
+      "years": "2016 - 2019",
+      "title": "VP of Engineering",
+      "affiliation": "Tech Innovations Inc.",
+      "contribution": "Industry mentor who provided guidance on translating research into practical applications."
+    },
+    {
+      "name": "Dr. Robert Kim",
+      "credentials": "Ph.D., Artificial Intelligence",
+      "years": "2019 - Present",
+      "title": "Research Director",
+      "affiliation": "AI Research Institute",
+      "contribution": "Current mentor providing guidance on cutting-edge AI research directions and career development."
+    },
+    {
+      "name": "Prof. Jennifer Lee",
+      "credentials": "Ph.D., Computational Biology",
+      "years": "2018 - 2021",
+      "title": "Collaborating Professor",
+      "affiliation": "Harvard Medical School",
+      "contribution": "Interdisciplinary mentor who facilitated research at the intersection of AI and healthcare."
+    },
+    {
+      "name": "Thomas Wright",
+      "credentials": "M.S., Computer Engineering",
+      "years": "2012 - 2016",
+      "title": "Technical Lead",
+      "affiliation": "Microsoft Research",
+      "contribution": "Technical mentor who provided guidance on software architecture and system design."
+    },
+    {
+      "name": "Dr. Sophia Martinez",
+      "credentials": "Ph.D., Cognitive Science",
+      "years": "2014 - 2017",
+      "title": "Postdoctoral Advisor",
+      "affiliation": "Neuroscience Research Center",
+      "contribution": "Provided guidance on interdisciplinary research methods and cognitive aspects of AI."
+    },
+    {
+      "name": "Prof. David Thompson",
+      "credentials": "Ph.D., Ethics in Technology",
+      "years": "2020 - Present",
+      "title": "Ethics Committee Chair",
+      "affiliation": "International AI Ethics Board",
+      "contribution": "Mentor on responsible AI development and ethical considerations in research."
+    }
+  ]
+}
