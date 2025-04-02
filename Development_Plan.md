@@ -192,34 +192,300 @@ Based on the technical specification, here's a comprehensive step-by-step plan t
 - Dynamic routing based on slug functions properly
 - Links to GitHub/live demo work correctly
 
-## Phase 7: Blog Section Development
+## Phase 7: Blog Section Development with Notion CMS
 
-### Step 1: MDX Configuration
+### Step 1: Notion Setup & Configuration
 
-1. Set up MDX parsing utilities
-2. Configure MDX components for enhanced blog posts
+1. Create a new Notion integration
 
-### Step 2: Blog Listing Page
+   - Go to [https://www.notion.so/my-integrations](https://www.notion.so/my-integrations)
+   - Create a new integration named "Portfolio Blog"
+   - Save the Secret token for API access
 
-1. Implement app/blog/page.tsx
-2. Create chronological list of blog posts
-3. Add tag filtering functionality
-4. Set up metadata for SEO
+2. Create a Notion database for blog posts with these properties:
 
-### Step 3: Individual Blog Post Page
+   - Title (title): Post title
+   - Slug (text): URL-friendly identifier
+   - Date (date): Publication date
+   - Tags (multi-select): Categories/tags
+   - Summary (text): Brief description for listings
+   - Published (checkbox): To control visibility
+   - FeaturedImage (URL): Link to Cloudinary image
 
-1. Implement app/blog/[slug]/page.tsx
-2. Create blog post layout with styling
-3. Add metadata and publication date formatting
-4. Set up dynamic metadata generation
+3. Share the database with your integration
+
+   - Open your database in Notion
+   - Click "Share" in the top right
+   - Add your integration using the "Invite" menu
+
+4. Create a few sample blog posts to test with
+
+### Step 2: Notion API Integration
+
+1. Install Notion API packages
+
+   ```bash
+   npm install @notionhq/client notion-to-md
+   ```
+
+2. Install Markdown rendering packages
+
+   ```bash
+   npm install react-markdown remark-gfm rehype-raw rehype-slug react-syntax-highlighter
+   ```
+
+3. Add environment variables
+
+   - Update `.env.local` with your Notion credentials
+
+   ```
+   NOTION_SECRET=your_secret_token
+   NOTION_DATABASE_ID=your_database_id
+   REVALIDATION_SECRET=a_random_secret_for_revalidation
+   ```
+
+4. Create Notion API utility functions in `lib/notion.ts`
+
+   - Implement `getAllPosts()`: Fetches all published blog posts metadata
+   - Implement `getPostBySlug(slug)`: Fetches a specific post's full content
+   - Implement `getAllPostSlugs()`: Gets all slugs for static path generation
+
+5. Implement TypeScript types in `lib/types.ts`
+   - Add `BlogPostMetadata` interface
+   - Add `BlogPost` interface extending metadata with content
+
+### Step 3: Media Handling Strategy
+
+1. Set up Cloudinary for image management
+
+   - Organize with folders: `/blog-images`, `/portfolio-images`, etc.
+   - Create upload presets with automatic optimizations
+   - Consider setting up eager transformations for key sizes
+
+2. Create a media workflow document with these guidelines:
+
+   - **Images**: Upload to Cloudinary → Use `/image` block in Notion with Cloudinary URL
+   - **Videos**: Upload to YouTube → Use `/embed` block in Notion with YouTube URL
+   - **GIFs**: Convert to video with Cloudinary → Embed as video
+   - **Code**: Use Notion's native code blocks with language specification
+
+3. Create helper utility in `lib/media.ts` for working with media URLs
+
+   ```typescript
+   // For responsive Cloudinary images based on screen size
+   export function getResponsiveImageUrl(baseUrl, width = 800) {
+     return baseUrl.replace("/upload/", `/upload/c_scale,w_${width}/`);
+   }
+
+   // For extracting YouTube video IDs
+   export function getYouTubeEmbedUrl(youtubeUrl) {
+     const regex =
+       /(?:youtube\.com\/(?:[^\/]+\/.+\/|(?:v|e(?:mbed)?)\/|.*[?&]v=)|youtu\.be\/)([^"&?\/\s]{11})/;
+     const match = youtubeUrl.match(regex);
+     return match ? `https://www.youtube.com/embed/${match[1]}` : null;
+   }
+   ```
+
+### Step 4: Create Blog Components
+
+1. Create Markdown renderer component in `components/Markdown.tsx`
+
+   - Implement custom rendering for all Markdown elements
+   - Add syntax highlighting for code blocks
+   - Support for Cloudinary images with Next.js Image component
+   - Add YouTube/Vimeo video embed handling
+
+2. Create BlogCard component in `components/sections/BlogCard.tsx`
+
+   - Display blog post preview with image, title, date, summary
+   - Style with Tailwind CSS matching site design
+   - Add hover effects and transitions
+
+3. Create custom media components
+
+   - `components/media/YouTubeEmbed.tsx` for responsive YouTube embeds
+   - `components/media/VideoPlayer.tsx` for Cloudinary video playback
+   - `components/media/ImageGallery.tsx` for grouping multiple images
+
+4. Create BlogTagFilter component in `components/sections/BlogTagFilter.tsx`
+   - Implement client-side tag filtering functionality
+   - Create UI for selecting/deselecting tags
+
+### Step 4: Blog List Page
+
+1. Implement blog listing page in `app/blog/page.tsx`
+
+   - Fetch all published posts from Notion
+   - Sort posts by date (newest first)
+   - Display posts in a responsive grid using BlogCard component
+   - Add SEO metadata
+
+2. Add 'use client' components for interactivity
+
+   - Implement client-side search functionality
+   - Add tag filtering UI
+   - Create sorting options (by date, popularity)
+
+3. Add pagination or "Load More" functionality if needed
+
+### Step 5: Individual Blog Post Page
+
+1. Implement dynamic blog post page in `app/blog/[slug]/page.tsx`
+
+   - Use `getStaticPaths` with `getAllPostSlugs()` to pre-generate paths
+   - Fetch full post content with `getPostBySlug()`
+   - Convert Notion content to Markdown
+   - Render with custom Markdown component
+
+2. Add post metadata display
+
+   - Styled title, date, author info
+   - Tag display
+   - Featured image
+   - Estimated reading time
+
+3. Implement SEO optimization
+   - Dynamic metadata based on post content
+   - Open Graph tags for social sharing
+   - Structured data for search engines
+
+### Step 6: Revalidation & Updates
+
+1. Create revalidation API endpoint in `app/api/revalidate/route.ts`
+
+   - Add security measures to prevent unauthorized revalidation
+   - Implement path-based revalidation
+
+2. Set up Incremental Static Regeneration
+
+   - Add revalidation timeframe to static pages
+
+   ```typescript
+   export const revalidate = 3600; // Revalidate every hour
+   ```
+
+3. Create Notion webhook (optional)
+   - Set up a notification trigger in Notion
+   - Configure to call your revalidation endpoint when content changes
+
+### Step 7: Media Handling & Styling Integration
+
+1. Implement YouTube video embedding
+
+   ```typescript
+   // components/media/YouTubeEmbed.tsx
+   'use client';
+
+   interface YouTubeEmbedProps {
+     videoId: string;
+     title?: string;
+   }
+
+   export default function YouTubeEmbed({ videoId, title = 'YouTube video' }: YouTubeEmbedProps) {
+     return (
+       <div className="aspect-w-16 aspect-h-9 my-8 overflow-hidden rounded-lg">
+         <iframe
+           src={`https://www.youtube.com/embed/${videoId}`}
+           title={title}
+           allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+           allowFullScreen
+           className="h-full w-full"
+         />
+       </div>
+     );
+   }
+   ```
+
+2. Enhance Markdown renderer to handle embedded media
+
+   ```typescript
+   // Add to your Markdown component
+   const renderNotionBlock = (block) => {
+     switch (block.type) {
+       case 'image':
+         return (
+           <Image
+             src={block.image.url}
+             alt={block.image.caption || ''}
+             width={800}
+             height={500}
+             className="rounded-lg my-6"
+           />
+         );
+       case 'video':
+         if (block.video.type === 'external' &&
+             (block.video.external.url.includes('youtube') ||
+              block.video.external.url.includes('youtu.be'))) {
+           const videoId = getYouTubeEmbedUrl(block.video.external.url);
+           return <YouTubeEmbed videoId={videoId} />;
+         }
+         // Handle other video types
+         return null;
+       // Other block types
+     }
+   };
+   ```
+
+3. Create utility functions for media processing
+
+   - Extract YouTube IDs from URLs
+   - Transform Cloudinary URLs for responsive sizing
+   - Process embedded code blocks with syntax highlighting
+
+4. Ensure blog styling matches the rest of the site
+
+   - Consistent typography system
+   - Matching color scheme and components
+   - Responsive design across breakpoints
+
+5. Optimize for readability
+
+   - Proper line height and paragraph spacing
+   - Good contrast for text
+   - Responsive font sizing
+
+6. Add dark/light mode support
+   - Style Markdown content for both themes
+   - Test all components in both modes
+
+### Step 8: Documentation & Media Guidelines
+
+1. Create a media workflow documentation file
+
+   - Step-by-step guide for adding images to blog posts
+   - Instructions for embedding YouTube videos
+   - Guidelines for optimizing images before uploading
+   - Naming conventions for media files
+
+2. Document Cloudinary setup
+
+   - Upload presets configuration
+   - Image transformation presets
+   - Folder organization
+
+3. Create a content creation checklist
+   - Recommended image sizes and formats
+   - Video embedding best practices
+   - SEO metadata requirements
+   - Accessibility considerations for media
 
 ### Checkpoint 7: Blog Section Validation
 
-- Blog page loads and displays all posts chronologically
+- Notion API integration works correctly
+- Blog page loads and displays all published posts chronologically
 - Tag filtering works correctly
-- Individual blog posts render MDX content correctly
+- Individual blog posts render Markdown content correctly
+- Media handling works properly:
+  - Cloudinary images render optimized and responsive
+  - YouTube videos embed correctly
+  - GIFs converted to video play properly
+  - Code blocks have syntax highlighting
 - Dynamic routing based on slug functions properly
-- Code blocks and other MDX elements are styled properly
+- Content updates in Notion appear on the site
+- Performance optimization with proper caching and ISR
+- Media loads efficiently without causing layout shifts
+- SEO is properly implemented for both listing and individual posts
+- System works in both development and production environments
 
 ## Phase 8: Contact Form Implementation
 
