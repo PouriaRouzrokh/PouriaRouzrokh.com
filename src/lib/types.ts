@@ -117,3 +117,29 @@ export interface BlogPostFrontmatter {
   summary: string;
   slug: string;
 }
+
+// Blog post metadata from Notion
+export interface BlogPostMetadata {
+  id: string;
+  slug: string;
+  title: string;
+  date: string;
+  summary: string;
+  tags: string[];
+  featuredImage: string;
+  published: boolean;
+}
+
+// Full blog post with content
+export interface BlogPost extends BlogPostMetadata {
+  content: string;
+  readingTime?: ReadingTime;
+}
+
+// Reading time estimate
+export interface ReadingTime {
+  text: string;
+  minutes: number;
+  time: number;
+  words: number;
+}
