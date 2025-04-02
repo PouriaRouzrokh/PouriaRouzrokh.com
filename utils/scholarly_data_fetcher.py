@@ -6,13 +6,14 @@ from scholarly import scholarly
 from tqdm.auto import tqdm
 from pathlib import Path
 import logging
+import os
 
 # Configure logging
 logging.basicConfig(level=logging.INFO, format='%(asctime)s - %(levelname)s - %(message)s')
 
 class ScholarlyDataFetcher:
     # Add a default email for CrossRef polite pool (replace if needed)
-    CROSSREF_MAILTO = "your.email@example.com" # IMPORTANT: Replace with your actual email
+    CROSSREF_MAILTO = "po.rouzrokh@gmail.com" # IMPORTANT: Replace with your actual email
 
     def __init__(self, author_name: str, output_path: Union[str, Path]):
         self.author_name = author_name
@@ -329,12 +330,14 @@ def main():
     output_path = output_dir / output_filename
     # --- End Configuration ---
 
-    # Set a polite email for CrossRef - CHANGE THIS
-    ScholarlyDataFetcher.CROSSREF_MAILTO = "pouria.rouzrokh@example.com" # <--- IMPORTANT: CHANGE THIS EMAIL
+    # Get email from environment variable or use default
+    email = os.environ.get('CROSSREF_MAILTO', "your.email@example.com")
+
+    # Set a polite email for CrossRef
+    ScholarlyDataFetcher.CROSSREF_MAILTO = email
 
     if ScholarlyDataFetcher.CROSSREF_MAILTO == "your.email@example.com":
          logging.warning("Please update the CROSSREF_MAILTO email address in the main function.")
-
 
     fetcher = ScholarlyDataFetcher(author_name, output_path)
 
