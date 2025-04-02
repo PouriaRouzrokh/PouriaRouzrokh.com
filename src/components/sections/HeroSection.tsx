@@ -102,7 +102,7 @@ export default function HeroSection({ profileData }: HeroSectionProps) {
           </div>
         </div>
         <div className="flex justify-center md:justify-end">
-          <div className="relative w-64 h-64 md:w-80 md:h-80 rounded-full overflow-hidden bg-muted">
+          <div className="relative w-64 h-64 md:w-96 md:h-96 rounded-full overflow-hidden bg-muted">
             {!imgError ? (
               <Image
                 src={imgSrc}
