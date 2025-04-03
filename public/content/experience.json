@@ -11,7 +11,7 @@
         "Published 3 papers in top-tier medical AI journals",
         "Filed 2 patents for novel AI diagnostic algorithms"
       ],
-      "logo": "/images/logos/ai-medical.png"
+      "logo": "https://res.cloudinary.com/YOURCLOUDNAME/image/upload/v1/logos/ai-medical-research-institute"
     },
     {
       "title": "Research Associate",
@@ -24,7 +24,7 @@
         "Collaborated with 3 clinical departments on AI integration projects",
         "Mentored 4 graduate students on healthcare AI projects"
       ],
-      "logo": "/images/logos/university-hospital.png"
+      "logo": "https://res.cloudinary.com/YOURCLOUDNAME/image/upload/v1/logos/university-hospital-research-center"
     },
     {
       "title": "Software Engineering Intern",
@@ -36,7 +36,7 @@
         "Implemented a machine learning model for medical code prediction",
         "Created comprehensive documentation for the API endpoints"
       ],
-      "logo": "/images/logos/healthtech.png"
+      "logo": "https://res.cloudinary.com/YOURCLOUDNAME/image/upload/v1/logos/healthtech-innovations"
     }
   ]
 }

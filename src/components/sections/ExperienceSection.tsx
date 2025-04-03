@@ -1,5 +1,6 @@
 import { SectionHeading } from "@/components/ui/section-heading";
 import { ExperienceItem } from "@/lib/types";
+import Image from "next/image";
 
 interface ExperienceSectionProps {
   experienceData: ExperienceItem[];
@@ -28,9 +29,21 @@ export default function ExperienceSection({
               className="bg-card rounded-lg p-6 shadow-sm border hover:shadow-md transition-shadow duration-300"
             >
               <div className="flex flex-col md:flex-row md:justify-between md:items-start gap-2">
-                <div>
-                  <h3 className="text-xl font-semibold">{item.role}</h3>
-                  <p className="text-muted-foreground">{item.organization}</p>
+                <div className="flex items-center gap-3">
+                  {item.logoUrl && (
+                    <div className="relative h-12 w-12 shrink-0 rounded-full overflow-hidden border bg-background">
+                      <Image
+                        src={item.logoUrl}
+                        alt={`${item.organization} logo`}
+                        fill
+                        className="object-contain p-1"
+                      />
+                    </div>
+                  )}
+                  <div>
+                    <h3 className="text-xl font-semibold">{item.role}</h3>
+                    <p className="text-muted-foreground">{item.organization}</p>
+                  </div>
                 </div>
                 <span className="text-sm bg-muted px-3 py-1 rounded-full border">
                   {item.years}
