@@ -3,7 +3,6 @@
     {
       "title": "Senior Research Scientist",
       "company": "AI Medical Research Institute",
-      "location": "San Francisco, CA",
       "years": "2022 - Present",
       "description": "Leading research initiatives in applying deep learning to medical images and electronic health records for predictive analytics. Heading a team of 5 researchers focusing on early disease detection models.",
       "achievements": [
@@ -12,13 +11,11 @@
         "Published 3 papers in top-tier medical AI journals",
         "Filed 2 patents for novel AI diagnostic algorithms"
       ],
-      "logo": "/images/logos/ai-medical.png",
-      "technologies": ["Python", "TensorFlow", "PyTorch", "DICOM", "HL7 FHIR"]
+      "logo": "/images/logos/ai-medical.png"
     },
     {
       "title": "Research Associate",
       "company": "University Hospital Research Center",
-      "location": "Seattle, WA",
       "years": "2018 - 2022",
       "description": "Conducted research on applications of machine learning in healthcare as part of my PhD program. Collaborated with clinical departments to implement and validate AI models in real-world healthcare settings.",
       "achievements": [
@@ -27,13 +24,11 @@
         "Collaborated with 3 clinical departments on AI integration projects",
         "Mentored 4 graduate students on healthcare AI projects"
       ],
-      "logo": "/images/logos/university-hospital.png",
-      "technologies": ["R", "Python", "SQL", "Hadoop", "Scikit-learn"]
+      "logo": "/images/logos/university-hospital.png"
     },
     {
       "title": "Software Engineering Intern",
       "company": "HealthTech Innovations",
-      "location": "San Jose, CA",
       "years": "Summer 2017",
       "description": "Developed backend services for a healthcare analytics platform. Implemented data processing pipelines for medical data and created APIs for frontend consumption.",
       "achievements": [
@@ -41,22 +36,7 @@
         "Implemented a machine learning model for medical code prediction",
         "Created comprehensive documentation for the API endpoints"
       ],
-      "logo": "/images/logos/healthtech.png",
-      "technologies": ["Node.js", "Express", "MongoDB", "Docker", "AWS"]
-    }
-  ],
-  "volunteering": [
-    {
-      "title": "Technical Advisor",
-      "organization": "Medical AI for Developing Countries",
-      "years": "2020 - Present",
-      "description": "Providing technical guidance on implementing low-resource AI solutions for medical diagnostics in developing countries."
-    },
-    {
-      "title": "Workshop Instructor",
-      "organization": "AI in Healthcare Meetup",
-      "years": "2019 - 2022",
-      "description": "Conducting monthly workshops on ML/AI applications in healthcare for a community of 500+ professionals."
+      "logo": "/images/logos/healthtech.png"
     }
   ]
 }

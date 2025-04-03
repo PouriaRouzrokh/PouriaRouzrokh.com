@@ -2,15 +2,13 @@
   "name": "Pouria Rouzrokh",
   "credentials": "MD, MPH, MHPE",
   "title": "Radiology AI Developer & Researcher | Assistant Research Professor at Mayo Clinic | Diagnostic Radiology Resident at Yale University",
-  "email": "po.rouzrokh@gmail.com",
-  "bio": "I am a researcher focused on applying machine learning and artificial intelligence to solve complex problems in healthcare and biomedical science. My work spans across medical imaging, clinical data analysis, and predictive modeling.",
-  "shortBio": "AI researcher at the intersection of healthcare and machine learning.",
+  "bio": "I am a researcher focused on applying machine learning and artificial intelligence to solve problems in healthcare and biomedical science. My work spans across medical imaging, clinical data analysis, and predictive modeling.",
   "image": "/images/profile.jpg",
   "social": {
-    "twitter": "https://twitter.com/pouria",
-    "github": "https://github.com/pouria",
-    "linkedin": "https://linkedin.com/in/pouria",
-    "googleScholar": "https://scholar.google.com/citations?user=XXXX"
+    "twitter": "https://x.com/PRouzrokh",
+    "github": "https://github.com/PouriaRouzrokh",
+    "linkedin": "https://www.linkedin.com/in/pouria-rouzrokh/",
+    "googleScholar": "https://scholar.google.com/citations?user=Ksv9I0sAAAAJ&hl=en"
   },
   "interests": [
     "Radiology AI",

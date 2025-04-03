@@ -1,54 +1,40 @@
 {
   "degrees": [
     {
-      "degree": "PhD in Biomedical Informatics",
-      "institution": "Stanford University",
-      "location": "Stanford, CA",
-      "years": "2018 - 2022",
-      "description": "Dissertation focused on machine learning applications in medical imaging. Research involved developing novel deep learning architectures for automated diagnosis from radiological images.",
-      "achievements": [
-        "Published 5 papers in top-tier journals",
-        "Awarded departmental excellence in research",
-        "Secured $50,000 in research grants"
-      ]
+      "degree": "Diagnostic Radiology Residency",
+      "institution": "Yale University School of Medicine, New Haven, CT",
+      "years": "2025 - 2029",
+      "description": "Dissertation TBD."
     },
     {
-      "degree": "MSc in Computer Science",
-      "institution": "University of Washington",
-      "location": "Seattle, WA",
-      "years": "2016 - 2018",
-      "description": "Specialized in Artificial Intelligence and Machine Learning. Thesis on natural language processing for electronic health records.",
-      "achievements": [
-        "Graduated with distinction",
-        "Teaching assistant for undergraduate AI course",
-        "Best student paper award at NLP conference"
-      ]
+      "degree": "Internal Medicine Internship",
+      "institution": "Griffin Hospital, Derby, CT",
+      "years": "2024 - 2025",
+      "description": "No dissertation required."
     },
     {
-      "degree": "BSc in Electrical Engineering",
-      "institution": "University of Tehran",
-      "location": "Tehran, Iran",
+      "degree": "Postdoctoral Research Fellowship",
+      "institution": "Mayo Clinic, Rochester, MN",
+      "years": "2020 - 2024",
+      "description": "Areas of research: artificial intelligence, machine learning, and radiology."
+    },
+    {
+      "degree": "Doctor of Medicine (MD)",
+      "institution": "Tehran University of Medical Sciences, Tehran, Iran",
+      "years": "2009 - 2018",
+      "description": "Dissertation focused on development, implementation, and evaluation of a curriculum for teaching medical students and residents about physician-patient communication skills in difficult situations."
+    },
+    {
+      "degree": "Master of Health Professions' Education (MHPE)",
+      "institution": "Tehran University of Medical Sciences, Tehran, Iran",
+      "years": "2011 - 2014",
+      "description": "Dissertation focused on development, implementation, and evaluation of a curriculum for teaching medical students and residents about physician-patient communication skills in difficult situations."
+    },
+    {
+      "degree": "Master of Public Health (MPH)",
+      "institution": "Tehran University of Medical Sciences, Tehran, Iran",
       "years": "2012 - 2016",
-      "description": "Focus on signal processing and computer systems. Senior project on biomedical signal analysis.",
-      "achievements": [
-        "Ranked in top 5% of graduating class",
-        "President of student IEEE chapter",
-        "Recipient of merit-based scholarship"
-      ]
-    }
-  ],
-  "certifications": [
-    {
-      "name": "Deep Learning Specialization",
-      "issuer": "Coursera / deeplearning.ai",
-      "date": "2020",
-      "url": "https://www.coursera.org/specializations/deep-learning"
-    },
-    {
-      "name": "TensorFlow Developer Certificate",
-      "issuer": "Google",
-      "date": "2019",
-      "url": "https://www.tensorflow.org/certificate"
+      "description": "Dissertation focused on development, implementation, and evaluation of a gamified curriculum for teaching medical students about social determinants of health."
     }
   ]
 }
