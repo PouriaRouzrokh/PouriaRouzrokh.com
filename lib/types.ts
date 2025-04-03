@@ -48,11 +48,10 @@ export interface Education {
 // Experience types
 export interface Position {
   title: string;
-  company: string;
+  organization: string;
   location: string;
   years: string;
   description: string;
-  achievements: string[];
   logo: string;
   technologies: string[];
 }

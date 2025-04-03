@@ -6,7 +6,7 @@ import { ExperienceItem } from "@/lib/types";
 // Define an interface for the raw position data
 interface RawPosition {
   title: string;
-  company: string;
+  organization: string;
   location?: string;
   years: string;
   description: string;
@@ -31,18 +31,11 @@ export async function GET() {
       if (jsonData && jsonData.positions && Array.isArray(jsonData.positions)) {
         // Map the positions data to match the expected ExperienceItem format
         data = jsonData.positions.map((position: RawPosition) => {
-          // If there are achievements, use them as the description array
-          // Otherwise, use the description string
-          const description =
-            position.achievements && position.achievements.length > 0
-              ? position.achievements
-              : position.description;
-
           return {
             role: position.title,
-            organization: position.company,
+            organization: position.organization,
             years: position.years,
-            description: description,
+            description: position.description,
             logoUrl: position.logo,
           };
         });

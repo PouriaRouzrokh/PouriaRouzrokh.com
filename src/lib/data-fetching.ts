@@ -53,7 +53,7 @@ interface RawEducationData {
 interface RawExperienceData {
   positions?: Array<{
     title: string;
-    company: string;
+    organization: string;
     location?: string;
     years: string;
     description: string;
@@ -237,18 +237,11 @@ export async function getExperience(): Promise<ExperienceItem[]> {
     Array.isArray(experienceData.positions)
   ) {
     return experienceData.positions.map((position) => {
-      // If there are achievements, use them as the description array
-      // Otherwise, use the description string
-      const description =
-        position.achievements && position.achievements.length > 0
-          ? position.achievements
-          : position.description;
-
       return {
         role: position.title,
-        organization: position.company,
+        organization: position.organization,
         years: position.years,
-        description: description,
+        description: position.description,
         logoUrl: position.logo,
       };
     });

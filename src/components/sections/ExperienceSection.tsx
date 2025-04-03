@@ -49,21 +49,7 @@ export default function ExperienceSection({
                   {item.years}
                 </span>
               </div>
-              <ul className="mt-3 space-y-1">
-                {Array.isArray(item.description) ? (
-                  item.description.map((point, i) => (
-                    <li key={i} className="pl-4 relative">
-                      <span className="absolute left-0 text-primary">•</span>
-                      {point}
-                    </li>
-                  ))
-                ) : (
-                  <li className="pl-4 relative">
-                    <span className="absolute left-0 text-primary">•</span>
-                    {item.description}
-                  </li>
-                )}
-              </ul>
+              <p className="mt-3 text-card-foreground">{item.description}</p>
             </div>
           ))
         ) : (

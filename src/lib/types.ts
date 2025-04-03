@@ -55,7 +55,7 @@ export interface ExperienceItem {
   role: string;
   organization: string;
   years: string;
-  description: string[] | string;
+  description: string;
   logoUrl?: string;
 }
 
