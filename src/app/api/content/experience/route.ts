@@ -10,7 +10,6 @@ interface RawPosition {
   location?: string;
   years: string;
   description: string;
-  achievements?: string[];
   logo?: string;
   technologies?: string[];
   [key: string]: unknown; // For any other properties

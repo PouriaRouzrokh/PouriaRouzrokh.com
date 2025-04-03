@@ -5,12 +5,6 @@
       "organization": "AI Medical Research Institute",
       "years": "2022 - Present",
       "description": "Leading research initiatives in applying deep learning to medical images and electronic health records for predictive analytics. Heading a team of 5 researchers focusing on early disease detection models.",
-      "achievements": [
-        "Developed an AI system that improved early detection of lung cancer by 30%",
-        "Secured $1.2M in research funding",
-        "Published 3 papers in top-tier medical AI journals",
-        "Filed 2 patents for novel AI diagnostic algorithms"
-      ],
       "logo": "https://res.cloudinary.com/dzqiwtbg6/image/upload/v1743672903/a453141c-6463-4085-b74f-267e7984345d.png"
     },
     {
@@ -18,12 +12,6 @@
       "organization": "University Hospital Research Center",
       "years": "2018 - 2022",
       "description": "Conducted research on applications of machine learning in healthcare as part of my PhD program. Collaborated with clinical departments to implement and validate AI models in real-world healthcare settings.",
-      "achievements": [
-        "Developed an NLP system to extract insights from clinical notes",
-        "Created a machine learning pipeline for predicting patient readmissions",
-        "Collaborated with 3 clinical departments on AI integration projects",
-        "Mentored 4 graduate students on healthcare AI projects"
-      ],
       "logo": "https://res.cloudinary.com/dzqiwtbg6/image/upload/v1743672551/3dfacb2a-e45c-4fbc-a216-7f36c05927bf.png"
     },
     {
@@ -31,11 +19,6 @@
       "organization": "HealthTech Innovations",
       "years": "Summer 2017",
       "description": "Developed backend services for a healthcare analytics platform. Implemented data processing pipelines for medical data and created APIs for frontend consumption.",
-      "achievements": [
-        "Built RESTful APIs that improved data retrieval performance by 40%",
-        "Implemented a machine learning model for medical code prediction",
-        "Created comprehensive documentation for the API endpoints"
-      ],
       "logo": "https://res.cloudinary.com/dzqiwtbg6/image/upload/v1743672494/b9bdbc59-a7fb-42d2-b4f3-07c19b91432b.png"
     }
   ]
