@@ -220,7 +220,10 @@ class ScholarlyDataFetcher:
         dois_found_scholarly = 0
         dois_found_crossref = 0
         dois_missing = 0
-
+        
+        # Create a dictionary to track duplicates by title/DOI
+        duplicate_tracker = {}
+        
         for article in tqdm(self.articles, desc="Processing articles"):
             bib = article.get('bib', {})
             title = bib.get('title')
@@ -251,18 +254,32 @@ class ScholarlyDataFetcher:
             # Convert 'and' separators from scholarly to comma separators for display
             display_authors = ', '.join(authors_str.split(' and '))
 
+            # Ensure year is a number (default to 0 for sorting if missing)
+            year = bib.get('pub_year')
+            # Convert year to int if possible, or set to 0 if missing/invalid
+            try:
+                year = int(year) if year else 0
+            except (ValueError, TypeError):
+                year = 0
+                
+            # Ensure num_citations is a number (default to 0 if missing)
+            num_citations = article.get('num_citations')
+            try:
+                num_citations = int(num_citations) if num_citations is not None else 0
+            except (ValueError, TypeError):
+                num_citations = 0
 
             cleaned_article = {
                 'title': title,
                 'authors': display_authors, # Use comma-separated for display
-                'year': bib.get('pub_year'),
+                'year': year,
                 'journal': bib.get('journal') or bib.get('venue'), # Sometimes venue holds journal/conf
                 'volume': bib.get('volume'),
                 'number': bib.get('number'),
                 'pages': bib.get('pages'),
                 # Sanitize abstract *before* adding to dict
                 'abstract': self.sanitize_text(bib.get('abstract')),
-                'num_citations': article.get('num_citations'),
+                'num_citations': num_citations,
                 # Prefer eprint_url if pub_url is generic (like scholar link)
                 'url': article.get('eprint_url') or article.get('pub_url'),
                 'doi': doi # Use the DOI we found (either from scholarly or CrossRef)
@@ -277,10 +294,64 @@ class ScholarlyDataFetcher:
             bibtex_input = {k: v for k, v in bibtex_input.items() if v is not None and v != ''}
 
             cleaned_article['bibtex'] = self.create_bibtex(bibtex_input)
-            cleaned_articles.append(cleaned_article)
-
+            
+            # Create a key for duplicate detection
+            # Use DOI as primary key if available, otherwise use normalized title
+            duplicate_key = doi.lower() if doi else title.lower().strip()
+            
+            # Check if we've already seen this paper
+            if duplicate_key in duplicate_tracker:
+                existing_article = duplicate_tracker[duplicate_key]
+                
+                # Get citation counts for comparison (default to 0 if missing)
+                current_citations = cleaned_article.get('num_citations', 0)
+                existing_citations = existing_article.get('num_citations', 0)
+                
+                # Prioritize by citation count first, then completeness if tied
+                if current_citations > existing_citations:
+                    # Keep this article as it has more citations
+                    duplicate_tracker[duplicate_key] = cleaned_article
+                    logging.info(f"Replaced duplicate record: '{title}' with version having more citations ({current_citations} vs {existing_citations})")
+                elif current_citations == existing_citations:
+                    # If citations are equal, use completeness score as tiebreaker
+                    current_score = self._get_completeness_score(cleaned_article)
+                    existing_score = self._get_completeness_score(existing_article)
+                    
+                    if current_score > existing_score:
+                        # Keep this article as it has more complete data
+                        duplicate_tracker[duplicate_key] = cleaned_article
+                        logging.info(f"Replaced duplicate record: '{title}' with more complete version (same citations)")
+            else:
+                # This is a new article, add it to the tracker
+                duplicate_tracker[duplicate_key] = cleaned_article
+        
+        # After processing all articles, get the final deduplicated list
+        cleaned_articles = list(duplicate_tracker.values())
+        
+        # Sort articles by year (newest first) as default order, citations as secondary sort
+        cleaned_articles.sort(key=lambda x: (-(x.get('year') or 0), -(x.get('num_citations') or 0)))
+        
         logging.info(f"DOI Source Summary: Found in Scholarly={dois_found_scholarly}, Found via CrossRef={dois_found_crossref}, Missing={dois_missing}")
+        logging.info(f"Final article count after deduplication: {len(cleaned_articles)}")
+        
         return cleaned_articles
+        
+    def _get_completeness_score(self, article: Dict) -> int:
+        """Calculate a score for how complete an article record is.
+        Higher score means more fields are populated."""
+        score = 0
+        # Each field adds to the completeness score
+        if article.get('title'): score += 1
+        if article.get('authors'): score += 1
+        if article.get('year'): score += 1
+        if article.get('journal'): score += 1
+        if article.get('volume'): score += 1
+        if article.get('number'): score += 1
+        if article.get('pages'): score += 1
+        if article.get('abstract'): score += 1
+        if article.get('url'): score += 1
+        if article.get('doi'): score += 2  # DOI is important so weighted higher
+        return score
 
     def save_to_json(self) -> None:
         """Save processed article data to JSON file."""
@@ -304,7 +375,10 @@ class ScholarlyDataFetcher:
             'google_scholar_id': self.author_data.get('scholar_id', 'N/A'),
             'metrics': self.author_metrics,
             'articles': cleaned_articles,
-            'total_articles_processed': total_processed_articles,
+            'total_articles': total_processed_articles,  # Use the count after deduplication
+            'total_citations': total_processed_citations,  # Use sum after deduplication
+            # Add these for compatibility with the frontend
+            'total_articles_processed': total_processed_articles, 
             'total_citations_processed': total_processed_citations,
             'fetched_at': time.strftime("%Y-%m-%d %H:%M:%S UTC", time.gmtime()) # Add timestamp
         }
