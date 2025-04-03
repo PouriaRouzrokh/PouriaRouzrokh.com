@@ -23,6 +23,11 @@ export const metadata: Metadata = {
   authors: [{ name: "Pouria Rouzrokh" }],
   creator: "Pouria Rouzrokh",
   metadataBase: new URL(process.env.NEXT_PUBLIC_APP_URL || "https://pouria.ai"),
+  icons: {
+    icon: [{ url: "/pr-logo.svg", type: "image/svg+xml" }],
+    shortcut: ["/pr-logo.svg"],
+    apple: [{ url: "/pr-logo.svg" }],
+  },
   openGraph: {
     type: "website",
     locale: "en_US",

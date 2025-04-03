@@ -1,6 +1,7 @@
 "use client";
 
 import Link from "next/link";
+import Image from "next/image";
 import { usePathname } from "next/navigation";
 import { cn } from "@/lib/utils";
 import ThemeToggle from "@/components/layout/ThemeToggle";
@@ -26,8 +27,15 @@ export default function Navbar() {
   return (
     <nav className="border-b bg-background sticky top-0 z-10">
       <div className="container mx-auto px-4 py-4 flex justify-between items-center">
-        <Link href="/" className="font-bold text-xl">
-          Pouria Rouzrokh
+        <Link href="/" className="flex items-center gap-2">
+          <Image
+            src="/pr-logo.svg"
+            alt="PR Logo"
+            width={32}
+            height={32}
+            className="rounded-full"
+          />
+          <span className="font-bold text-xl">Pouria Rouzrokh</span>
         </Link>
 
         <div className="flex items-center gap-6">
