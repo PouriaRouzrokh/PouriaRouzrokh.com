@@ -1,11 +1,88 @@
 {
   "positions": [
     {
-      "title": "Associate Course Director for deep learning labs.",
+      "title": "Co-founder, Researcher, and Developer",
+      "organization": "ReadingRoom.AI",
+      "years": "2025 - Present",
+      "description": "A research initiative focused on developing and promoting AI tools for advancing radiology and medical imaging.",
+      "logo": "https://res.cloudinary.com/dzqiwtbg6/image/upload/v1743754085/9b46e079-d8c1-4b44-8548-7dd0c789e4fe.png"
+    },
+    {
+      "title": "Associate Course Director for Deep Learning Labs",
       "organization": "Radiological Society of North America (RSNA)",
       "years": "2025 - Present",
       "description": "Planning and organizing deep learning labs for attendees of the RSNA annual meeting.",
       "logo": "https://res.cloudinary.com/dzqiwtbg6/image/upload/v1743718730/2d01a551-fb99-4a86-9f10-4c141522d214.png"
+    },
+    {
+      "title": "Member of the Machine Learning Education Subcommittee",
+      "organization": "Society for Imaging Informatics in Medicine (SIIM)",
+      "years": "2022 - Present",
+      "description": "Contributing to development, implementation, and evaluation of educational initatives for promoting machine learning in medical imaging.",
+      "logo": "https://res.cloudinary.com/dzqiwtbg6/image/upload/v1743753040/2e4aa953-29e6-477e-95f8-1507f99fb1b9.png"
+    },
+    {
+      "title": "Journal Peer Reviewer",
+      "organization": "Radiological Society of North America (RSNA)",
+      "years": "2022 - Present",
+      "description": "Currently active reviewing for Radiology, RadioGraphics, and Radiology AI journals.",
+      "logo": "https://res.cloudinary.com/dzqiwtbg6/image/upload/v1743753606/36b08957-f1cb-4402-ad8e-5dbe7c7436d2.jpg"
+    },
+    {
+      "title": "Member of Trainee Editorial Board (RG-Team)",
+      "organization": "RadioGraphics Journal, Radiological Society of North America (RSNA)",
+      "years": "2023 - Present",
+      "description": "Leading and collabrating to trainee-led initatives and pubications in the field of radiology.",
+      "logo": "https://res.cloudinary.com/dzqiwtbg6/image/upload/b_rgb:FFFFFF/v1743750215/fd60fe35-6354-419a-ba76-588142cff139.png"
+    },
+    {
+      "title": "Data Scientist and Research Associate",
+      "organization": "Radioogy Informatics Laboratory, Department of Radiology, Mayo Clinic, Rochester, MN, USA",
+      "years": "2020 - 2024",
+      "description": "Developing, researching, and deploying AI tools for radiology.",
+      "logo": "https://res.cloudinary.com/dzqiwtbg6/image/upload/v1743672494/b9bdbc59-a7fb-42d2-b4f3-07c19b91432b.png"
+    },
+    {
+      "title": "Data Scientist and Research Associate",
+      "organization": "Orthopedic Surgery AI Laboratory (OSAIL), Department of Orthopedic Surgery, Mayo Clinic, Rochester, MN, USA",
+      "years": "2020 - 2024",
+      "description": "Developing, researching, and deploying AI tools for orthopedic surgery.",
+      "logo": "https://res.cloudinary.com/dzqiwtbg6/image/upload/v1743672494/b9bdbc59-a7fb-42d2-b4f3-07c19b91432b.png"
+    },
+    {
+      "title": "Deputy for Innovation and R&D",
+      "organization": "Universal Scientific Education and Research Network (USERN)",
+      "years": "2018 - 2020",
+      "description": "Responsible for the research, and development of new services for the organization.",
+      "logo": "https://res.cloudinary.com/dzqiwtbg6/image/upload/v1743751809/c40b8447-6cfe-4321-808b-04bc7e97cbd8.png"
+    },
+    {
+      "title": "Head of the Student Organizing Committee",
+      "organization": "7th Regional Meeting of World Health Summit (WHS), Kish, Iran",
+      "years": "2017 - 2018",
+      "description": "Led a team of 60+ students in organizing the 7th Regional Meeting of World Health Summit (WHS), Kish, Iran.",
+      "logo": "https://res.cloudinary.com/dzqiwtbg6/image/upload/v1743752860/5007feab-d29e-43a3-964b-8231bb8e6a53.png"
+    },
+    {
+      "title": "Co-founder and Chief Education Officer",
+      "organization": "AVECEN Company",
+      "years": "2015 - 2020",
+      "description": "A startup company focused on developing gamified medical and public health education products.",
+      "logo": "https://res.cloudinary.com/dzqiwtbg6/image/upload/v1743751997/bb998774-3775-4cdd-aa48-24ac08e1408e.png"
+    },
+    {
+      "title": "National President",
+      "organization": "Iranian Medical Student Association (IMSA, a.k.a. IFMSA-Iran)",
+      "years": "2012 - 2014",
+      "description": "Led an organization of 1500+ medical students active in developing and implementing initatives in global health, medical education, student exchange, and reproductive health.",
+      "logo": "https://res.cloudinary.com/dzqiwtbg6/image/upload/v1743752429/00464f1d-9393-49fd-a12d-a8290ff16d32.png"
+    },
+    {
+      "title": "Director and Instructor of Biology Department",
+      "organization": "Allameh-Helli High School",
+      "years": "2012 - 2013",
+      "description": "Responsible for the development and implementation of the biology curriculum, recruiting and training teachers, and overseeing the department's operations.",
+      "logo": "https://res.cloudinary.com/dzqiwtbg6/image/upload/v1743752284/04044925-c14d-40d6-b8c7-3326f93127e4.png"
     }
   ]
 }
