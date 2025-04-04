@@ -1,5 +1,6 @@
 import { SectionHeading } from "@/components/ui/section-heading";
 import { AcknowledgmentItem } from "@/lib/types";
+import Image from "next/image";
 
 interface AcknowledgmentsSectionProps {
   acknowledgementsData: AcknowledgmentItem[];
@@ -17,7 +18,13 @@ export default function AcknowledgmentsSection({
     <section className="py-8" id="acknowledgments">
       <SectionHeading
         title="Acknowledgments"
-        subtitle="Mentors and influential people in my career"
+        subtitle={
+          <>
+            Mentors and influential people in my career.
+            <br />
+            Years, titles and affiliations refer to the time of the mentorship.
+          </>
+        }
       />
       <div className="space-y-6">
         {acknowledgmentItems.length > 0 ? (
@@ -29,11 +36,30 @@ export default function AcknowledgmentsSection({
               >
                 <div className="flex flex-col space-y-3">
                   <div className="flex items-start justify-between">
-                    <div>
-                      <h3 className="font-semibold text-lg">{item.name}</h3>
-                      <p className="text-sm text-muted-foreground mt-1">
-                        {item.credentials}
-                      </p>
+                    <div className="flex items-center gap-4">
+                      {item.imageUrl ? (
+                        <div className="relative w-16 h-16 rounded-full overflow-hidden flex-shrink-0">
+                          <Image
+                            src={item.imageUrl}
+                            alt={`Photo of ${item.name}`}
+                            fill
+                            className="object-cover"
+                            sizes="64px"
+                          />
+                        </div>
+                      ) : (
+                        <div className="w-16 h-16 rounded-full bg-primary/10 flex items-center justify-center flex-shrink-0">
+                          <span className="text-primary text-xl font-semibold">
+                            {item.name.charAt(0)}
+                          </span>
+                        </div>
+                      )}
+                      <div>
+                        <h3 className="font-semibold text-lg">{item.name}</h3>
+                        <p className="text-sm text-muted-foreground mt-1">
+                          {item.credentials}
+                        </p>
+                      </div>
                     </div>
                     <span className="text-sm px-3 py-1 bg-primary/10 text-primary rounded-full">
                       {item.years}
@@ -48,10 +74,6 @@ export default function AcknowledgmentsSection({
                       </span>
                     </p>
                   </div>
-
-                  <p className="text-sm text-card-foreground mt-3">
-                    {item.contribution}
-                  </p>
                 </div>
               </div>
             ))}

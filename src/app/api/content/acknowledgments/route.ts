@@ -10,7 +10,7 @@ interface RawAcknowledgment {
   years: string;
   title: string;
   affiliation: string;
-  contribution: string;
+  imageUrl?: string;
   [key: string]: unknown;
 }
 
@@ -36,7 +36,7 @@ export async function GET() {
           years: item.years,
           title: item.title,
           affiliation: item.affiliation,
-          contribution: item.contribution,
+          imageUrl: item.imageUrl,
         }));
       }
     } catch (parseError) {

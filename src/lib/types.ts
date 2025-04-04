@@ -38,7 +38,7 @@ export interface AcknowledgmentItem {
   years: string;
   title: string;
   affiliation: string;
-  contribution: string;
+  imageUrl?: string;
 }
 
 // Education data types

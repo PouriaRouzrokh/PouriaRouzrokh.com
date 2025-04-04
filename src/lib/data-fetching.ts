@@ -127,7 +127,7 @@ interface RawAcknowledgmentData {
     years: string;
     title: string;
     affiliation: string;
-    contribution: string;
+    imageUrl?: string;
     [key: string]: unknown;
   }>;
   [key: string]: unknown;
@@ -457,7 +457,7 @@ export async function getAcknowledgments(): Promise<AcknowledgmentItem[]> {
       years: mentor.years,
       title: mentor.title,
       affiliation: mentor.affiliation,
-      contribution: mentor.contribution,
+      imageUrl: mentor.imageUrl,
     }));
   }
 
