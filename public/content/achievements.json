@@ -1,36 +1,53 @@
 {
   "awards": [
     {
-      "title": "Best Paper Award",
-      "organization": "International Conference on Medical Imaging",
+      "title": "Trainee Research Prize",
+      "organization": "Radiological Society of North America (RSNA)",
+      "year": "2023",
+      "description": "Awarded for presenting on \"Employing Generative AI to Visualize Ideal Total Hip Arthroplasty and Conduct Patient-Specific Surgical Templating on Plain Radiographs.\""
+    },
+    {
+      "title": "Frank Stinchfield Award",
+      "organization": "The Hip Society, USA",
       "year": "2022",
-      "description": "Awarded for pioneering research on deep learning applications in diagnostic radiology."
+      "description": "Awarded for presenting on \"Creation of a Patient-specific Total Hip Arthroplasty Periprosthetic Fracture Risk Calculator.\""
     },
     {
-      "title": "Young Investigator Grant",
-      "organization": "National Institutes of Health",
-      "year": "2021",
-      "description": "Competitive $150,000 research grant for innovative AI approaches in healthcare."
+      "title": "Trainee Research Prize",
+      "organization": "Radiological Society of North America (RSNA)",
+      "year": "2022",
+      "description": "Awarded for presenting on \"Applying Deep Learning to Establish a Total Hip Arthroplasty Radiography Registry: A Stepwise Approach.\""
     },
     {
-      "title": "Excellence in Teaching",
-      "organization": "Stanford University",
+      "title": "Collegial Excellence (Peer-mentoring) Runner-Up Award",
+      "organization": "Mayo Clinic, MN, USA",
       "year": "2020",
-      "description": "Recognized for exceptional teaching and mentorship of graduate students."
+      "description": "Nomintaed by peer colleagues in the Radiology Informatics Laboratory, Mayo Clinic, MN, USA."
+    },
+    {
+      "title": "National Award for the Most Sustainable Innovation in Medical Education",
+      "organization": "Ministry of Health and Medical Education, Iran",
+      "year": "2018",
+      "description": "Awarded for presenting on \"Development, Implementation, and Evaluation of a Curriculum for the Introduction of Patient-Physician Communication Skills in Difficult Encounters.\""
+    },
+    {
+      "title": "University Chancellor's Special Award",
+      "organization": "Tehran University of Medical Sciences, Tehran, Iran",
+      "year": "2018",
+      "description": "Awarded each year to one medical student who has demonstrated excellence in all aspects of their medical education."
+    },
+    {
+      "title": "3rd Place National Award for Innovation in Medical Education",
+      "organization": "Ministry of Health and Medical Education, Iran",
+      "year": "2017",
+      "description": "Awarded for presenting on \"Development, Implementation, and Evualation of Iran International Public Health Summer School.\""
+    },
+    {
+      "title": "Gold Medal",
+      "organization": "National Medical Sciences' Student Olympiad",
+      "year": "2015",
+      "description": "A national olympiad competition on universal health coverage and public health economics."
     }
   ],
-  "honors": [
-    {
-      "title": "Rising Star in AI",
-      "organization": "AI Society",
-      "year": "2023",
-      "description": "Selected as one of 30 rising stars in artificial intelligence research globally."
-    },
-    {
-      "title": "Outstanding Reviewer",
-      "organization": "Journal of Biomedical Informatics",
-      "year": "2022",
-      "description": "Recognized for high-quality peer reviews contributing to academic excellence."
-    }
-  ]
+  "honors": []
 }
