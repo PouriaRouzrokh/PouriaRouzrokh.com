@@ -1,0 +1,28 @@
+{
+  "title": "VideoInstruct: AI-Powered Documentation from Videos",
+  "slug": "videoinstruct-ai-documentation-from-videos",
+  "description": "An AI tool that automatically generates step-by-step markdown documentation from instructional videos by analyzing transcriptions and visual content.",
+  "abstract": "You know how watching a tutorial video is helpful, but sometimes you just wish you had the steps written down? Manually creating that documentation from a video takes ages, so I built VideoInstruct to automate it.\n\nThe idea is pretty straightforward: feed it an instructional video, and it uses AI to figure out what's going on. It pulls out the transcript (what's being said) and also analyzes the visuals (what's being shown on screen). Then, another AI agent takes that combined information and generates step-by-step instructions in markdown format.\n\nWhat I think is cool is the refinement process. I added an 'Evaluator' agent that reviews the generated docs. It uses conversation memory and can even have a little back-and-forth Q&A with the 'Generator' agent to ensure the instructions are clear and accurate. If the docs aren't up to snuff, they get sent back for revision. It can even grab screenshots! The whole thing uses different AI models (like OpenAI, Gemini, DeepSeek) for different tasks, and you can run it easily using Docker or as a Python package. My goal was really just to make getting usable documentation out of videos much less painful.",
+  "year": 2024,
+  "technologies": [
+    "Python",
+    "AI Agents",
+    "Large Language Models (LLMs)",
+    "Video Processing",
+    "Transcription",
+    "Docker"
+  ],
+  "projectTags": [
+    "AI & ML",
+    "Documentation Generation",
+    "Automation",
+    "AI Agents",
+    "Video Analysis",
+    "Large Language Models (LLMs)",
+    "Developer Tools",
+    "Python Package"
+  ],
+  "imageUrl": "https://res.cloudinary.com/dzqiwtbg6/image/upload/v1743822982/b4aaf6c9-15d6-4802-a956-343adc807ca4.png",
+  "githubUrl": "https://github.com/PouriaRouzrokh/VideoInstruct",
+  "liveUrl": "https://github.com/PouriaRouzrokh/VideoInstruct/blob/main/examples/example_usage.py"
+}

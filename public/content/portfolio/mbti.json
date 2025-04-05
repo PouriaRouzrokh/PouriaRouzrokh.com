@@ -1,0 +1,23 @@
+{
+  "title": "Multitask Brain Tumor Inpainting with Diffusion Models",
+  "slug": "multitask-brain-tumor-inpainting-diffusion",
+  "description": "Using diffusion models to realistically edit (add, remove, modify) brain tumors in MRI scans for data augmentation and research.",
+  "abstract": "Okay, so training AI for medical imaging is tricky, right? You often don't have enough data, especially for less common things like brain tumors (high-grade gliomas are pretty rare!), and sharing patient scans is a whole privacy minefield. This really holds back developing good AI models because they might become biased or just not perform well.\n\nI got fascinated by diffusion models – the AI tech that's amazing at generating super realistic images – and thought, \"What if we could use these to *edit* brain scans?\" That's how this project, which I worked on with some brilliant colleagues at Mayo Clinic, started. We built a system that takes a 2D brain MRI slice (works with T1, T1CE, T2, or FLAIR sequences) and lets you basically 'paint' changes onto it.\n\nNeed to add a tumor with specific parts like the necrotic core or surrounding edema defined? Give it the masks (ROIs), and it'll fill it in realistically, matching the surrounding brain tissue. Want it to just generate a plausible-looking tumor within a certain area (like a bounding box you draw)? It can do that too, figuring out the tumor shape itself. You can even use it to *remove* an existing tumor and fill the space with healthy-looking brain tissue. \n\nThe cool part is it's 'multitask' – it can handle these different jobs (adding specific tumor parts, adding a random tumor, removing a tumor) and can even combine them in one go. It understands both precise free-form shapes and rough bounding boxes as input for where to make the changes. We trained it on the public BraTS 2021 dataset.\n\nUnder the hood, it's a diffusion model (we adapted a U-Net architecture) that learns based on the type of edit you want. We also added neat tricks like classifier-free guidance (so you can tweak how strongly it follows your instructions – check out Figure 6 in the paper for how that looks!) and used DDIM to make generating the images faster. Plus, changing the random seed gives you different variations (see Figure 7), which is great for diversity.\n\nThe big idea here is to help researchers generate realistic, shareable synthetic data to overcome those data scarcity and privacy hurdles. It could be super useful for creating balanced datasets or testing how robust AI models are. It was a challenging but really rewarding build! The code for this project is proprietary and unfortunately, I cannot share it here, but you can find the publication link below. And I absolutely have to give a huge shout-out to my co-authors Bardia Khosravi, Shahriar Faghani, Mana Moassefi, Sanaz Vahdati, and Bradley J. Erickson – their contributions and teamwork were essential!",
+  "year": 2023,
+  "technologies": ["Python", "PyTorch", "Diffusion Models (DDPM/DDIM)"],
+  "projectTags": [
+    "AI & ML",
+    "Generative Models",
+    "Diffusion Models",
+    "Medical Imaging",
+    "Brain Tumor",
+    "MRI",
+    "Data Augmentation",
+    "Synthetic Data",
+    "Inpainting",
+    "Computer Vision"
+  ],
+  "imageUrl": "https://res.cloudinary.com/dzqiwtbg6/image/upload/v1743824422/03bd5117-e950-404f-962f-b2b0800f45b6.png",
+  "videoUrl": "https://www.youtube.com/watch?v=qM8cTr74b2k",
+  "publicationUrl": ""
+}

@@ -1,0 +1,35 @@
+{
+  "title": "A Deep Learning Tool for Automated Radiographic Measurement of Acetabular Component Inclination and Version After Total Hip Arthroplasty",
+  "slug": "automated-hip-cup-angle-measurement-ai",
+  "description": "A deep learning tool that automatically measures acetabular component inclination and version angles on post-operative hip X-rays.",
+  "abstract": "Getting the angle of the 'cup' part (acetabular component) right during hip replacement surgery is super important – if it's off, the risk of the hip dislocating later goes up. The catch? Measuring these angles (inclination and version) manually on X-rays takes time, and different doctors might get slightly different readings. So, naturally, we thought AI could lend a hand here!\n\nThis was another project I worked on with a talented group. We set out to build a deep learning tool that could measure these crucial angles automatically from post-surgery X-rays. We took a bunch of AP (front view) pelvis X-rays and cross-table lateral (side view) hip X-rays, and carefully marked out the hip cup and key bony landmarks (like the ischial tuberosities) on them.\n\nThen, we trained two separate AI models (using the U-Net architecture, great for this kind of task) – one specialized for the AP view and one for the lateral view – to automatically find these structures. Once the AI pinpoints the landmarks on an X-ray, some straightforward image processing calculates the inclination and anteversion angles.\n\nWe tested it thoroughly, and the results were pretty awesome. The AI's angle measurements were very close to the manual measurements done by experts, with the average difference being only about 1.3 degrees for both angles. Having a significant error of 5 degrees or more was really rare (less than 2.5% of the time!).\n\nEssentially, we developed a highly accurate tool that takes the manual work out of measuring these angles. This could be really useful for speeding things up in the clinic or for researchers studying surgical outcomes. As with some of my other work, the code isn't publicly available, but the full details are in the publication linked below. And I definitely need to thank my collaborators on this one: Cody C. Wyles, Kenneth A. Philbrick, Taghi Ramazanian, Alexander D. Weston, Jason C. Cai, Michael J. Taunton, David G. Lewallen, Daniel J. Berry, Bradley J. Erickson, and Hilal Maradit Kremers – couldn't have done it without them!",
+  "year": 2021,
+  "technologies": [
+    "Python",
+    "PyTorch",
+    "Deep Learning",
+    "U-Net",
+    "Convolutional Neural Networks (CNNs)",
+    "Semantic Segmentation",
+    "Image Processing",
+    "Medical Imaging (X-ray)"
+  ],
+  "projectTags": [
+    "AI & ML",
+    "Deep Learning",
+    "Semantic Segmentation",
+    "Medical Imaging",
+    "Radiography",
+    "X-ray",
+    "Total Hip Arthroplasty (THA)",
+    "Orthopedics",
+    "Surgical Outcomes",
+    "Acetabular Component",
+    "Healthcare AI",
+    "Computer Vision",
+    "Automation"
+  ],
+  "imageUrl": "https://res.cloudinary.com/dzqiwtbg6/image/upload/v1743826254/cf85ac2a-c1ff-40a6-b099-c44c02a0a893.png",
+  "publicationUrl": "https://www.sciencedirect.com/science/article/abs/pii/S0883540321001650",
+  "videoUrl": "https://www.youtube.com/watch?v=l2G-eKMmuhc"
+}

@@ -1,0 +1,25 @@
+{
+  "title": "LatteReview: AI-Powered Literature Review Automation",
+  "slug": "lattereview-ai-literature-review",
+  "description": "A Python package designed to automate academic literature review processes using customizable AI-powered agents.",
+  "abstract": "Let's be honest, sifting through endless papers for a literature review is a huge time sink. I wanted to make this process less of a chore and more... well, manageable, maybe even as smooth as enjoying a good latte. That's why I developed LatteReview, a Python package that uses AI agents to automate a lot of the grunt work.\n\nThe core idea is you can set up a team of AI reviewers. You tell them their 'background,' what criteria to use (inclusion/exclusion), and even which LLM they should run on – thanks to LiteLLM, it supports a bunch like OpenAI, Gemini, Claude, Groq, and local models via Ollama. It's pretty flexible: you can design workflows with multiple review rounds, have agents work in parallel or sequence, and even have them check each other's work or have a 'senior' agent resolve disagreements.\n\nWe've built it to handle not just titles and abstracts but also custom text inputs and even images now. You can also feed agents extra context for each item, making it great for things like Retrieval Augmented Generation (RAG). I focused on making it efficient too, using asynchronous processing to handle batches quickly, and added tools for tracking costs. Ultimately, LatteReview is my attempt to give researchers back some valuable time.\n\nThis has been a really exciting project to build, and I have to give a huge shout-out to Moein Shariatnia – his support and contributions were invaluable.",
+  "year": 2024,
+  "technologies": [
+    "Python",
+    "Large Language Models (LLMs)",
+    "AI Agents",
+    "Asyncio"
+  ],
+  "projectTags": [
+    "AI & ML",
+    "Large Language Models (LLMs)",
+    "Research Automation",
+    "Systematic Reviews",
+    "Academic Tools",
+    "Python Package"
+  ],
+  "imageUrl": "https://res.cloudinary.com/dzqiwtbg6/image/upload/v1743546706/lattereview_twh3go.png",
+  "githubUrl": "https://github.com/PouriaRouzrokh/LatteReview",
+  "publicationUrl": "https://arxiv.org/abs/2501.05468",
+  "liveUrl": "https://github.com/PouriaRouzrokh/LatteReview/blob/main/tutorials/title_abstract_review/title_abstract_review.ipynb"
+}

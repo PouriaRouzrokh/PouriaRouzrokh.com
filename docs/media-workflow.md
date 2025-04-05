@@ -93,6 +93,42 @@ The website uses Cloudinary for image and video optimization. Here's how to orga
    - Use responsive sizes for optimal display
    - Avoid text embedded in images
 
+## Portfolio Media Management
+
+### Portfolio Images
+
+1. **Upload to Cloudinary**:
+
+   - Upload your portfolio project images to the `/portfolio-images` folder in Cloudinary
+   - Use high-quality images (1200px width minimum) with 16:9 aspect ratio
+   - Use descriptive filenames (e.g., `project-name-preview.jpg`)
+
+2. **Add to JSON File**:
+   - Update the appropriate JSON file in `public/content/portfolio/`
+   - Set the `imageUrl` property to the Cloudinary URL
+
+### Portfolio YouTube Videos
+
+1. **Upload to YouTube**:
+
+   - Create and upload a video demo of your project to YouTube
+   - Set appropriate visibility (Public or Unlisted depending on project status)
+   - Add comprehensive metadata (title, description, tags)
+   - Ensure the video has a good thumbnail that represents the project
+
+2. **Add to JSON File**:
+
+   - Add the YouTube video URL to the `videoUrl` property in your portfolio JSON file
+   - Format: `https://www.youtube.com/watch?v=VIDEO_ID`
+   - The website will automatically extract the video ID and display it properly
+   - A YouTube video icon will appear on the portfolio card indicating video content
+
+3. **Best Practices**:
+   - Always provide both an `imageUrl` and `videoUrl` when possible
+   - Keep videos concise (2-5 minutes for demos)
+   - Include voice narration or captions for accessibility
+   - The first frame of the video should clearly represent the project
+
 ## Content Creation Checklist
 
 Before publishing a blog post, ensure:

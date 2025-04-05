@@ -1,0 +1,34 @@
+{
+  "title": "Deep Learning for Radiographic Measurement of Femoral Component Subsidence Following Total Hip Arthroplasty",
+  "slug": "ai-hip-implant-subsidence",
+  "description": "A deep learning tool to automatically measure femoral component subsidence on post-operative hip X-rays.",
+  "abstract": "After a hip replacement surgery, it's crucial to check if the implant (specifically the femoral stem part) has shifted or 'subsided' over time, as too much movement can signal a problem. Manually measuring this tiny movement on serial X-rays is a real pain – it's time-consuming, tricky, and surgeons might measure it slightly differently. So, we thought, why not get AI to do it?\n\nWorking with a great team, we developed a deep learning tool to automate this process completely. First, we trained a U-Net model (a popular AI architecture for image segmentation) to precisely identify the femur bone, the implant stem, and any calibration markers present on AP hip X-rays. We used a dataset from Mayo Clinic patients who had a specific type of stem known to sometimes subside a tiny bit controllably.\n\nOnce the AI segments these key parts on two different X-rays taken over time, a clever image processing algorithm takes over. It automatically finds reference points on the bone and the implant, corrects for any magnification differences using the markers, and calculates the exact amount of subsidence in millimeters – all without a human needing to click anything!\n\nHow well did it work? We compared its measurements to those done manually by two experienced orthopedic surgeons. The AI's results were remarkably close, with an average difference of only 0.6 mm, and statistically, there was no significant difference between the AI and the surgeons. It just did it automatically.\n\nThis tool could potentially make follow-up checks after hip replacements much more efficient and consistent, maybe even helping to spot subtle signs of loosening earlier. While the code for this specific tool isn't available publicly, you can read the details in our publication linked below. Huge thanks are due to my co-authors Cody C. Wyles, Shyam J. Kurian, Taghi Ramazanian, Jason C. Cai, Qiao Huang, Kuan Zhang, Michael J. Taunton, Hilal Maradit Kremers, and Bradley J. Erickson for their invaluable collaboration on this project!",
+  "year": 2022,
+  "technologies": [
+    "Python",
+    "PyTorch",
+    "Deep Learning",
+    "U-Net",
+    "Semantic Segmentation",
+    "Image Processing",
+    "Medical Imaging (X-ray)"
+  ],
+  "projectTags": [
+    "AI & ML",
+    "Deep Learning",
+    "Semantic Segmentation",
+    "Medical Imaging",
+    "Radiography",
+    "X-ray",
+    "Total Hip Arthroplasty (THA)",
+    "Orthopedics",
+    "Surgical Outcomes",
+    "Femoral Subsidence",
+    "Healthcare AI",
+    "Computer Vision",
+    "Automation"
+  ],
+  "imageUrl": "https://res.cloudinary.com/dzqiwtbg6/image/upload/v1743825903/1ec57fd4-0cff-49fb-b44c-8f100f6100af.png",
+  "publicationUrl": "https://pubs.rsna.org/doi/full/10.1148/ryai.210206",
+  "videoUrl": "https://www.youtube.com/watch?v=de05m-lOW0o"
+}

@@ -1,0 +1,39 @@
+{
+  "title": "THA-AID: Deep Learning Tool for Total Hip Arthroplasty Automatic Implant Detection With Uncertainty and Outlier Quantification",
+  "slug": "tha-aid-hip-implant-identification",
+  "description": "An AI tool (THA-AID) that identifies hip replacement implants on X-rays, quantifies its own uncertainty, and flags unusual images.",
+  "abstract": "Figuring out exactly which hip replacement implants a patient already has is a critical step before doing revision surgery, but it can be a real detective mission – time-consuming and sometimes you just can't find the info. People have tried using AI for this, but existing tools often only recognize a few types of stems (and usually no cups!), only work on front-view X-rays (AP view), and crucially, they don't tell you how *confident* they are or if the X-ray looks weird (an outlier) which might trip them up.\n\nThat's why we developed THA-AID. It's a deep learning tool trained on a huge dataset (over 240,000 X-rays!) to identify 20 common femoral stem designs and 8 common acetabular cup designs. Big difference: it works whether you feed it an AP, lateral (side), or oblique view X-ray.\n\nBut here's the really important part: THA-AID doesn't just guess the implant. It uses a technique called Conformal Prediction to give you a measure of its uncertainty. Instead of just saying 'Implant X', it might give a set of possibilities if it's not sure, like '{Implant X, Implant Y}'. This is super important for building trust in clinical settings. On top of that, we built a custom 'traffic-light' system to detect outlier data. If the input X-ray looks too different from what the AI was trained on (maybe it's a knee X-ray by mistake, or a really rare implant type, or just terrible quality), it flags it (red or yellow light) so a human knows to double-check, rather than blindly trusting the prediction.\n\nWhen we tested it, THA-AID was highly accurate (around 99% on our internal data, 97% for stems on external data) and significantly outperformed experienced surgeons in identifying the implants – plus, it did it in under a minute compared to hours for the surgeons! The uncertainty quantification worked well, slightly boosting the chance the *correct* label was in the prediction set, and the outlier detection caught almost all the out-of-domain images and most of the weird in-domain ones.\n\nWe believe THA-AID is a big step forward because it's the first tool in orthopedics (that we know of!) to combine high accuracy implant identification with these crucial uncertainty and outlier checks. This makes it much more reliable and trustworthy for potential use in clinics or for automatically annotating large research databases. The code is proprietary, but you can find the publication details below. A huge thank you to my co-authors John P. Mickley, Bardia Khosravi, Shahriar Faghani, Mana Moassefi, Michael J. Taunton, Cody C. Wyles, and Bradley J. Erickson for their collaboration on this exciting project!",
+  "year": 2023,
+  "technologies": [
+    "Python",
+    "PyTorch",
+    "Deep Learning",
+    "Convolutional Neural Networks (CNNs)",
+    "ConvNeXt",
+    "Uncertainty Quantification (UQ)",
+    "Conformal Prediction",
+    "Outlier Detection",
+    "Medical Imaging (X-ray)",
+    "Explainable AI (XAI)"
+  ],
+  "projectTags": [
+    "AI & ML",
+    "Deep Learning",
+    "Computer Vision",
+    "Medical Imaging",
+    "Radiography",
+    "X-ray",
+    "Total Hip Arthroplasty (THA)",
+    "Orthopedics",
+    "Implant Identification",
+    "Revision Surgery",
+    "Uncertainty Quantification",
+    "Conformal Prediction",
+    "Outlier Detection",
+    "Trustworthy AI",
+    "Healthcare AI",
+    "Automation"
+  ],
+  "imageUrl": "https://res.cloudinary.com/dzqiwtbg6/image/upload/v1743827270/b8e26db6-b091-4a2b-8446-af191b95703b.png",
+  "publicationUrl": "https://www.sciencedirect.com/science/article/abs/pii/S088354032300983X"
+}

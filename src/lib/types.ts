@@ -109,6 +109,7 @@ export interface PortfolioItem {
   technologies: string[];
   projectTags: string[]; // Tags for categorizing and filtering projects
   imageUrl: string;
+  videoUrl?: string; // URL to a YouTube video or other video source
   githubUrl?: string;
   liveUrl?: string;
   publicationUrl?: string; // URL to related academic publication

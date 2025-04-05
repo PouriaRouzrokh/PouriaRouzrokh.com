@@ -19,6 +19,7 @@ import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { Card, CardContent } from "@/components/ui/card";
 import { SectionHeading } from "@/components/ui/section-heading";
+import YouTubeEmbed from "@/components/media/YouTubeEmbed";
 
 interface PortfolioDetailProps {
   slug: string;
@@ -31,6 +32,19 @@ export function PortfolioDetail({ slug }: PortfolioDetailProps) {
 
   // Determine if image is from Cloudinary
   const isCloudinaryImage = project?.imageUrl?.includes("res.cloudinary.com");
+
+  // Check if we have a YouTube video
+  const youtubeVideoId = project?.videoUrl
+    ? getYoutubeVideoId(project.videoUrl)
+    : null;
+
+  // Function to extract YouTube video ID
+  function getYoutubeVideoId(url: string): string | null {
+    const regex =
+      /(?:youtube\.com\/(?:[^\/]+\/.+\/|(?:v|e(?:mbed)?)\/|.*[?&]v=)|youtu\.be\/)([^"&?\/\s]{11})/;
+    const match = url.match(regex);
+    return match ? match[1] : null;
+  }
 
   useEffect(() => {
     console.log("Project slug:", slug);
@@ -122,20 +136,27 @@ export function PortfolioDetail({ slug }: PortfolioDetailProps) {
             </Badge>
           </div>
 
-          {/* Project Image */}
+          {/* Project Media (Image or YouTube Video) */}
           <div className="w-full flex justify-center mb-8">
-            <div className="rounded-lg overflow-hidden shadow-md">
-              <Image
-                src={project.imageUrl || "/placeholder-profile.jpg"}
-                alt={project.title}
-                width={1200}
-                height={675}
-                className="max-w-full h-auto"
-                sizes="(max-width: 768px) 100vw, (max-width: 1200px) 1200px, 1200px"
-                quality={isCloudinaryImage ? 90 : 75}
-                priority
-              />
-            </div>
+            {youtubeVideoId ? (
+              <div className="w-full max-w-4xl">
+                <YouTubeEmbed videoId={youtubeVideoId} title={project.title} />
+              </div>
+            ) : (
+              <div className="w-full max-w-4xl mx-auto rounded-lg overflow-hidden shadow-md">
+                <div className="relative w-full pt-[56.25%]">
+                  <Image
+                    src={project.imageUrl || "/placeholder-profile.jpg"}
+                    alt={project.title}
+                    fill
+                    className="object-contain"
+                    sizes="(max-width: 768px) 100vw, (max-width: 1200px) 1200px, 1200px"
+                    quality={isCloudinaryImage ? 90 : 75}
+                    priority
+                  />
+                </div>
+              </div>
+            )}
           </div>
 
           {/* Project Overview */}
@@ -216,7 +237,7 @@ export function PortfolioDetail({ slug }: PortfolioDetailProps) {
                   className="flex items-center"
                 >
                   <ExternalLink className="h-4 w-4 mr-2" />
-                  Live Demo
+                  Online Demo
                 </a>
               </Button>
             )}

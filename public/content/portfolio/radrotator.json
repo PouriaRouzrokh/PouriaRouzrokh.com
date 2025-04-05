@@ -1,0 +1,14 @@
+{
+  "title": "RadRotator: 3D Rotation of Radiographs with Diffusion Models",
+  "slug": "radrotator-3d-rotation-radiographs",
+  "description": "An AI-driven tool enabling 3D rotation of 2D radiographs using diffusion models, enhancing anatomical visualization in medical imaging.",
+  "abstract": "We built RadRotator to tackle a classic yet tough challenge in computer vision—turning 2D radiographs into something that behaves like a 3D volume. Our diffusion model-based system lets users rotate the anatomical content of any single radiograph in 3D space, offering a new way to visualize medical images from different angles. Like others before us, we trained our model using Digitally Reconstructed Radiographs (DRRs) derived from CT volumes. But we went a few steps further.\n\nFirst, instead of relying on GANs, we used conditional diffusion models with classifier-free guidance. This allowed us to generate much higher quality and more diverse outputs—at the cost of slightly slower inference, which we think is a fair trade-off in clinical contexts. Second, we addressed the long-standing problem of DRRs looking too different from real radiographs. Past work tried to fix this with style transfer models like CycleGAN, but we found that a much simpler solution—random histogram shifts during training—works even better. This made our model robust to different pixel intensity distributions and let us train purely on DRRs while still performing reliably on actual X-rays.\n\nThis project has been a fantastic collaboration, and I’m deeply grateful to my co-authors: Bardia Khosravi, Shahriar Faghani, Kellen L. Mulford, Michael J. Taunton, Bradley J. Erickson, and Cody C. Wyles.",
+  "year": 2024,
+  "technologies": ["Python", "PyTorch", "Diffusion Models", "Medical Imaging"],
+  "projectTags": ["AI & ML", "Radiology", "Medical Imaging", "Research"],
+  "imageUrl": "https://res.cloudinary.com/dzqiwtbg6/image/upload/v1743821003/85c0d5d6-1eb8-486e-bda9-7077181860b5.png",
+  "videoUrl": "https://www.youtube.com/watch?v=Ru3pM8rcqWI",
+  "githubUrl": "https://github.com/PouriaRouzrokh/RadRotator",
+  "publicationUrl": "https://arxiv.org/abs/2404.13000",
+  "blogPostUrl": "https://pouriarouzrokh.github.io/RadRotator/"
+}

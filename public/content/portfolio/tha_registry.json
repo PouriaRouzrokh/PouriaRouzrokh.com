@@ -1,0 +1,38 @@
+{
+  "title": "Applying Deep Learning to Establish a Total Hip Arthroplasty Radiography Registry: A Stepwise Approach",
+  "slug": "building-hip-xray-registry-ai",
+  "description": "Using deep learning pipelines to automatically clean, classify, and annotate a massive database of total hip arthroplasty radiographs.",
+  "abstract": "Okay, building large medical image collections, like for hip replacement X-rays, is a massive headache. Doing it manually takes forever, and just trusting the computer tags (DICOM metadata) often leads to errors because they can be wrong or missing. This really slows down research and makes it hard to track patient outcomes efficiently.\n\nSo, my colleagues and I tackled this by building an automated *pipeline* using several deep learning tricks. Think of it as an assembly line for X-rays. First, it screens the raw DICOM files, tossing out corrupted ones or those missing image data. Then, we used a couple of AI models (an EfficientNet classifier and a YOLOv5 object detector) to look at each image and figure out exactly what it was: AP Pelvis view? Left Hip Lateral view? Does it have an implant? Is it even a hip/pelvis X-ray at all, or something mislabeled?\n\nFinally, for the X-rays showing hip replacements, we plugged in AI tools we'd *already* built (the ones mentioned in previous posts!) to automatically measure the angles of the hip cup (acetabular inclination and version). We threw almost 850,000 DICOM files from over 20,000 patients at this thing. The pipeline correctly filtered out about a quarter of them (junk images, wrong body parts found despite metadata, poor quality) and classified the rest with amazing accuracy – like 99.9% overall! It did all this in less than 8 hours, creating a clean, organized registry of over 600,000 useful radiographs. Way better and faster than manual work or just relying on those messy DICOM tags.\n\nThe cool thing is this creates a really valuable resource for research and tracking patient outcomes over time. Plus, the 'stepwise' approach we detailed can hopefully help other hospitals or researchers build similar databases for hips or even other body parts, creating the infrastructure needed for large-scale studies. The code for this pipeline is proprietary, so I can't share it directly, but you can find the publication below. And a massive shout-out to the team: Bardia Khosravi, Quinn J. Johnson, Shahriar Faghani, Diana V. Vera Garcia, Bradley J. Erickson, Hilal Maradit Kremers, Michael J. Taunton, and Cody C. Wyles – this was a huge undertaking!",
+  "year": 2022,
+  "technologies": [
+    "Python",
+    "Deep Learning",
+    "Convolutional Neural Networks (CNNs)",
+    "EfficientNet",
+    "YOLOv5",
+    "U-Net",
+    "DICOM Processing",
+    "Image Classification",
+    "Object Detection",
+    "Medical Imaging (X-ray)"
+  ],
+  "projectTags": [
+    "AI & ML",
+    "Deep Learning",
+    "Computer Vision",
+    "Medical Imaging",
+    "Radiography",
+    "X-ray",
+    "Total Hip Arthroplasty (THA)",
+    "Orthopedics",
+    "Data Curation",
+    "Image Classification",
+    "Object Detection",
+    "Healthcare AI",
+    "Automation",
+    "Medical Registry",
+    "Database Management"
+  ],
+  "imageUrl": "https://res.cloudinary.com/dzqiwtbg6/image/upload/v1743827019/3575c0bd-e310-4344-ad38-0aa9eafd1316.png",
+  "publicationUrl": "https://pmc.ncbi.nlm.nih.gov/articles/PMC9617138/pdf/nihms-1841190.pdf"
+}

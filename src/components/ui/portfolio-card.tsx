@@ -21,6 +21,7 @@ import {
   FileText,
   BookOpen,
   Tag,
+  YoutubeIcon,
 } from "lucide-react";
 import { cn } from "@/lib/utils";
 
@@ -41,6 +42,9 @@ export function PortfolioCard({ project, className }: PortfolioCardProps) {
   // Determine if image is from Cloudinary
   const isCloudinaryImage = project.imageUrl?.includes("res.cloudinary.com");
 
+  // Check if we have a YouTube video
+  const hasVideo = Boolean(project.videoUrl);
+
   return (
     <Card
       className={cn(
@@ -48,7 +52,7 @@ export function PortfolioCard({ project, className }: PortfolioCardProps) {
         className
       )}
     >
-      {/* Project Image */}
+      {/* Project Media (Image or Video indicator) */}
       <div className="w-full h-48 overflow-hidden relative">
         <Image
           src={project.imageUrl || "/placeholder-profile.jpg"}
@@ -56,10 +60,17 @@ export function PortfolioCard({ project, className }: PortfolioCardProps) {
           fill
           className="object-cover transition-transform group-hover:scale-105"
           sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
-          quality={isCloudinaryImage ? 90 : 75} // Higher quality for Cloudinary optimized images
+          quality={isCloudinaryImage ? 90 : 75}
           priority={false}
         />
         <div className="absolute inset-0 bg-gradient-to-t from-background/80 to-transparent" />
+
+        {/* YouTube Video Indicator */}
+        {hasVideo && (
+          <div className="absolute top-2 right-2 bg-red-600 text-white rounded-full p-1.5 shadow-md">
+            <YoutubeIcon className="h-4 w-4" />
+          </div>
+        )}
       </div>
 
       <CardHeader className="pb-2">

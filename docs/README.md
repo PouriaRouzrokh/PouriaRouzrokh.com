@@ -261,15 +261,23 @@ Note: The Python script should be placed in the utils/ directory within the proj
     "title": "AI Medical Image Analyzer",
     "slug": "ai-image-analyzer", // Used for URL: /portfolio/ai-image-analyzer
     "description": "A web application using deep learning to detect anomalies in X-ray images.",
+    "abstract": "A longer description explaining the project in detail...",
+    "year": 2022,
     "technologies": ["Python", "TensorFlow", "Flask", "React", "Docker"],
+    "projectTags": ["AI & ML", "Healthcare", "Web Application"],
     "imageUrl": "https://res.cloudinary.com/<your_cloud_name>/image/upload/vXXXX/project_image.jpg",
+    "videoUrl": "https://www.youtube.com/watch?v=dQw4w9WgXcQ", // Optional: YouTube URL for project demo
     "githubUrl": "https://github.com/yourusername/project-repo", // Optional
-    "liveUrl": "https://project-live-demo.example.com" // Optional
+    "liveUrl": "https://project-live-demo.example.com", // Optional
+    "publicationUrl": "https://doi.org/10.1016/journal.2022.102485", // Optional
+    "blogPostUrl": "https://pouria.ai/blog/project-details" // Optional
   },
   {
     "title": "Portfolio Website (This Site!)",
     "slug": "portfolio-website",
     "description": "Personal portfolio built with Next.js, TypeScript, and TailwindCSS, featuring automated research updates.",
+    "abstract": "Full description of how this site was built...",
+    "year": 2023,
     "technologies": [
       "Next.js",
       "TypeScript",
@@ -278,6 +286,7 @@ Note: The Python script should be placed in the utils/ directory within the proj
       "Vercel",
       "Python"
     ],
+    "projectTags": ["Web Development", "Portfolio"],
     "imageUrl": "...",
     "githubUrl": "https://github.com/yourusername/pouria-ai"
   }
@@ -338,7 +347,9 @@ All significant images (profile photo, project previews, logos) should be hosted
 
 ### 4.3 Individual Portfolio Item Page (/portfolio/[slug])
 
-- Displays detailed information about a specific portfolio item: Title, Description, Technologies Used, Image(s)/Video, Links (GitHub, Live Demo).
+- Displays detailed information about a specific portfolio item: Title, Description, Technologies Used, Media (Image or YouTube Video), Links (GitHub, Live Demo, Publication, Blog).
+- Supports both image and YouTube video display, prioritizing video if both are available.
+- YouTube videos are embedded using a responsive video player.
 
 ### 4.4 Research Page (/research)
 
