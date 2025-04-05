@@ -8,11 +8,17 @@ export const metadata: Metadata = {
     "Thoughts, insights, and research from Pouria on AI, machine learning, and more.",
 };
 
-// Set revalidation time
-export const revalidate = 3600; // 1 hour
+// Set revalidation time - increased for better caching
+export const revalidate = 10800; // 3 hours (shorter than individual posts)
+
+// Specify page as static generation with dynamic rendering for client components
+export const dynamic = "force-static";
+
+// Configure runtime to be server-side only for security
+export const runtime = "nodejs";
 
 export default async function BlogPage() {
-  // Fetch all blog posts
+  // Fetch all blog posts (server-side for SEO)
   const posts = await getAllPosts();
 
   // Extract all unique tags

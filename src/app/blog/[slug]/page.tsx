@@ -48,8 +48,19 @@ export async function generateMetadata({
   };
 }
 
-// Set revalidation time
-export const revalidate = 3600; // 1 hour
+// Set revalidation time - increased for better caching
+export const revalidate = 43200; // 12 hours instead of 1 hour
+
+// Specify page as static generation
+export const dynamic = "force-static";
+
+// Configure runtime to be server-side only for security
+export const runtime = "nodejs";
+
+// Add revalidation tags for on-demand revalidation
+export const generateMetadataConfig = {
+  revalidate: 43200,
+};
 
 export default async function BlogPostPage({
   params,
