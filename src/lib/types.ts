@@ -119,16 +119,6 @@ export interface PortfolioItem {
 // For backward compatibility
 export type ProjectItem = PortfolioItem;
 
-// Blog post frontmatter
-export interface BlogPostFrontmatter {
-  title: string;
-  date: string;
-  author: string;
-  tags: string[];
-  summary: string;
-  slug: string;
-}
-
 // Blog post metadata from Notion
 export interface BlogPostMetadata {
   id: string;

@@ -7,7 +7,6 @@ import {
   ResearchData,
   PortfolioItem,
   AchievementItem,
-  BlogPostFrontmatter,
   AcknowledgmentItem,
 } from "./types";
 
@@ -396,40 +395,6 @@ export async function getPortfolio(): Promise<PortfolioItem[]> {
 
 // For backward compatibility
 export const getProjects = getPortfolio;
-
-// Blog posts
-export async function getBlogPosts(): Promise<BlogPostFrontmatter[]> {
-  // For client components, fetch data from an API route
-  if (typeof window !== "undefined") {
-    const response = await fetch("/api/content/blog-posts");
-    if (!response.ok) throw new Error("Failed to fetch blog posts");
-    return response.json();
-  }
-
-  // This is a simplified version. In reality, you'd:
-  // 1. Read all .mdx files from public/content/blog
-  // 2. Parse frontmatter
-  // 3. Return sorted by date
-  return [];
-}
-
-export async function getBlogPostBySlug(slug: string): Promise<{
-  frontmatter: BlogPostFrontmatter;
-  content: string;
-} | null> {
-  // For client components, fetch data from an API route
-  if (typeof window !== "undefined") {
-    const response = await fetch(`/api/content/blog-posts/${slug}`);
-    if (!response.ok) return null;
-    return response.json();
-  }
-
-  // This is a placeholder implementation that will be replaced later
-  console.log(
-    `Blog post with slug "${slug}" requested, but function not yet implemented`
-  );
-  return null;
-}
 
 // Acknowledgment data
 export async function getAcknowledgments(): Promise<AcknowledgmentItem[]> {
