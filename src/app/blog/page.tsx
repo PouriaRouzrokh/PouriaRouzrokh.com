@@ -36,6 +36,9 @@ export default async function BlogPage() {
           My personal thoughts and insights on AI, technology, radiology, and
           more...
         </p>
+        <p className="mt-2 text-sm text-muted-foreground italic">
+          Loading blog posts for the first time may take a few seconds.
+        </p>
       </div>
 
       {posts.length > 0 ? (

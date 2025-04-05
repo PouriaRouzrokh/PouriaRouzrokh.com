@@ -33,7 +33,7 @@ export default function HeroSection({ profileData }: HeroSectionProps) {
   const [imgError, setImgError] = useState(false);
 
   // Split titles by pipe character for better display
-  const titles = profile.title.split(" | ");
+  const titles = profile.title.split(" - ");
 
   // Console log for debugging
   console.log("Profile data in hero:", profileData);
@@ -83,14 +83,8 @@ export default function HeroSection({ profileData }: HeroSectionProps) {
           </div>
           <div className="flex gap-4 pt-3">
             <Link
-              href="/contact"
-              className="bg-primary text-primary-foreground hover:bg-primary/90 px-5 py-2.5 rounded-md shadow-sm font-medium"
-            >
-              Contact Me
-            </Link>
-            <Link
               href="/portfolio"
-              className="bg-secondary text-secondary-foreground hover:bg-secondary/90 px-5 py-2.5 rounded-md shadow-sm font-medium"
+              className="bg-primary text-primary-foreground hover:bg-primary/90 px-5 py-2.5 rounded-md shadow-sm font-medium"
             >
               View Portfolio
             </Link>
