@@ -17,7 +17,6 @@ export interface ProfileData {
     category: string;
     items: string[];
   }[];
-  interests: string[];
 }
 
 export interface Affiliation {
@@ -161,7 +160,6 @@ export interface RawProfileData {
     googleScholar?: string;
   };
   skills?: Array<{ category: string; items: string[] }>;
-  interests?: string[];
   [key: string]: unknown;
 }
 

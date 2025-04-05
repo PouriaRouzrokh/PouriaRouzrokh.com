@@ -30,7 +30,6 @@ export async function GET() {
           googleScholar: "",
         },
         skills: Array.isArray(jsonData.skills) ? jsonData.skills : [],
-        interests: Array.isArray(jsonData.interests) ? jsonData.interests : [],
       };
     } catch (parseError) {
       console.error("Error parsing profile JSON:", parseError);
@@ -49,7 +48,6 @@ export async function GET() {
           googleScholar: "",
         },
         skills: [],
-        interests: [],
       };
     }
 

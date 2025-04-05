@@ -16,7 +16,6 @@ export default function HeroSection({ profileData }: HeroSectionProps) {
     name: "Portfolio",
     title: "Developer & Researcher",
     bio: "Welcome to my portfolio website.",
-    interests: [],
     image: "/placeholder-profile.jpg",
     social: {
       twitter: "",
@@ -41,25 +40,27 @@ export default function HeroSection({ profileData }: HeroSectionProps) {
   return (
     <section className="py-12 md:py-16">
       <div className="grid md:grid-cols-2 gap-8 items-center">
-        <div className="space-y-4">
-          <div>
+        <div className="space-y-5">
+          <div className="flex items-baseline flex-wrap gap-x-3">
             <h1 className="text-4xl md:text-5xl font-bold tracking-tight">
               {profile.name}
             </h1>
             {profile.credentials && (
-              <p className="text-lg md:text-xl text-muted-foreground mt-1">
+              <span className="text-sm text-muted-foreground">
                 {profile.credentials}
-              </p>
+              </span>
             )}
           </div>
 
           {/* First title with primary styling */}
-          <div>
-            <p className="text-xl font-medium text-primary mb-1">{titles[0]}</p>
+          <div className="pt-1">
+            <p className="text-xl font-medium text-primary mb-1.5">
+              {titles[0]}
+            </p>
 
             {/* Secondary titles with compact styling */}
             {titles.length > 1 && (
-              <div className="text-sm text-muted-foreground leading-tight space-y-0.5">
+              <div className="text-sm text-muted-foreground leading-tight space-y-1">
                 {titles.slice(1).map((title, index) => (
                   <p key={index}>{title}</p>
                 ))}
@@ -67,21 +68,10 @@ export default function HeroSection({ profileData }: HeroSectionProps) {
             )}
           </div>
 
-          <div className="py-2">
-            <p className="text-lg">{profile.bio}</p>
+          <div className="py-4">
+            <p className="text-lg leading-relaxed">{profile.bio}</p>
           </div>
-          <div className="flex flex-wrap gap-3 py-1">
-            {profile.interests &&
-              profile.interests.slice(0, 4).map((interest, index) => (
-                <span
-                  key={index}
-                  className="bg-secondary px-3 py-1 text-sm rounded-full"
-                >
-                  {interest}
-                </span>
-              ))}
-          </div>
-          <div className="flex gap-4 pt-3">
+          <div className="flex gap-4 pt-1">
             <Link
               href="/portfolio"
               className="bg-primary text-primary-foreground hover:bg-primary/90 px-5 py-2.5 rounded-md shadow-sm font-medium"
@@ -97,8 +87,8 @@ export default function HeroSection({ profileData }: HeroSectionProps) {
           </div>
 
           {/* Social Media Links */}
-          <div className="pt-3">
-            <SocialLinks social={profile.social} className="mt-2" />
+          <div className="pt-2">
+            <SocialLinks social={profile.social} className="mt-1" />
           </div>
         </div>
         <div className="flex justify-center md:justify-end">

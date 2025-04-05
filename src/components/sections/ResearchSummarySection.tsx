@@ -17,8 +17,6 @@ export default function ResearchSummarySection({
     metrics: { h_index: 0, citations: 0, i10_index: 0 },
   };
 
-  const profile = profileData || { interests: [] };
-
   // Console logs for debugging
   console.log("Research data:", researchData);
   console.log("Profile data:", profileData);
@@ -61,7 +59,7 @@ export default function ResearchSummarySection({
         </Link>
       </div>
 
-      <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
+      <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
         <div className="bg-card p-6 rounded-lg shadow-sm text-center border hover:shadow-md transition-shadow duration-300">
           <h3 className="text-4xl font-bold">{researchMetrics.publications}</h3>
           <p className="text-muted-foreground">Publications</p>
@@ -75,26 +73,6 @@ export default function ResearchSummarySection({
         <div className="bg-card p-6 rounded-lg shadow-sm text-center border hover:shadow-md transition-shadow duration-300">
           <h3 className="text-4xl font-bold">{researchMetrics.h_index}</h3>
           <p className="text-muted-foreground">H-Index</p>
-        </div>
-      </div>
-
-      <div className="bg-muted p-6 rounded-lg border">
-        <h3 className="text-xl font-semibold mb-3">Research Interests</h3>
-        <div className="flex flex-wrap gap-2">
-          {profile.interests && profile.interests.length > 0 ? (
-            profile.interests.map((interest, index) => (
-              <span
-                key={index}
-                className="bg-background px-3 py-1 text-sm rounded-full border"
-              >
-                {interest}
-              </span>
-            ))
-          ) : (
-            <span className="text-muted-foreground">
-              No research interests available
-            </span>
-          )}
         </div>
       </div>
     </section>

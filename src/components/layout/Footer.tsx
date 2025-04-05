@@ -31,7 +31,6 @@ export default function Footer() {
             googleScholar: "",
           },
           skills: [],
-          interests: [],
         });
       }
     }

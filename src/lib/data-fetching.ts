@@ -56,9 +56,6 @@ export async function getProfile(): Promise<ProfileData> {
       googleScholar: profileData.social?.googleScholar || "",
     },
     skills: Array.isArray(profileData.skills) ? profileData.skills : [],
-    interests: Array.isArray(profileData.interests)
-      ? profileData.interests
-      : [],
   };
 }
 
