@@ -2,7 +2,7 @@ import { NextResponse } from "next/server";
 
 /**
  * API endpoint to check if the website is in maintenance mode
- * This endpoint allows the maintenance mode to be toggled without redeploying
+ * This endpoint allows the maintenance mode to be toggled with redeploying
  */
 export async function GET() {
   // Get maintenance mode from server-side environment variable

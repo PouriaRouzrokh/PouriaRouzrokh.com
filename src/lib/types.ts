@@ -144,3 +144,125 @@ export interface ReadingTime {
   time: number;
   words: number;
 }
+
+// Raw data interfaces - for internal use in data-fetching.ts
+export interface RawProfileData {
+  name?: string;
+  credentials?: string;
+  title?: string;
+  email?: string;
+  bio?: string;
+  shortBio?: string;
+  image?: string;
+  social?: {
+    twitter?: string;
+    github?: string;
+    linkedin?: string;
+    googleScholar?: string;
+  };
+  skills?: Array<{ category: string; items: string[] }>;
+  interests?: string[];
+  [key: string]: unknown;
+}
+
+export interface RawEducationData {
+  degrees?: Array<{
+    degree: string;
+    institution: string;
+    years: string;
+    description: string;
+    logo?: string;
+    [key: string]: unknown;
+  }>;
+  certifications?: Array<{
+    name: string;
+    issuer: string;
+    date: string;
+    url?: string;
+    [key: string]: unknown;
+  }>;
+  [key: string]: unknown;
+}
+
+export interface RawExperienceData {
+  positions?: Array<{
+    title: string;
+    organization: string;
+    location?: string;
+    years: string;
+    description: string;
+    logo?: string;
+    technologies?: string[];
+    [key: string]: unknown;
+  }>;
+  volunteering?: Array<{
+    title: string;
+    organization: string;
+    years: string;
+    description: string;
+    [key: string]: unknown;
+  }>;
+  [key: string]: unknown;
+}
+
+export interface RawAchievementData {
+  awards?: Array<{
+    title: string;
+    organization: string;
+    year: string;
+    description: string;
+    [key: string]: unknown;
+  }>;
+  honors?: Array<{
+    title: string;
+    organization: string;
+    year: string;
+    description: string;
+    [key: string]: unknown;
+  }>;
+  [key: string]: unknown;
+}
+
+export interface RawResearchData {
+  author?: string;
+  metrics?: {
+    citations?: number;
+    h_index?: number;
+    i10_index?: number;
+    cited_by_5_years?: number;
+    [key: string]: unknown;
+  };
+  articles?: Array<{
+    title: string;
+    authors: string[];
+    year: number;
+    journal: string;
+    volume?: string;
+    number?: string;
+    pages?: string;
+    abstract?: string;
+    num_citations: number;
+    url?: string;
+    doi: string;
+    bibtex: string;
+    [key: string]: unknown;
+  }>;
+  total_articles?: number;
+  total_citations?: number;
+  total_articles_processed?: number;
+  total_citations_processed?: number;
+  [key: string]: unknown;
+}
+
+export interface RawAcknowledgmentData {
+  mentors?: Array<{
+    name: string;
+    credentials: string;
+    years: string;
+    title: string;
+    affiliation: string;
+    imageUrl?: string;
+    [key: string]: unknown;
+  }>;
+  [key: string]: unknown;
+}

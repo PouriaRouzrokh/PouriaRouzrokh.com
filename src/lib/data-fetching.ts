@@ -8,129 +8,13 @@ import {
   PortfolioItem,
   AchievementItem,
   AcknowledgmentItem,
+  RawProfileData,
+  RawEducationData,
+  RawExperienceData,
+  RawAchievementData,
+  RawResearchData,
+  RawAcknowledgmentData,
 } from "./types";
-
-// Raw data interfaces
-interface RawProfileData {
-  name?: string;
-  credentials?: string;
-  title?: string;
-  email?: string;
-  bio?: string;
-  shortBio?: string;
-  image?: string;
-  social?: {
-    twitter?: string;
-    github?: string;
-    linkedin?: string;
-    googleScholar?: string;
-  };
-  skills?: Array<{ category: string; items: string[] }>;
-  interests?: string[];
-  [key: string]: unknown;
-}
-
-interface RawEducationData {
-  degrees?: Array<{
-    degree: string;
-    institution: string;
-    years: string;
-    description: string;
-    logo?: string;
-    [key: string]: unknown;
-  }>;
-  certifications?: Array<{
-    name: string;
-    issuer: string;
-    date: string;
-    url?: string;
-    [key: string]: unknown;
-  }>;
-  [key: string]: unknown;
-}
-
-interface RawExperienceData {
-  positions?: Array<{
-    title: string;
-    organization: string;
-    location?: string;
-    years: string;
-    description: string;
-    logo?: string;
-    technologies?: string[];
-    [key: string]: unknown;
-  }>;
-  volunteering?: Array<{
-    title: string;
-    organization: string;
-    years: string;
-    description: string;
-    [key: string]: unknown;
-  }>;
-  [key: string]: unknown;
-}
-
-interface RawAchievementData {
-  awards?: Array<{
-    title: string;
-    organization: string;
-    year: string;
-    description: string;
-    [key: string]: unknown;
-  }>;
-  honors?: Array<{
-    title: string;
-    organization: string;
-    year: string;
-    description: string;
-    [key: string]: unknown;
-  }>;
-  [key: string]: unknown;
-}
-
-interface RawResearchData {
-  author?: string;
-  metrics?: {
-    citations?: number;
-    h_index?: number;
-    i10_index?: number;
-    cited_by_5_years?: number;
-    [key: string]: unknown;
-  };
-  articles?: Array<{
-    title: string;
-    authors: string[];
-    year: number;
-    journal: string;
-    volume?: string;
-    number?: string;
-    pages?: string;
-    abstract?: string;
-    num_citations: number;
-    url?: string;
-    doi: string;
-    bibtex: string;
-    [key: string]: unknown;
-  }>;
-  total_articles?: number;
-  total_citations?: number;
-  total_articles_processed?: number;
-  total_citations_processed?: number;
-  [key: string]: unknown;
-}
-
-interface RawAcknowledgmentData {
-  mentors?: Array<{
-    name: string;
-    credentials: string;
-    years: string;
-    title: string;
-    affiliation: string;
-    imageUrl?: string;
-    [key: string]: unknown;
-  }>;
-  [key: string]: unknown;
-}
 
 // Helper function to read and parse JSON files - only used on server
 function readJsonFile<T>(filePath: string): T {
@@ -198,13 +82,21 @@ export async function getEducation(): Promise<EducationItem[]> {
     educationData.degrees &&
     Array.isArray(educationData.degrees)
   ) {
-    return educationData.degrees.map((item) => ({
-      degree: item.degree,
-      institution: item.institution,
-      years: item.years,
-      description: item.description,
-      logoUrl: item.logo || undefined,
-    }));
+    return educationData.degrees.map(
+      (item: {
+        degree: string;
+        institution: string;
+        years: string;
+        description: string;
+        logo?: string;
+      }) => ({
+        degree: item.degree,
+        institution: item.institution,
+        years: item.years,
+        description: item.description,
+        logoUrl: item.logo || undefined,
+      })
+    );
   }
 
   console.error(
@@ -234,15 +126,23 @@ export async function getExperience(): Promise<ExperienceItem[]> {
     experienceData.positions &&
     Array.isArray(experienceData.positions)
   ) {
-    return experienceData.positions.map((position) => {
-      return {
-        role: position.title,
-        organization: position.organization,
-        years: position.years,
-        description: position.description,
-        logoUrl: position.logo,
-      };
-    });
+    return experienceData.positions.map(
+      (position: {
+        title: string;
+        organization: string;
+        years: string;
+        description: string;
+        logo?: string;
+      }) => {
+        return {
+          role: position.title,
+          organization: position.organization,
+          years: position.years,
+          description: position.description,
+          logoUrl: position.logo,
+        };
+      }
+    );
   }
 
   console.error(
@@ -273,13 +173,20 @@ export async function getAchievements(): Promise<AchievementItem[]> {
     achievementsData.awards &&
     Array.isArray(achievementsData.awards)
   ) {
-    const awards = achievementsData.awards.map((item) => ({
-      title: item.title,
-      organization: item.organization,
-      year: item.year,
-      description: item.description,
-      category: "Award",
-    }));
+    const awards = achievementsData.awards.map(
+      (item: {
+        title: string;
+        organization: string;
+        year: string;
+        description: string;
+      }) => ({
+        title: item.title,
+        organization: item.organization,
+        year: item.year,
+        description: item.description,
+        category: "Award",
+      })
+    );
     results = [...results, ...awards];
   }
 
@@ -289,13 +196,20 @@ export async function getAchievements(): Promise<AchievementItem[]> {
     achievementsData.honors &&
     Array.isArray(achievementsData.honors)
   ) {
-    const honors = achievementsData.honors.map((item) => ({
-      title: item.title,
-      organization: item.organization,
-      year: item.year,
-      description: item.description,
-      category: "Honor",
-    }));
+    const honors = achievementsData.honors.map(
+      (item: {
+        title: string;
+        organization: string;
+        year: string;
+        description: string;
+      }) => ({
+        title: item.title,
+        organization: item.organization,
+        year: item.year,
+        description: item.description,
+        category: "Honor",
+      })
+    );
     results = [...results, ...honors];
   }
 
@@ -416,14 +330,23 @@ export async function getAcknowledgments(): Promise<AcknowledgmentItem[]> {
     acknowledgmentData.mentors &&
     Array.isArray(acknowledgmentData.mentors)
   ) {
-    return acknowledgmentData.mentors.map((mentor) => ({
-      name: mentor.name,
-      credentials: mentor.credentials,
-      years: mentor.years,
-      title: mentor.title,
-      affiliation: mentor.affiliation,
-      imageUrl: mentor.imageUrl,
-    }));
+    return acknowledgmentData.mentors.map(
+      (mentor: {
+        name: string;
+        credentials: string;
+        years: string;
+        title: string;
+        affiliation: string;
+        imageUrl?: string;
+      }) => ({
+        name: mentor.name,
+        credentials: mentor.credentials,
+        years: mentor.years,
+        title: mentor.title,
+        affiliation: mentor.affiliation,
+        imageUrl: mentor.imageUrl,
+      })
+    );
   }
 
   console.error(
