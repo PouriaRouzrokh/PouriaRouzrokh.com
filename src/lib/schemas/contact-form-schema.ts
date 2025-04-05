@@ -2,11 +2,13 @@ import { z } from "zod";
 
 // Array of consultation areas
 export const consultationAreas = [
-  "Research",
   "AI Development",
-  "AI Engineering",
+  "AI Deployment and Engineering",
   "Radiology AI",
   "Clinical AI",
+  "Research Planning and Conduction",
+  "Scientific Writing and Editing",
+  "Data Analysis and Curation",
   "Other",
 ] as const;
 
