@@ -5,8 +5,6 @@ export const consultationAreas = [
   "Research",
   "AI Development",
   "AI Engineering",
-  "US Residency and Match",
-  "Research Fellowship Application",
   "Radiology AI",
   "Clinical AI",
   "Other",
