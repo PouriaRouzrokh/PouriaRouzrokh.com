@@ -41,14 +41,14 @@ export default function HeroSection({ profileData }: HeroSectionProps) {
     <section className="py-12 md:py-16">
       <div className="grid md:grid-cols-2 gap-8 items-center">
         <div className="space-y-5">
-          <div className="flex items-baseline flex-wrap gap-x-3">
+          <div>
             <h1 className="text-4xl md:text-5xl font-bold tracking-tight">
               {profile.name}
             </h1>
             {profile.credentials && (
-              <span className="text-sm text-muted-foreground">
+              <p className="text-sm md:text-base text-muted-foreground mt-2">
                 {profile.credentials}
-              </span>
+              </p>
             )}
           </div>
 
