@@ -80,12 +80,55 @@ export async function getPostBySlug(slug: string): Promise<BlogPost | null> {
       return cachedData.post;
     }
 
-    const posts = await getAllPosts();
-    const post = posts.find((p) => p.slug === slug);
+    const databaseId = process.env.NOTION_DATABASE_ID;
 
-    if (!post) {
+    if (!databaseId) {
+      throw new Error("NOTION_DATABASE_ID is not defined");
+    }
+
+    // Query directly for the post with matching slug
+    const response = await notion.databases.query({
+      database_id: databaseId,
+      filter: {
+        and: [
+          {
+            property: "Slug",
+            rich_text: {
+              equals: slug,
+            },
+          },
+          {
+            property: "Published",
+            checkbox: {
+              equals: true,
+            },
+          },
+        ],
+      },
+    });
+
+    // No matching post found
+    if (response.results.length === 0) {
       return null;
     }
+
+    // Get the matching post
+    const page = response.results[0];
+    // @ts-expect-error - The Notion API types are complex
+    const { properties } = page;
+
+    const post: BlogPostMetadata = {
+      id: page.id,
+      title: properties.Title.title[0]?.plain_text || "Untitled",
+      slug: properties.Slug.rich_text[0]?.plain_text || "",
+      date: properties.Date.date?.start || "",
+      summary: properties.Summary.rich_text[0]?.plain_text || "",
+      tags: properties.Tags.multi_select.map(
+        (tag: { name: string }) => tag.name
+      ),
+      featuredImage: properties.FeaturedImage.url || "",
+      published: properties.Published.checkbox,
+    };
 
     // Get the page blocks
     const mdblocks = await n2m.pageToMarkdown(post.id);
