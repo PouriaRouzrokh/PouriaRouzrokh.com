@@ -67,10 +67,10 @@ export default function HeroSection({ profileData }: HeroSectionProps) {
             )}
           </div>
 
-          <div className="py-3">
+          <div className="py-2">
             <p className="text-lg">{profile.bio}</p>
           </div>
-          <div className="flex flex-wrap gap-3 py-2">
+          <div className="flex flex-wrap gap-3 py-1">
             {profile.interests &&
               profile.interests.slice(0, 4).map((interest, index) => (
                 <span
@@ -83,16 +83,22 @@ export default function HeroSection({ profileData }: HeroSectionProps) {
           </div>
           <div className="flex gap-4 pt-3">
             <Link
-              href="/research"
-              className="bg-primary text-primary-foreground hover:bg-primary/90 px-4 py-2 rounded-md"
-            >
-              View Research
-            </Link>
-            <Link
               href="/contact"
-              className="bg-secondary text-secondary-foreground hover:bg-secondary/90 px-4 py-2 rounded-md"
+              className="bg-primary text-primary-foreground hover:bg-primary/90 px-5 py-2.5 rounded-md shadow-sm font-medium"
             >
               Contact Me
+            </Link>
+            <Link
+              href="/portfolio"
+              className="bg-secondary text-secondary-foreground hover:bg-secondary/90 px-5 py-2.5 rounded-md shadow-sm font-medium"
+            >
+              View Portfolio
+            </Link>
+            <Link
+              href="/research"
+              className="bg-secondary text-secondary-foreground hover:bg-secondary/90 px-5 py-2.5 rounded-md shadow-sm font-medium"
+            >
+              View Research
             </Link>
           </div>
 
