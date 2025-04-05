@@ -9,20 +9,28 @@ import MaintenanceWrapper from "@/components/layout/MaintenanceWrapper";
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
-  title: "Pouria Rouzrokh - AI Researcher | Developer | Innovator",
+  title: "Pouria Rouzrokh | AI Researcher & Developer | pouria.ai",
   description:
-    "Personal portfolio of Pouria Rouzrokh, featuring research, projects, and blog posts about AI and development.",
+    "Official website of Pouria Rouzrokh - AI researcher, developer, and innovator. Explore my projects, research, and expertise in artificial intelligence.",
   keywords: [
+    "Pouria Rouzrokh",
+    "Pouria",
+    "pouria.ai",
     "AI",
     "Research",
     "Machine Learning",
     "Development",
     "Portfolio",
     "Biomedical Informatics",
+    "Artificial Intelligence Expert",
   ],
-  authors: [{ name: "Pouria Rouzrokh" }],
+  authors: [{ name: "Pouria Rouzrokh", url: "https://pouria.ai" }],
   creator: "Pouria Rouzrokh",
+  publisher: "Pouria Rouzrokh",
   metadataBase: new URL(process.env.NEXT_PUBLIC_APP_URL || "https://pouria.ai"),
+  alternates: {
+    canonical: "https://pouria.ai",
+  },
   icons: {
     icon: [{ url: "/pr-logo.svg", type: "image/svg+xml" }],
     shortcut: ["/pr-logo.svg"],
@@ -32,9 +40,9 @@ export const metadata: Metadata = {
     type: "website",
     locale: "en_US",
     url: "https://pouria.ai",
-    title: "Pouria Rouzrokh - AI Researcher | Developer | Innovator",
+    title: "Pouria Rouzrokh | AI Researcher & Developer | pouria.ai",
     description:
-      "Personal portfolio of Pouria Rouzrokh, showcasing AI research, projects, and expertise",
+      "Official website of Pouria Rouzrokh - AI researcher, developer, and innovator specialized in artificial intelligence and machine learning.",
     siteName: "Pouria Rouzrokh's Portfolio",
     images: [
       {
@@ -47,10 +55,11 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "Pouria Rouzrokh - AI Researcher | Developer | Innovator",
+    title: "Pouria Rouzrokh | AI Researcher & Developer | pouria.ai",
     description:
-      "Personal portfolio of Pouria Rouzrokh, showcasing AI research, projects, and expertise",
+      "Official website of Pouria Rouzrokh - AI researcher, developer, and innovator specialized in artificial intelligence and machine learning.",
     images: ["/og-image.jpg"],
+    creator: "@pouriarz",
   },
 };
 

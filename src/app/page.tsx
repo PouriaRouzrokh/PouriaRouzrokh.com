@@ -13,6 +13,7 @@ import {
   getAchievements,
   getAcknowledgments,
 } from "@/lib/data-fetching";
+import { JsonLd } from "@/components/seo/JsonLd";
 
 // This makes Next.js statically generate this page at build time
 // and revalidate the data every 1 hour
@@ -36,8 +37,51 @@ export default async function Home() {
     getAcknowledgments(),
   ]);
 
+  const personJsonLd = {
+    "@context": "https://schema.org",
+    "@type": "Person",
+    name: "Pouria Rouzrokh",
+    url: "https://pouria.ai",
+    jobTitle: "AI Researcher & Developer",
+    description:
+      profile?.bio ||
+      "AI Researcher and Developer specializing in artificial intelligence and machine learning",
+    sameAs: [
+      profile?.social?.github
+        ? `https://github.com/${profile.social.github}`
+        : "",
+      profile?.social?.twitter
+        ? `https://twitter.com/${profile.social.twitter}`
+        : "",
+      profile?.social?.linkedin
+        ? `https://linkedin.com/in/${profile.social.linkedin}`
+        : "",
+    ].filter(Boolean),
+    alumniOf:
+      education?.map((edu) => ({
+        "@type": "EducationalOrganization",
+        name: edu.institution,
+      })) || [],
+  };
+
+  const websiteJsonLd = {
+    "@context": "https://schema.org",
+    "@type": "WebSite",
+    url: "https://pouria.ai",
+    name: "Pouria Rouzrokh | AI Researcher & Developer",
+    description:
+      "Official website of Pouria Rouzrokh - AI researcher, developer, and innovator",
+    author: {
+      "@type": "Person",
+      name: "Pouria Rouzrokh",
+    },
+  };
+
   return (
     <div className="container mx-auto px-4 py-8">
+      <JsonLd data={personJsonLd} />
+      <JsonLd data={websiteJsonLd} />
+
       <HeroSection profileData={profile} />
 
       <SectionDivider />
