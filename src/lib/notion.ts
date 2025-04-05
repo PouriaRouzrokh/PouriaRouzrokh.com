@@ -11,6 +11,10 @@ const notion = new Client({
 // Initialize NotionToMarkdown converter
 const n2m = new NotionToMarkdown({ notionClient: notion });
 
+// Simple in-memory cache for blog posts
+const postCache = new Map<string, { post: BlogPost; timestamp: number }>();
+const CACHE_TTL = 1000 * 60 * 15; // 15 minutes cache
+
 /**
  * Fetches all published blog posts from Notion
  */
@@ -68,6 +72,14 @@ export async function getAllPosts(): Promise<BlogPostMetadata[]> {
  */
 export async function getPostBySlug(slug: string): Promise<BlogPost | null> {
   try {
+    // Check cache first
+    const cachedData = postCache.get(slug);
+    const now = Date.now();
+
+    if (cachedData && now - cachedData.timestamp < CACHE_TTL) {
+      return cachedData.post;
+    }
+
     const posts = await getAllPosts();
     const post = posts.find((p) => p.slug === slug);
 
@@ -79,11 +91,16 @@ export async function getPostBySlug(slug: string): Promise<BlogPost | null> {
     const mdblocks = await n2m.pageToMarkdown(post.id);
     const mdString = n2m.toMarkdownString(mdblocks);
 
-    return {
+    const fullPost = {
       ...post,
       content: mdString.parent,
       readingTime: calculateReadingTime(mdString.parent),
     };
+
+    // Update cache
+    postCache.set(slug, { post: fullPost, timestamp: now });
+
+    return fullPost;
   } catch (error) {
     console.error(`Error fetching post with slug ${slug}:`, error);
     return null;

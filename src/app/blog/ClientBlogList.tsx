@@ -4,6 +4,7 @@ import { useState, useEffect } from "react";
 import BlogCard from "@/components/sections/BlogCard";
 import BlogTagFilter from "@/components/sections/BlogTagFilter";
 import { BlogPostMetadata } from "@/lib/types";
+import { useRouter } from "next/navigation";
 
 interface ClientBlogListProps {
   initialPosts: BlogPostMetadata[];
@@ -18,6 +19,7 @@ export default function ClientBlogList({
   const [selectedTags, setSelectedTags] = useState<string[]>([]);
   const [displayedPosts, setDisplayedPosts] =
     useState<BlogPostMetadata[]>(initialPosts);
+  const router = useRouter();
 
   // Handle tag selection/deselection
   const handleTagToggle = (tag: string) => {
@@ -54,6 +56,25 @@ export default function ClientBlogList({
 
     setDisplayedPosts(filtered);
   }, [searchTerm, selectedTags, initialPosts]);
+
+  // Preload blog post data for all visible posts
+  useEffect(() => {
+    if (displayedPosts.length > 0) {
+      // Preload the first few posts immediately
+      displayedPosts.slice(0, 3).forEach((post) => {
+        router.prefetch(`/blog/${post.slug}`);
+      });
+
+      // Preload the rest with a slight delay to avoid network congestion
+      const timer = setTimeout(() => {
+        displayedPosts.slice(3).forEach((post) => {
+          router.prefetch(`/blog/${post.slug}`);
+        });
+      }, 2000);
+
+      return () => clearTimeout(timer);
+    }
+  }, [displayedPosts, router]);
 
   return (
     <div>
@@ -108,7 +129,7 @@ export default function ClientBlogList({
 
           {/* Blog posts grid */}
           {displayedPosts.length > 0 ? (
-            <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+            <div className="grid gap-6">
               {displayedPosts.map((post) => (
                 <BlogCard key={post.id} post={post} />
               ))}
