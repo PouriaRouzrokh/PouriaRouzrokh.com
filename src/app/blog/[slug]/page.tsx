@@ -57,11 +57,6 @@ export const dynamic = "force-static";
 // Configure runtime to be server-side only for security
 export const runtime = "nodejs";
 
-// Add revalidation tags for on-demand revalidation
-export const generateMetadataConfig = {
-  revalidate: 43200,
-};
-
 export default async function BlogPostPage({
   params,
 }: {
