@@ -3,10 +3,10 @@
   "affiliation": "Assistant Professor, Department of Radiology, Mayo Clinic, MN, USA",
   "google_scholar_id": "Ksv9I0sAAAAJ",
   "metrics": {
-    "citations": 1125,
+    "citations": 1126,
     "h_index": 19,
     "i10_index": 33,
-    "cited_by_5_years": 1115
+    "cited_by_5_years": 1116
   },
   "articles": [
     {
@@ -619,7 +619,7 @@
       "number": "5",
       "pages": "e220061",
       "abstract": "The increasing use of machine learning (ML) algorithms in clinical settings raises concerns about bias in ML models. Bias can arise at any step of ML creation, including data handling, model development, and performance evaluation. Potential biases in the ML model can be minimized by implementing these steps correctly. This report focuses on performance evaluation and discusses model fitness, as well as a set of performance evaluation toolboxes: namely, performance metrics, performance interpretation maps, and uncertainty quantification. By discussing the strengths and limitations of each toolbox, our report highlights strategies and considerations to mitigate and detect biases during performance evaluations of radiology artificial intelligence models.Keywords: Segmentation, Diagnosis",
-      "num_citations": 72,
+      "num_citations": 73,
       "url": "https://pubs.rsna.org/doi/abs/10.1148/ryai.220061",
       "doi": "10.1148/ryai.220061",
       "bibtex": "@article{erickson2022mitigating,\n    author = {Shahriar Faghani and Bardia Khosravi and Kuan Zhang and Mana Moassefi and Jaidip Manikrao Jagtap and Fred Nugen and Sanaz Vahdati and Shiba P Kuanar and Seyed Moein Rassoulinejad-Mousavi and Yashbir Singh and Diana V Vera Garcia and Pouria Rouzrokh and Bradley J Erickson},\n    title = {Mitigating bias in radiology machine learning: 3. Performance metrics},\n    year = {2022},\n    journal = {Radiology: Artificial Intelligence},\n    volume = {4},\n    number = {5},\n    pages = {e220061},\n    doi = {10.1148/ryai.220061},\n    url = {https://pubs.rsna.org/doi/abs/10.1148/ryai.220061},\n    abstract = {The increasing use of machine learning (ML) algorithms in clinical settings raises concerns about bias in ML models. Bias can arise at any step of ML creation, including data handling, model development, and performance evaluation. Potential biases in the ML model can be minimized by implementing these steps correctly. This report focuses on performance evaluation and discusses model fitness, as well as a set of performance evaluation toolboxes: namely, performance metrics, performance interpretation maps, and uncertainty quantification. By discussing the strengths and limitations of each toolbox, our report highlights strategies and considerations to mitigate and detect biases during performance evaluations of radiology artificial intelligence models.Keywords: Segmentation, Diagnosis},\n}"
@@ -947,8 +947,8 @@
     }
   ],
   "total_articles": 71,
-  "total_citations": 1125,
+  "total_citations": 1126,
   "total_articles_processed": 71,
-  "total_citations_processed": 1125,
-  "fetched_at": "2025-04-05 00:15:26 UTC"
+  "total_citations_processed": 1126,
+  "fetched_at": "2025-04-07 00:15:11 UTC"
 }
