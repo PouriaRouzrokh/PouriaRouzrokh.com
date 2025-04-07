@@ -57,7 +57,7 @@ export function ResearchCard({ article, className }: ResearchCardProps) {
   return (
     <Card
       className={cn(
-        "h-full flex flex-col transition-shadow hover:shadow-md",
+        "h-full flex flex-col transition-all hover:shadow-md border-2 hover:border-primary/50",
         className
       )}
     >

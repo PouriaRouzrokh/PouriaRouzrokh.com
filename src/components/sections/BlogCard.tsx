@@ -41,7 +41,7 @@ export default function BlogCard({ post }: BlogCardProps) {
   );
 
   return (
-    <div className="group flex flex-col overflow-hidden rounded-lg shadow-lg transition-all duration-300 hover:shadow-xl dark:bg-gray-800/50">
+    <div className="group flex flex-col overflow-hidden rounded-lg shadow-lg transition-all duration-300 hover:shadow-xl dark:bg-gray-800/50 border-2 hover:border-primary/50">
       <div className="relative h-48 w-full overflow-hidden">
         <Image
           src={imageUrl}

@@ -141,7 +141,7 @@ export function PortfolioList() {
     <div className="container mx-auto py-12">
       <SectionHeading
         title="Portfolio"
-        subtitle="Explore my projects and technical work"
+        subtitle="Explore my coding projects and developed products..."
         className="mb-8"
       />
 
