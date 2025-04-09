@@ -3,10 +3,10 @@
   "affiliation": "Assistant Professor, Department of Radiology, Mayo Clinic, MN, USA",
   "google_scholar_id": "Ksv9I0sAAAAJ",
   "metrics": {
-    "citations": 1126,
+    "citations": 1130,
     "h_index": 19,
     "i10_index": 33,
-    "cited_by_5_years": 1116
+    "cited_by_5_years": 1120
   },
   "articles": [
     {
@@ -390,7 +390,7 @@
       "number": "2",
       "pages": "e222217",
       "abstract": "In recent years, deep learning (DL) has shown impressive performance in radiologic image analysis. However, for a DL model to be useful in a real-world setting, its confidence in a prediction must also be known. Each DL models output has an estimated probability, and these estimated probabilities are not always reliable. Uncertainty represents the trustworthiness (validity) of estimated probabilities. The higher the uncertainty, the lower the validity. Uncertainty quantification (UQ) methods determine the uncertainty level of each prediction. Predictions made without UQ methods are generally not trustworthy. By implementing UQ in medical DL models, users can be alerted when a model does not have enough information to make a confident decision. Consequently, a medical expert could reevaluate the",
-      "num_citations": 48,
+      "num_citations": 50,
       "url": "https://pubs.rsna.org/doi/abs/10.1148/radiol.222217",
       "doi": "10.1148/radiol.222217",
       "bibtex": "@article{erickson2023quantifying,\n    author = {Shahriar Faghani and Mana Moassefi and Pouria Rouzrokh and Bardia Khosravi and Francis I Baffour and Michael D Ringler and Bradley J Erickson},\n    title = {Quantifying uncertainty in deep learning of radiologic images},\n    year = {2023},\n    volume = {308},\n    number = {2},\n    pages = {e222217},\n    doi = {10.1148/radiol.222217},\n    url = {https://pubs.rsna.org/doi/abs/10.1148/radiol.222217},\n    abstract = {In recent years, deep learning (DL) has shown impressive performance in radiologic image analysis. However, for a DL model to be useful in a real-world setting, its confidence in a prediction must also be known. Each DL models output has an estimated probability, and these estimated probabilities are not always reliable. Uncertainty represents the trustworthiness (validity) of estimated probabilities. The higher the uncertainty, the lower the validity. Uncertainty quantification (UQ) methods determine the uncertainty level of each prediction. Predictions made without UQ methods are generally not trustworthy. By implementing UQ in medical DL models, users can be alerted when a model does not have enough information to make a confident decision. Consequently, a medical expert could reevaluate the},\n}"
@@ -591,7 +591,7 @@
       "number": "5",
       "pages": "e210290",
       "abstract": "Minimizing bias is critical to adoption and implementation of machine learning (ML) in clinical practice. Systematic mathematical biases produce consistent and reproducible differences between the observed and expected performance of ML systems, resulting in suboptimal performance. Such biases can be traced back to various phases of ML development: data handling, model development, and performance evaluation. This report presents 12 suboptimal practices during data handling of an ML study, explains how those practices can lead to biases, and describes what may be done to mitigate them. Authors employ an arbitrary and simplified framework that splits ML data handling into four steps: data collection, data investigation, data splitting, and feature engineering. Examples from the available",
-      "num_citations": 103,
+      "num_citations": 104,
       "url": "https://pubs.rsna.org/doi/abs/10.1148/ryai.210290",
       "doi": "10.1148/ryai.210290",
       "bibtex": "@article{erickson2022mitigating,\n    author = {Pouria Rouzrokh and Bardia Khosravi and Shahriar Faghani and Mana Moassefi and Diana V Vera Garcia and Yashbir Singh and Kuan Zhang and Gian Marco Conte and Bradley J Erickson},\n    title = {Mitigating bias in radiology machine learning: 1. Data handling},\n    year = {2022},\n    journal = {Radiology: Artificial Intelligence},\n    volume = {4},\n    number = {5},\n    pages = {e210290},\n    doi = {10.1148/ryai.210290},\n    url = {https://pubs.rsna.org/doi/abs/10.1148/ryai.210290},\n    abstract = {Minimizing bias is critical to adoption and implementation of machine learning (ML) in clinical practice. Systematic mathematical biases produce consistent and reproducible differences between the observed and expected performance of ML systems, resulting in suboptimal performance. Such biases can be traced back to various phases of ML development: data handling, model development, and performance evaluation. This report presents 12 suboptimal practices during data handling of an ML study, explains how those practices can lead to biases, and describes what may be done to mitigate them. Authors employ an arbitrary and simplified framework that splits ML data handling into four steps: data collection, data investigation, data splitting, and feature engineering. Examples from the available},\n}"
@@ -619,7 +619,7 @@
       "number": "5",
       "pages": "e220061",
       "abstract": "The increasing use of machine learning (ML) algorithms in clinical settings raises concerns about bias in ML models. Bias can arise at any step of ML creation, including data handling, model development, and performance evaluation. Potential biases in the ML model can be minimized by implementing these steps correctly. This report focuses on performance evaluation and discusses model fitness, as well as a set of performance evaluation toolboxes: namely, performance metrics, performance interpretation maps, and uncertainty quantification. By discussing the strengths and limitations of each toolbox, our report highlights strategies and considerations to mitigate and detect biases during performance evaluations of radiology artificial intelligence models.Keywords: Segmentation, Diagnosis",
-      "num_citations": 73,
+      "num_citations": 74,
       "url": "https://pubs.rsna.org/doi/abs/10.1148/ryai.220061",
       "doi": "10.1148/ryai.220061",
       "bibtex": "@article{erickson2022mitigating,\n    author = {Shahriar Faghani and Bardia Khosravi and Kuan Zhang and Mana Moassefi and Jaidip Manikrao Jagtap and Fred Nugen and Sanaz Vahdati and Shiba P Kuanar and Seyed Moein Rassoulinejad-Mousavi and Yashbir Singh and Diana V Vera Garcia and Pouria Rouzrokh and Bradley J Erickson},\n    title = {Mitigating bias in radiology machine learning: 3. Performance metrics},\n    year = {2022},\n    journal = {Radiology: Artificial Intelligence},\n    volume = {4},\n    number = {5},\n    pages = {e220061},\n    doi = {10.1148/ryai.220061},\n    url = {https://pubs.rsna.org/doi/abs/10.1148/ryai.220061},\n    abstract = {The increasing use of machine learning (ML) algorithms in clinical settings raises concerns about bias in ML models. Bias can arise at any step of ML creation, including data handling, model development, and performance evaluation. Potential biases in the ML model can be minimized by implementing these steps correctly. This report focuses on performance evaluation and discusses model fitness, as well as a set of performance evaluation toolboxes: namely, performance metrics, performance interpretation maps, and uncertainty quantification. By discussing the strengths and limitations of each toolbox, our report highlights strategies and considerations to mitigate and detect biases during performance evaluations of radiology artificial intelligence models.Keywords: Segmentation, Diagnosis},\n}"
@@ -947,8 +947,8 @@
     }
   ],
   "total_articles": 71,
-  "total_citations": 1126,
+  "total_citations": 1130,
   "total_articles_processed": 71,
-  "total_citations_processed": 1126,
-  "fetched_at": "2025-04-08 00:14:52 UTC"
+  "total_citations_processed": 1130,
+  "fetched_at": "2025-04-09 00:16:40 UTC"
 }
