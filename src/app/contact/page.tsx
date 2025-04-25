@@ -1,4 +1,6 @@
-import React from "react";
+"use client";
+
+import React, { useEffect } from "react";
 import type { Metadata } from "next";
 import { ContactForm } from "@/components/forms/ContactForm";
 import { Separator } from "@/components/ui/separator";
@@ -20,6 +22,18 @@ export const metadata: Metadata = {
 };
 
 export default function ContactPage() {
+  // Log environment variable for debugging
+  useEffect(() => {
+    console.log(
+      "NEXT_PUBLIC_RECAPTCHA_SITE_KEY:",
+      process.env.NEXT_PUBLIC_RECAPTCHA_SITE_KEY
+    );
+    console.log(
+      "Key length:",
+      process.env.NEXT_PUBLIC_RECAPTCHA_SITE_KEY?.length
+    );
+  }, []);
+
   return (
     <div className="container max-w-4xl py-12 px-4 sm:px-6 lg:px-8">
       <div className="space-y-6">
