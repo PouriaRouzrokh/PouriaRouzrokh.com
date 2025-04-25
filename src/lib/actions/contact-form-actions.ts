@@ -67,11 +67,19 @@ async function verifyRecaptcha(
   try {
     const recaptchaSecretKey = process.env.RECAPTCHA_SECRET_KEY;
 
+    // If reCAPTCHA is not configured, fail validation
     if (!recaptchaSecretKey) {
       console.error("Missing RECAPTCHA_SECRET_KEY in environment variables");
       return false;
     }
 
+    // If token is missing, fail validation
+    if (!token) {
+      console.error("Missing reCAPTCHA token");
+      return false;
+    }
+
+    // Verify token with Google API
     const response = await fetch(
       "https://www.google.com/recaptcha/api/siteverify",
       {
@@ -87,7 +95,15 @@ async function verifyRecaptcha(
       }
     );
 
+    if (!response.ok) {
+      console.error(
+        `reCAPTCHA API error: ${response.status} ${response.statusText}`
+      );
+      return false;
+    }
+
     const data = await response.json();
+    console.log("reCAPTCHA verification result:", data);
 
     // Check if the verification was successful and score is acceptable (for v3)
     // Typically 0.5 is a reasonable threshold, but you can adjust based on your needs

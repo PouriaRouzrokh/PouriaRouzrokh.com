@@ -26,6 +26,9 @@ import {
 } from "@/lib/schemas/contact-form-schema";
 import Script from "next/script";
 
+// Debug flag for development
+const DEBUG = process.env.NODE_ENV === "development";
+
 // Extend window type to include grecaptcha
 declare global {
   interface Window {
@@ -59,11 +62,18 @@ export function ContactForm() {
   });
 
   const [recaptchaReady, setRecaptchaReady] = useState(false);
+  const [recaptchaDebugInfo, setRecaptchaDebugInfo] = useState<string | null>(
+    null
+  );
 
   // Initialize reCAPTCHA when component mounts
   useEffect(() => {
+    // Debug info
+    if (DEBUG) console.log("[reCAPTCHA] Setting up callback");
+
     // Define the global callback for reCAPTCHA
     window.onLoadRecaptcha = () => {
+      if (DEBUG) console.log("[reCAPTCHA] Script loaded successfully");
       setRecaptchaReady(true);
     };
 
@@ -74,20 +84,51 @@ export function ContactForm() {
     };
   }, []);
 
+  // Log site key (only in development)
+  useEffect(() => {
+    if (DEBUG) {
+      console.log(
+        "[reCAPTCHA] Site key:",
+        process.env.NEXT_PUBLIC_RECAPTCHA_SITE_KEY
+      );
+      console.log("[reCAPTCHA] Ready state:", recaptchaReady);
+    }
+  }, [recaptchaReady]);
+
   // Get reCAPTCHA token
   const getReCaptchaToken = async (): Promise<string> => {
-    if (!recaptchaReady || !window.grecaptcha) {
-      console.error("reCAPTCHA not loaded");
+    if (!recaptchaReady) {
+      const error = "reCAPTCHA not ready yet";
+      console.error(error);
+      setRecaptchaDebugInfo(error);
+      return "";
+    }
+
+    if (!window.grecaptcha) {
+      const error = "reCAPTCHA not loaded";
+      console.error(error);
+      setRecaptchaDebugInfo(error);
       return "";
     }
 
     try {
-      return await window.grecaptcha.execute(
+      if (DEBUG) console.log("[reCAPTCHA] Executing reCAPTCHA...");
+
+      const token = await window.grecaptcha.execute(
         process.env.NEXT_PUBLIC_RECAPTCHA_SITE_KEY || "",
         { action: "contact_form" }
       );
+
+      if (DEBUG)
+        console.log(
+          "[reCAPTCHA] Token received:",
+          token.substring(0, 10) + "..."
+        );
+      setRecaptchaDebugInfo(null);
+      return token;
     } catch (error) {
-      console.error("reCAPTCHA error:", error);
+      console.error("[reCAPTCHA] Error:", error);
+      setRecaptchaDebugInfo(`Error: ${error}`);
       return "";
     }
   };
@@ -98,22 +139,28 @@ export function ContactForm() {
     success?: boolean;
     message?: string;
   } | null>(null);
+  const [submissionDebug, setSubmissionDebug] = useState<string | null>(null);
 
   // Handle form submission
   const onSubmit = async (data: ContactFormData) => {
+    if (DEBUG) console.log("[Form] Submission started");
     setIsSubmitting(true);
     setSubmitResult(null);
+    setSubmissionDebug(null);
 
     try {
       // Get reCAPTCHA token before submission
+      if (DEBUG) console.log("[Form] Getting reCAPTCHA token");
       const recaptchaToken = await getReCaptchaToken();
 
       if (!recaptchaToken) {
+        const error =
+          "reCAPTCHA verification failed. Please try again or refresh the page.";
         setSubmitResult({
           success: false,
-          message:
-            "reCAPTCHA verification failed. Please try again or refresh the page.",
+          message: error,
         });
+        setSubmissionDebug("No reCAPTCHA token received");
         return;
       }
 
@@ -123,18 +170,26 @@ export function ContactForm() {
         recaptchaToken,
       };
 
+      if (DEBUG) console.log("[Form] Submitting form with token");
       const result = await submitContactForm(dataWithToken);
+      if (DEBUG) console.log("[Form] Submission result:", result);
+
       setSubmitResult(result);
 
       if (result.success) {
         form.reset();
       }
     } catch (error: unknown) {
-      console.error("Form submission error:", error);
+      console.error("[Form] Submission error:", error);
       setSubmitResult({
         success: false,
         message: "An unexpected error occurred. Please try again later.",
       });
+      if (error instanceof Error) {
+        setSubmissionDebug(`Error: ${error.message}`);
+      } else {
+        setSubmissionDebug(`Unknown error: ${String(error)}`);
+      }
     } finally {
       setIsSubmitting(false);
     }
@@ -149,7 +204,25 @@ export function ContactForm() {
       <Script
         src={`https://www.google.com/recaptcha/api.js?render=${process.env.NEXT_PUBLIC_RECAPTCHA_SITE_KEY}&onload=onLoadRecaptcha`}
         strategy="afterInteractive"
+        onError={(e) => {
+          console.error("[reCAPTCHA] Script loading error:", e);
+          setRecaptchaDebugInfo(`Script loading error: ${e.message}`);
+        }}
       />
+
+      {/* Debug info (only in development) */}
+      {DEBUG && (
+        <div className="mb-4 p-3 border border-blue-200 bg-blue-50 text-blue-800 text-xs rounded-md">
+          <div>
+            <strong>Debug Info:</strong>
+          </div>
+          <div>reCAPTCHA Ready: {recaptchaReady ? "Yes" : "No"}</div>
+          {recaptchaDebugInfo && (
+            <div>reCAPTCHA Error: {recaptchaDebugInfo}</div>
+          )}
+          {submissionDebug && <div>Submission Debug: {submissionDebug}</div>}
+        </div>
+      )}
 
       {/* Submission status message */}
       {submitResult && (
@@ -161,6 +234,25 @@ export function ContactForm() {
               : "bg-red-50 text-red-800 dark:bg-red-950 dark:text-red-200"
           )}
         >
+          {submitResult.success && (
+            <div className="flex flex-col items-center justify-center mb-2">
+              <svg
+                className="w-8 h-8 text-green-500 mb-2"
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth={2}
+                  d="M5 13l4 4L19 7"
+                />
+              </svg>
+              <span className="font-medium">Message Sent Successfully!</span>
+            </div>
+          )}
           {submitResult.message}
         </div>
       )}
@@ -400,7 +492,14 @@ export function ContactForm() {
           </div>
 
           {/* Submit button */}
-          <Button type="submit" className="w-full" disabled={isSubmitting}>
+          <Button
+            type="submit"
+            className="w-full"
+            disabled={isSubmitting}
+            onClick={() => {
+              if (DEBUG) console.log("[Form] Submit button clicked");
+            }}
+          >
             {isSubmitting ? "Sending..." : "Send Message"}
           </Button>
         </form>
