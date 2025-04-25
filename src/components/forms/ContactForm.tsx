@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { cn } from "@/lib/utils";
@@ -36,51 +36,9 @@ declare global {
         options: { action: string }
       ) => Promise<string>;
     };
-    onRecaptchaLoad: () => void;
+    onLoadRecaptcha: () => void;
   }
 }
-
-// Helper function to load reCAPTCHA script
-const loadReCaptchaScript = () => {
-  return new Promise<void>((resolve) => {
-    if (typeof window !== "undefined" && window.grecaptcha) {
-      resolve();
-      return;
-    }
-
-    // Create a global callback function
-    window.onRecaptchaLoad = () => {
-      resolve();
-    };
-  });
-};
-
-// Helper function to get reCAPTCHA token
-const getReCaptchaToken = async (): Promise<string> => {
-  await loadReCaptchaScript();
-
-  return new Promise<string>((resolve) => {
-    if (!window.grecaptcha) {
-      console.error("reCAPTCHA not loaded");
-      resolve("");
-      return;
-    }
-
-    window.grecaptcha.ready(() => {
-      window.grecaptcha
-        .execute(process.env.NEXT_PUBLIC_RECAPTCHA_SITE_KEY || "", {
-          action: "contact_form",
-        })
-        .then((token: string) => {
-          resolve(token);
-        })
-        .catch((error: Error) => {
-          console.error("reCAPTCHA error:", error);
-          resolve("");
-        });
-    });
-  });
-};
 
 export function ContactForm() {
   // Form state management with react-hook-form
@@ -99,6 +57,40 @@ export function ContactForm() {
     },
     mode: "onChange",
   });
+
+  const [recaptchaReady, setRecaptchaReady] = useState(false);
+
+  // Initialize reCAPTCHA when component mounts
+  useEffect(() => {
+    // Define the global callback for reCAPTCHA
+    window.onLoadRecaptcha = () => {
+      setRecaptchaReady(true);
+    };
+
+    // Clean up function
+    return () => {
+      // @ts-expect-error - Remove the global function when component unmounts
+      window.onLoadRecaptcha = undefined;
+    };
+  }, []);
+
+  // Get reCAPTCHA token
+  const getReCaptchaToken = async (): Promise<string> => {
+    if (!recaptchaReady || !window.grecaptcha) {
+      console.error("reCAPTCHA not loaded");
+      return "";
+    }
+
+    try {
+      return await window.grecaptcha.execute(
+        process.env.NEXT_PUBLIC_RECAPTCHA_SITE_KEY || "",
+        { action: "contact_form" }
+      );
+    } catch (error) {
+      console.error("reCAPTCHA error:", error);
+      return "";
+    }
+  };
 
   // Form submission states
   const [isSubmitting, setIsSubmitting] = useState(false);
@@ -155,8 +147,8 @@ export function ContactForm() {
     <div className="w-full max-w-2xl mx-auto">
       {/* Load reCAPTCHA script */}
       <Script
-        src={`https://www.google.com/recaptcha/api.js?render=${process.env.NEXT_PUBLIC_RECAPTCHA_SITE_KEY}&onload=onRecaptchaLoad`}
-        strategy="lazyOnload"
+        src={`https://www.google.com/recaptcha/api.js?render=${process.env.NEXT_PUBLIC_RECAPTCHA_SITE_KEY}&onload=onLoadRecaptcha`}
+        strategy="afterInteractive"
       />
 
       {/* Submission status message */}
