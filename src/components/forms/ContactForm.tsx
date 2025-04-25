@@ -66,6 +66,14 @@ export function ContactForm() {
     null
   );
 
+  // Scroll to the top of form when result is shown
+  const formRef = React.useRef<HTMLDivElement>(null);
+  const scrollToTop = () => {
+    if (formRef.current) {
+      formRef.current.scrollIntoView({ behavior: "smooth" });
+    }
+  };
+
   // Initialize reCAPTCHA when component mounts
   useEffect(() => {
     // Debug info
@@ -142,8 +150,8 @@ export function ContactForm() {
   const [submissionDebug, setSubmissionDebug] = useState<string | null>(null);
 
   // Handle form submission
-  const onSubmit = async (data: ContactFormData) => {
-    if (DEBUG) console.log("[Form] Submission started");
+  const handleSubmit = async (data: ContactFormData) => {
+    if (DEBUG) console.log("[Form] Submission started", data);
     setIsSubmitting(true);
     setSubmitResult(null);
     setSubmissionDebug(null);
@@ -161,6 +169,7 @@ export function ContactForm() {
           message: error,
         });
         setSubmissionDebug("No reCAPTCHA token received");
+        scrollToTop();
         return;
       }
 
@@ -175,6 +184,7 @@ export function ContactForm() {
       if (DEBUG) console.log("[Form] Submission result:", result);
 
       setSubmitResult(result);
+      scrollToTop();
 
       if (result.success) {
         form.reset();
@@ -190,6 +200,7 @@ export function ContactForm() {
       } else {
         setSubmissionDebug(`Unknown error: ${String(error)}`);
       }
+      scrollToTop();
     } finally {
       setIsSubmitting(false);
     }
@@ -199,7 +210,7 @@ export function ContactForm() {
   const requestsConsultation = form.watch("requestConsultation");
 
   return (
-    <div className="w-full max-w-2xl mx-auto">
+    <div className="w-full max-w-2xl mx-auto" ref={formRef}>
       {/* Load reCAPTCHA script */}
       <Script
         src={`https://www.google.com/recaptcha/api.js?render=${process.env.NEXT_PUBLIC_RECAPTCHA_SITE_KEY}&onload=onLoadRecaptcha`}
@@ -253,12 +264,31 @@ export function ContactForm() {
               <span className="font-medium">Message Sent Successfully!</span>
             </div>
           )}
+          {!submitResult.success && (
+            <div className="flex flex-col items-center justify-center mb-2">
+              <svg
+                className="w-8 h-8 text-red-500 mb-2"
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth={2}
+                  d="M6 18L18 6M6 6l12 12"
+                />
+              </svg>
+              <span className="font-medium">Message Failed to Send</span>
+            </div>
+          )}
           {submitResult.message}
         </div>
       )}
 
       <Form {...form}>
-        <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-6">
+        <form onSubmit={form.handleSubmit(handleSubmit)} className="space-y-6">
           {/* Honeypot field - hidden from users, but visible to bots */}
           <div className="absolute opacity-0 pointer-events-none">
             <FormField
@@ -494,11 +524,8 @@ export function ContactForm() {
           {/* Submit button */}
           <Button
             type="submit"
-            className="w-full"
+            className="w-full active:scale-95 transition-transform"
             disabled={isSubmitting}
-            onClick={() => {
-              if (DEBUG) console.log("[Form] Submit button clicked");
-            }}
           >
             {isSubmitting ? "Sending..." : "Send Message"}
           </Button>
