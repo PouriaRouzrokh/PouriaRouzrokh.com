@@ -3,10 +3,10 @@
   "affiliation": "Assistant Professor, Department of Radiology, Mayo Clinic, MN, USA",
   "google_scholar_id": "Ksv9I0sAAAAJ",
   "metrics": {
-    "citations": 1161,
+    "citations": 1168,
     "h_index": 19,
     "i10_index": 34,
-    "cited_by_5_years": 1152
+    "cited_by_5_years": 1159
   },
   "articles": [
     {
@@ -462,6 +462,18 @@
       "bibtex": "@article{erickson2023artificial,\n    author = {Mana Moassefi and Shahriar Faghani and Bardia Khosravi and Pouria Rouzrokh and Bradley J Erickson},\n    title = {Artificial Intelligence in Radiology: Overview of Application Types, Design, and Challenges.},\n    year = {2023},\n    volume = {58},\n    number = {2},\n    pages = {170-177},\n    doi = {10.1053/j.ro.2023.01.005},\n}"
     },
     {
+      "title": "Deep learning artificial intelligence tool for automated radiographic determination of posterior tibial slope in patients with ACL injury",
+      "authors": "Yining Lu, Ayoosh Pareek, Linjun Yang, Pouria Rouzrokh, Bardia Khosravi, Kelechi R Okoroha, Aaron J Krych, Christopher L Camp",
+      "year": 2023,
+      "journal": "Orthopaedic journal of sports medicine",
+      "volume": "11",
+      "number": "12",
+      "pages": "23259671231215820",
+      "num_citations": 8,
+      "doi": "10.1177/23259671231215820",
+      "bibtex": "@article{camp2023deep,\n    author = {Yining Lu and Ayoosh Pareek and Linjun Yang and Pouria Rouzrokh and Bardia Khosravi and Kelechi R Okoroha and Aaron J Krych and Christopher L Camp},\n    title = {Deep learning artificial intelligence tool for automated radiographic determination of posterior tibial slope in patients with ACL injury},\n    year = {2023},\n    journal = {Orthopaedic journal of sports medicine},\n    volume = {11},\n    number = {12},\n    pages = {23259671231215820},\n    doi = {10.1177/23259671231215820},\n}"
+    },
+    {
       "title": "Machine learning in cardiovascular imaging: a scoping review of published literature",
       "authors": "Pouria Rouzrokh, Bardia Khosravi, Sanaz Vahdati, Mana Moassefi, Shahriar Faghani, Elham Mahmoudi, Hamid Chalian, Bradley J Erickson",
       "year": 2023,
@@ -471,18 +483,6 @@
       "num_citations": 8,
       "doi": "10.1007/s40134-022-00407-8",
       "bibtex": "@article{erickson2023machine,\n    author = {Pouria Rouzrokh and Bardia Khosravi and Sanaz Vahdati and Mana Moassefi and Shahriar Faghani and Elham Mahmoudi and Hamid Chalian and Bradley J Erickson},\n    title = {Machine learning in cardiovascular imaging: a scoping review of published literature},\n    year = {2023},\n    volume = {11},\n    number = {2},\n    pages = {34-45},\n    doi = {10.1007/s40134-022-00407-8},\n}"
-    },
-    {
-      "title": "Deep learning artificial intelligence tool for automated radiographic determination of posterior tibial slope in patients with ACL injury",
-      "authors": "Yining Lu, Ayoosh Pareek, Linjun Yang, Pouria Rouzrokh, Bardia Khosravi, Kelechi R Okoroha, Aaron J Krych, Christopher L Camp",
-      "year": 2023,
-      "journal": "Orthopaedic journal of sports medicine",
-      "volume": "11",
-      "number": "12",
-      "pages": "23259671231215820",
-      "num_citations": 7,
-      "doi": "10.1177/23259671231215820",
-      "bibtex": "@article{camp2023deep,\n    author = {Yining Lu and Ayoosh Pareek and Linjun Yang and Pouria Rouzrokh and Bardia Khosravi and Kelechi R Okoroha and Aaron J Krych and Christopher L Camp},\n    title = {Deep learning artificial intelligence tool for automated radiographic determination of posterior tibial slope in patients with ACL injury},\n    year = {2023},\n    journal = {Orthopaedic journal of sports medicine},\n    volume = {11},\n    number = {12},\n    pages = {23259671231215820},\n    doi = {10.1177/23259671231215820},\n}"
     },
     {
       "title": "Diagnostic Value of Shear Wave Elastography in Differentiation between Benign from Malignant Cervical Lymph Nodes",
@@ -513,7 +513,7 @@
       "volume": "4",
       "number": "5",
       "pages": "e210290",
-      "num_citations": 111,
+      "num_citations": 112,
       "doi": "10.1148/ryai.210290",
       "bibtex": "@article{erickson2022mitigating,\n    author = {Pouria Rouzrokh and Bardia Khosravi and Shahriar Faghani and Mana Moassefi and Diana V Vera Garcia and Yashbir Singh and Kuan Zhang and Gian Marco Conte and Bradley J Erickson},\n    title = {Mitigating bias in radiology machine learning: 1. Data handling},\n    year = {2022},\n    journal = {Radiology: Artificial Intelligence},\n    volume = {4},\n    number = {5},\n    pages = {e210290},\n    doi = {10.1148/ryai.210290},\n}"
     },
@@ -525,7 +525,7 @@
       "volume": "8",
       "number": "2",
       "pages": "905-919",
-      "num_citations": 92,
+      "num_citations": 93,
       "doi": "10.3390/tomography8020073",
       "bibtex": "@article{erickson2022soupgan,\n    author = {Kuan Zhang and Haoji Hu and Kenneth Philbrick and Gian Marco Conte and Joseph D Sobek and Pouria Rouzrokh and Bradley J Erickson},\n    title = {SOUP-GAN: Super-resolution MRI using generative adversarial networks},\n    year = {2022},\n    journal = {Tomography},\n    volume = {8},\n    number = {2},\n    pages = {905-919},\n    doi = {10.3390/tomography8020073},\n}"
     },
@@ -537,7 +537,7 @@
       "volume": "4",
       "number": "5",
       "pages": "e220061",
-      "num_citations": 77,
+      "num_citations": 78,
       "doi": "10.1148/ryai.220061",
       "bibtex": "@article{erickson2022mitigating,\n    author = {Shahriar Faghani and Bardia Khosravi and Kuan Zhang and Mana Moassefi and Jaidip Manikrao Jagtap and Fred Nugen and Sanaz Vahdati and Shiba P Kuanar and Seyed Moein Rassoulinejad-Mousavi and Yashbir Singh and Diana V Vera Garcia and Pouria Rouzrokh and Bradley J Erickson},\n    title = {Mitigating bias in radiology machine learning: 3. Performance metrics},\n    year = {2022},\n    journal = {Radiology: Artificial Intelligence},\n    volume = {4},\n    number = {5},\n    pages = {e220061},\n    doi = {10.1148/ryai.220061},\n}"
     },
@@ -548,7 +548,7 @@
       "volume": "4",
       "number": "5",
       "pages": "e220010",
-      "num_citations": 77,
+      "num_citations": 78,
       "doi": "10.1148/ryai.220010",
       "bibtex": "@article{erickson2022mitigating,\n    author = {Kuan Zhang and Bardia Khosravi and Sanaz Vahdati and Shahriar Faghani and Fred Nugen and Seyed Moein Rassoulinejad-Mousavi and Mana Moassefi and Jaidip Manikrao M Jagtap and Yashbir Singh and Pouria Rouzrokh and Bradley J Erickson},\n    title = {Mitigating bias in radiology machine learning: 2. Model development},\n    year = {2022},\n    volume = {4},\n    number = {5},\n    pages = {e220010},\n    doi = {10.1148/ryai.220010},\n}"
     },
@@ -589,6 +589,15 @@
       "bibtex": "@article{berry2022redefining,\n    author = {Mario Hevesi and Cody C Wyles and Pouria Rouzrokh and Bradley J Erickson and Hilal Maradit-Kremers and David G Lewallen and Michael J Taunton and Robert T Trousdale and Daniel J Berry},\n    title = {Redefining the 3D topography of the acetabular safe zone: a multivariable study evaluating prosthetic hip stability},\n    year = {2022},\n    journal = {JBJS},\n    volume = {104},\n    number = {3},\n    pages = {239-245},\n    doi = {10.2106/jbjs.21.00406},\n}"
     },
     {
+      "title": "Multitask brain tumor inpainting with diffusion models: a methodological report",
+      "authors": "Pouria Rouzrokh, Bardia Khosravi, Shahriar Faghani, Mana Moassefi, Sanaz Vahdati, Bradley J Erickson",
+      "year": 2022,
+      "journal": "arXiv preprint arXiv:2210.12113",
+      "num_citations": 24,
+      "doi": "10.12785/ijcds/110131",
+      "bibtex": "@article{erickson2022multitask,\n    author = {Pouria Rouzrokh and Bardia Khosravi and Shahriar Faghani and Mana Moassefi and Sanaz Vahdati and Bradley J Erickson},\n    title = {Multitask brain tumor inpainting with diffusion models: a methodological report},\n    year = {2022},\n    journal = {arXiv preprint arXiv:2210.12113},\n    doi = {10.12785/ijcds/110131},\n}"
+    },
+    {
       "title": "Patient-specific hip arthroplasty dislocation risk calculator: an explainable multimodal machine learning–based approach",
       "authors": "Bardia Khosravi, Pouria Rouzrokh, Hilal Maradit Kremers, Dirk R Larson, Quinn J Johnson, Shahriar Faghani, Walter K Kremers, Bradley J Erickson, Rafael J Sierra, Michael J Taunton, Cody C Wyles",
       "year": 2022,
@@ -599,15 +608,6 @@
       "num_citations": 24,
       "doi": "10.1148/ryai.220067",
       "bibtex": "@article{wyles2022patientspecific,\n    author = {Bardia Khosravi and Pouria Rouzrokh and Hilal Maradit Kremers and Dirk R Larson and Quinn J Johnson and Shahriar Faghani and Walter K Kremers and Bradley J Erickson and Rafael J Sierra and Michael J Taunton and Cody C Wyles},\n    title = {Patient-specific hip arthroplasty dislocation risk calculator: an explainable multimodal machine learning–based approach},\n    year = {2022},\n    journal = {Radiology: Artificial Intelligence},\n    volume = {4},\n    number = {6},\n    pages = {e220067},\n    doi = {10.1148/ryai.220067},\n}"
-    },
-    {
-      "title": "Multitask brain tumor inpainting with diffusion models: a methodological report",
-      "authors": "Pouria Rouzrokh, Bardia Khosravi, Shahriar Faghani, Mana Moassefi, Sanaz Vahdati, Bradley J Erickson",
-      "year": 2022,
-      "journal": "arXiv preprint arXiv:2210.12113",
-      "num_citations": 23,
-      "doi": "10.12785/ijcds/110131",
-      "bibtex": "@article{erickson2022multitask,\n    author = {Pouria Rouzrokh and Bardia Khosravi and Shahriar Faghani and Mana Moassefi and Sanaz Vahdati and Bradley J Erickson},\n    title = {Multitask brain tumor inpainting with diffusion models: a methodological report},\n    year = {2022},\n    journal = {arXiv preprint arXiv:2210.12113},\n    doi = {10.12785/ijcds/110131},\n}"
     },
     {
       "title": "Distribution and correlates of hip-knee-ankle angle in early osteoarthritis and preoperative total knee arthroplasty patients",
@@ -662,7 +662,7 @@
       "volume": "12",
       "number": "10",
       "pages": "2512",
-      "num_citations": 3,
+      "num_citations": 4,
       "doi": "10.3390/diagnostics12102512",
       "bibtex": "@article{erickson2022machine,\n    author = {Bardia Khosravi and Pouria Rouzrokh and Shahriar Faghani and Mana Moassefi and Sanaz Vahdati and Elham Mahmoudi and Hamid Chalian and Bradley J Erickson},\n    title = {Machine Learning and Deep Learning in Cardiothoracic Imaging: A Scoping Review},\n    year = {2022},\n    volume = {12},\n    number = {10},\n    pages = {2512},\n    doi = {10.3390/diagnostics12102512},\n}"
     },
@@ -814,8 +814,8 @@
     }
   ],
   "total_articles": 72,
-  "total_citations": 1161,
+  "total_citations": 1168,
   "total_articles_processed": 72,
-  "total_citations_processed": 1161,
-  "fetched_at": "2025-04-23 00:12:48 UTC"
+  "total_citations_processed": 1168,
+  "fetched_at": "2025-04-25 00:13:09 UTC"
 }
