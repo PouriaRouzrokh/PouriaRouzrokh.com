@@ -1,4 +1,4 @@
-# Pouria AI
+# PouriaRouzrokh.com
 
 A personal website and portfolio showcasing projects, research, blog posts, and contact information. Built with modern web technologies to provide a responsive and accessible user experience.
 
