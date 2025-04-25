@@ -152,7 +152,7 @@ export async function submitContactForm(formData: ContactFormData) {
 
     // Send email using Resend
     const { data, error } = await resend.emails.send({
-      from: `Contact Form <${process.env.CONTACT_FROM_EMAIL || "noreply@pouria.ai"}>`,
+      from: `Contact Form <${process.env.CONTACT_FROM_EMAIL || "noreply@PouriaRouzrokh.com"}>`,
       to: process.env.CONTACT_RECIPIENT_EMAIL || "",
       subject: `[Contact Form] ${validatedData.subject}`,
       html: emailContent,

@@ -2,7 +2,8 @@ import { MetadataRoute } from "next";
 
 // This function generates a sitemap.xml
 export default function sitemap(): MetadataRoute.Sitemap {
-  const baseUrl = process.env.NEXT_PUBLIC_APP_URL || "https://pouria.ai";
+  const baseUrl =
+    process.env.NEXT_PUBLIC_APP_URL || "https://PouriaRouzrokh.com";
 
   // Get the current date for lastModified
   const lastModified = new Date();

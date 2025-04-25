@@ -41,7 +41,7 @@ export default async function Home() {
     "@context": "https://schema.org",
     "@type": "Person",
     name: "Pouria Rouzrokh",
-    url: "https://pouria.ai",
+    url: "https://PouriaRouzrokh.com",
     jobTitle: "AI Researcher & Developer",
     description:
       profile?.bio ||
@@ -67,7 +67,7 @@ export default async function Home() {
   const websiteJsonLd = {
     "@context": "https://schema.org",
     "@type": "WebSite",
-    url: "https://pouria.ai",
+    url: "https://PouriaRouzrokh.com",
     name: "Pouria Rouzrokh | AI Researcher & Developer",
     description:
       "Official website of Pouria Rouzrokh - AI researcher, developer, and innovator",
