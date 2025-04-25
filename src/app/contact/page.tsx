@@ -2,7 +2,6 @@ import React from "react";
 import type { Metadata } from "next";
 import { ContactForm } from "@/components/forms/ContactForm";
 import { Separator } from "@/components/ui/separator";
-import ReCaptchaScript from "@/components/ui/recaptcha-script";
 
 // Define metadata for SEO
 export const metadata: Metadata = {
@@ -50,7 +49,6 @@ export default function ContactPage() {
           </div>
         </div>
       </div>
-      <ReCaptchaScript />
     </div>
   );
 }

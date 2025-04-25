@@ -3,16 +3,17 @@
 import React, { useEffect, useRef } from "react";
 import ReCAPTCHA from "react-google-recaptcha";
 
-// Add type definition for window.grecaptcha
+// Define window interface extensions for reCAPTCHA
 declare global {
   interface Window {
-    grecaptcha: {
+    grecaptcha?: {
       ready: (callback: () => void) => void;
       execute: (
         siteKey: string,
         options: { action: string }
       ) => Promise<string>;
     };
+    recaptchaCallback?: () => void;
   }
 }
 
@@ -37,54 +38,64 @@ export function ReCaptcha({ onVerify }: ReCaptchaProps) {
       return;
     }
 
-    // Ensure Google reCAPTCHA API is fully loaded before executing
-    const loadAndExecuteReCaptcha = () => {
-      // Make sure window.grecaptcha is fully loaded and initialized
-      if (
-        typeof window !== "undefined" &&
-        window.grecaptcha &&
-        window.grecaptcha.ready
-      ) {
-        window.grecaptcha.ready(async () => {
-          try {
-            // Execute directly using the grecaptcha global to avoid iframe context issues
-            const token = await window.grecaptcha.execute(siteKey, {
-              action: "submit",
-            });
-            if (token) {
-              onVerify(token);
-            } else {
-              console.warn("reCAPTCHA token was empty");
-            }
-          } catch (error) {
-            console.error("reCAPTCHA execution error:", error);
-            onVerify("");
-          }
-        });
+    // Load reCAPTCHA script directly to ensure proper domain context
+    const loadRecaptchaScript = () => {
+      if (typeof window.grecaptcha === "undefined") {
+        // Only load script if grecaptcha is not already defined
+        window.recaptchaCallback = () => {
+          executeReCaptcha();
+        };
+
+        const script = document.createElement("script");
+        script.src = `https://www.google.com/recaptcha/api.js?render=${siteKey}`;
+        script.async = true;
+        script.defer = true;
+        document.head.appendChild(script);
       } else {
-        // If not ready yet, wait and try again
-        setTimeout(loadAndExecuteReCaptcha, 100);
+        executeReCaptcha();
       }
     };
 
-    // Begin the execution process
-    loadAndExecuteReCaptcha();
+    const executeReCaptcha = () => {
+      if (window.grecaptcha && window.grecaptcha.ready) {
+        window.grecaptcha.ready(() => {
+          window
+            .grecaptcha!.execute(siteKey, { action: "contact_form" })
+            .then((token: string) => {
+              if (token) {
+                onVerify(token);
+              }
+            })
+            .catch((error: Error) => {
+              console.error("reCAPTCHA execution error:", error);
+              onVerify("");
+            });
+        });
+      }
+    };
+
+    loadRecaptchaScript();
 
     // Set timer to refresh the token every 110 seconds (tokens expire after 2 minutes)
     const refreshToken = setInterval(() => {
-      loadAndExecuteReCaptcha();
+      executeReCaptcha();
     }, 110000);
 
-    return () => clearInterval(refreshToken);
+    return () => {
+      clearInterval(refreshToken);
+      // Clean up global callback
+      if (window.recaptchaCallback) {
+        delete window.recaptchaCallback;
+      }
+    };
   }, [onVerify]);
 
-  // We still need this for initialization, but we'll use window.grecaptcha for execution
+  // The hidden ReCAPTCHA component is now only for fallback compatibility
   return (
-    <div>
+    <div className="hidden">
       <ReCAPTCHA
         ref={recaptchaRef}
         size="invisible"
-        badge="bottomright"
         sitekey={process.env.NEXT_PUBLIC_RECAPTCHA_SITE_KEY || ""}
       />
     </div>
