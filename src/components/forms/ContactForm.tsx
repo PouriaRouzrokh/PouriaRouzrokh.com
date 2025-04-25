@@ -18,13 +18,69 @@ import { Input } from "@/components/ui/input";
 import { Checkbox } from "@/components/ui/checkbox";
 import { Separator } from "@/components/ui/separator";
 import { Textarea } from "@/components/ui/textarea";
-import { ReCaptcha } from "@/components/ui/recaptcha";
 import { submitContactForm } from "@/lib/actions/contact-form-actions";
 import {
   ContactFormData,
   consultationAreas,
   contactFormSchema,
 } from "@/lib/schemas/contact-form-schema";
+import Script from "next/script";
+
+// Extend window type to include grecaptcha
+declare global {
+  interface Window {
+    grecaptcha: {
+      ready: (callback: () => void) => void;
+      execute: (
+        siteKey: string,
+        options: { action: string }
+      ) => Promise<string>;
+    };
+    onRecaptchaLoad: () => void;
+  }
+}
+
+// Helper function to load reCAPTCHA script
+const loadReCaptchaScript = () => {
+  return new Promise<void>((resolve) => {
+    if (typeof window !== "undefined" && window.grecaptcha) {
+      resolve();
+      return;
+    }
+
+    // Create a global callback function
+    window.onRecaptchaLoad = () => {
+      resolve();
+    };
+  });
+};
+
+// Helper function to get reCAPTCHA token
+const getReCaptchaToken = async (): Promise<string> => {
+  await loadReCaptchaScript();
+
+  return new Promise<string>((resolve) => {
+    if (!window.grecaptcha) {
+      console.error("reCAPTCHA not loaded");
+      resolve("");
+      return;
+    }
+
+    window.grecaptcha.ready(() => {
+      window.grecaptcha
+        .execute(process.env.NEXT_PUBLIC_RECAPTCHA_SITE_KEY || "", {
+          action: "contact_form",
+        })
+        .then((token: string) => {
+          resolve(token);
+        })
+        .catch((error: Error) => {
+          console.error("reCAPTCHA error:", error);
+          resolve("");
+        });
+    });
+  });
+};
 
 export function ContactForm() {
   // Form state management with react-hook-form
@@ -51,35 +107,31 @@ export function ContactForm() {
     message?: string;
   } | null>(null);
 
-  // Handle reCAPTCHA verification
-  const handleRecaptchaVerify = (token: string) => {
-    form.setValue("recaptchaToken", token);
-    if (!token) {
-      console.warn(
-        "Empty reCAPTCHA token received - form may still work if reCAPTCHA validation is bypassed in development"
-      );
-    }
-  };
-
   // Handle form submission
   const onSubmit = async (data: ContactFormData) => {
     setIsSubmitting(true);
     setSubmitResult(null);
 
-    // Check if reCAPTCHA token is missing in production
-    if (!data.recaptchaToken && process.env.NODE_ENV === "production") {
-      console.error("Missing reCAPTCHA token on form submission");
-      setSubmitResult({
-        success: false,
-        message:
-          "reCAPTCHA verification failed. Please try refreshing the page.",
-      });
-      setIsSubmitting(false);
-      return;
-    }
-
     try {
-      const result = await submitContactForm(data);
+      // Get reCAPTCHA token before submission
+      const recaptchaToken = await getReCaptchaToken();
+
+      if (!recaptchaToken) {
+        setSubmitResult({
+          success: false,
+          message:
+            "reCAPTCHA verification failed. Please try again or refresh the page.",
+        });
+        return;
+      }
+
+      // Add token to form data
+      const dataWithToken = {
+        ...data,
+        recaptchaToken,
+      };
+
+      const result = await submitContactForm(dataWithToken);
       setSubmitResult(result);
 
       if (result.success) {
@@ -101,6 +153,12 @@ export function ContactForm() {
 
   return (
     <div className="w-full max-w-2xl mx-auto">
+      {/* Load reCAPTCHA script */}
+      <Script
+        src={`https://www.google.com/recaptcha/api.js?render=${process.env.NEXT_PUBLIC_RECAPTCHA_SITE_KEY}&onload=onRecaptchaLoad`}
+        strategy="lazyOnload"
+      />
+
       {/* Submission status message */}
       {submitResult && (
         <div
@@ -132,6 +190,13 @@ export function ContactForm() {
               )}
             />
           </div>
+
+          {/* Hidden reCAPTCHA token field */}
+          <FormField
+            control={form.control}
+            name="recaptchaToken"
+            render={({ field }) => <input type="hidden" {...field} />}
+          />
 
           {/* Subject field */}
           <FormField
@@ -315,10 +380,32 @@ export function ContactForm() {
             </>
           )}
 
-          {/* reCAPTCHA component */}
-          <ReCaptcha onVerify={handleRecaptchaVerify} />
-
           <Separator className="my-6" />
+
+          {/* Privacy notice for reCAPTCHA */}
+          <div className="text-xs text-gray-500 dark:text-gray-400">
+            This site is protected by reCAPTCHA and the Google
+            <a
+              href="https://policies.google.com/privacy"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-blue-600 dark:text-blue-400 hover:underline"
+            >
+              {" "}
+              Privacy Policy
+            </a>{" "}
+            and
+            <a
+              href="https://policies.google.com/terms"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-blue-600 dark:text-blue-400 hover:underline"
+            >
+              {" "}
+              Terms of Service
+            </a>{" "}
+            apply.
+          </div>
 
           {/* Submit button */}
           <Button type="submit" className="w-full" disabled={isSubmitting}>

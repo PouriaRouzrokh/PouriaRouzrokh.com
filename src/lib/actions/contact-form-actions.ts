@@ -39,44 +39,6 @@ const spamPatterns = [
   /https?:\/\/\S+/g, // URLs are often in spam
 ];
 
-// Function to validate reCAPTCHA token
-async function validateRecaptcha(token: string): Promise<boolean> {
-  // Skip validation if token is empty and we're in development mode
-  if (!token && process.env.NODE_ENV === "development") {
-    console.warn(
-      "Empty reCAPTCHA token in development mode - bypassing validation"
-    );
-    return true;
-  }
-
-  // Return false if token is empty
-  if (!token) {
-    console.error("Empty reCAPTCHA token");
-    return false;
-  }
-
-  // Check if secret key is configured
-  if (!process.env.RECAPTCHA_SECRET_KEY) {
-    console.error("RECAPTCHA_SECRET_KEY is not configured");
-    // In production, fail closed (secure). In development, allow the request.
-    return process.env.NODE_ENV === "development";
-  }
-
-  try {
-    const response = await fetch(
-      `https://www.google.com/recaptcha/api/siteverify?secret=${process.env.RECAPTCHA_SECRET_KEY}&response=${token}`,
-      { method: "POST" }
-    );
-
-    const data = await response.json();
-    console.log("reCAPTCHA validation response:", JSON.stringify(data));
-    return data.success && data.score >= 0.5; // reCAPTCHA v3 returns a score
-  } catch (error) {
-    console.error("reCAPTCHA validation error:", error);
-    return false;
-  }
-}
-
 // Function to check if text contains spam patterns
 function containsSpam(text: string): boolean {
   return spamPatterns.some((pattern) => pattern.test(text));
@@ -97,6 +59,45 @@ function formatConsultationAreas(data: ContactFormData): string {
   return areas;
 }
 
+// Verify reCAPTCHA token with Google API
+async function verifyRecaptcha(
+  token: string,
+  clientIp: string
+): Promise<boolean> {
+  try {
+    const recaptchaSecretKey = process.env.RECAPTCHA_SECRET_KEY;
+
+    if (!recaptchaSecretKey) {
+      console.error("Missing RECAPTCHA_SECRET_KEY in environment variables");
+      return false;
+    }
+
+    const response = await fetch(
+      "https://www.google.com/recaptcha/api/siteverify",
+      {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/x-www-form-urlencoded",
+        },
+        body: new URLSearchParams({
+          secret: recaptchaSecretKey,
+          response: token,
+          remoteip: clientIp,
+        }).toString(),
+      }
+    );
+
+    const data = await response.json();
+
+    // Check if the verification was successful and score is acceptable (for v3)
+    // Typically 0.5 is a reasonable threshold, but you can adjust based on your needs
+    return data.success && data.score >= 0.5;
+  } catch (error) {
+    console.error("reCAPTCHA verification error:", error);
+    return false;
+  }
+}
+
 export async function submitContactForm(formData: ContactFormData) {
   // Check if honeypot field is filled (bot detection)
   if (formData.honeypot) {
@@ -114,6 +115,19 @@ export async function submitContactForm(formData: ContactFormData) {
     // Get client IP for rate limiting
     const headersList = headers();
     const ip = headersList.get("x-forwarded-for")?.split(",")[0] || "127.0.0.1";
+
+    // Verify reCAPTCHA token
+    const isRecaptchaValid = await verifyRecaptcha(
+      validatedData.recaptchaToken,
+      ip
+    );
+
+    if (!isRecaptchaValid) {
+      return {
+        success: false,
+        message: "reCAPTCHA verification failed. Please try again.",
+      };
+    }
 
     // Check IP-based rate limit
     const ipRateLimit = await ipRatelimit.limit(ip);
@@ -133,19 +147,6 @@ export async function submitContactForm(formData: ContactFormData) {
         message:
           "We've reached our daily message limit. Please try again tomorrow.",
       };
-    }
-
-    // Validate reCAPTCHA if token is provided
-    if (validatedData.recaptchaToken) {
-      const isValidRecaptcha = await validateRecaptcha(
-        validatedData.recaptchaToken
-      );
-      if (!isValidRecaptcha) {
-        return {
-          success: false,
-          message: "reCAPTCHA validation failed. Please try again.",
-        };
-      }
     }
 
     // Check for spam content in message and subject
@@ -174,7 +175,7 @@ export async function submitContactForm(formData: ContactFormData) {
 
     // Send email using Resend
     const { data, error } = await resend.emails.send({
-      from: `Contact Form <${process.env.CONTACT_FROM_EMAIL || "contact@pouriarouzrokh.com"}>`,
+      from: `Contact Form <${process.env.CONTACT_FROM_EMAIL || "noreply@PouriaRouzrokh.com"}>`,
       to: process.env.CONTACT_RECIPIENT_EMAIL || "",
       subject: `[Contact Form] ${validatedData.subject}`,
       html: emailContent,
