@@ -15,6 +15,15 @@ export function ReCaptcha({ onVerify }: ReCaptchaProps) {
   const recaptchaRef = useRef<ReCAPTCHA>(null);
 
   useEffect(() => {
+    // Check if the site key is available
+    const siteKey = process.env.NEXT_PUBLIC_RECAPTCHA_SITE_KEY || "";
+    if (!siteKey) {
+      console.error(
+        "ReCAPTCHA site key is missing. Please check your environment configuration."
+      );
+      return;
+    }
+
     // Execute reCAPTCHA when component mounts
     const executeReCaptcha = async () => {
       if (recaptchaRef.current) {
@@ -22,9 +31,13 @@ export function ReCaptcha({ onVerify }: ReCaptchaProps) {
           const token = await recaptchaRef.current.executeAsync();
           if (token) {
             onVerify(token);
+          } else {
+            console.warn("ReCAPTCHA token was empty");
           }
         } catch (error) {
           console.error("ReCAPTCHA execution error:", error);
+          // Try to provide a fallback empty token to prevent form blocking
+          onVerify("");
         }
       }
     };

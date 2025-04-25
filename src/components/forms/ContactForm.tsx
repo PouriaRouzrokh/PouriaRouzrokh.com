@@ -54,12 +54,29 @@ export function ContactForm() {
   // Handle reCAPTCHA verification
   const handleRecaptchaVerify = (token: string) => {
     form.setValue("recaptchaToken", token);
+    if (!token) {
+      console.warn(
+        "Empty reCAPTCHA token received - form may still work if reCAPTCHA validation is bypassed in development"
+      );
+    }
   };
 
   // Handle form submission
   const onSubmit = async (data: ContactFormData) => {
     setIsSubmitting(true);
     setSubmitResult(null);
+
+    // Check if reCAPTCHA token is missing in production
+    if (!data.recaptchaToken && process.env.NODE_ENV === "production") {
+      console.error("Missing reCAPTCHA token on form submission");
+      setSubmitResult({
+        success: false,
+        message:
+          "reCAPTCHA verification failed. Please try refreshing the page.",
+      });
+      setIsSubmitting(false);
+      return;
+    }
 
     try {
       const result = await submitContactForm(data);

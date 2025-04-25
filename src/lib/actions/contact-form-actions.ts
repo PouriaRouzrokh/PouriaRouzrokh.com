@@ -41,6 +41,27 @@ const spamPatterns = [
 
 // Function to validate reCAPTCHA token
 async function validateRecaptcha(token: string): Promise<boolean> {
+  // Skip validation if token is empty and we're in development mode
+  if (!token && process.env.NODE_ENV === "development") {
+    console.warn(
+      "Empty reCAPTCHA token in development mode - bypassing validation"
+    );
+    return true;
+  }
+
+  // Return false if token is empty
+  if (!token) {
+    console.error("Empty reCAPTCHA token");
+    return false;
+  }
+
+  // Check if secret key is configured
+  if (!process.env.RECAPTCHA_SECRET_KEY) {
+    console.error("RECAPTCHA_SECRET_KEY is not configured");
+    // In production, fail closed (secure). In development, allow the request.
+    return process.env.NODE_ENV === "development";
+  }
+
   try {
     const response = await fetch(
       `https://www.google.com/recaptcha/api/siteverify?secret=${process.env.RECAPTCHA_SECRET_KEY}&response=${token}`,
@@ -48,6 +69,7 @@ async function validateRecaptcha(token: string): Promise<boolean> {
     );
 
     const data = await response.json();
+    console.log("reCAPTCHA validation response:", JSON.stringify(data));
     return data.success && data.score >= 0.5; // reCAPTCHA v3 returns a score
   } catch (error) {
     console.error("reCAPTCHA validation error:", error);
