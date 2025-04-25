@@ -41,23 +41,6 @@ const spamPatterns = [
 
 // Function to validate reCAPTCHA token
 async function validateRecaptcha(token: string): Promise<boolean> {
-  // Debug logging for server-side
-  console.log("[SERVER] reCAPTCHA validation request received");
-  console.log(
-    "[SERVER] Secret key exists:",
-    !!process.env.RECAPTCHA_SECRET_KEY
-  );
-  if (process.env.RECAPTCHA_SECRET_KEY) {
-    console.log(
-      "[SERVER] Secret key length:",
-      process.env.RECAPTCHA_SECRET_KEY.length
-    );
-    console.log(
-      "[SERVER] Secret key prefix:",
-      process.env.RECAPTCHA_SECRET_KEY.substring(0, 6)
-    );
-  }
-
   // Skip validation if token is empty and we're in development mode
   if (!token && process.env.NODE_ENV === "development") {
     console.warn(
