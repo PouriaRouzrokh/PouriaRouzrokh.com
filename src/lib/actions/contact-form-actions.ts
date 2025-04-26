@@ -21,14 +21,14 @@ const redis = new Redis({
 // Create rate limiter for IP-based rate limiting (5 submissions per day)
 const ipRatelimit = new Ratelimit({
   redis,
-  limiter: Ratelimit.slidingWindow(5, "1d"),
+  limiter: Ratelimit.slidingWindow(25, "1d"),
   prefix: "ratelimit:ip",
 });
 
 // Create rate limiter for daily submission count (25 submissions per day)
 const dailyEmailLimit = new Ratelimit({
   redis,
-  limiter: Ratelimit.fixedWindow(25, "1d"),
+  limiter: Ratelimit.fixedWindow(50, "1d"),
   prefix: "ratelimit:daily",
 });
 
