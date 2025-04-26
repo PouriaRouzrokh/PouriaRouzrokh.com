@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { cn } from "@/lib/utils";
@@ -63,12 +63,17 @@ export function ContactForm() {
     message?: string;
   } | null>(null);
 
+  // Reference to track if reCAPTCHA script is loaded
+  const recaptchaLoaded = useRef(false);
+  const recaptchaWaiting = useRef(false);
+
   // Load reCAPTCHA script
   useEffect(() => {
-    // Skip if reCAPTCHA is already loaded
-    if (window.grecaptcha) return;
+    // Skip if reCAPTCHA is already loaded or loading
+    if (recaptchaLoaded.current || recaptchaWaiting.current) return;
 
-    // Get reCAPTCHA site key from environment variable
+    recaptchaWaiting.current = true;
+
     const siteKey = process.env.NEXT_PUBLIC_RECAPTCHA_SITE_KEY;
     if (!siteKey) {
       console.error("reCAPTCHA site key is not configured");
@@ -80,28 +85,54 @@ export function ContactForm() {
     script.src = `https://www.google.com/recaptcha/api.js?render=${siteKey}`;
     script.async = true;
     script.defer = true;
+
+    script.onload = () => {
+      recaptchaLoaded.current = true;
+      recaptchaWaiting.current = false;
+      console.log("reCAPTCHA script loaded successfully");
+    };
+
+    script.onerror = (error) => {
+      console.error("Error loading reCAPTCHA script:", error);
+      recaptchaWaiting.current = false;
+    };
+
     document.head.appendChild(script);
 
     return () => {
-      document.head.removeChild(script);
+      // Only remove if it exists
+      if (document.head.contains(script)) {
+        document.head.removeChild(script);
+      }
     };
   }, []);
 
   // Get reCAPTCHA token
   const getRecaptchaToken = async (): Promise<string> => {
     const siteKey = process.env.NEXT_PUBLIC_RECAPTCHA_SITE_KEY;
-    if (!siteKey || !window.grecaptcha) {
-      console.error("reCAPTCHA is not properly configured");
+    if (!siteKey) {
+      console.error("reCAPTCHA site key is not configured");
+      return "";
+    }
+
+    // Check if grecaptcha is available in the window object
+    if (typeof window === "undefined" || !window.grecaptcha) {
+      console.error("reCAPTCHA is not properly loaded");
       return "";
     }
 
     try {
-      return await new Promise<string>((resolve) => {
+      return await new Promise<string>((resolve, reject) => {
         window.grecaptcha.ready(async () => {
-          const token = await window.grecaptcha.execute(siteKey, {
-            action: "contact_form",
-          });
-          resolve(token);
+          try {
+            const token = await window.grecaptcha.execute(siteKey, {
+              action: "contact_form",
+            });
+            resolve(token);
+          } catch (err) {
+            console.error("reCAPTCHA execution error:", err);
+            reject("");
+          }
         });
       });
     } catch (error) {
@@ -116,8 +147,15 @@ export function ContactForm() {
     setSubmitResult(null);
 
     try {
+      console.log("Form submitted, getting reCAPTCHA token...");
+
       // Get reCAPTCHA token
       const recaptchaToken = await getRecaptchaToken();
+      console.log(
+        "reCAPTCHA token obtained:",
+        recaptchaToken ? "Success" : "Failed"
+      );
+
       if (!recaptchaToken) {
         setSubmitResult({
           success: false,
@@ -133,7 +171,10 @@ export function ContactForm() {
         recaptchaToken,
       };
 
+      console.log("Submitting form with reCAPTCHA token...");
       const result = await submitContactForm(formDataWithToken);
+      console.log("Form submission result:", result);
+
       setSubmitResult(result);
 
       if (result.success) {
@@ -371,8 +412,12 @@ export function ContactForm() {
 
           <Separator className="my-6" />
 
-          {/* Submit button */}
-          <Button type="submit" className="w-full" disabled={isSubmitting}>
+          {/* Submit button with active state styles */}
+          <Button
+            type="submit"
+            className="w-full transition-colors hover:bg-primary/90 focus:ring-2 focus:ring-primary/20 active:bg-primary/80"
+            disabled={isSubmitting}
+          >
             {isSubmitting ? "Sending..." : "Send Message"}
           </Button>
 

@@ -16,6 +16,21 @@ const nextConfig = {
   reactStrictMode: true,
   // Simple experimental settings
   experimental: {},
+  // Add security headers
+  async headers() {
+    return [
+      {
+        source: "/(.*)",
+        headers: [
+          {
+            key: "Content-Security-Policy",
+            value:
+              "frame-ancestors 'self' https://www.google.com https://*.google.com",
+          },
+        ],
+      },
+    ];
+  },
 };
 
 module.exports = nextConfig;
