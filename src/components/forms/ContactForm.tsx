@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState } from "react";
+import React, { useState, useRef } from "react";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { cn } from "@/lib/utils";
@@ -18,6 +18,7 @@ import { Input } from "@/components/ui/input";
 import { Checkbox } from "@/components/ui/checkbox";
 import { Separator } from "@/components/ui/separator";
 import { Textarea } from "@/components/ui/textarea";
+import ReCAPTCHA from "react-google-recaptcha";
 import { submitContactForm } from "@/lib/actions/contact-form-actions";
 import {
   ContactFormData,
@@ -26,6 +27,8 @@ import {
 } from "@/lib/schemas/contact-form-schema";
 
 export function ContactForm() {
+  const recaptchaRef = useRef<ReCAPTCHA>(null);
+
   // Form state management with react-hook-form
   const form = useForm<ContactFormData>({
     resolver: zodResolver(contactFormSchema),
@@ -38,6 +41,7 @@ export function ContactForm() {
       consultationAreas: [],
       otherConsultationArea: "",
       honeypot: "",
+      recaptchaToken: "",
     },
     mode: "onChange",
   });
@@ -55,11 +59,30 @@ export function ContactForm() {
     setSubmitResult(null);
 
     try {
-      const result = await submitContactForm(data);
+      // Execute reCAPTCHA and get token
+      const token = await recaptchaRef.current?.executeAsync();
+
+      if (!token) {
+        setSubmitResult({
+          success: false,
+          message: "ReCAPTCHA verification failed. Please try again.",
+        });
+        return;
+      }
+
+      // Add token to form data
+      const dataWithToken = {
+        ...data,
+        recaptchaToken: token,
+      };
+
+      const result = await submitContactForm(dataWithToken);
       setSubmitResult(result);
 
       if (result.success) {
         form.reset();
+        // Reset reCAPTCHA
+        recaptchaRef.current?.reset();
       }
     } catch (error: unknown) {
       console.error("Form submission error:", error);
@@ -90,6 +113,15 @@ export function ContactForm() {
           {submitResult.message}
         </div>
       )}
+
+      {/* Hidden reCAPTCHA component */}
+      <div className="hidden">
+        <ReCAPTCHA
+          ref={recaptchaRef}
+          size="invisible"
+          sitekey={process.env.NEXT_PUBLIC_RECAPTCHA_SITE_KEY || ""}
+        />
+      </div>
 
       <Form {...form}>
         <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-6">
@@ -254,7 +286,7 @@ export function ContactForm() {
                                       }}
                                     />
                                   </FormControl>
-                                  <FormLabel className="font-normal cursor-pointer">
+                                  <FormLabel className="text-sm font-normal cursor-pointer">
                                     {area}
                                   </FormLabel>
                                 </FormItem>
@@ -297,6 +329,28 @@ export function ContactForm() {
           <Button type="submit" className="w-full" disabled={isSubmitting}>
             {isSubmitting ? "Sending..." : "Send Message"}
           </Button>
+
+          <div className="text-xs text-center text-gray-500 mt-2">
+            This site is protected by reCAPTCHA and the Google
+            <a
+              href="https://policies.google.com/privacy"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-blue-600 hover:text-blue-800 dark:text-blue-400 dark:hover:text-blue-300 mx-1"
+            >
+              Privacy Policy
+            </a>{" "}
+            and
+            <a
+              href="https://policies.google.com/terms"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-blue-600 hover:text-blue-800 dark:text-blue-400 dark:hover:text-blue-300 mx-1"
+            >
+              Terms of Service
+            </a>{" "}
+            apply.
+          </div>
         </form>
       </Form>
     </div>

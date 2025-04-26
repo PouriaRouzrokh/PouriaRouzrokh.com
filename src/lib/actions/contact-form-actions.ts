@@ -59,6 +59,31 @@ function formatConsultationAreas(data: ContactFormData): string {
   return areas;
 }
 
+// Verify reCAPTCHA token
+async function verifyRecaptcha(token: string): Promise<boolean> {
+  try {
+    const response = await fetch(
+      "https://www.google.com/recaptcha/api/siteverify",
+      {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/x-www-form-urlencoded",
+        },
+        body: new URLSearchParams({
+          secret: process.env.RECAPTCHA_SECRET_KEY || "",
+          response: token,
+        }),
+      }
+    );
+
+    const data = await response.json();
+    return data.success === true && data.score >= 0.5; // Verify success and minimum score
+  } catch (error) {
+    console.error("reCAPTCHA verification error:", error);
+    return false;
+  }
+}
+
 export async function submitContactForm(formData: ContactFormData) {
   // Check if honeypot field is filled (bot detection)
   if (formData.honeypot) {
@@ -70,6 +95,15 @@ export async function submitContactForm(formData: ContactFormData) {
   }
 
   try {
+    // Verify reCAPTCHA token
+    const recaptchaValid = await verifyRecaptcha(formData.recaptchaToken);
+    if (!recaptchaValid) {
+      return {
+        success: false,
+        message: "reCAPTCHA verification failed. Please try again.",
+      };
+    }
+
     // Validate form data against schema
     const validatedData = contactFormSchema.parse(formData);
 
