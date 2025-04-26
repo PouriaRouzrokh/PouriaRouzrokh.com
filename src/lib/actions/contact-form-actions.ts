@@ -21,14 +21,14 @@ const redis = new Redis({
 // Create rate limiter for IP-based rate limiting (5 submissions per day)
 const ipRatelimit = new Ratelimit({
   redis,
-  limiter: Ratelimit.slidingWindow(20, "1d"),
+  limiter: Ratelimit.slidingWindow(5, "1d"),
   prefix: "ratelimit:ip",
 });
 
 // Create rate limiter for daily submission count (25 submissions per day)
 const dailyEmailLimit = new Ratelimit({
   redis,
-  limiter: Ratelimit.fixedWindow(50, "1d"),
+  limiter: Ratelimit.fixedWindow(25, "1d"),
   prefix: "ratelimit:daily",
 });
 
@@ -59,27 +59,15 @@ function formatConsultationAreas(data: ContactFormData): string {
   return areas;
 }
 
-// Verify reCAPTCHA token with Google API
-async function verifyRecaptcha(
-  token: string,
-  clientIp: string
-): Promise<boolean> {
+// Verify reCAPTCHA token
+async function verifyRecaptcha(token: string, ip: string): Promise<boolean> {
   try {
-    const recaptchaSecretKey = process.env.RECAPTCHA_SECRET_KEY;
-
-    // If reCAPTCHA is not configured, fail validation
-    if (!recaptchaSecretKey) {
-      console.error("Missing RECAPTCHA_SECRET_KEY in environment variables");
+    const recaptchaSecret = process.env.RECAPTCHA_SECRET_KEY;
+    if (!recaptchaSecret) {
+      console.error("reCAPTCHA secret key is not configured");
       return false;
     }
 
-    // If token is missing, fail validation
-    if (!token) {
-      console.error("Missing reCAPTCHA token");
-      return false;
-    }
-
-    // Verify token with Google API
     const response = await fetch(
       "https://www.google.com/recaptcha/api/siteverify",
       {
@@ -88,28 +76,29 @@ async function verifyRecaptcha(
           "Content-Type": "application/x-www-form-urlencoded",
         },
         body: new URLSearchParams({
-          secret: recaptchaSecretKey,
+          secret: recaptchaSecret,
           response: token,
-          remoteip: clientIp,
-        }).toString(),
+          remoteip: ip,
+        }),
       }
     );
 
-    if (!response.ok) {
-      console.error(
-        `reCAPTCHA API error: ${response.status} ${response.statusText}`
-      );
+    const data = await response.json();
+
+    if (!data.success) {
+      console.error("reCAPTCHA verification failed:", data["error-codes"]);
       return false;
     }
 
-    const data = await response.json();
-    console.log("reCAPTCHA verification result:", data);
+    // For v3, check the score (0.0 is bot, 1.0 is human)
+    if (data.score < 0.5) {
+      console.error("reCAPTCHA score too low:", data.score);
+      return false;
+    }
 
-    // Check if the verification was successful and score is acceptable (for v3)
-    // Typically 0.5 is a reasonable threshold, but you can adjust based on your needs
-    return data.success && data.score >= 0.5;
+    return true;
   } catch (error) {
-    console.error("reCAPTCHA verification error:", error);
+    console.error("Error verifying reCAPTCHA:", error);
     return false;
   }
 }
@@ -132,12 +121,11 @@ export async function submitContactForm(formData: ContactFormData) {
     const headersList = headers();
     const ip = headersList.get("x-forwarded-for")?.split(",")[0] || "127.0.0.1";
 
-    // Verify reCAPTCHA token
+    // Verify reCAPTCHA
     const isRecaptchaValid = await verifyRecaptcha(
       validatedData.recaptchaToken,
       ip
     );
-
     if (!isRecaptchaValid) {
       return {
         success: false,
