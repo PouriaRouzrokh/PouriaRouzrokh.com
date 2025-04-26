@@ -59,9 +59,16 @@ function formatConsultationAreas(data: ContactFormData): string {
   return areas;
 }
 
-// Verify reCAPTCHA token
-async function verifyRecaptcha(token: string): Promise<boolean> {
+// Verify reCAPTCHA token with Google
+async function verifyRecaptcha(token: string, ip: string): Promise<boolean> {
   try {
+    const recaptchaSecret = process.env.RECAPTCHA_SECRET_KEY;
+
+    if (!recaptchaSecret) {
+      console.error("reCAPTCHA secret key is not configured");
+      return false;
+    }
+
     const response = await fetch(
       "https://www.google.com/recaptcha/api/siteverify",
       {
@@ -70,14 +77,28 @@ async function verifyRecaptcha(token: string): Promise<boolean> {
           "Content-Type": "application/x-www-form-urlencoded",
         },
         body: new URLSearchParams({
-          secret: process.env.RECAPTCHA_SECRET_KEY || "",
+          secret: recaptchaSecret,
           response: token,
-        }),
+          remoteip: ip,
+        }).toString(),
       }
     );
 
     const data = await response.json();
-    return data.success === true && data.score >= 0.5; // Verify success and minimum score
+
+    if (!data.success) {
+      console.error("reCAPTCHA verification failed:", data["error-codes"]);
+      return false;
+    }
+
+    // Google recommends checking the score for v3
+    // A score of 0.5 or higher is typically considered human behavior
+    if (data.score < 0.5) {
+      console.warn("reCAPTCHA score too low:", data.score);
+      return false;
+    }
+
+    return true;
   } catch (error) {
     console.error("reCAPTCHA verification error:", error);
     return false;
@@ -95,21 +116,34 @@ export async function submitContactForm(formData: ContactFormData) {
   }
 
   try {
-    // Verify reCAPTCHA token
-    const recaptchaValid = await verifyRecaptcha(formData.recaptchaToken);
-    if (!recaptchaValid) {
-      return {
-        success: false,
-        message: "reCAPTCHA verification failed. Please try again.",
-      };
-    }
-
     // Validate form data against schema
     const validatedData = contactFormSchema.parse(formData);
 
     // Get client IP for rate limiting
     const headersList = headers();
     const ip = headersList.get("x-forwarded-for")?.split(",")[0] || "127.0.0.1";
+
+    // Verify reCAPTCHA
+    if (validatedData.recaptchaToken) {
+      const isRecaptchaValid = await verifyRecaptcha(
+        validatedData.recaptchaToken,
+        ip
+      );
+
+      if (!isRecaptchaValid) {
+        return {
+          success: false,
+          message: "reCAPTCHA verification failed. Please try again.",
+        };
+      }
+    } else if (process.env.NODE_ENV === "production") {
+      // In production, require reCAPTCHA token
+      return {
+        success: false,
+        message:
+          "reCAPTCHA verification failed. Please ensure JavaScript is enabled and try again.",
+      };
+    }
 
     // Check IP-based rate limit
     const ipRateLimit = await ipRatelimit.limit(ip);

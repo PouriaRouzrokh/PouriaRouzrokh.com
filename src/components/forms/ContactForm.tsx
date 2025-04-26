@@ -1,8 +1,9 @@
 "use client";
 
-import React, { useState, useRef, useEffect } from "react";
+import React, { useState, useRef } from "react";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
+import ReCAPTCHA from "react-google-recaptcha";
 import { cn } from "@/lib/utils";
 import { Button } from "@/components/ui/button";
 import {
@@ -18,7 +19,6 @@ import { Input } from "@/components/ui/input";
 import { Checkbox } from "@/components/ui/checkbox";
 import { Separator } from "@/components/ui/separator";
 import { Textarea } from "@/components/ui/textarea";
-import ReCAPTCHA from "react-google-recaptcha";
 import { submitContactForm } from "@/lib/actions/contact-form-actions";
 import {
   ContactFormData,
@@ -26,50 +26,7 @@ import {
   contactFormSchema,
 } from "@/lib/schemas/contact-form-schema";
 
-// Add type definition for window with grecaptcha
-declare global {
-  interface Window {
-    grecaptcha?: {
-      ready: (callback: () => void) => void;
-      execute: (
-        siteKey: string,
-        options: { action: string }
-      ) => Promise<string>;
-    };
-  }
-}
-
 export function ContactForm() {
-  const recaptchaRef = useRef<ReCAPTCHA>(null);
-  const [recaptchaKey, setRecaptchaKey] = useState<string>("");
-  const [recaptchaReady, setRecaptchaReady] = useState<boolean>(false);
-
-  // Initialize reCAPTCHA key and script
-  useEffect(() => {
-    const siteKey = process.env.NEXT_PUBLIC_RECAPTCHA_SITE_KEY || "";
-    setRecaptchaKey(siteKey);
-
-    // Load reCAPTCHA script if not already loaded
-    if (!window.grecaptcha && siteKey) {
-      const script = document.createElement("script");
-      script.src = `https://www.google.com/recaptcha/api.js?render=${siteKey}`;
-      script.async = true;
-      script.defer = true;
-      script.onload = () => setRecaptchaReady(true);
-      document.body.appendChild(script);
-    } else {
-      setRecaptchaReady(true);
-    }
-
-    return () => {
-      // Clean up script when component unmounts
-      const script = document.querySelector(`script[src*="recaptcha/api.js"]`);
-      if (script) {
-        document.body.removeChild(script);
-      }
-    };
-  }, []);
-
   // Form state management with react-hook-form
   const form = useForm<ContactFormData>({
     resolver: zodResolver(contactFormSchema),
@@ -94,82 +51,30 @@ export function ContactForm() {
     message?: string;
   } | null>(null);
 
+  // reCAPTCHA reference
+  const recaptchaRef = useRef<ReCAPTCHA>(null);
+
   // Handle form submission
   const onSubmit = async (data: ContactFormData) => {
     setIsSubmitting(true);
     setSubmitResult(null);
 
-    // Temporary debug check - can be removed after fixing the issue
-    const isDebug = window.location.search.includes("debug=true");
-    if (isDebug) console.log("Form submission started", data);
-    if (isDebug) console.log("ReCAPTCHA ready:", recaptchaReady);
-
     try {
-      // Check if reCAPTCHA is ready
-      if (!recaptchaReady) {
-        setSubmitResult({
-          success: false,
-          message:
-            "ReCAPTCHA is not ready yet. Please wait a moment and try again.",
-        });
-        setIsSubmitting(false);
-        return;
+      // Execute reCAPTCHA to get token
+      if (recaptchaRef.current) {
+        const token = await recaptchaRef.current.executeAsync();
+        data.recaptchaToken = token || "";
       }
 
-      // Execute reCAPTCHA and get token
-      if (!recaptchaRef.current) {
-        setSubmitResult({
-          success: false,
-          message:
-            "ReCAPTCHA initialization failed. Please refresh the page and try again.",
-        });
-        setIsSubmitting(false);
-        if (isDebug) console.log("ReCAPTCHA ref is null");
-        return;
-      }
-
-      if (isDebug) console.log("Executing reCAPTCHA");
-
-      let token;
-      try {
-        token = await recaptchaRef.current.executeAsync();
-      } catch (recaptchaError) {
-        console.error("ReCAPTCHA execution error:", recaptchaError);
-        setSubmitResult({
-          success: false,
-          message:
-            "ReCAPTCHA verification failed. Please refresh and try again.",
-        });
-        setIsSubmitting(false);
-        return;
-      }
-
-      if (isDebug) console.log("ReCAPTCHA token:", token ? "Received" : "None");
-
-      if (!token) {
-        setSubmitResult({
-          success: false,
-          message: "ReCAPTCHA verification failed. Please try again.",
-        });
-        setIsSubmitting(false);
-        return;
-      }
-
-      // Add token to form data
-      const dataWithToken = {
-        ...data,
-        recaptchaToken: token,
-      };
-
-      if (isDebug) console.log("Submitting form with token");
-      const result = await submitContactForm(dataWithToken);
-      if (isDebug) console.log("Submission result:", result);
+      const result = await submitContactForm(data);
       setSubmitResult(result);
 
       if (result.success) {
         form.reset();
         // Reset reCAPTCHA
-        recaptchaRef.current.reset();
+        if (recaptchaRef.current) {
+          recaptchaRef.current.reset();
+        }
       }
     } catch (error: unknown) {
       console.error("Form submission error:", error);
@@ -201,17 +106,6 @@ export function ContactForm() {
         </div>
       )}
 
-      {/* Hidden reCAPTCHA component - only render when key is available and ready */}
-      {recaptchaKey && recaptchaReady && (
-        <div className="hidden">
-          <ReCAPTCHA
-            ref={recaptchaRef}
-            size="invisible"
-            sitekey={recaptchaKey}
-          />
-        </div>
-      )}
-
       <Form {...form}>
         <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-6">
           {/* Honeypot field - hidden from users, but visible to bots */}
@@ -229,6 +123,26 @@ export function ContactForm() {
               )}
             />
           </div>
+
+          {/* Hidden reCAPTCHA token field */}
+          <FormField
+            control={form.control}
+            name="recaptchaToken"
+            render={({ field }) => (
+              <FormItem className="hidden">
+                <FormControl>
+                  <Input type="hidden" {...field} />
+                </FormControl>
+              </FormItem>
+            )}
+          />
+
+          {/* Google reCAPTCHA v3 - invisible */}
+          <ReCAPTCHA
+            ref={recaptchaRef}
+            size="invisible"
+            sitekey={process.env.NEXT_PUBLIC_RECAPTCHA_SITE_KEY || ""}
+          />
 
           {/* Subject field */}
           <FormField
@@ -375,7 +289,7 @@ export function ContactForm() {
                                       }}
                                     />
                                   </FormControl>
-                                  <FormLabel className="text-sm font-normal cursor-pointer">
+                                  <FormLabel className="font-normal cursor-pointer">
                                     {area}
                                   </FormLabel>
                                 </FormItem>
@@ -418,28 +332,6 @@ export function ContactForm() {
           <Button type="submit" className="w-full" disabled={isSubmitting}>
             {isSubmitting ? "Sending..." : "Send Message"}
           </Button>
-
-          <div className="text-xs text-center text-gray-500 mt-2">
-            This site is protected by reCAPTCHA and the Google
-            <a
-              href="https://policies.google.com/privacy"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="text-blue-600 hover:text-blue-800 dark:text-blue-400 dark:hover:text-blue-300 mx-1"
-            >
-              Privacy Policy
-            </a>{" "}
-            and
-            <a
-              href="https://policies.google.com/terms"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="text-blue-600 hover:text-blue-800 dark:text-blue-400 dark:hover:text-blue-300 mx-1"
-            >
-              Terms of Service
-            </a>{" "}
-            apply.
-          </div>
         </form>
       </Form>
     </div>
