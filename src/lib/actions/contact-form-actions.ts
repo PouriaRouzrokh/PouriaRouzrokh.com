@@ -59,50 +59,6 @@ function formatConsultationAreas(data: ContactFormData): string {
   return areas;
 }
 
-// Verify reCAPTCHA token
-async function verifyRecaptcha(token: string, ip: string): Promise<boolean> {
-  try {
-    const recaptchaSecret = process.env.RECAPTCHA_SECRET_KEY;
-    if (!recaptchaSecret) {
-      console.error("reCAPTCHA secret key is not configured");
-      return false;
-    }
-
-    const response = await fetch(
-      "https://www.google.com/recaptcha/api/siteverify",
-      {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/x-www-form-urlencoded",
-        },
-        body: new URLSearchParams({
-          secret: recaptchaSecret,
-          response: token,
-          remoteip: ip,
-        }),
-      }
-    );
-
-    const data = await response.json();
-
-    if (!data.success) {
-      console.error("reCAPTCHA verification failed:", data["error-codes"]);
-      return false;
-    }
-
-    // For v3, check the score (0.0 is bot, 1.0 is human)
-    if (data.score < 0.5) {
-      console.error("reCAPTCHA score too low:", data.score);
-      return false;
-    }
-
-    return true;
-  } catch (error) {
-    console.error("Error verifying reCAPTCHA:", error);
-    return false;
-  }
-}
-
 export async function submitContactForm(formData: ContactFormData) {
   // Check if honeypot field is filled (bot detection)
   if (formData.honeypot) {
@@ -120,18 +76,6 @@ export async function submitContactForm(formData: ContactFormData) {
     // Get client IP for rate limiting
     const headersList = headers();
     const ip = headersList.get("x-forwarded-for")?.split(",")[0] || "127.0.0.1";
-
-    // Verify reCAPTCHA
-    const isRecaptchaValid = await verifyRecaptcha(
-      validatedData.recaptchaToken,
-      ip
-    );
-    if (!isRecaptchaValid) {
-      return {
-        success: false,
-        message: "reCAPTCHA verification failed. Please try again.",
-      };
-    }
 
     // Check IP-based rate limit
     const ipRateLimit = await ipRatelimit.limit(ip);

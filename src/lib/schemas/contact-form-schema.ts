@@ -38,7 +38,6 @@ export const contactFormSchema = z
     consultationAreas: z.array(z.enum(consultationAreas)).optional(),
     otherConsultationArea: z.string().optional(),
     honeypot: z.string().max(0, "This field should be left empty"),
-    recaptchaToken: z.string().min(1, "reCAPTCHA verification failed"),
   })
   .refine(
     (data) => {

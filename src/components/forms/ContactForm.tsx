@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState, useEffect, useRef } from "react";
+import React, { useState } from "react";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { cn } from "@/lib/utils";
@@ -25,19 +25,6 @@ import {
   contactFormSchema,
 } from "@/lib/schemas/contact-form-schema";
 
-// Declare the global grecaptcha object
-declare global {
-  interface Window {
-    grecaptcha: {
-      ready: (callback: () => void) => void;
-      execute: (
-        siteKey: string,
-        options: { action: string }
-      ) => Promise<string>;
-    };
-  }
-}
-
 export function ContactForm() {
   // Form state management with react-hook-form
   const form = useForm<ContactFormData>({
@@ -51,7 +38,6 @@ export function ContactForm() {
       consultationAreas: [],
       otherConsultationArea: "",
       honeypot: "",
-      recaptchaToken: "",
     },
     mode: "onChange",
   });
@@ -63,118 +49,13 @@ export function ContactForm() {
     message?: string;
   } | null>(null);
 
-  // Reference to track if reCAPTCHA script is loaded
-  const recaptchaLoaded = useRef(false);
-  const recaptchaWaiting = useRef(false);
-
-  // Load reCAPTCHA script
-  useEffect(() => {
-    // Skip if reCAPTCHA is already loaded or loading
-    if (recaptchaLoaded.current || recaptchaWaiting.current) return;
-
-    recaptchaWaiting.current = true;
-
-    const siteKey = process.env.NEXT_PUBLIC_RECAPTCHA_SITE_KEY;
-    if (!siteKey) {
-      console.error("reCAPTCHA site key is not configured");
-      return;
-    }
-
-    // Load the reCAPTCHA script
-    const script = document.createElement("script");
-    script.src = `https://www.google.com/recaptcha/api.js?render=${siteKey}`;
-    script.async = true;
-    script.defer = true;
-
-    script.onload = () => {
-      recaptchaLoaded.current = true;
-      recaptchaWaiting.current = false;
-      console.log("reCAPTCHA script loaded successfully");
-    };
-
-    script.onerror = (error) => {
-      console.error("Error loading reCAPTCHA script:", error);
-      recaptchaWaiting.current = false;
-    };
-
-    document.head.appendChild(script);
-
-    return () => {
-      // Only remove if it exists
-      if (document.head.contains(script)) {
-        document.head.removeChild(script);
-      }
-    };
-  }, []);
-
-  // Get reCAPTCHA token
-  const getRecaptchaToken = async (): Promise<string> => {
-    const siteKey = process.env.NEXT_PUBLIC_RECAPTCHA_SITE_KEY;
-    if (!siteKey) {
-      console.error("reCAPTCHA site key is not configured");
-      return "";
-    }
-
-    // Check if grecaptcha is available in the window object
-    if (typeof window === "undefined" || !window.grecaptcha) {
-      console.error("reCAPTCHA is not properly loaded");
-      return "";
-    }
-
-    try {
-      return await new Promise<string>((resolve, reject) => {
-        window.grecaptcha.ready(async () => {
-          try {
-            const token = await window.grecaptcha.execute(siteKey, {
-              action: "contact_form",
-            });
-            resolve(token);
-          } catch (err) {
-            console.error("reCAPTCHA execution error:", err);
-            reject("");
-          }
-        });
-      });
-    } catch (error) {
-      console.error("Error getting reCAPTCHA token:", error);
-      return "";
-    }
-  };
-
   // Handle form submission
   const onSubmit = async (data: ContactFormData) => {
     setIsSubmitting(true);
     setSubmitResult(null);
 
     try {
-      console.log("Form submitted, getting reCAPTCHA token...");
-
-      // Get reCAPTCHA token
-      const recaptchaToken = await getRecaptchaToken();
-      console.log(
-        "reCAPTCHA token obtained:",
-        recaptchaToken ? "Success" : "Failed"
-      );
-
-      if (!recaptchaToken) {
-        setSubmitResult({
-          success: false,
-          message:
-            "reCAPTCHA verification failed. Please try again or contact support.",
-        });
-        return;
-      }
-
-      // Add reCAPTCHA token to form data
-      const formDataWithToken = {
-        ...data,
-        recaptchaToken,
-      };
-
-      console.log("Submitting form with reCAPTCHA token...");
-      const result = await submitContactForm(formDataWithToken);
-      console.log("Form submission result:", result);
-
+      const result = await submitContactForm(data);
       setSubmitResult(result);
 
       if (result.success) {
@@ -412,37 +293,10 @@ export function ContactForm() {
 
           <Separator className="my-6" />
 
-          {/* Submit button with active state styles */}
-          <Button
-            type="submit"
-            className="w-full transition-colors hover:bg-primary/90 focus:ring-2 focus:ring-primary/20 active:bg-primary/80"
-            disabled={isSubmitting}
-          >
+          {/* Submit button */}
+          <Button type="submit" className="w-full" disabled={isSubmitting}>
             {isSubmitting ? "Sending..." : "Send Message"}
           </Button>
-
-          {/* reCAPTCHA disclaimer */}
-          <div className="text-xs text-gray-500 dark:text-gray-400 text-center mt-4">
-            This site is protected by reCAPTCHA and the Google{" "}
-            <a
-              href="https://policies.google.com/privacy"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="underline"
-            >
-              Privacy Policy
-            </a>{" "}
-            and{" "}
-            <a
-              href="https://policies.google.com/terms"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="underline"
-            >
-              Terms of Service
-            </a>{" "}
-            apply.
-          </div>
         </form>
       </Form>
     </div>
