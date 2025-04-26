@@ -4,7 +4,7 @@ import ResearchSummarySection from "@/components/sections/ResearchSummarySection
 import ExperienceSection from "@/components/sections/ExperienceSection";
 import AchievementsSection from "@/components/sections/AchievementsSection";
 import AcknowledgmentsSection from "@/components/sections/AcknowledgmentsSection";
-import { SectionDivider } from "@/components/ui/section-divider";
+// import { SectionDivider } from "@/components/ui/section-divider";
 import {
   getProfile,
   getEducation,
@@ -84,31 +84,31 @@ export default async function Home() {
 
       <HeroSection profileData={profile} />
 
-      <SectionDivider />
+      {/* <SectionDivider /> */}
 
       <div className="pt-4">
         <EducationSection educationData={education} />
       </div>
 
-      <SectionDivider />
+      {/* <SectionDivider /> */}
 
       <div className="pt-4">
         <ResearchSummarySection researchData={research} profileData={profile} />
       </div>
 
-      <SectionDivider />
+      {/* <SectionDivider /> */}
 
       <div className="pt-4">
         <ExperienceSection experienceData={experience} />
       </div>
 
-      <SectionDivider />
+      {/* <SectionDivider /> */}
 
       <div className="pt-4">
         <AchievementsSection achievementsData={achievements} />
       </div>
 
-      <SectionDivider />
+      {/* <SectionDivider /> */}
 
       <div className="pt-4">
         <AcknowledgmentsSection acknowledgementsData={acknowledgments} />
