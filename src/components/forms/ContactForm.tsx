@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState, useRef } from "react";
+import React, { useState, useRef, useEffect } from "react";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { cn } from "@/lib/utils";
@@ -26,9 +26,49 @@ import {
   contactFormSchema,
 } from "@/lib/schemas/contact-form-schema";
 
+// Add type definition for window with grecaptcha
+declare global {
+  interface Window {
+    grecaptcha?: {
+      ready: (callback: () => void) => void;
+      execute: (
+        siteKey: string,
+        options: { action: string }
+      ) => Promise<string>;
+    };
+  }
+}
+
 export function ContactForm() {
   const recaptchaRef = useRef<ReCAPTCHA>(null);
-  const [recaptchaToken, setRecaptchaToken] = useState<string>("");
+  const [recaptchaKey, setRecaptchaKey] = useState<string>("");
+  const [recaptchaReady, setRecaptchaReady] = useState<boolean>(false);
+
+  // Initialize reCAPTCHA key and script
+  useEffect(() => {
+    const siteKey = process.env.NEXT_PUBLIC_RECAPTCHA_SITE_KEY || "";
+    setRecaptchaKey(siteKey);
+
+    // Load reCAPTCHA script if not already loaded
+    if (!window.grecaptcha && siteKey) {
+      const script = document.createElement("script");
+      script.src = `https://www.google.com/recaptcha/api.js?render=${siteKey}`;
+      script.async = true;
+      script.defer = true;
+      script.onload = () => setRecaptchaReady(true);
+      document.body.appendChild(script);
+    } else {
+      setRecaptchaReady(true);
+    }
+
+    return () => {
+      // Clean up script when component unmounts
+      const script = document.querySelector(`script[src*="recaptcha/api.js"]`);
+      if (script) {
+        document.body.removeChild(script);
+      }
+    };
+  }, []);
 
   // Form state management with react-hook-form
   const form = useForm<ContactFormData>({
@@ -54,53 +94,82 @@ export function ContactForm() {
     message?: string;
   } | null>(null);
 
-  // Handle reCAPTCHA token change
-  const handleReCaptchaChange = (token: string | null) => {
-    console.log(
-      "reCAPTCHA token received:",
-      token ? "Token received" : "No token"
-    );
-    if (token) {
-      setRecaptchaToken(token);
-    }
-  };
-
   // Handle form submission
   const onSubmit = async (data: ContactFormData) => {
-    console.log("Form submission started");
     setIsSubmitting(true);
     setSubmitResult(null);
 
+    // Temporary debug check - can be removed after fixing the issue
+    const isDebug = window.location.search.includes("debug=true");
+    if (isDebug) console.log("Form submission started", data);
+    if (isDebug) console.log("ReCAPTCHA ready:", recaptchaReady);
+
     try {
-      // Check if we have a reCAPTCHA token
-      if (!recaptchaToken) {
-        console.log("No reCAPTCHA token available");
+      // Check if reCAPTCHA is ready
+      if (!recaptchaReady) {
         setSubmitResult({
           success: false,
           message:
-            "Please complete the reCAPTCHA verification before submitting.",
+            "ReCAPTCHA is not ready yet. Please wait a moment and try again.",
         });
+        setIsSubmitting(false);
+        return;
+      }
+
+      // Execute reCAPTCHA and get token
+      if (!recaptchaRef.current) {
+        setSubmitResult({
+          success: false,
+          message:
+            "ReCAPTCHA initialization failed. Please refresh the page and try again.",
+        });
+        setIsSubmitting(false);
+        if (isDebug) console.log("ReCAPTCHA ref is null");
+        return;
+      }
+
+      if (isDebug) console.log("Executing reCAPTCHA");
+
+      let token;
+      try {
+        token = await recaptchaRef.current.executeAsync();
+      } catch (recaptchaError) {
+        console.error("ReCAPTCHA execution error:", recaptchaError);
+        setSubmitResult({
+          success: false,
+          message:
+            "ReCAPTCHA verification failed. Please refresh and try again.",
+        });
+        setIsSubmitting(false);
+        return;
+      }
+
+      if (isDebug) console.log("ReCAPTCHA token:", token ? "Received" : "None");
+
+      if (!token) {
+        setSubmitResult({
+          success: false,
+          message: "ReCAPTCHA verification failed. Please try again.",
+        });
+        setIsSubmitting(false);
         return;
       }
 
       // Add token to form data
       const dataWithToken = {
         ...data,
-        recaptchaToken: recaptchaToken,
+        recaptchaToken: token,
       };
-      console.log("Submitting form with reCAPTCHA token");
 
+      if (isDebug) console.log("Submitting form with token");
       const result = await submitContactForm(dataWithToken);
-      console.log("Form submission result:", result);
+      if (isDebug) console.log("Submission result:", result);
       setSubmitResult(result);
 
       if (result.success) {
         form.reset();
         // Reset reCAPTCHA
-        if (recaptchaRef.current) {
-          recaptchaRef.current.reset();
-          setRecaptchaToken("");
-        }
+        recaptchaRef.current.reset();
       }
     } catch (error: unknown) {
       console.error("Form submission error:", error);
@@ -110,7 +179,6 @@ export function ContactForm() {
       });
     } finally {
       setIsSubmitting(false);
-      console.log("Form submission completed");
     }
   };
 
@@ -133,25 +201,16 @@ export function ContactForm() {
         </div>
       )}
 
-      {/* Debug reCAPTCHA component - make it visible for testing */}
-      <div className="mb-4 p-4 border border-gray-300 rounded-md bg-gray-50">
-        <p className="text-sm font-medium mb-2">reCAPTCHA Verification:</p>
-        <ReCAPTCHA
-          ref={recaptchaRef}
-          sitekey={process.env.NEXT_PUBLIC_RECAPTCHA_SITE_KEY || ""}
-          onChange={handleReCaptchaChange}
-          onErrored={() => console.error("reCAPTCHA error occurred")}
-          onExpired={() => {
-            console.log("reCAPTCHA expired");
-            setRecaptchaToken("");
-          }}
-        />
-        <p className="text-xs text-gray-500 mt-2">
-          {recaptchaToken
-            ? "✅ reCAPTCHA verification completed"
-            : "⚠️ Please complete the reCAPTCHA verification before submitting"}
-        </p>
-      </div>
+      {/* Hidden reCAPTCHA component - only render when key is available and ready */}
+      {recaptchaKey && recaptchaReady && (
+        <div className="hidden">
+          <ReCAPTCHA
+            ref={recaptchaRef}
+            size="invisible"
+            sitekey={recaptchaKey}
+          />
+        </div>
+      )}
 
       <Form {...form}>
         <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-6">
@@ -356,11 +415,7 @@ export function ContactForm() {
           <Separator className="my-6" />
 
           {/* Submit button */}
-          <Button
-            type="submit"
-            className="w-full"
-            disabled={isSubmitting || !recaptchaToken}
-          >
+          <Button type="submit" className="w-full" disabled={isSubmitting}>
             {isSubmitting ? "Sending..." : "Send Message"}
           </Button>
 

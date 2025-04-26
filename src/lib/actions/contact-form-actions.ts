@@ -62,13 +62,6 @@ function formatConsultationAreas(data: ContactFormData): string {
 // Verify reCAPTCHA token
 async function verifyRecaptcha(token: string): Promise<boolean> {
   try {
-    console.log("Verifying reCAPTCHA token");
-
-    if (!process.env.RECAPTCHA_SECRET_KEY) {
-      console.error("RECAPTCHA_SECRET_KEY is not set in environment variables");
-      return false;
-    }
-
     const response = await fetch(
       "https://www.google.com/recaptcha/api/siteverify",
       {
@@ -84,8 +77,6 @@ async function verifyRecaptcha(token: string): Promise<boolean> {
     );
 
     const data = await response.json();
-    console.log("reCAPTCHA verification response:", data);
-
     return data.success === true && data.score >= 0.5; // Verify success and minimum score
   } catch (error) {
     console.error("reCAPTCHA verification error:", error);
@@ -94,11 +85,8 @@ async function verifyRecaptcha(token: string): Promise<boolean> {
 }
 
 export async function submitContactForm(formData: ContactFormData) {
-  console.log("Server action: submitContactForm started");
-
   // Check if honeypot field is filled (bot detection)
   if (formData.honeypot) {
-    console.log("Honeypot field filled, blocking submission");
     // Return success to avoid alerting bots, but don't send email
     return {
       success: true,
@@ -108,13 +96,7 @@ export async function submitContactForm(formData: ContactFormData) {
 
   try {
     // Verify reCAPTCHA token
-    console.log("Server action: verifying reCAPTCHA token");
     const recaptchaValid = await verifyRecaptcha(formData.recaptchaToken);
-    console.log(
-      "Server action: reCAPTCHA verification result:",
-      recaptchaValid
-    );
-
     if (!recaptchaValid) {
       return {
         success: false,
