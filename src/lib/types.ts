@@ -160,6 +160,8 @@ export interface RawProfileData {
     github?: string;
     linkedin?: string;
     googleScholar?: string;
+    researchGate?: string;
+    orcid?: string;
   };
   skills?: Array<{ category: string; items: string[] }>;
   [key: string]: unknown;

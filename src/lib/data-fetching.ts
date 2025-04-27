@@ -54,6 +54,8 @@ export async function getProfile(): Promise<ProfileData> {
       github: profileData.social?.github || "",
       linkedin: profileData.social?.linkedin || "",
       googleScholar: profileData.social?.googleScholar || "",
+      researchGate: profileData.social?.researchGate || "",
+      orcid: profileData.social?.orcid || "",
     },
     skills: Array.isArray(profileData.skills) ? profileData.skills : [],
   };

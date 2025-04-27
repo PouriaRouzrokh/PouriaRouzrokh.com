@@ -118,6 +118,63 @@ export function SocialLinks({
           </svg>
         </a>
       )}
+
+      {social.researchGate && (
+        <a
+          href={social.researchGate}
+          target="_blank"
+          rel="noopener noreferrer"
+          className="text-muted-foreground hover:text-foreground transition-colors"
+          aria-label="ResearchGate"
+        >
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            width={iconSize}
+            height={iconSize}
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            strokeWidth="2"
+            strokeLinecap="round"
+            strokeLinejoin="round"
+          >
+            <path d="M19.586 5.586a2 2 0 0 0-2.828 0L12 10.343 7.242 5.586a2 2 0 1 0-2.828 2.828L9.172 13.172a2 2 0 0 0 2.828 0L16.757 8.414a2 2 0 0 0 0-2.828Z" />
+            <path d="M8 16c.5 1.5 2.358 2 4 2s3.5-.5 4-2" />
+            <path d="M20 7h-3" />
+            <path d="M20 11h-3" />
+            <path d="M20 15h-3" />
+            <path d="M4 7h3" />
+            <path d="M4 11h3" />
+            <path d="M4 15h3" />
+          </svg>
+        </a>
+      )}
+
+      {social.orcid && (
+        <a
+          href={social.orcid}
+          target="_blank"
+          rel="noopener noreferrer"
+          className="text-muted-foreground hover:text-foreground transition-colors"
+          aria-label="ORCID"
+        >
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            width={iconSize}
+            height={iconSize}
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            strokeWidth="2"
+            strokeLinecap="round"
+            strokeLinejoin="round"
+          >
+            <circle cx="12" cy="12" r="10" />
+            <circle cx="12" cy="8" r="1" />
+            <path d="M12 11v7" />
+          </svg>
+        </a>
+      )}
     </div>
   );
 }

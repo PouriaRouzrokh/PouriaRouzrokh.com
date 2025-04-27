@@ -29,6 +29,8 @@ export default function Footer() {
             github: "",
             linkedin: "",
             googleScholar: "",
+            researchGate: "",
+            orcid: "",
           },
           skills: [],
         });
@@ -43,6 +45,8 @@ export default function Footer() {
     github: "",
     linkedin: "",
     googleScholar: "",
+    researchGate: "",
+    orcid: "",
   };
 
   return (
