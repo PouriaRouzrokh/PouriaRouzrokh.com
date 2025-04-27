@@ -11,11 +11,16 @@ const inter = Inter({ subsets: ["latin"] });
 export const metadata: Metadata = {
   title: "Pouria Rouzrokh | AI Researcher & Developer | PouriaRouzrokh.com",
   description:
-    "Pouria Rouzrokh's official website. Pouria Rouzrokh is an AI researcher, developer, and innovator. Explore my projects, research, and expertise in artificial intelligence.",
+    "Official website of Pouria Rouzrokh - AI researcher, developer, and innovator. Explore Pouria's projects, research, and expertise in artificial intelligence and machine learning.",
   keywords: [
     "Pouria Rouzrokh",
+    "Pouria Rouzrokh website",
+    "Dr. Pouria Rouzrokh",
     "Pouria",
+    "Rouzrokh",
     "PouriaRouzrokh.com",
+    "Pouria Rouzrokh official",
+    "Pouria Rouzrokh personal website",
     "AI",
     "Research",
     "Machine Learning",
@@ -24,6 +29,9 @@ export const metadata: Metadata = {
     "Biomedical Informatics",
     "Artificial Intelligence Expert",
   ],
+  verification: {
+    google: "REPLACE_WITH_YOUR_VERIFICATION_CODE",
+  },
   authors: [{ name: "Pouria Rouzrokh", url: "https://PouriaRouzrokh.com" }],
   creator: "Pouria Rouzrokh",
   publisher: "Pouria Rouzrokh",

@@ -41,7 +41,9 @@ export default async function Home() {
     "@context": "https://schema.org",
     "@type": "Person",
     name: "Pouria Rouzrokh",
+    alternateName: ["Dr. Pouria Rouzrokh", "Pouria R.", "P. Rouzrokh"],
     url: "https://PouriaRouzrokh.com",
+    mainEntityOfPage: "https://PouriaRouzrokh.com",
     jobTitle: "AI Researcher & Developer",
     description:
       profile?.bio ||
@@ -81,6 +83,11 @@ export default async function Home() {
     author: {
       "@type": "Person",
       name: "Pouria Rouzrokh",
+    },
+    potentialAction: {
+      "@type": "SearchAction",
+      target: "https://PouriaRouzrokh.com/?s={search_term_string}",
+      "query-input": "required name=search_term_string",
     },
   };
 
