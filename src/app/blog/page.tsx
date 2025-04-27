@@ -3,7 +3,7 @@ import { getAllPosts } from "@/lib/notion";
 import ClientBlogList from "./ClientBlogList";
 
 export const metadata: Metadata = {
-  title: "Blog | Pouria AI",
+  title: "Blog | Pouria Rouzrokh",
   description:
     "Thoughts, insights, and research from Pouria on AI, machine learning, and more.",
 };

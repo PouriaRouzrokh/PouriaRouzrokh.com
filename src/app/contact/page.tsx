@@ -5,7 +5,7 @@ import { Separator } from "@/components/ui/separator";
 
 // Define metadata for SEO
 export const metadata: Metadata = {
-  title: "Contact | Pouria AI",
+  title: "Contact | Pouria Rouzrokh",
   description:
     "Get in touch with Pouria for inquiries or consultation requests.",
   alternates: {
