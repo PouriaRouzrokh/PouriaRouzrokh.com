@@ -46,6 +46,8 @@ export async function GET() {
           github: "",
           linkedin: "",
           googleScholar: "",
+          researchGate: "",
+          orcid: "",
         },
         skills: [],
       };
