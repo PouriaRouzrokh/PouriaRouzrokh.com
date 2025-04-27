@@ -89,8 +89,19 @@ export default async function AboutPage() {
             >
               contact page
             </a>
-            for more information or check out his profiles on social media.
+            for more information or check out his profiles on social media:
           </p>
+          <br />
+          <ul className="list-disc pl-5">
+            {Object.entries(profile?.social || {}).map(([key, value]) => (
+              <li key={key} className="hover:underline">
+                <a href={value} target="_blank" rel="noopener noreferrer">
+                  {key}
+                </a>
+                <br />
+              </li>
+            ))}
+          </ul>
         </div>
       </div>
     </div>

@@ -17,6 +17,7 @@ export default function Navbar() {
     { label: "Research", href: "/research" },
     { label: "Portfolio", href: "/portfolio" },
     { label: "Blog", href: "/blog" },
+    { label: "About", href: "/about" },
     { label: "Contact", href: "/contact" },
   ];
 
