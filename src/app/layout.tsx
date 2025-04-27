@@ -11,7 +11,7 @@ const inter = Inter({ subsets: ["latin"] });
 export const metadata: Metadata = {
   title: "Pouria Rouzrokh | AI Researcher & Developer | PouriaRouzrokh.com",
   description:
-    "Official website of Pouria Rouzrokh - AI researcher, developer, and innovator. Explore my projects, research, and expertise in artificial intelligence.",
+    "Pouria Rouzrokh's official website. Pouria Rouzrokh is an AI researcher, developer, and innovator. Explore my projects, research, and expertise in artificial intelligence.",
   keywords: [
     "Pouria Rouzrokh",
     "Pouria",

@@ -56,6 +56,13 @@ export default async function Home() {
       profile?.social?.linkedin
         ? `https://linkedin.com/in/${profile.social.linkedin}`
         : "",
+      profile?.social?.googleScholar
+        ? `https://scholar.google.com/citations?user=${profile.social.googleScholar}`
+        : "",
+      profile?.social?.researchGate
+        ? `https://www.researchgate.net/profile/${profile.social.researchGate}`
+        : "",
+      profile?.social?.orcid ? `https://orcid.org/${profile.social.orcid}` : "",
     ].filter(Boolean),
     alumniOf:
       education?.map((edu) => ({

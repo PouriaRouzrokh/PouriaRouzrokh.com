@@ -12,6 +12,8 @@ export interface ProfileData {
     github: string;
     linkedin: string;
     googleScholar: string;
+    researchGate: string;
+    orcid: string;
   };
   skills: {
     category: string;
