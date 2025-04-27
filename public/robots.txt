@@ -1,6 +1,15 @@
-# Allow all web crawlers
+# Allow all web crawlers for main domain
 User-agent: *
 Allow: /
+
+# Disallow crawling of nameserver subdomains
+User-agent: *
+Host: ns1.pouriarouzrokh.com
+Disallow: /
+
+User-agent: *
+Host: ns2.pouriarouzrokh.com
+Disallow: /
 
 # Sitemap location
 Sitemap: https://pouriarouzrokh.com/sitemap.xml 
