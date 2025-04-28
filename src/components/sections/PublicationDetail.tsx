@@ -26,16 +26,22 @@ export function PublicationDetail({ doi }: PublicationDetailProps) {
 
     async function fetchPublicationData() {
       try {
-        // Use the raw DOI from the URL parameter
-        console.log("Fetching from:", `/api/research/${doi}`);
-        let response = await fetch(`/api/research/${doi}`);
+        // Get the current base URL, which works in both development and production
+        const baseUrl = window.location.origin;
+
+        // First try with the raw DOI
+        console.log("Fetching from:", `${baseUrl}/api/research/${doi}`);
+        let response = await fetch(`${baseUrl}/api/research/${doi}`);
         console.log("API response status (with raw DOI):", response.status);
 
         // If that fails, try with the decoded DOI
         if (!response.ok) {
           console.log("First attempt failed, trying with decoded DOI");
-          console.log("Fetching from:", `/api/research/${decodedDoi}`);
-          response = await fetch(`/api/research/${decodedDoi}`);
+          console.log(
+            "Fetching from:",
+            `${baseUrl}/api/research/${decodedDoi}`
+          );
+          response = await fetch(`${baseUrl}/api/research/${decodedDoi}`);
           console.log(
             "API response status (with decoded DOI):",
             response.status
