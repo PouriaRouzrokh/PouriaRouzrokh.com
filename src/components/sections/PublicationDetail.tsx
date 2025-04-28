@@ -1,12 +1,11 @@
 "use client";
 
 import { useState, useEffect } from "react";
-import Link from "next/link";
-import { ArrowLeft, Clipboard, ExternalLink } from "lucide-react";
-import { notFound } from "next/navigation";
 import { Article } from "@/lib/types";
 import { Button } from "@/components/ui/button";
+import { Clipboard, ArrowLeft, ExternalLink } from "lucide-react";
 import { Badge } from "@/components/ui/badge";
+import Link from "next/link";
 import { Card, CardContent } from "@/components/ui/card";
 import { SectionHeading } from "@/components/ui/section-heading";
 
@@ -16,52 +15,55 @@ interface PublicationDetailProps {
 
 export function PublicationDetail({ doi }: PublicationDetailProps) {
   const [publication, setPublication] = useState<Article | null>(null);
-  const [isLoading, setIsLoading] = useState(true);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState<string | null>(null);
   const [isCopied, setIsCopied] = useState(false);
-  const decodedDoi = decodeURIComponent(doi);
 
   useEffect(() => {
-    console.log("Raw DOI from URL param:", doi);
-    console.log("Decoded DOI in client:", decodedDoi);
-
     async function fetchPublicationData() {
       try {
-        // Use the raw DOI from the URL parameter
-        console.log("Fetching from:", `/api/research/${doi}`);
-        let response = await fetch(`/api/research/${doi}`);
-        console.log("API response status (with raw DOI):", response.status);
-
-        // If that fails, try with the decoded DOI
-        if (!response.ok) {
-          console.log("First attempt failed, trying with decoded DOI");
-          console.log("Fetching from:", `/api/research/${decodedDoi}`);
-          response = await fetch(`/api/research/${decodedDoi}`);
-          console.log(
-            "API response status (with decoded DOI):",
-            response.status
-          );
-        }
+        setLoading(true);
+        // Use the main research endpoint and filter by DOI client-side
+        // instead of using the individual DOI endpoint
+        const response = await fetch("/api/content/research");
 
         if (!response.ok) {
-          console.log("Both fetch attempts failed");
-          setIsLoading(false);
-          return; // Will trigger notFound() below
+          throw new Error("Failed to fetch research data");
         }
 
         const data = await response.json();
-        console.log("Publication data received:", data);
-        setPublication(data);
-        setIsLoading(false);
+        const decodedDoi = decodeURIComponent(doi);
+
+        // Find the matching article from all articles
+        const article = data.articles.find(
+          (article: Article) =>
+            article.doi === decodedDoi ||
+            article.doi.toLowerCase() === decodedDoi.toLowerCase()
+        );
+
+        if (!article) {
+          throw new Error("Publication not found");
+        }
+
+        setPublication(article);
+        setError(null);
       } catch (error) {
-        console.error("Error fetching publication data:", error);
-        setIsLoading(false);
+        console.error("Error fetching publication:", error);
+        setError(
+          error instanceof Error
+            ? error.message
+            : "Failed to fetch publication details"
+        );
+      } finally {
+        setLoading(false);
       }
     }
 
-    fetchPublicationData();
-  }, [doi, decodedDoi]);
+    if (doi) {
+      fetchPublicationData();
+    }
+  }, [doi]);
 
-  // Copy BibTeX citation to clipboard
   const handleCopyBibTeX = () => {
     if (publication?.bibtex) {
       navigator.clipboard.writeText(publication.bibtex);
@@ -70,22 +72,46 @@ export function PublicationDetail({ doi }: PublicationDetailProps) {
     }
   };
 
-  // If loading is complete but no publication was found, show 404
-  if (!isLoading && !publication) {
-    notFound();
+  // Format authors list for display
+  const formatAuthors = (authors: string[] | string) => {
+    if (!authors || (Array.isArray(authors) && authors.length === 0))
+      return "Unknown authors";
+    if (typeof authors === "string") return authors;
+    return authors.join(", ");
+  };
+
+  if (loading) {
+    return (
+      <div className="container py-12 mx-auto">
+        <div className="flex justify-center items-center min-h-[300px]">
+          <div className="text-center">
+            <div className="animate-spin rounded-full h-12 w-12 border-4 border-primary border-t-transparent mx-auto mb-4"></div>
+            <p className="text-muted-foreground">
+              Loading publication details...
+            </p>
+          </div>
+        </div>
+      </div>
+    );
   }
 
-  // Loading state
-  if (isLoading) {
+  if (error || !publication) {
     return (
-      <div className="container mx-auto py-12 animate-pulse">
-        <div className="h-6 w-32 bg-muted rounded mb-8"></div>
-        <div className="h-12 w-3/4 bg-muted rounded mb-4"></div>
-        <div className="h-6 w-1/2 bg-muted rounded mb-8"></div>
-        <div className="h-60 bg-muted rounded mb-8"></div>
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-          <div className="h-40 bg-muted rounded"></div>
-          <div className="h-40 bg-muted rounded"></div>
+      <div className="container py-12 mx-auto">
+        <div className="flex flex-col items-center justify-center min-h-[300px]">
+          <h1 className="text-4xl font-bold mb-6 text-center">
+            Publication Not Found
+          </h1>
+          <p className="text-lg text-muted-foreground mb-8 text-center">
+            The publication you are looking for could not be found or does not
+            exist.
+          </p>
+          <Link href="/research" passHref>
+            <Button variant="default">
+              <ArrowLeft className="h-4 w-4 mr-2" />
+              Back to Publications
+            </Button>
+          </Link>
         </div>
       </div>
     );
@@ -125,11 +151,7 @@ export function PublicationDetail({ doi }: PublicationDetailProps) {
             <div className="mb-6">
               <h3 className="text-lg font-semibold mb-2">Authors</h3>
               <p className="text-muted-foreground">
-                {typeof publication.authors === "string"
-                  ? publication.authors
-                  : Array.isArray(publication.authors)
-                    ? publication.authors.join(", ")
-                    : "Unknown authors"}
+                {formatAuthors(publication.authors)}
               </p>
             </div>
 
