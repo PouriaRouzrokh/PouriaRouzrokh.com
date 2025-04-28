@@ -1,0 +1,8 @@
+===== Job started at Mon Apr 28 16:12:03 EDT 2025 =====
+Running: uv run utils/scholarly_data_fetcher.py
+Python script executed successfully. Updating Git...
+fatal: Unable to read current working directory: Operation not permitted
+fatal: Unable to read current working directory: Operation not permitted
+fatal: Unable to read current working directory: Operation not permitted
+Git repository updated successfully.
+===== Job completed at Mon Apr 28 16:12:03 EDT 2025 =====
