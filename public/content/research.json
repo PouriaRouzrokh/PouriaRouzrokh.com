@@ -3,10 +3,10 @@
   "affiliation": "Assistant Professor, Department of Radiology, Mayo Clinic, MN, USA",
   "google_scholar_id": "Ksv9I0sAAAAJ",
   "metrics": {
-    "citations": 1172,
+    "citations": 1176,
     "h_index": 19,
     "i10_index": 34,
-    "cited_by_5_years": 1163
+    "cited_by_5_years": 1167
   },
   "articles": [
     {
@@ -403,7 +403,7 @@
       "number": "2",
       "pages": "e222217",
       "abstract": "In recent years, deep learning (DL) has shown impressive performance in radiologic image analysis. However, for a DL model to be useful in a real-world setting, its confidence in a prediction must also be known. Each DL models output has an estimated probability, and these estimated probabilities are not always reliable. Uncertainty represents the trustworthiness (validity) of estimated probabilities. The higher the uncertainty, the lower the validity. Uncertainty quantification (UQ) methods determine the uncertainty level of each prediction. Predictions made without UQ methods are generally not trustworthy. By implementing UQ in medical DL models, users can be alerted when a model does not have enough information to make a confident decision. Consequently, a medical expert could reevaluate the",
-      "num_citations": 51,
+      "num_citations": 52,
       "url": "https://pubs.rsna.org/doi/abs/10.1148/radiol.222217",
       "doi": "10.1148/radiol.222217",
       "bibtex": "@article{erickson2023quantifying,\n    author = {Shahriar Faghani and Mana Moassefi and Pouria Rouzrokh and Bardia Khosravi and Francis I Baffour and Michael D Ringler and Bradley J Erickson},\n    title = {Quantifying uncertainty in deep learning of radiologic images},\n    year = {2023},\n    volume = {308},\n    number = {2},\n    pages = {e222217},\n    doi = {10.1148/radiol.222217},\n    url = {https://pubs.rsna.org/doi/abs/10.1148/radiol.222217},\n    abstract = {In recent years, deep learning (DL) has shown impressive performance in radiologic image analysis. However, for a DL model to be useful in a real-world setting, its confidence in a prediction must also be known. Each DL models output has an estimated probability, and these estimated probabilities are not always reliable. Uncertainty represents the trustworthiness (validity) of estimated probabilities. The higher the uncertainty, the lower the validity. Uncertainty quantification (UQ) methods determine the uncertainty level of each prediction. Predictions made without UQ methods are generally not trustworthy. By implementing UQ in medical DL models, users can be alerted when a model does not have enough information to make a confident decision. Consequently, a medical expert could reevaluate the},\n}"
@@ -604,7 +604,7 @@
       "number": "5",
       "pages": "e210290",
       "abstract": "Minimizing bias is critical to adoption and implementation of machine learning (ML) in clinical practice. Systematic mathematical biases produce consistent and reproducible differences between the observed and expected performance of ML systems, resulting in suboptimal performance. Such biases can be traced back to various phases of ML development: data handling, model development, and performance evaluation. This report presents 12 suboptimal practices during data handling of an ML study, explains how those practices can lead to biases, and describes what may be done to mitigate them. Authors employ an arbitrary and simplified framework that splits ML data handling into four steps: data collection, data investigation, data splitting, and feature engineering. Examples from the available",
-      "num_citations": 112,
+      "num_citations": 114,
       "url": "https://pubs.rsna.org/doi/abs/10.1148/ryai.210290",
       "doi": "10.1148/ryai.210290",
       "bibtex": "@article{erickson2022mitigating,\n    author = {Pouria Rouzrokh and Bardia Khosravi and Shahriar Faghani and Mana Moassefi and Diana V Vera Garcia and Yashbir Singh and Kuan Zhang and Gian Marco Conte and Bradley J Erickson},\n    title = {Mitigating bias in radiology machine learning: 1. Data handling},\n    year = {2022},\n    journal = {Radiology: Artificial Intelligence},\n    volume = {4},\n    number = {5},\n    pages = {e210290},\n    doi = {10.1148/ryai.210290},\n    url = {https://pubs.rsna.org/doi/abs/10.1148/ryai.210290},\n    abstract = {Minimizing bias is critical to adoption and implementation of machine learning (ML) in clinical practice. Systematic mathematical biases produce consistent and reproducible differences between the observed and expected performance of ML systems, resulting in suboptimal performance. Such biases can be traced back to various phases of ML development: data handling, model development, and performance evaluation. This report presents 12 suboptimal practices during data handling of an ML study, explains how those practices can lead to biases, and describes what may be done to mitigate them. Authors employ an arbitrary and simplified framework that splits ML data handling into four steps: data collection, data investigation, data splitting, and feature engineering. Examples from the available},\n}"
@@ -659,7 +659,7 @@
       "number": "6",
       "pages": "918-925. e3",
       "abstract": "Background and AimsThe risk of progression in Barretts esophagus (BE) increases with development of dysplasia. There is a critical need to improve the diagnosis of BE dysplasia, given substantial interobserver disagreement among expert pathologists and overdiagnosis of dysplasia by community pathologists. We developed a deep learning model to predict dysplasia grade on whole-slide imaging.MethodsWe digitized nondysplastic BE (NDBE), low-grade dysplasia (LGD), and high-grade dysplasia (HGD) histology slides. Two expert pathologists confirmed all histology and digitally annotated areas of dysplasia. Training, validation, and test sets were created (by a random 702010 split). We used an ensemble approach combining a you only look once model to identify regions of interest and histology class (NDBE, LGD, or HGD) followed by a ResNet101 model pretrained on ImageNet applied to the regions",
-      "num_citations": 38,
+      "num_citations": 39,
       "url": "https://www.sciencedirect.com/science/article/pii/S0016510722017643",
       "doi": "10.1016/j.gie.2022.06.013",
       "bibtex": "@article{iyer2022development,\n    author = {Shahriar Faghani and D Chamil Codipilly and David Vogelsang and Mana Moassefi and Pouria Rouzrokh and Bardia Khosravi and Siddharth Agarwal and Lovekirat Dhaliwal and David A Katzka and Catherine Hagen and Jason Lewis and Cadman L Leggett and Bradley J Erickson and Prasad G Iyer},\n    title = {Development of a deep learning model for the histologic diagnosis of dysplasia in Barrett’s esophagus},\n    year = {2022},\n    journal = {Gastrointestinal endoscopy},\n    volume = {96},\n    number = {6},\n    pages = {918-925. e3},\n    doi = {10.1016/j.gie.2022.06.013},\n    url = {https://www.sciencedirect.com/science/article/pii/S0016510722017643},\n    abstract = {Background and AimsThe risk of progression in Barretts esophagus (BE) increases with development of dysplasia. There is a critical need to improve the diagnosis of BE dysplasia, given substantial interobserver disagreement among expert pathologists and overdiagnosis of dysplasia by community pathologists. We developed a deep learning model to predict dysplasia grade on whole-slide imaging.MethodsWe digitized nondysplastic BE (NDBE), low-grade dysplasia (LGD), and high-grade dysplasia (HGD) histology slides. Two expert pathologists confirmed all histology and digitally annotated areas of dysplasia. Training, validation, and test sets were created (by a random 702010 split). We used an ensemble approach combining a you only look once model to identify regions of interest and histology class (NDBE, LGD, or HGD) followed by a ResNet101 model pretrained on ImageNet applied to the regions},\n}"
@@ -956,8 +956,8 @@
     }
   ],
   "total_articles": 72,
-  "total_citations": 1172,
+  "total_citations": 1176,
   "total_articles_processed": 72,
-  "total_citations_processed": 1172,
-  "fetched_at": "2025-04-27 17:30:36 UTC"
+  "total_citations_processed": 1176,
+  "fetched_at": "2025-04-28 19:20:06 UTC"
 }
