@@ -16,15 +16,6 @@ const nextConfig = {
   reactStrictMode: true,
   // Simple experimental settings
   experimental: {},
-  // Ensure API routes are properly accessible
-  async rewrites() {
-    return [
-      {
-        source: "/api/:path*",
-        destination: "/api/:path*",
-      },
-    ];
-  },
 };
 
 module.exports = nextConfig;

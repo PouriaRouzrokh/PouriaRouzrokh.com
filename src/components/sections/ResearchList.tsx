@@ -35,9 +35,7 @@ export function ResearchList() {
     async function fetchResearchData() {
       try {
         console.log("Fetching research data...");
-        // Get the current base URL for consistent behavior across environments
-        const baseUrl = window.location.origin;
-        const response = await fetch(`${baseUrl}/api/research`);
+        const response = await fetch("/api/research");
         if (!response.ok) {
           throw new Error("Failed to fetch research data");
         }

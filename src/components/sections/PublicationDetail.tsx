@@ -11,46 +11,31 @@ import { Card, CardContent } from "@/components/ui/card";
 import { SectionHeading } from "@/components/ui/section-heading";
 
 interface PublicationDetailProps {
-  doi?: string;
-  initialData?: Article;
+  doi: string;
 }
 
-export function PublicationDetail({
-  doi,
-  initialData,
-}: PublicationDetailProps) {
-  const [publication, setPublication] = useState<Article | null>(
-    initialData || null
-  );
-  const [isLoading, setIsLoading] = useState(!initialData);
+export function PublicationDetail({ doi }: PublicationDetailProps) {
+  const [publication, setPublication] = useState<Article | null>(null);
+  const [isLoading, setIsLoading] = useState(true);
   const [isCopied, setIsCopied] = useState(false);
-  const decodedDoi = doi ? decodeURIComponent(doi) : "";
+  const decodedDoi = decodeURIComponent(doi);
 
   useEffect(() => {
-    // If we have initialData, skip the fetch
-    if (initialData || !doi) return;
-
     console.log("Raw DOI from URL param:", doi);
     console.log("Decoded DOI in client:", decodedDoi);
 
     async function fetchPublicationData() {
       try {
-        // Get the current base URL, which works in both development and production
-        const baseUrl = window.location.origin;
-
-        // First try with the raw DOI
-        console.log("Fetching from:", `${baseUrl}/api/research/${doi}`);
-        let response = await fetch(`${baseUrl}/api/research/${doi}`);
+        // Use the raw DOI from the URL parameter
+        console.log("Fetching from:", `/api/research/${doi}`);
+        let response = await fetch(`/api/research/${doi}`);
         console.log("API response status (with raw DOI):", response.status);
 
         // If that fails, try with the decoded DOI
         if (!response.ok) {
           console.log("First attempt failed, trying with decoded DOI");
-          console.log(
-            "Fetching from:",
-            `${baseUrl}/api/research/${decodedDoi}`
-          );
-          response = await fetch(`${baseUrl}/api/research/${decodedDoi}`);
+          console.log("Fetching from:", `/api/research/${decodedDoi}`);
+          response = await fetch(`/api/research/${decodedDoi}`);
           console.log(
             "API response status (with decoded DOI):",
             response.status
@@ -74,7 +59,7 @@ export function PublicationDetail({
     }
 
     fetchPublicationData();
-  }, [doi, decodedDoi, initialData]);
+  }, [doi, decodedDoi]);
 
   // Copy BibTeX citation to clipboard
   const handleCopyBibTeX = () => {
