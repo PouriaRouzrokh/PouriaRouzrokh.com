@@ -1,6 +1,7 @@
 import { Metadata } from "next";
 import { PublicationDetail } from "@/components/sections/PublicationDetail";
 import { getResearch } from "@/lib/data-fetching";
+import { notFound } from "next/navigation";
 
 interface PublicationPageProps {
   params: {
@@ -77,7 +78,47 @@ export async function generateMetadata({
   }
 }
 
-export default function PublicationPage({ params }: PublicationPageProps) {
+export default async function PublicationPage({
+  params,
+}: PublicationPageProps) {
   console.log("Rendering PublicationPage with DOI:", params.doi);
-  return <PublicationDetail doi={params.doi} />;
+
+  // Server-side data fetching
+  const rawDoi = params.doi;
+  const decodedDoi = decodeURIComponent(rawDoi);
+
+  try {
+    const data = await getResearch();
+
+    // Try different matching strategies
+    let publication = data.articles.find(
+      (article) => article.doi === decodedDoi
+    );
+
+    // If not found, try case-insensitive match
+    if (!publication) {
+      publication = data.articles.find(
+        (article) => article.doi.toLowerCase() === decodedDoi.toLowerCase()
+      );
+    }
+
+    // If still not found, try with the raw (encoded) DOI
+    if (!publication) {
+      publication = data.articles.find(
+        (article) =>
+          article.doi === rawDoi ||
+          article.doi.toLowerCase() === rawDoi.toLowerCase()
+      );
+    }
+
+    if (!publication) {
+      console.log("Publication not found in server component");
+      notFound();
+    }
+
+    return <PublicationDetail initialData={publication} />;
+  } catch (error) {
+    console.error("Error fetching publication data:", error);
+    notFound();
+  }
 }

@@ -11,16 +11,25 @@ import { Card, CardContent } from "@/components/ui/card";
 import { SectionHeading } from "@/components/ui/section-heading";
 
 interface PublicationDetailProps {
-  doi: string;
+  doi?: string;
+  initialData?: Article;
 }
 
-export function PublicationDetail({ doi }: PublicationDetailProps) {
-  const [publication, setPublication] = useState<Article | null>(null);
-  const [isLoading, setIsLoading] = useState(true);
+export function PublicationDetail({
+  doi,
+  initialData,
+}: PublicationDetailProps) {
+  const [publication, setPublication] = useState<Article | null>(
+    initialData || null
+  );
+  const [isLoading, setIsLoading] = useState(!initialData);
   const [isCopied, setIsCopied] = useState(false);
-  const decodedDoi = decodeURIComponent(doi);
+  const decodedDoi = doi ? decodeURIComponent(doi) : "";
 
   useEffect(() => {
+    // If we have initialData, skip the fetch
+    if (initialData || !doi) return;
+
     console.log("Raw DOI from URL param:", doi);
     console.log("Decoded DOI in client:", decodedDoi);
 
@@ -65,7 +74,7 @@ export function PublicationDetail({ doi }: PublicationDetailProps) {
     }
 
     fetchPublicationData();
-  }, [doi, decodedDoi]);
+  }, [doi, decodedDoi, initialData]);
 
   // Copy BibTeX citation to clipboard
   const handleCopyBibTeX = () => {
