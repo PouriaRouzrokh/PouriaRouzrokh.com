@@ -18,12 +18,12 @@ export default function HeroSection({ profileData }: HeroSectionProps) {
     bio: "Welcome to my portfolio website.",
     image: "/placeholder-profile.jpg",
     social: {
-      twitter: "",
-      github: "",
-      linkedin: "",
-      googleScholar: "",
-      researchGate: "",
-      orcid: "",
+      X: "",
+      GitHub: "",
+      LinkedIn: "",
+      GoogleScholar: "",
+      ResearchGate: "",
+      ORCID: "",
     },
   };
 

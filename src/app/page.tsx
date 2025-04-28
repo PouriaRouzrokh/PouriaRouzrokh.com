@@ -49,22 +49,20 @@ export default async function Home() {
       profile?.bio ||
       "AI Researcher and Developer specializing in artificial intelligence and machine learning",
     sameAs: [
-      profile?.social?.github
-        ? `https://github.com/${profile.social.github}`
+      profile?.social?.GitHub
+        ? `https://github.com/${profile.social.GitHub}`
         : "",
-      profile?.social?.twitter
-        ? `https://twitter.com/${profile.social.twitter}`
+      profile?.social?.X ? `https://x.com/${profile.social.X}` : "",
+      profile?.social?.LinkedIn
+        ? `https://linkedin.com/in/${profile.social.LinkedIn}`
         : "",
-      profile?.social?.linkedin
-        ? `https://linkedin.com/in/${profile.social.linkedin}`
+      profile?.social?.GoogleScholar
+        ? `https://scholar.google.com/citations?user=${profile.social.GoogleScholar}`
         : "",
-      profile?.social?.googleScholar
-        ? `https://scholar.google.com/citations?user=${profile.social.googleScholar}`
+      profile?.social?.ResearchGate
+        ? `https://www.researchgate.net/profile/${profile.social.ResearchGate}`
         : "",
-      profile?.social?.researchGate
-        ? `https://www.researchgate.net/profile/${profile.social.researchGate}`
-        : "",
-      profile?.social?.orcid ? `https://orcid.org/${profile.social.orcid}` : "",
+      profile?.social?.ORCID ? `https://orcid.org/${profile.social.ORCID}` : "",
     ].filter(Boolean),
     alumniOf:
       education?.map((edu) => ({

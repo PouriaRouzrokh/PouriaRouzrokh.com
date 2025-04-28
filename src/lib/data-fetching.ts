@@ -50,12 +50,12 @@ export async function getProfile(): Promise<ProfileData> {
     shortBio: profileData.shortBio || "Portfolio owner.",
     image: profileData.image || "/placeholder-profile.jpg",
     social: {
-      twitter: profileData.social?.twitter || "",
-      github: profileData.social?.github || "",
-      linkedin: profileData.social?.linkedin || "",
-      googleScholar: profileData.social?.googleScholar || "",
-      researchGate: profileData.social?.researchGate || "",
-      orcid: profileData.social?.orcid || "",
+      X: profileData.social?.X || "",
+      GitHub: profileData.social?.GitHub || "",
+      LinkedIn: profileData.social?.LinkedIn || "",
+      GoogleScholar: profileData.social?.GoogleScholar || "",
+      ResearchGate: profileData.social?.ResearchGate || "",
+      ORCID: profileData.social?.ORCID || "",
     },
     skills: Array.isArray(profileData.skills) ? profileData.skills : [],
   };

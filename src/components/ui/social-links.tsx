@@ -15,9 +15,9 @@ export function SocialLinks({
 }: SocialLinksProps) {
   return (
     <div className={`flex items-center gap-4 ${className}`}>
-      {social.github && (
+      {social.GitHub && (
         <a
-          href={social.github}
+          href={social.GitHub}
           target="_blank"
           rel="noopener noreferrer"
           className="text-muted-foreground hover:text-foreground transition-colors"
@@ -41,13 +41,13 @@ export function SocialLinks({
         </a>
       )}
 
-      {social.twitter && (
+      {social.X && (
         <a
-          href={social.twitter}
+          href={social.X}
           target="_blank"
           rel="noopener noreferrer"
           className="text-muted-foreground hover:text-foreground transition-colors"
-          aria-label="Twitter"
+          aria-label="X"
         >
           <svg
             xmlns="http://www.w3.org/2000/svg"
@@ -59,16 +59,16 @@ export function SocialLinks({
             strokeWidth="2"
             strokeLinecap="round"
             strokeLinejoin="round"
-            className="lucide lucide-twitter"
+            className="lucide lucide-x"
           >
             <path d="M22 4s-.7 2.1-2 3.4c1.6 10-9.4 17.3-18 11.6 2.2.1 4.4-.6 6-2C3 15.5.5 9.6 3 5c2.2 2.6 5.6 4.1 9 4-.9-4.2 4-6.6 7-3.8 1.1 0 3-1.2 3-1.2z"></path>
           </svg>
         </a>
       )}
 
-      {social.linkedin && (
+      {social.LinkedIn && (
         <a
-          href={social.linkedin}
+          href={social.LinkedIn}
           target="_blank"
           rel="noopener noreferrer"
           className="text-muted-foreground hover:text-foreground transition-colors"
@@ -93,9 +93,9 @@ export function SocialLinks({
         </a>
       )}
 
-      {social.googleScholar && (
+      {social.GoogleScholar && (
         <a
-          href={social.googleScholar}
+          href={social.GoogleScholar}
           target="_blank"
           rel="noopener noreferrer"
           className="text-muted-foreground hover:text-foreground transition-colors"
@@ -119,9 +119,9 @@ export function SocialLinks({
         </a>
       )}
 
-      {social.researchGate && (
+      {social.ResearchGate && (
         <a
-          href={social.researchGate}
+          href={social.ResearchGate}
           target="_blank"
           rel="noopener noreferrer"
           className="text-muted-foreground hover:text-foreground transition-colors"
@@ -150,9 +150,9 @@ export function SocialLinks({
         </a>
       )}
 
-      {social.orcid && (
+      {social.ORCID && (
         <a
-          href={social.orcid}
+          href={social.ORCID}
           target="_blank"
           rel="noopener noreferrer"
           className="text-muted-foreground hover:text-foreground transition-colors"

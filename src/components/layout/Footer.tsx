@@ -25,12 +25,12 @@ export default function Footer() {
           shortBio: "Portfolio owner.",
           image: "/placeholder-profile.jpg",
           social: {
-            twitter: "",
-            github: "",
-            linkedin: "",
-            googleScholar: "",
-            researchGate: "",
-            orcid: "",
+            X: "",
+            GitHub: "",
+            LinkedIn: "",
+            GoogleScholar: "",
+            ResearchGate: "",
+            ORCID: "",
           },
           skills: [],
         });
@@ -41,12 +41,12 @@ export default function Footer() {
   }, []);
 
   const social = profileData?.social || {
-    twitter: "",
-    github: "",
-    linkedin: "",
-    googleScholar: "",
-    researchGate: "",
-    orcid: "",
+    X: "",
+    GitHub: "",
+    LinkedIn: "",
+    GoogleScholar: "",
+    ResearchGate: "",
+    ORCID: "",
   };
 
   return (

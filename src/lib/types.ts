@@ -8,12 +8,12 @@ export interface ProfileData {
   shortBio: string;
   image: string;
   social: {
-    twitter: string;
-    github: string;
-    linkedin: string;
-    googleScholar: string;
-    researchGate: string;
-    orcid: string;
+    X: string;
+    GitHub: string;
+    LinkedIn: string;
+    GoogleScholar: string;
+    ResearchGate: string;
+    ORCID: string;
   };
   skills: {
     category: string;
@@ -156,12 +156,12 @@ export interface RawProfileData {
   shortBio?: string;
   image?: string;
   social?: {
-    twitter?: string;
-    github?: string;
-    linkedin?: string;
-    googleScholar?: string;
-    researchGate?: string;
-    orcid?: string;
+    X?: string;
+    GitHub?: string;
+    LinkedIn?: string;
+    GoogleScholar?: string;
+    ResearchGate?: string;
+    ORCID?: string;
   };
   skills?: Array<{ category: string; items: string[] }>;
   [key: string]: unknown;
