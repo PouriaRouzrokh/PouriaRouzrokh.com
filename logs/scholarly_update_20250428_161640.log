@@ -1,6 +1,0 @@
-===== Job started at Mon Apr 28 16:16:40 EDT 2025 =====
-Running: uv run utils/scholarly_data_fetcher.py
-Python script executed successfully. Updating Git...
-tab 1 of window id 52200
-Git update process initiated. Check Terminal for results.
-===== Job completed at Mon Apr 28 16:16:40 EDT 2025 =====
