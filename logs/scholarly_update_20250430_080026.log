@@ -1,0 +1,466 @@
+===== Job started at Wed Apr 30 08:00:26 EDT 2025 =====
+Running: uv run utils/scholarly_data_fetcher.py
+2025-04-30 08:00:26,689 - INFO - Searching for author: Pouria Rouzrokh
+2025-04-30 08:00:26,689 - INFO - Getting https://scholar.google.com/citations?hl=en&view_op=search_authors&mauthors=Pouria%20Rouzrokh
+2025-04-30 08:00:28,356 - INFO - Exception ConnectError while fetching page: ('[Errno 8] nodename nor servname provided, or not known',)
+2025-04-30 08:00:28,356 - INFO - Retrying with a new session.
+2025-04-30 08:00:30,939 - INFO - Exception ConnectError while fetching page: ('[Errno 8] nodename nor servname provided, or not known',)
+2025-04-30 08:00:30,940 - INFO - Retrying with a new session.
+2025-04-30 08:01:03,935 - INFO - HTTP Request: GET https://scholar.google.com/citations?hl=en&view_op=search_authors&mauthors=Pouria%20Rouzrokh "HTTP/1.1 200 OK"
+2025-04-30 08:01:04,000 - INFO - Found 1 authors
+2025-04-30 08:01:04,001 - INFO - Found author: Pouria Rouzrokh. Fetching details...
+2025-04-30 08:01:04,001 - INFO - Getting https://scholar.google.com/citations?hl=en&user=Ksv9I0sAAAAJ&pagesize=100
+2025-04-30 08:01:05,568 - INFO - Exception RuntimeError while fetching page: ('Cannot send a request, as the client has been closed.',)
+2025-04-30 08:01:05,569 - INFO - Retrying with a new session.
+2025-04-30 08:01:07,437 - INFO - HTTP Request: GET https://scholar.google.com/citations?hl=en&user=Ksv9I0sAAAAJ&pagesize=100 "HTTP/1.1 200 OK"
+2025-04-30 08:01:07,570 - INFO - Successfully fetched data for Pouria Rouzrokh
+2025-04-30 08:01:07,570 - INFO - Fetching detailed data for 73 articles...
+Fetching article details:   0%|          | 0/73 [00:00<?, ?it/s]2025-04-30 08:01:07,587 - INFO - Getting https://scholar.google.com/citations?hl=en&view_op=view_citation&citation_for_view=Ksv9I0sAAAAJ:kNdYIx-mwKoC
+2025-04-30 08:01:08,927 - INFO - Exception RuntimeError while fetching page: ('Cannot send a request, as the client has been closed.',)
+2025-04-30 08:01:08,928 - INFO - Retrying with a new session.
+2025-04-30 08:01:11,145 - INFO - HTTP Request: GET https://scholar.google.com/citations?hl=en&view_op=view_citation&citation_for_view=Ksv9I0sAAAAJ:kNdYIx-mwKoC "HTTP/1.1 200 OK"
+Fetching article details:   1%|▏         | 1/73 [00:03<04:21,  3.63s/it]2025-04-30 08:01:11,218 - INFO - Getting https://scholar.google.com/citations?hl=en&view_op=view_citation&citation_for_view=Ksv9I0sAAAAJ:WF5omc3nYNoC
+2025-04-30 08:01:13,108 - INFO - Exception RuntimeError while fetching page: ('Cannot send a request, as the client has been closed.',)
+2025-04-30 08:01:13,108 - INFO - Retrying with a new session.
+2025-04-30 08:01:14,870 - INFO - HTTP Request: GET https://scholar.google.com/citations?hl=en&view_op=view_citation&citation_for_view=Ksv9I0sAAAAJ:WF5omc3nYNoC "HTTP/1.1 200 OK"
+Fetching article details:   3%|▎         | 2/73 [00:07<04:21,  3.69s/it]2025-04-30 08:01:14,942 - INFO - Getting https://scholar.google.com/citations?hl=en&view_op=view_citation&citation_for_view=Ksv9I0sAAAAJ:Y0pCki6q_DkC
+2025-04-30 08:01:16,778 - INFO - Exception RuntimeError while fetching page: ('Cannot send a request, as the client has been closed.',)
+2025-04-30 08:01:16,778 - INFO - Retrying with a new session.
+2025-04-30 08:01:18,936 - INFO - HTTP Request: GET https://scholar.google.com/citations?hl=en&view_op=view_citation&citation_for_view=Ksv9I0sAAAAJ:Y0pCki6q_DkC "HTTP/1.1 200 OK"
+Fetching article details:   4%|▍         | 3/73 [00:11<04:30,  3.86s/it]2025-04-30 08:01:19,012 - INFO - Getting https://scholar.google.com/citations?hl=en&view_op=view_citation&citation_for_view=Ksv9I0sAAAAJ:KlAtU1dfN6UC
+2025-04-30 08:01:20,814 - INFO - Exception RuntimeError while fetching page: ('Cannot send a request, as the client has been closed.',)
+2025-04-30 08:01:20,814 - INFO - Retrying with a new session.
+2025-04-30 08:01:22,943 - INFO - HTTP Request: GET https://scholar.google.com/citations?hl=en&view_op=view_citation&citation_for_view=Ksv9I0sAAAAJ:KlAtU1dfN6UC "HTTP/1.1 200 OK"
+Fetching article details:   5%|▌         | 4/73 [00:15<04:30,  3.92s/it]2025-04-30 08:01:23,017 - INFO - Getting https://scholar.google.com/citations?hl=en&view_op=view_citation&citation_for_view=Ksv9I0sAAAAJ:3fE2CSJIrl8C
+2025-04-30 08:01:24,666 - INFO - Exception RuntimeError while fetching page: ('Cannot send a request, as the client has been closed.',)
+2025-04-30 08:01:24,666 - INFO - Retrying with a new session.
+2025-04-30 08:01:26,688 - INFO - HTTP Request: GET https://scholar.google.com/citations?hl=en&view_op=view_citation&citation_for_view=Ksv9I0sAAAAJ:3fE2CSJIrl8C "HTTP/1.1 200 OK"
+Fetching article details:   7%|▋         | 5/73 [00:19<04:22,  3.85s/it]2025-04-30 08:01:26,761 - INFO - Getting https://scholar.google.com/citations?hl=en&view_op=view_citation&citation_for_view=Ksv9I0sAAAAJ:Tyk-4Ss8FVUC
+2025-04-30 08:01:28,449 - INFO - Exception RuntimeError while fetching page: ('Cannot send a request, as the client has been closed.',)
+2025-04-30 08:01:28,449 - INFO - Retrying with a new session.
+2025-04-30 08:01:30,413 - INFO - HTTP Request: GET https://scholar.google.com/citations?hl=en&view_op=view_citation&citation_for_view=Ksv9I0sAAAAJ:Tyk-4Ss8FVUC "HTTP/1.1 200 OK"
+Fetching article details:   8%|▊         | 6/73 [00:22<04:15,  3.81s/it]2025-04-30 08:01:30,485 - INFO - Getting https://scholar.google.com/citations?hl=en&view_op=view_citation&citation_for_view=Ksv9I0sAAAAJ:7PzlFSSx8tAC
+2025-04-30 08:01:32,249 - INFO - Exception RuntimeError while fetching page: ('Cannot send a request, as the client has been closed.',)
+2025-04-30 08:01:32,249 - INFO - Retrying with a new session.
+2025-04-30 08:01:33,749 - INFO - HTTP Request: GET https://scholar.google.com/citations?hl=en&view_op=view_citation&citation_for_view=Ksv9I0sAAAAJ:7PzlFSSx8tAC "HTTP/1.1 200 OK"
+Fetching article details:  10%|▉         | 7/73 [00:26<04:01,  3.66s/it]2025-04-30 08:01:33,820 - INFO - Getting https://scholar.google.com/citations?hl=en&view_op=view_citation&citation_for_view=Ksv9I0sAAAAJ:hqOjcs7Dif8C
+2025-04-30 08:01:35,814 - INFO - Exception RuntimeError while fetching page: ('Cannot send a request, as the client has been closed.',)
+2025-04-30 08:01:35,814 - INFO - Retrying with a new session.
+2025-04-30 08:01:37,595 - INFO - HTTP Request: GET https://scholar.google.com/citations?hl=en&view_op=view_citation&citation_for_view=Ksv9I0sAAAAJ:hqOjcs7Dif8C "HTTP/1.1 200 OK"
+Fetching article details:  11%|█         | 8/73 [00:30<04:01,  3.72s/it]2025-04-30 08:01:37,668 - INFO - Getting https://scholar.google.com/citations?hl=en&view_op=view_citation&citation_for_view=Ksv9I0sAAAAJ:zYLM7Y9cAGgC
+2025-04-30 08:01:39,437 - INFO - Exception RuntimeError while fetching page: ('Cannot send a request, as the client has been closed.',)
+2025-04-30 08:01:39,438 - INFO - Retrying with a new session.
+2025-04-30 08:01:41,133 - INFO - HTTP Request: GET https://scholar.google.com/citations?hl=en&view_op=view_citation&citation_for_view=Ksv9I0sAAAAJ:zYLM7Y9cAGgC "HTTP/1.1 200 OK"
+Fetching article details:  12%|█▏        | 9/73 [00:33<03:54,  3.66s/it]2025-04-30 08:01:41,203 - INFO - Getting https://scholar.google.com/citations?hl=en&view_op=view_citation&citation_for_view=Ksv9I0sAAAAJ:5nxA0vEk-isC
+2025-04-30 08:01:42,657 - INFO - Exception RuntimeError while fetching page: ('Cannot send a request, as the client has been closed.',)
+2025-04-30 08:01:42,658 - INFO - Retrying with a new session.
+2025-04-30 08:01:44,497 - INFO - HTTP Request: GET https://scholar.google.com/citations?hl=en&view_op=view_citation&citation_for_view=Ksv9I0sAAAAJ:5nxA0vEk-isC "HTTP/1.1 200 OK"
+Fetching article details:  14%|█▎        | 10/73 [00:36<03:44,  3.57s/it]2025-04-30 08:01:44,566 - INFO - Getting https://scholar.google.com/citations?hl=en&view_op=view_citation&citation_for_view=Ksv9I0sAAAAJ:roLk4NBRz8UC
+2025-04-30 08:01:45,793 - INFO - Exception RuntimeError while fetching page: ('Cannot send a request, as the client has been closed.',)
+2025-04-30 08:01:45,794 - INFO - Retrying with a new session.
+2025-04-30 08:01:47,326 - INFO - HTTP Request: GET https://scholar.google.com/citations?hl=en&view_op=view_citation&citation_for_view=Ksv9I0sAAAAJ:roLk4NBRz8UC "HTTP/1.1 200 OK"
+Fetching article details:  15%|█▌        | 11/73 [00:39<03:26,  3.34s/it]2025-04-30 08:01:47,380 - INFO - Getting https://scholar.google.com/citations?hl=en&view_op=view_citation&citation_for_view=Ksv9I0sAAAAJ:2osOgNQ5qMEC
+2025-04-30 08:01:49,185 - INFO - Exception RuntimeError while fetching page: ('Cannot send a request, as the client has been closed.',)
+2025-04-30 08:01:49,185 - INFO - Retrying with a new session.
+2025-04-30 08:01:51,373 - INFO - HTTP Request: GET https://scholar.google.com/citations?hl=en&view_op=view_citation&citation_for_view=Ksv9I0sAAAAJ:2osOgNQ5qMEC "HTTP/1.1 200 OK"
+Fetching article details:  16%|█▋        | 12/73 [00:43<03:36,  3.55s/it]2025-04-30 08:01:51,419 - INFO - Getting https://scholar.google.com/citations?hl=en&view_op=view_citation&citation_for_view=Ksv9I0sAAAAJ:_kc_bZDykSQC
+2025-04-30 08:01:52,618 - INFO - Exception RuntimeError while fetching page: ('Cannot send a request, as the client has been closed.',)
+2025-04-30 08:01:52,619 - INFO - Retrying with a new session.
+2025-04-30 08:01:54,240 - INFO - HTTP Request: GET https://scholar.google.com/citations?hl=en&view_op=view_citation&citation_for_view=Ksv9I0sAAAAJ:_kc_bZDykSQC "HTTP/1.1 200 OK"
+Fetching article details:  18%|█▊        | 13/73 [00:46<03:20,  3.35s/it]2025-04-30 08:01:54,293 - INFO - Getting https://scholar.google.com/citations?hl=en&view_op=view_citation&citation_for_view=Ksv9I0sAAAAJ:Zph67rFs4hoC
+2025-04-30 08:01:55,442 - INFO - Exception RuntimeError while fetching page: ('Cannot send a request, as the client has been closed.',)
+2025-04-30 08:01:55,443 - INFO - Retrying with a new session.
+2025-04-30 08:01:57,659 - INFO - HTTP Request: GET https://scholar.google.com/citations?hl=en&view_op=view_citation&citation_for_view=Ksv9I0sAAAAJ:Zph67rFs4hoC "HTTP/1.1 200 OK"
+Fetching article details:  19%|█▉        | 14/73 [00:50<03:18,  3.37s/it]2025-04-30 08:01:57,713 - INFO - Getting https://scholar.google.com/citations?hl=en&view_op=view_citation&citation_for_view=Ksv9I0sAAAAJ:9yKSN-GCB0IC
+2025-04-30 08:01:59,579 - INFO - Exception RuntimeError while fetching page: ('Cannot send a request, as the client has been closed.',)
+2025-04-30 08:01:59,580 - INFO - Retrying with a new session.
+2025-04-30 08:02:01,586 - INFO - HTTP Request: GET https://scholar.google.com/citations?hl=en&view_op=view_citation&citation_for_view=Ksv9I0sAAAAJ:9yKSN-GCB0IC "HTTP/1.1 200 OK"
+Fetching article details:  21%|██        | 15/73 [00:54<03:25,  3.54s/it]2025-04-30 08:02:01,636 - INFO - Getting https://scholar.google.com/citations?hl=en&view_op=view_citation&citation_for_view=Ksv9I0sAAAAJ:MXK_kJrjxJIC
+2025-04-30 08:02:03,274 - INFO - Exception RuntimeError while fetching page: ('Cannot send a request, as the client has been closed.',)
+2025-04-30 08:02:03,275 - INFO - Retrying with a new session.
+2025-04-30 08:02:05,396 - INFO - HTTP Request: GET https://scholar.google.com/citations?hl=en&view_op=view_citation&citation_for_view=Ksv9I0sAAAAJ:MXK_kJrjxJIC "HTTP/1.1 200 OK"
+Fetching article details:  22%|██▏       | 16/73 [00:57<03:26,  3.62s/it]2025-04-30 08:02:05,447 - INFO - Getting https://scholar.google.com/citations?hl=en&view_op=view_citation&citation_for_view=Ksv9I0sAAAAJ:Se3iqnhoufwC
+2025-04-30 08:02:07,309 - INFO - Exception RuntimeError while fetching page: ('Cannot send a request, as the client has been closed.',)
+2025-04-30 08:02:07,309 - INFO - Retrying with a new session.
+2025-04-30 08:02:08,684 - INFO - HTTP Request: GET https://scholar.google.com/citations?hl=en&view_op=view_citation&citation_for_view=Ksv9I0sAAAAJ:Se3iqnhoufwC "HTTP/1.1 200 OK"
+Fetching article details:  23%|██▎       | 17/73 [01:01<03:17,  3.52s/it]2025-04-30 08:02:08,736 - INFO - Getting https://scholar.google.com/citations?hl=en&view_op=view_citation&citation_for_view=Ksv9I0sAAAAJ:M3ejUd6NZC8C
+2025-04-30 08:02:10,445 - INFO - Exception RuntimeError while fetching page: ('Cannot send a request, as the client has been closed.',)
+2025-04-30 08:02:10,446 - INFO - Retrying with a new session.
+2025-04-30 08:02:12,532 - INFO - HTTP Request: GET https://scholar.google.com/citations?hl=en&view_op=view_citation&citation_for_view=Ksv9I0sAAAAJ:M3ejUd6NZC8C "HTTP/1.1 200 OK"
+Fetching article details:  25%|██▍       | 18/73 [01:04<03:18,  3.62s/it]2025-04-30 08:02:12,581 - INFO - Getting https://scholar.google.com/citations?hl=en&view_op=view_citation&citation_for_view=Ksv9I0sAAAAJ:u-x6o8ySG0sC
+2025-04-30 08:02:13,982 - INFO - Exception RuntimeError while fetching page: ('Cannot send a request, as the client has been closed.',)
+2025-04-30 08:02:13,983 - INFO - Retrying with a new session.
+2025-04-30 08:02:15,919 - INFO - HTTP Request: GET https://scholar.google.com/citations?hl=en&view_op=view_citation&citation_for_view=Ksv9I0sAAAAJ:u-x6o8ySG0sC "HTTP/1.1 200 OK"
+Fetching article details:  26%|██▌       | 19/73 [01:08<03:11,  3.55s/it]2025-04-30 08:02:15,966 - INFO - Getting https://scholar.google.com/citations?hl=en&view_op=view_citation&citation_for_view=Ksv9I0sAAAAJ:UebtZRa9Y70C
+2025-04-30 08:02:17,167 - INFO - Exception RuntimeError while fetching page: ('Cannot send a request, as the client has been closed.',)
+2025-04-30 08:02:17,167 - INFO - Retrying with a new session.
+2025-04-30 08:02:18,842 - INFO - HTTP Request: GET https://scholar.google.com/citations?hl=en&view_op=view_citation&citation_for_view=Ksv9I0sAAAAJ:UebtZRa9Y70C "HTTP/1.1 200 OK"
+Fetching article details:  27%|██▋       | 20/73 [01:11<02:58,  3.36s/it]2025-04-30 08:02:18,895 - INFO - Getting https://scholar.google.com/citations?hl=en&view_op=view_citation&citation_for_view=Ksv9I0sAAAAJ:aqlVkmm33-oC
+2025-04-30 08:02:20,865 - INFO - Exception RuntimeError while fetching page: ('Cannot send a request, as the client has been closed.',)
+2025-04-30 08:02:20,866 - INFO - Retrying with a new session.
+2025-04-30 08:02:22,613 - INFO - HTTP Request: GET https://scholar.google.com/citations?hl=en&view_op=view_citation&citation_for_view=Ksv9I0sAAAAJ:aqlVkmm33-oC "HTTP/1.1 200 OK"
+Fetching article details:  29%|██▉       | 21/73 [01:15<03:01,  3.48s/it]2025-04-30 08:02:22,665 - INFO - Getting https://scholar.google.com/citations?hl=en&view_op=view_citation&citation_for_view=Ksv9I0sAAAAJ:hC7cP41nSMkC
+2025-04-30 08:02:24,670 - INFO - Exception RuntimeError while fetching page: ('Cannot send a request, as the client has been closed.',)
+2025-04-30 08:02:24,670 - INFO - Retrying with a new session.
+2025-04-30 08:02:26,129 - INFO - HTTP Request: GET https://scholar.google.com/citations?hl=en&view_op=view_citation&citation_for_view=Ksv9I0sAAAAJ:hC7cP41nSMkC "HTTP/1.1 200 OK"
+Fetching article details:  30%|███       | 22/73 [01:18<02:58,  3.49s/it]2025-04-30 08:02:26,181 - INFO - Getting https://scholar.google.com/citations?hl=en&view_op=view_citation&citation_for_view=Ksv9I0sAAAAJ:blknAaTinKkC
+2025-04-30 08:02:27,325 - INFO - Exception RuntimeError while fetching page: ('Cannot send a request, as the client has been closed.',)
+2025-04-30 08:02:27,325 - INFO - Retrying with a new session.
+2025-04-30 08:02:28,797 - INFO - HTTP Request: GET https://scholar.google.com/citations?hl=en&view_op=view_citation&citation_for_view=Ksv9I0sAAAAJ:blknAaTinKkC "HTTP/1.1 200 OK"
+Fetching article details:  32%|███▏      | 23/73 [01:21<02:42,  3.25s/it]2025-04-30 08:02:28,847 - INFO - Getting https://scholar.google.com/citations?hl=en&view_op=view_citation&citation_for_view=Ksv9I0sAAAAJ:mB3voiENLucC
+2025-04-30 08:02:30,632 - INFO - Exception RuntimeError while fetching page: ('Cannot send a request, as the client has been closed.',)
+2025-04-30 08:02:30,632 - INFO - Retrying with a new session.
+2025-04-30 08:02:32,428 - INFO - HTTP Request: GET https://scholar.google.com/citations?hl=en&view_op=view_citation&citation_for_view=Ksv9I0sAAAAJ:mB3voiENLucC "HTTP/1.1 200 OK"
+Fetching article details:  33%|███▎      | 24/73 [01:24<02:44,  3.36s/it]2025-04-30 08:02:32,477 - INFO - Getting https://scholar.google.com/citations?hl=en&view_op=view_citation&citation_for_view=Ksv9I0sAAAAJ:dhFuZR0502QC
+2025-04-30 08:02:34,265 - INFO - Exception RuntimeError while fetching page: ('Cannot send a request, as the client has been closed.',)
+2025-04-30 08:02:34,265 - INFO - Retrying with a new session.
+2025-04-30 08:02:36,525 - INFO - HTTP Request: GET https://scholar.google.com/citations?hl=en&view_op=view_citation&citation_for_view=Ksv9I0sAAAAJ:dhFuZR0502QC "HTTP/1.1 200 OK"
+Fetching article details:  34%|███▍      | 25/73 [01:28<02:51,  3.58s/it]2025-04-30 08:02:36,577 - INFO - Getting https://scholar.google.com/citations?hl=en&view_op=view_citation&citation_for_view=Ksv9I0sAAAAJ:_FxGoFyzp5QC
+2025-04-30 08:02:38,535 - INFO - Exception RuntimeError while fetching page: ('Cannot send a request, as the client has been closed.',)
+2025-04-30 08:02:38,535 - INFO - Retrying with a new session.
+2025-04-30 08:02:40,768 - INFO - HTTP Request: GET https://scholar.google.com/citations?hl=en&view_op=view_citation&citation_for_view=Ksv9I0sAAAAJ:_FxGoFyzp5QC "HTTP/1.1 200 OK"
+Fetching article details:  36%|███▌      | 26/73 [01:33<02:57,  3.78s/it]2025-04-30 08:02:40,823 - INFO - Getting https://scholar.google.com/citations?hl=en&view_op=view_citation&citation_for_view=Ksv9I0sAAAAJ:9ZlFYXVOiuMC
+2025-04-30 08:02:42,869 - INFO - Exception RuntimeError while fetching page: ('Cannot send a request, as the client has been closed.',)
+2025-04-30 08:02:42,869 - INFO - Retrying with a new session.
+2025-04-30 08:02:44,292 - INFO - HTTP Request: GET https://scholar.google.com/citations?hl=en&view_op=view_citation&citation_for_view=Ksv9I0sAAAAJ:9ZlFYXVOiuMC "HTTP/1.1 200 OK"
+Fetching article details:  37%|███▋      | 27/73 [01:36<02:50,  3.70s/it]2025-04-30 08:02:44,344 - INFO - Getting https://scholar.google.com/citations?hl=en&view_op=view_citation&citation_for_view=Ksv9I0sAAAAJ:4DMP91E08xMC
+2025-04-30 08:02:45,674 - INFO - Exception RuntimeError while fetching page: ('Cannot send a request, as the client has been closed.',)
+2025-04-30 08:02:45,675 - INFO - Retrying with a new session.
+2025-04-30 08:02:47,389 - INFO - HTTP Request: GET https://scholar.google.com/citations?hl=en&view_op=view_citation&citation_for_view=Ksv9I0sAAAAJ:4DMP91E08xMC "HTTP/1.1 200 OK"
+Fetching article details:  38%|███▊      | 28/73 [01:39<02:38,  3.52s/it]2025-04-30 08:02:47,438 - INFO - Getting https://scholar.google.com/citations?hl=en&view_op=view_citation&citation_for_view=Ksv9I0sAAAAJ:d1gkVwhDpl0C
+2025-04-30 08:02:49,314 - INFO - Exception RuntimeError while fetching page: ('Cannot send a request, as the client has been closed.',)
+2025-04-30 08:02:49,314 - INFO - Retrying with a new session.
+2025-04-30 08:02:51,500 - INFO - HTTP Request: GET https://scholar.google.com/citations?hl=en&view_op=view_citation&citation_for_view=Ksv9I0sAAAAJ:d1gkVwhDpl0C "HTTP/1.1 200 OK"
+Fetching article details:  40%|███▉      | 29/73 [01:43<02:42,  3.70s/it]2025-04-30 08:02:51,553 - INFO - Getting https://scholar.google.com/citations?hl=en&view_op=view_citation&citation_for_view=Ksv9I0sAAAAJ:qUcmZB5y_30C
+2025-04-30 08:02:53,358 - INFO - Exception RuntimeError while fetching page: ('Cannot send a request, as the client has been closed.',)
+2025-04-30 08:02:53,359 - INFO - Retrying with a new session.
+2025-04-30 08:02:54,983 - INFO - HTTP Request: GET https://scholar.google.com/citations?hl=en&view_op=view_citation&citation_for_view=Ksv9I0sAAAAJ:qUcmZB5y_30C "HTTP/1.1 200 OK"
+Fetching article details:  41%|████      | 30/73 [01:47<02:36,  3.63s/it]2025-04-30 08:02:55,036 - INFO - Getting https://scholar.google.com/citations?hl=en&view_op=view_citation&citation_for_view=Ksv9I0sAAAAJ:IWHjjKOFINEC
+2025-04-30 08:02:56,799 - INFO - Exception RuntimeError while fetching page: ('Cannot send a request, as the client has been closed.',)
+2025-04-30 08:02:56,800 - INFO - Retrying with a new session.
+2025-04-30 08:02:59,064 - INFO - HTTP Request: GET https://scholar.google.com/citations?hl=en&view_op=view_citation&citation_for_view=Ksv9I0sAAAAJ:IWHjjKOFINEC "HTTP/1.1 200 OK"
+Fetching article details:  42%|████▏     | 31/73 [01:51<02:38,  3.77s/it]2025-04-30 08:02:59,113 - INFO - Getting https://scholar.google.com/citations?hl=en&view_op=view_citation&citation_for_view=Ksv9I0sAAAAJ:YOwf2qJgpHMC
+2025-04-30 08:03:00,595 - INFO - Exception RuntimeError while fetching page: ('Cannot send a request, as the client has been closed.',)
+2025-04-30 08:03:00,595 - INFO - Retrying with a new session.
+2025-04-30 08:03:02,602 - INFO - HTTP Request: GET https://scholar.google.com/citations?hl=en&view_op=view_citation&citation_for_view=Ksv9I0sAAAAJ:YOwf2qJgpHMC "HTTP/1.1 200 OK"
+Fetching article details:  44%|████▍     | 32/73 [01:55<02:31,  3.70s/it]2025-04-30 08:03:02,652 - INFO - Getting https://scholar.google.com/citations?hl=en&view_op=view_citation&citation_for_view=Ksv9I0sAAAAJ:Wp0gIr-vW9MC
+2025-04-30 08:03:03,936 - INFO - Exception RuntimeError while fetching page: ('Cannot send a request, as the client has been closed.',)
+2025-04-30 08:03:03,936 - INFO - Retrying with a new session.
+2025-04-30 08:03:05,337 - INFO - HTTP Request: GET https://scholar.google.com/citations?hl=en&view_op=view_citation&citation_for_view=Ksv9I0sAAAAJ:Wp0gIr-vW9MC "HTTP/1.1 200 OK"
+Fetching article details:  45%|████▌     | 33/73 [01:57<02:16,  3.41s/it]2025-04-30 08:03:05,391 - INFO - Getting https://scholar.google.com/citations?hl=en&view_op=view_citation&citation_for_view=Ksv9I0sAAAAJ:qxL8FJ1GzNcC
+2025-04-30 08:03:07,314 - INFO - Exception RuntimeError while fetching page: ('Cannot send a request, as the client has been closed.',)
+2025-04-30 08:03:07,314 - INFO - Retrying with a new session.
+2025-04-30 08:03:09,467 - INFO - HTTP Request: GET https://scholar.google.com/citations?hl=en&view_op=view_citation&citation_for_view=Ksv9I0sAAAAJ:qxL8FJ1GzNcC "HTTP/1.1 200 OK"
+Fetching article details:  47%|████▋     | 34/73 [02:01<02:21,  3.62s/it]2025-04-30 08:03:09,513 - INFO - Getting https://scholar.google.com/citations?hl=en&view_op=view_citation&citation_for_view=Ksv9I0sAAAAJ:HDshCWvjkbEC
+2025-04-30 08:03:10,710 - INFO - Exception RuntimeError while fetching page: ('Cannot send a request, as the client has been closed.',)
+2025-04-30 08:03:10,711 - INFO - Retrying with a new session.
+2025-04-30 08:03:12,714 - INFO - HTTP Request: GET https://scholar.google.com/citations?hl=en&view_op=view_citation&citation_for_view=Ksv9I0sAAAAJ:HDshCWvjkbEC "HTTP/1.1 200 OK"
+Fetching article details:  48%|████▊     | 35/73 [02:05<02:13,  3.51s/it]2025-04-30 08:03:12,764 - INFO - Getting https://scholar.google.com/citations?hl=en&view_op=view_citation&citation_for_view=Ksv9I0sAAAAJ:u5HHmVD_uO8C
+2025-04-30 08:03:14,442 - INFO - Exception RuntimeError while fetching page: ('Cannot send a request, as the client has been closed.',)
+2025-04-30 08:03:14,442 - INFO - Retrying with a new session.
+2025-04-30 08:03:16,359 - INFO - HTTP Request: GET https://scholar.google.com/citations?hl=en&view_op=view_citation&citation_for_view=Ksv9I0sAAAAJ:u5HHmVD_uO8C "HTTP/1.1 200 OK"
+Fetching article details:  49%|████▉     | 36/73 [02:08<02:11,  3.55s/it]2025-04-30 08:03:16,411 - INFO - Getting https://scholar.google.com/citations?hl=en&view_op=view_citation&citation_for_view=Ksv9I0sAAAAJ:L8Ckcad2t8MC
+2025-04-30 08:03:17,471 - INFO - Exception RuntimeError while fetching page: ('Cannot send a request, as the client has been closed.',)
+2025-04-30 08:03:17,471 - INFO - Retrying with a new session.
+2025-04-30 08:03:19,129 - INFO - HTTP Request: GET https://scholar.google.com/citations?hl=en&view_op=view_citation&citation_for_view=Ksv9I0sAAAAJ:L8Ckcad2t8MC "HTTP/1.1 200 OK"
+Fetching article details:  51%|█████     | 37/73 [02:11<01:59,  3.31s/it]2025-04-30 08:03:19,168 - INFO - Getting https://scholar.google.com/citations?hl=en&view_op=view_citation&citation_for_view=Ksv9I0sAAAAJ:4TOpqqG69KYC
+2025-04-30 08:03:21,192 - INFO - Exception RuntimeError while fetching page: ('Cannot send a request, as the client has been closed.',)
+2025-04-30 08:03:21,193 - INFO - Retrying with a new session.
+2025-04-30 08:03:22,547 - INFO - HTTP Request: GET https://scholar.google.com/citations?hl=en&view_op=view_citation&citation_for_view=Ksv9I0sAAAAJ:4TOpqqG69KYC "HTTP/1.1 200 OK"
+Fetching article details:  52%|█████▏    | 38/73 [02:14<01:57,  3.35s/it]2025-04-30 08:03:22,587 - INFO - Getting https://scholar.google.com/citations?hl=en&view_op=view_citation&citation_for_view=Ksv9I0sAAAAJ:_Qo2XoVZTnwC
+2025-04-30 08:03:23,974 - INFO - Exception RuntimeError while fetching page: ('Cannot send a request, as the client has been closed.',)
+2025-04-30 08:03:23,974 - INFO - Retrying with a new session.
+2025-04-30 08:03:25,585 - INFO - HTTP Request: GET https://scholar.google.com/citations?hl=en&view_op=view_citation&citation_for_view=Ksv9I0sAAAAJ:_Qo2XoVZTnwC "HTTP/1.1 200 OK"
+Fetching article details:  53%|█████▎    | 39/73 [02:18<01:50,  3.26s/it]2025-04-30 08:03:25,632 - INFO - Getting https://scholar.google.com/citations?hl=en&view_op=view_citation&citation_for_view=Ksv9I0sAAAAJ:bEWYMUwI8FkC
+2025-04-30 08:03:26,831 - INFO - Exception RuntimeError while fetching page: ('Cannot send a request, as the client has been closed.',)
+2025-04-30 08:03:26,831 - INFO - Retrying with a new session.
+2025-04-30 08:03:28,403 - INFO - HTTP Request: GET https://scholar.google.com/citations?hl=en&view_op=view_citation&citation_for_view=Ksv9I0sAAAAJ:bEWYMUwI8FkC "HTTP/1.1 200 OK"
+Fetching article details:  55%|█████▍    | 40/73 [02:20<01:43,  3.12s/it]2025-04-30 08:03:28,445 - INFO - Getting https://scholar.google.com/citations?hl=en&view_op=view_citation&citation_for_view=Ksv9I0sAAAAJ:TFP_iSt0sucC
+2025-04-30 08:03:29,662 - INFO - Exception RuntimeError while fetching page: ('Cannot send a request, as the client has been closed.',)
+2025-04-30 08:03:29,662 - INFO - Retrying with a new session.
+2025-04-30 08:03:31,333 - INFO - HTTP Request: GET https://scholar.google.com/citations?hl=en&view_op=view_citation&citation_for_view=Ksv9I0sAAAAJ:TFP_iSt0sucC "HTTP/1.1 200 OK"
+Fetching article details:  56%|█████▌    | 41/73 [02:23<01:38,  3.06s/it]2025-04-30 08:03:31,374 - INFO - Getting https://scholar.google.com/citations?hl=en&view_op=view_citation&citation_for_view=Ksv9I0sAAAAJ:4JMBOYKVnBMC
+2025-04-30 08:03:33,089 - INFO - Exception RuntimeError while fetching page: ('Cannot send a request, as the client has been closed.',)
+2025-04-30 08:03:33,090 - INFO - Retrying with a new session.
+2025-04-30 08:03:35,150 - INFO - HTTP Request: GET https://scholar.google.com/citations?hl=en&view_op=view_citation&citation_for_view=Ksv9I0sAAAAJ:4JMBOYKVnBMC "HTTP/1.1 200 OK"
+Fetching article details:  58%|█████▊    | 42/73 [02:27<01:42,  3.29s/it]2025-04-30 08:03:35,194 - INFO - Getting https://scholar.google.com/citations?hl=en&view_op=view_citation&citation_for_view=Ksv9I0sAAAAJ:ULOm3_A8WrAC
+2025-04-30 08:03:36,981 - INFO - Exception RuntimeError while fetching page: ('Cannot send a request, as the client has been closed.',)
+2025-04-30 08:03:36,981 - INFO - Retrying with a new session.
+2025-04-30 08:03:39,025 - INFO - HTTP Request: GET https://scholar.google.com/citations?hl=en&view_op=view_citation&citation_for_view=Ksv9I0sAAAAJ:ULOm3_A8WrAC "HTTP/1.1 200 OK"
+Fetching article details:  59%|█████▉    | 43/73 [02:31<01:43,  3.47s/it]2025-04-30 08:03:39,069 - INFO - Getting https://scholar.google.com/citations?hl=en&view_op=view_citation&citation_for_view=Ksv9I0sAAAAJ:LkGwnXOMwfcC
+2025-04-30 08:03:40,711 - INFO - Exception RuntimeError while fetching page: ('Cannot send a request, as the client has been closed.',)
+2025-04-30 08:03:40,711 - INFO - Retrying with a new session.
+2025-04-30 08:03:42,316 - INFO - HTTP Request: GET https://scholar.google.com/citations?hl=en&view_op=view_citation&citation_for_view=Ksv9I0sAAAAJ:LkGwnXOMwfcC "HTTP/1.1 200 OK"
+Fetching article details:  60%|██████    | 44/73 [02:34<01:38,  3.41s/it]2025-04-30 08:03:42,358 - INFO - Getting https://scholar.google.com/citations?hl=en&view_op=view_citation&citation_for_view=Ksv9I0sAAAAJ:NMxIlDl6LWMC
+2025-04-30 08:03:43,552 - INFO - Exception RuntimeError while fetching page: ('Cannot send a request, as the client has been closed.',)
+2025-04-30 08:03:43,552 - INFO - Retrying with a new session.
+2025-04-30 08:03:44,937 - INFO - HTTP Request: GET https://scholar.google.com/citations?hl=en&view_op=view_citation&citation_for_view=Ksv9I0sAAAAJ:NMxIlDl6LWMC "HTTP/1.1 200 OK"
+Fetching article details:  62%|██████▏   | 45/73 [02:37<01:28,  3.18s/it]2025-04-30 08:03:44,979 - INFO - Getting https://scholar.google.com/citations?hl=en&view_op=view_citation&citation_for_view=Ksv9I0sAAAAJ:RHpTSmoSYBkC
+2025-04-30 08:03:46,652 - INFO - Exception RuntimeError while fetching page: ('Cannot send a request, as the client has been closed.',)
+2025-04-30 08:03:46,652 - INFO - Retrying with a new session.
+2025-04-30 08:03:48,384 - INFO - HTTP Request: GET https://scholar.google.com/citations?hl=en&view_op=view_citation&citation_for_view=Ksv9I0sAAAAJ:RHpTSmoSYBkC "HTTP/1.1 200 OK"
+Fetching article details:  63%|██████▎   | 46/73 [02:40<01:27,  3.26s/it]2025-04-30 08:03:48,428 - INFO - Getting https://scholar.google.com/citations?hl=en&view_op=view_citation&citation_for_view=Ksv9I0sAAAAJ:ufrVoPGSRksC
+2025-04-30 08:03:50,240 - INFO - Exception RuntimeError while fetching page: ('Cannot send a request, as the client has been closed.',)
+2025-04-30 08:03:50,240 - INFO - Retrying with a new session.
+2025-04-30 08:03:51,920 - INFO - HTTP Request: GET https://scholar.google.com/citations?hl=en&view_op=view_citation&citation_for_view=Ksv9I0sAAAAJ:ufrVoPGSRksC "HTTP/1.1 200 OK"
+Fetching article details:  64%|██████▍   | 47/73 [02:44<01:26,  3.34s/it]2025-04-30 08:03:51,963 - INFO - Getting https://scholar.google.com/citations?hl=en&view_op=view_citation&citation_for_view=Ksv9I0sAAAAJ:maZDTaKrznsC
+2025-04-30 08:03:53,868 - INFO - Exception RuntimeError while fetching page: ('Cannot send a request, as the client has been closed.',)
+2025-04-30 08:03:53,869 - INFO - Retrying with a new session.
+2025-04-30 08:03:55,986 - INFO - HTTP Request: GET https://scholar.google.com/citations?hl=en&view_op=view_citation&citation_for_view=Ksv9I0sAAAAJ:maZDTaKrznsC "HTTP/1.1 200 OK"
+Fetching article details:  66%|██████▌   | 48/73 [02:48<01:28,  3.56s/it]2025-04-30 08:03:56,027 - INFO - Getting https://scholar.google.com/citations?hl=en&view_op=view_citation&citation_for_view=Ksv9I0sAAAAJ:j3f4tGmQtD8C
+2025-04-30 08:03:57,115 - INFO - Exception RuntimeError while fetching page: ('Cannot send a request, as the client has been closed.',)
+2025-04-30 08:03:57,116 - INFO - Retrying with a new session.
+2025-04-30 08:03:58,831 - INFO - HTTP Request: GET https://scholar.google.com/citations?hl=en&view_op=view_citation&citation_for_view=Ksv9I0sAAAAJ:j3f4tGmQtD8C "HTTP/1.1 200 OK"
+Fetching article details:  67%|██████▋   | 49/73 [02:51<01:20,  3.34s/it]2025-04-30 08:03:58,875 - INFO - Getting https://scholar.google.com/citations?hl=en&view_op=view_citation&citation_for_view=Ksv9I0sAAAAJ:e5wmG9Sq2KIC
+2025-04-30 08:04:00,592 - INFO - Exception RuntimeError while fetching page: ('Cannot send a request, as the client has been closed.',)
+2025-04-30 08:04:00,593 - INFO - Retrying with a new session.
+2025-04-30 08:04:02,140 - INFO - HTTP Request: GET https://scholar.google.com/citations?hl=en&view_op=view_citation&citation_for_view=Ksv9I0sAAAAJ:e5wmG9Sq2KIC "HTTP/1.1 200 OK"
+Fetching article details:  68%|██████▊   | 50/73 [02:54<01:16,  3.33s/it]2025-04-30 08:04:02,184 - INFO - Getting https://scholar.google.com/citations?hl=en&view_op=view_citation&citation_for_view=Ksv9I0sAAAAJ:YFjsv_pBGBYC
+2025-04-30 08:04:03,576 - INFO - Exception RuntimeError while fetching page: ('Cannot send a request, as the client has been closed.',)
+2025-04-30 08:04:03,576 - INFO - Retrying with a new session.
+2025-04-30 08:04:05,361 - INFO - HTTP Request: GET https://scholar.google.com/citations?hl=en&view_op=view_citation&citation_for_view=Ksv9I0sAAAAJ:YFjsv_pBGBYC "HTTP/1.1 200 OK"
+Fetching article details:  70%|██████▉   | 51/73 [02:57<01:12,  3.30s/it]2025-04-30 08:04:05,404 - INFO - Getting https://scholar.google.com/citations?hl=en&view_op=view_citation&citation_for_view=Ksv9I0sAAAAJ:M3NEmzRMIkIC
+2025-04-30 08:04:07,202 - INFO - Exception RuntimeError while fetching page: ('Cannot send a request, as the client has been closed.',)
+2025-04-30 08:04:07,202 - INFO - Retrying with a new session.
+2025-04-30 08:04:08,398 - INFO - HTTP Request: GET https://scholar.google.com/citations?hl=en&view_op=view_citation&citation_for_view=Ksv9I0sAAAAJ:M3NEmzRMIkIC "HTTP/1.1 200 OK"
+Fetching article details:  71%|███████   | 52/73 [03:00<01:07,  3.22s/it]2025-04-30 08:04:08,440 - INFO - Getting https://scholar.google.com/citations?hl=en&view_op=view_citation&citation_for_view=Ksv9I0sAAAAJ:R3hNpaxXUhUC
+2025-04-30 08:04:09,733 - INFO - Exception RuntimeError while fetching page: ('Cannot send a request, as the client has been closed.',)
+2025-04-30 08:04:09,734 - INFO - Retrying with a new session.
+2025-04-30 08:04:11,096 - INFO - HTTP Request: GET https://scholar.google.com/citations?hl=en&view_op=view_citation&citation_for_view=Ksv9I0sAAAAJ:R3hNpaxXUhUC "HTTP/1.1 200 OK"
+Fetching article details:  73%|███████▎  | 53/73 [03:03<01:01,  3.06s/it]2025-04-30 08:04:11,140 - INFO - Getting https://scholar.google.com/citations?hl=en&view_op=view_citation&citation_for_view=Ksv9I0sAAAAJ:-f6ydRqryjwC
+2025-04-30 08:04:12,489 - INFO - Exception RuntimeError while fetching page: ('Cannot send a request, as the client has been closed.',)
+2025-04-30 08:04:12,489 - INFO - Retrying with a new session.
+2025-04-30 08:04:14,604 - INFO - HTTP Request: GET https://scholar.google.com/citations?hl=en&view_op=view_citation&citation_for_view=Ksv9I0sAAAAJ:-f6ydRqryjwC "HTTP/1.1 200 OK"
+Fetching article details:  74%|███████▍  | 54/73 [03:07<01:00,  3.20s/it]2025-04-30 08:04:14,645 - INFO - Getting https://scholar.google.com/citations?hl=en&view_op=view_citation&citation_for_view=Ksv9I0sAAAAJ:RYcK_YlVTxYC
+2025-04-30 08:04:15,813 - INFO - Exception RuntimeError while fetching page: ('Cannot send a request, as the client has been closed.',)
+2025-04-30 08:04:15,813 - INFO - Retrying with a new session.
+2025-04-30 08:04:17,344 - INFO - HTTP Request: GET https://scholar.google.com/citations?hl=en&view_op=view_citation&citation_for_view=Ksv9I0sAAAAJ:RYcK_YlVTxYC "HTTP/1.1 200 OK"
+Fetching article details:  75%|███████▌  | 55/73 [03:09<00:55,  3.06s/it]2025-04-30 08:04:17,382 - INFO - Getting https://scholar.google.com/citations?hl=en&view_op=view_citation&citation_for_view=Ksv9I0sAAAAJ:J_g5lzvAfSwC
+2025-04-30 08:04:18,923 - INFO - Exception RuntimeError while fetching page: ('Cannot send a request, as the client has been closed.',)
+2025-04-30 08:04:18,923 - INFO - Retrying with a new session.
+2025-04-30 08:04:20,331 - INFO - HTTP Request: GET https://scholar.google.com/citations?hl=en&view_op=view_citation&citation_for_view=Ksv9I0sAAAAJ:J_g5lzvAfSwC "HTTP/1.1 200 OK"
+Fetching article details:  77%|███████▋  | 56/73 [03:12<00:51,  3.04s/it]2025-04-30 08:04:20,370 - INFO - Getting https://scholar.google.com/citations?hl=en&view_op=view_citation&citation_for_view=Ksv9I0sAAAAJ:ns9cj8rnVeAC
+2025-04-30 08:04:21,890 - INFO - Exception RuntimeError while fetching page: ('Cannot send a request, as the client has been closed.',)
+2025-04-30 08:04:21,890 - INFO - Retrying with a new session.
+2025-04-30 08:04:23,611 - INFO - HTTP Request: GET https://scholar.google.com/citations?hl=en&view_op=view_citation&citation_for_view=Ksv9I0sAAAAJ:ns9cj8rnVeAC "HTTP/1.1 200 OK"
+Fetching article details:  78%|███████▊  | 57/73 [03:16<00:49,  3.11s/it]2025-04-30 08:04:23,647 - INFO - Getting https://scholar.google.com/citations?hl=en&view_op=view_citation&citation_for_view=Ksv9I0sAAAAJ:O3NaXMp0MMsC
+2025-04-30 08:04:25,130 - INFO - Exception RuntimeError while fetching page: ('Cannot send a request, as the client has been closed.',)
+2025-04-30 08:04:25,131 - INFO - Retrying with a new session.
+2025-04-30 08:04:27,132 - INFO - HTTP Request: GET https://scholar.google.com/citations?hl=en&view_op=view_citation&citation_for_view=Ksv9I0sAAAAJ:O3NaXMp0MMsC "HTTP/1.1 200 OK"
+Fetching article details:  79%|███████▉  | 58/73 [03:19<00:48,  3.23s/it]2025-04-30 08:04:27,173 - INFO - Getting https://scholar.google.com/citations?hl=en&view_op=view_citation&citation_for_view=Ksv9I0sAAAAJ:RGFaLdJalmkC
+2025-04-30 08:04:28,415 - INFO - Exception RuntimeError while fetching page: ('Cannot send a request, as the client has been closed.',)
+2025-04-30 08:04:28,415 - INFO - Retrying with a new session.
+2025-04-30 08:04:30,528 - INFO - HTTP Request: GET https://scholar.google.com/citations?hl=en&view_op=view_citation&citation_for_view=Ksv9I0sAAAAJ:RGFaLdJalmkC "HTTP/1.1 200 OK"
+Fetching article details:  81%|████████  | 59/73 [03:22<00:45,  3.28s/it]2025-04-30 08:04:30,569 - INFO - Getting https://scholar.google.com/citations?hl=en&view_op=view_citation&citation_for_view=Ksv9I0sAAAAJ:GnPB-g6toBAC
+2025-04-30 08:04:31,660 - INFO - Exception RuntimeError while fetching page: ('Cannot send a request, as the client has been closed.',)
+2025-04-30 08:04:31,660 - INFO - Retrying with a new session.
+2025-04-30 08:04:33,795 - INFO - HTTP Request: GET https://scholar.google.com/citations?hl=en&view_op=view_citation&citation_for_view=Ksv9I0sAAAAJ:GnPB-g6toBAC "HTTP/1.1 200 OK"
+Fetching article details:  82%|████████▏ | 60/73 [03:26<00:42,  3.28s/it]2025-04-30 08:04:33,835 - INFO - Getting https://scholar.google.com/citations?hl=en&view_op=view_citation&citation_for_view=Ksv9I0sAAAAJ:BqipwSGYUEgC
+2025-04-30 08:04:35,689 - INFO - Exception RuntimeError while fetching page: ('Cannot send a request, as the client has been closed.',)
+2025-04-30 08:04:35,689 - INFO - Retrying with a new session.
+2025-04-30 08:04:37,422 - INFO - HTTP Request: GET https://scholar.google.com/citations?hl=en&view_op=view_citation&citation_for_view=Ksv9I0sAAAAJ:BqipwSGYUEgC "HTTP/1.1 200 OK"
+Fetching article details:  84%|████████▎ | 61/73 [03:29<00:40,  3.38s/it]2025-04-30 08:04:37,462 - INFO - Getting https://scholar.google.com/citations?hl=en&view_op=view_citation&citation_for_view=Ksv9I0sAAAAJ:TQgYirikUcIC
+2025-04-30 08:04:39,455 - INFO - Exception RuntimeError while fetching page: ('Cannot send a request, as the client has been closed.',)
+2025-04-30 08:04:39,456 - INFO - Retrying with a new session.
+2025-04-30 08:04:41,331 - INFO - HTTP Request: GET https://scholar.google.com/citations?hl=en&view_op=view_citation&citation_for_view=Ksv9I0sAAAAJ:TQgYirikUcIC "HTTP/1.1 200 OK"
+Fetching article details:  85%|████████▍ | 62/73 [03:33<00:38,  3.54s/it]2025-04-30 08:04:41,370 - INFO - Getting https://scholar.google.com/citations?hl=en&view_op=view_citation&citation_for_view=Ksv9I0sAAAAJ:isC4tDSrTZIC
+2025-04-30 08:04:43,136 - INFO - Exception RuntimeError while fetching page: ('Cannot send a request, as the client has been closed.',)
+2025-04-30 08:04:43,137 - INFO - Retrying with a new session.
+2025-04-30 08:04:45,214 - INFO - HTTP Request: GET https://scholar.google.com/citations?hl=en&view_op=view_citation&citation_for_view=Ksv9I0sAAAAJ:isC4tDSrTZIC "HTTP/1.1 200 OK"
+Fetching article details:  86%|████████▋ | 63/73 [03:37<00:36,  3.64s/it]2025-04-30 08:04:45,255 - INFO - Getting https://scholar.google.com/citations?hl=en&view_op=view_citation&citation_for_view=Ksv9I0sAAAAJ:hMod-77fHWUC
+2025-04-30 08:04:46,389 - INFO - Exception RuntimeError while fetching page: ('Cannot send a request, as the client has been closed.',)
+2025-04-30 08:04:46,390 - INFO - Retrying with a new session.
+2025-04-30 08:04:48,205 - INFO - HTTP Request: GET https://scholar.google.com/citations?hl=en&view_op=view_citation&citation_for_view=Ksv9I0sAAAAJ:hMod-77fHWUC "HTTP/1.1 200 OK"
+Fetching article details:  88%|████████▊ | 64/73 [03:40<00:31,  3.45s/it]2025-04-30 08:04:48,246 - INFO - Getting https://scholar.google.com/citations?hl=en&view_op=view_citation&citation_for_view=Ksv9I0sAAAAJ:JV2RwH3_ST0C
+2025-04-30 08:04:50,165 - INFO - Exception RuntimeError while fetching page: ('Cannot send a request, as the client has been closed.',)
+2025-04-30 08:04:50,165 - INFO - Retrying with a new session.
+2025-04-30 08:04:52,152 - INFO - HTTP Request: GET https://scholar.google.com/citations?hl=en&view_op=view_citation&citation_for_view=Ksv9I0sAAAAJ:JV2RwH3_ST0C "HTTP/1.1 200 OK"
+Fetching article details:  89%|████████▉ | 65/73 [03:44<00:28,  3.60s/it]2025-04-30 08:04:52,193 - INFO - Getting https://scholar.google.com/citations?hl=en&view_op=view_citation&citation_for_view=Ksv9I0sAAAAJ:iH-uZ7U-co4C
+2025-04-30 08:04:53,459 - INFO - Exception RuntimeError while fetching page: ('Cannot send a request, as the client has been closed.',)
+2025-04-30 08:04:53,459 - INFO - Retrying with a new session.
+2025-04-30 08:04:55,237 - INFO - HTTP Request: GET https://scholar.google.com/citations?hl=en&view_op=view_citation&citation_for_view=Ksv9I0sAAAAJ:iH-uZ7U-co4C "HTTP/1.1 200 OK"
+Fetching article details:  90%|█████████ | 66/73 [03:47<00:24,  3.44s/it]2025-04-30 08:04:55,278 - INFO - Getting https://scholar.google.com/citations?hl=en&view_op=view_citation&citation_for_view=Ksv9I0sAAAAJ:k_IJM867U9cC
+2025-04-30 08:04:56,589 - INFO - Exception RuntimeError while fetching page: ('Cannot send a request, as the client has been closed.',)
+2025-04-30 08:04:56,590 - INFO - Retrying with a new session.
+2025-04-30 08:04:58,305 - INFO - HTTP Request: GET https://scholar.google.com/citations?hl=en&view_op=view_citation&citation_for_view=Ksv9I0sAAAAJ:k_IJM867U9cC "HTTP/1.1 200 OK"
+Fetching article details:  92%|█████████▏| 67/73 [03:50<00:19,  3.33s/it]2025-04-30 08:04:58,345 - INFO - Getting https://scholar.google.com/citations?hl=en&view_op=view_citation&citation_for_view=Ksv9I0sAAAAJ:ZeXyd9-uunAC
+2025-04-30 08:04:59,827 - INFO - Exception RuntimeError while fetching page: ('Cannot send a request, as the client has been closed.',)
+2025-04-30 08:04:59,827 - INFO - Retrying with a new session.
+2025-04-30 08:05:01,961 - INFO - HTTP Request: GET https://scholar.google.com/citations?hl=en&view_op=view_citation&citation_for_view=Ksv9I0sAAAAJ:ZeXyd9-uunAC "HTTP/1.1 200 OK"
+Fetching article details:  93%|█████████▎| 68/73 [03:54<00:17,  3.43s/it]2025-04-30 08:05:02,006 - INFO - Getting https://scholar.google.com/citations?hl=en&view_op=view_citation&citation_for_view=Ksv9I0sAAAAJ:QIV2ME_5wuYC
+2025-04-30 08:05:03,877 - INFO - Exception RuntimeError while fetching page: ('Cannot send a request, as the client has been closed.',)
+2025-04-30 08:05:03,877 - INFO - Retrying with a new session.
+2025-04-30 08:05:05,263 - INFO - HTTP Request: GET https://scholar.google.com/citations?hl=en&view_op=view_citation&citation_for_view=Ksv9I0sAAAAJ:QIV2ME_5wuYC "HTTP/1.1 200 OK"
+Fetching article details:  95%|█████████▍| 69/73 [03:57<00:13,  3.39s/it]2025-04-30 08:05:05,307 - INFO - Getting https://scholar.google.com/citations?hl=en&view_op=view_citation&citation_for_view=Ksv9I0sAAAAJ:8k81kl-MbHgC
+2025-04-30 08:05:07,066 - INFO - Exception RuntimeError while fetching page: ('Cannot send a request, as the client has been closed.',)
+2025-04-30 08:05:07,067 - INFO - Retrying with a new session.
+2025-04-30 08:05:08,563 - INFO - HTTP Request: GET https://scholar.google.com/citations?hl=en&view_op=view_citation&citation_for_view=Ksv9I0sAAAAJ:8k81kl-MbHgC "HTTP/1.1 200 OK"
+Fetching article details:  96%|█████████▌| 70/73 [04:01<00:10,  3.36s/it]2025-04-30 08:05:08,607 - INFO - Getting https://scholar.google.com/citations?hl=en&view_op=view_citation&citation_for_view=Ksv9I0sAAAAJ:0EnyYjriUFMC
+2025-04-30 08:05:09,685 - INFO - Exception RuntimeError while fetching page: ('Cannot send a request, as the client has been closed.',)
+2025-04-30 08:05:09,685 - INFO - Retrying with a new session.
+2025-04-30 08:05:11,241 - INFO - HTTP Request: GET https://scholar.google.com/citations?hl=en&view_op=view_citation&citation_for_view=Ksv9I0sAAAAJ:0EnyYjriUFMC "HTTP/1.1 200 OK"
+Fetching article details:  97%|█████████▋| 71/73 [04:03<00:06,  3.16s/it]2025-04-30 08:05:11,288 - INFO - Getting https://scholar.google.com/citations?hl=en&view_op=view_citation&citation_for_view=Ksv9I0sAAAAJ:eQOLeE2rZwMC
+2025-04-30 08:05:13,269 - INFO - Exception RuntimeError while fetching page: ('Cannot send a request, as the client has been closed.',)
+2025-04-30 08:05:13,270 - INFO - Retrying with a new session.
+2025-04-30 08:05:14,926 - INFO - HTTP Request: GET https://scholar.google.com/citations?hl=en&view_op=view_citation&citation_for_view=Ksv9I0sAAAAJ:eQOLeE2rZwMC "HTTP/1.1 200 OK"
+Fetching article details:  99%|█████████▊| 72/73 [04:07<00:03,  3.31s/it]2025-04-30 08:05:14,965 - INFO - Getting https://scholar.google.com/citations?hl=en&view_op=view_citation&citation_for_view=Ksv9I0sAAAAJ:r0BpntZqJG4C
+2025-04-30 08:05:16,506 - INFO - Exception RuntimeError while fetching page: ('Cannot send a request, as the client has been closed.',)
+2025-04-30 08:05:16,506 - INFO - Retrying with a new session.
+2025-04-30 08:05:18,569 - INFO - HTTP Request: GET https://scholar.google.com/citations?hl=en&view_op=view_citation&citation_for_view=Ksv9I0sAAAAJ:r0BpntZqJG4C "HTTP/1.1 200 OK"
+Fetching article details: 100%|██████████| 73/73 [04:11<00:00,  3.41s/it]Fetching article details: 100%|██████████| 73/73 [04:11<00:00,  3.44s/it]
+2025-04-30 08:05:18,613 - INFO - Successfully fetched details for 73 articles.
+2025-04-30 08:05:18,613 - INFO - Processing articles...
+Processing articles:   0%|          | 0/73 [00:00<?, ?it/s]2025-04-30 08:05:18,614 - INFO - DOI not found in scholarly data for 'Mitigating bias in radiology machine learning: 1. Data handling'. Trying CrossRef fallback.
+2025-04-30 08:05:28,631 - WARNING - Timeout fetching DOI from CrossRef for title: 'Mitigating bias in radiology machine learning: 1. Data handling'
+Processing articles:   1%|▏         | 1/73 [00:10<12:01, 10.02s/it]2025-04-30 08:05:28,632 - INFO - DOI not found in scholarly data for 'SOUP-GAN: Super-resolution MRI using generative adversarial networks'. Trying CrossRef fallback.
+2025-04-30 08:05:38,637 - WARNING - Timeout fetching DOI from CrossRef for title: 'SOUP-GAN: Super-resolution MRI using generative adversarial networks'
+Processing articles:   3%|▎         | 2/73 [00:20<11:50, 10.01s/it]2025-04-30 08:05:38,638 - INFO - DOI not found in scholarly data for 'A deep learning tool for automated radiographic measurement of acetabular component inclination and version after total hip arthroplasty'. Trying CrossRef fallback.
+2025-04-30 08:05:48,643 - WARNING - Timeout fetching DOI from CrossRef for title: 'A deep learning tool for automated radiographic measurement of acetabular component inclination and version after total hip arthroplasty'
+Processing articles:   4%|▍         | 3/73 [00:30<11:40, 10.01s/it]2025-04-30 08:05:48,644 - INFO - DOI not found in scholarly data for 'Mitigating bias in radiology machine learning: 3. Performance metrics'. Trying CrossRef fallback.
+2025-04-30 08:05:58,649 - WARNING - Timeout fetching DOI from CrossRef for title: 'Mitigating bias in radiology machine learning: 3. Performance metrics'
+Processing articles:   5%|▌         | 4/73 [00:40<11:30, 10.01s/it]2025-04-30 08:05:58,653 - INFO - DOI not found in scholarly data for 'Mitigating bias in radiology machine learning: 2. Model development'. Trying CrossRef fallback.
+2025-04-30 08:06:08,658 - WARNING - Timeout fetching DOI from CrossRef for title: 'Mitigating bias in radiology machine learning: 2. Model development'
+Processing articles:   7%|▋         | 5/73 [00:50<11:20, 10.01s/it]2025-04-30 08:06:08,659 - INFO - DOI not found in scholarly data for 'Deep learning artificial intelligence model for assessment of hip dislocation risk following primary total hip arthroplasty from postoperative radiographs'. Trying CrossRef fallback.
+2025-04-30 08:06:18,665 - WARNING - Timeout fetching DOI from CrossRef for title: 'Deep learning artificial intelligence model for assessment of hip dislocation risk following primary total hip arthroplasty from postoperative radiographs'
+Processing articles:   8%|▊         | 6/73 [01:00<11:10, 10.01s/it]2025-04-30 08:06:18,666 - INFO - DOI not found in scholarly data for 'Quantifying uncertainty in deep learning of radiologic images'. Trying CrossRef fallback.
+2025-04-30 08:06:28,672 - WARNING - Timeout fetching DOI from CrossRef for title: 'Quantifying uncertainty in deep learning of radiologic images'
+Processing articles:  10%|▉         | 7/73 [01:10<11:00, 10.01s/it]2025-04-30 08:06:28,673 - INFO - DOI not found in scholarly data for 'Development of a deep learning model for the histologic diagnosis of dysplasia in Barrett’s esophagus'. Trying CrossRef fallback.
+2025-04-30 08:06:38,678 - WARNING - Timeout fetching DOI from CrossRef for title: 'Development of a deep learning model for the histologic diagnosis of dysplasia in Barrett’s esophagus'
+Processing articles:  11%|█         | 8/73 [01:20<10:50, 10.01s/it]2025-04-30 08:06:38,679 - INFO - DOI not found in scholarly data for 'Fully automated segmentation of head CT neuroanatomy using deep learning'. Trying CrossRef fallback.
+2025-04-30 08:06:48,684 - WARNING - Timeout fetching DOI from CrossRef for title: 'Fully automated segmentation of head CT neuroanatomy using deep learning'
+Processing articles:  12%|█▏        | 9/73 [01:30<10:40, 10.01s/it]2025-04-30 08:06:48,686 - INFO - DOI not found in scholarly data for 'Applying deep learning to establish a total hip arthroplasty radiography registry: a stepwise approach'. Trying CrossRef fallback.
+2025-04-30 08:06:58,691 - WARNING - Timeout fetching DOI from CrossRef for title: 'Applying deep learning to establish a total hip arthroplasty radiography registry: a stepwise approach'
+Processing articles:  14%|█▎        | 10/73 [01:40<10:30, 10.01s/it]2025-04-30 08:06:58,692 - INFO - DOI not found in scholarly data for 'Redefining the 3D topography of the acetabular safe zone: a multivariable study evaluating prosthetic hip stability'. Trying CrossRef fallback.
+2025-04-30 08:07:08,697 - WARNING - Timeout fetching DOI from CrossRef for title: 'Redefining the 3D topography of the acetabular safe zone: a multivariable study evaluating prosthetic hip stability'
+Processing articles:  15%|█▌        | 11/73 [01:50<10:20, 10.01s/it]2025-04-30 08:07:08,699 - INFO - DOI not found in scholarly data for 'Prognostic factors of chest CT findings for ICU admission and mortality in patients with COVID-19 pneumonia'. Trying CrossRef fallback.
+2025-04-30 08:07:18,706 - WARNING - Timeout fetching DOI from CrossRef for title: 'Prognostic factors of chest CT findings for ICU admission and mortality in patients with COVID-19 pneumonia'
+Processing articles:  16%|█▋        | 12/73 [02:00<10:10, 10.01s/it]2025-04-30 08:07:18,707 - INFO - DOI not found in scholarly data for 'Multitask brain tumor inpainting with diffusion models: a methodological report'. Trying CrossRef fallback.
+2025-04-30 08:07:28,712 - WARNING - Timeout fetching DOI from CrossRef for title: 'Multitask brain tumor inpainting with diffusion models: a methodological report'
+Processing articles:  18%|█▊        | 13/73 [02:10<10:00, 10.01s/it]2025-04-30 08:07:28,713 - INFO - DOI not found in scholarly data for 'Patient-specific hip arthroplasty dislocation risk calculator: an explainable multimodal machine learning–based approach'. Trying CrossRef fallback.
+2025-04-30 08:07:38,719 - WARNING - Timeout fetching DOI from CrossRef for title: 'Patient-specific hip arthroplasty dislocation risk calculator: an explainable multimodal machine learning–based approach'
+Processing articles:  19%|█▉        | 14/73 [02:20<09:50, 10.01s/it]2025-04-30 08:07:38,719 - INFO - DOI not found in scholarly data for 'Implications of sex difference in CT scan findings and outcome of patients with COVID-19 pneumonia'. Trying CrossRef fallback.
+2025-04-30 08:07:48,724 - WARNING - Timeout fetching DOI from CrossRef for title: 'Implications of sex difference in CT scan findings and outcome of patients with COVID-19 pneumonia'
+Processing articles:  21%|██        | 15/73 [02:30<09:40, 10.01s/it]2025-04-30 08:07:48,725 - INFO - DOI not found in scholarly data for 'A deep learning algorithm for detecting lytic bone lesions of multiple myeloma on CT'. Trying CrossRef fallback.
+2025-04-30 08:07:58,731 - WARNING - Timeout fetching DOI from CrossRef for title: 'A deep learning algorithm for detecting lytic bone lesions of multiple myeloma on CT'
+Processing articles:  22%|██▏       | 16/73 [02:40<09:30, 10.01s/it]2025-04-30 08:07:58,732 - INFO - DOI not found in scholarly data for 'Distribution and correlates of hip-knee-ankle angle in early osteoarthritis and preoperative total knee arthroplasty patients'. Trying CrossRef fallback.
+2025-04-30 08:08:08,737 - WARNING - Timeout fetching DOI from CrossRef for title: 'Distribution and correlates of hip-knee-ankle angle in early osteoarthritis and preoperative total knee arthroplasty patients'
+Processing articles:  23%|██▎       | 17/73 [02:50<09:20, 10.01s/it]2025-04-30 08:08:08,737 - INFO - DOI not found in scholarly data for 'Creating high fidelity synthetic pelvis radiographs using generative adversarial networks: unlocking the potential of deep learning models without patient privacy concerns'. Trying CrossRef fallback.
+2025-04-30 08:08:18,743 - WARNING - Timeout fetching DOI from CrossRef for title: 'Creating high fidelity synthetic pelvis radiographs using generative adversarial networks: unlocking the potential of deep learning models without patient privacy concerns'
+Processing articles:  25%|██▍       | 18/73 [03:00<09:10, 10.01s/it]2025-04-30 08:08:18,744 - INFO - DOI not found in scholarly data for 'Diagnostic value of shear wave sonoelastography in differentiation of benign from malignant thyroid nodules'. Trying CrossRef fallback.
+2025-04-30 08:08:28,751 - WARNING - Timeout fetching DOI from CrossRef for title: 'Diagnostic value of shear wave sonoelastography in differentiation of benign from malignant thyroid nodules'
+Processing articles:  26%|██▌       | 19/73 [03:10<09:00, 10.01s/it]2025-04-30 08:08:28,751 - INFO - DOI not found in scholarly data for 'Deep learning for radiographic measurement of femoral component subsidence following total hip arthroplasty'. Trying CrossRef fallback.
+2025-04-30 08:08:38,757 - WARNING - Timeout fetching DOI from CrossRef for title: 'Deep learning for radiographic measurement of femoral component subsidence following total hip arthroplasty'
+Processing articles:  27%|██▋       | 20/73 [03:20<08:50, 10.01s/it]2025-04-30 08:08:38,758 - INFO - DOI not found in scholarly data for 'Frank stinchfield award: creation of a patient-specific total hip arthroplasty periprosthetic fracture risk calculator'. Trying CrossRef fallback.
+2025-04-30 08:08:48,763 - WARNING - Timeout fetching DOI from CrossRef for title: 'Frank stinchfield award: creation of a patient-specific total hip arthroplasty periprosthetic fracture risk calculator'
+Processing articles:  29%|██▉       | 21/73 [03:30<08:40, 10.01s/it]2025-04-30 08:08:48,764 - INFO - DOI not found in scholarly data for 'THA-AID: deep learning tool for total hip arthroplasty automatic implant detection with uncertainty and outlier quantification'. Trying CrossRef fallback.
+2025-04-30 08:08:58,769 - WARNING - Timeout fetching DOI from CrossRef for title: 'THA-AID: deep learning tool for total hip arthroplasty automatic implant detection with uncertainty and outlier quantification'
+Processing articles:  30%|███       | 22/73 [03:40<08:30, 10.01s/it]2025-04-30 08:08:58,770 - INFO - DOI not found in scholarly data for 'Fully automated deep learning model to detect clinically significant prostate cancer at MRI'. Trying CrossRef fallback.
+2025-04-30 08:09:08,776 - WARNING - Timeout fetching DOI from CrossRef for title: 'Fully automated deep learning model to detect clinically significant prostate cancer at MRI'
+Processing articles:  32%|███▏      | 23/73 [03:50<08:20, 10.01s/it]2025-04-30 08:09:08,777 - INFO - DOI not found in scholarly data for 'Synthetically enhanced: unveiling synthetic data's potential in medical imaging research'. Trying CrossRef fallback.
+2025-04-30 08:09:18,783 - WARNING - Timeout fetching DOI from CrossRef for title: 'Synthetically enhanced: unveiling synthetic data's potential in medical imaging research'
+Processing articles:  33%|███▎      | 24/73 [04:00<08:10, 10.01s/it]2025-04-30 08:09:18,783 - INFO - DOI not found in scholarly data for 'Developing and validating a national set of standards for undergraduate medical education using the WFME framework: the experience of an accreditation system in Iran'. Trying CrossRef fallback.
+2025-04-30 08:09:28,788 - WARNING - Timeout fetching DOI from CrossRef for title: 'Developing and validating a national set of standards for undergraduate medical education using the WFME framework: the experience of an accreditation system in Iran'
+Processing articles:  34%|███▍      | 25/73 [04:10<08:00, 10.01s/it]2025-04-30 08:09:28,789 - INFO - DOI not found in scholarly data for 'Diagnostic performance of clinical examination versus ultrasonography in the detection of developmental dysplasia of hip: A systematic review and meta-analysis'. Trying CrossRef fallback.
+2025-04-30 08:09:38,793 - WARNING - Timeout fetching DOI from CrossRef for title: 'Diagnostic performance of clinical examination versus ultrasonography in the detection of developmental dysplasia of hip: A systematic review and meta-analysis'
+Processing articles:  36%|███▌      | 26/73 [04:20<07:50, 10.01s/it]2025-04-30 08:09:38,794 - INFO - DOI not found in scholarly data for 'Reproducibility of deep learning algorithms developed for medical imaging analysis: A systematic review'. Trying CrossRef fallback.
+2025-04-30 08:09:48,800 - WARNING - Timeout fetching DOI from CrossRef for title: 'Reproducibility of deep learning algorithms developed for medical imaging analysis: A systematic review'
+Processing articles:  37%|███▋      | 27/73 [04:30<07:40, 10.01s/it]2025-04-30 08:09:48,801 - INFO - DOI not found in scholarly data for 'A deep learning tool for automated landmark annotation on hip and pelvis radiographs'. Trying CrossRef fallback.
+2025-04-30 08:09:58,805 - WARNING - Timeout fetching DOI from CrossRef for title: 'A deep learning tool for automated landmark annotation on hip and pelvis radiographs'
+Processing articles:  38%|███▊      | 28/73 [04:40<07:30, 10.01s/it]2025-04-30 08:09:58,806 - INFO - DOI not found in scholarly data for 'Effects of obesity on axillary lymph node structure: association of hilar fat deposition and alterations in cortex width'. Trying CrossRef fallback.
+2025-04-30 08:10:08,812 - WARNING - Timeout fetching DOI from CrossRef for title: 'Effects of obesity on axillary lymph node structure: association of hilar fat deposition and alterations in cortex width'
+Processing articles:  40%|███▉      | 29/73 [04:50<07:20, 10.01s/it]2025-04-30 08:10:08,812 - INFO - DOI not found in scholarly data for 'Few-shot biomedical image segmentation using diffusion models: beyond image generation'. Trying CrossRef fallback.
+2025-04-30 08:10:18,816 - WARNING - Timeout fetching DOI from CrossRef for title: 'Few-shot biomedical image segmentation using diffusion models: beyond image generation'
+Processing articles:  41%|████      | 30/73 [05:00<07:10, 10.01s/it]2025-04-30 08:10:18,816 - INFO - DOI not found in scholarly data for 'Anonymizing radiographs using an object detection deep learning algorithm'. Trying CrossRef fallback.
+2025-04-30 08:10:28,822 - WARNING - Timeout fetching DOI from CrossRef for title: 'Anonymizing radiographs using an object detection deep learning algorithm'
+Processing articles:  42%|████▏     | 31/73 [05:10<07:00, 10.01s/it]2025-04-30 08:10:28,823 - INFO - DOI not found in scholarly data for 'Getting more out of large databases and EHRs with natural language processing and artificial intelligence: the future is here'. Trying CrossRef fallback.
+2025-04-30 08:10:38,829 - WARNING - Timeout fetching DOI from CrossRef for title: 'Getting more out of large databases and EHRs with natural language processing and artificial intelligence: the future is here'
+Processing articles:  44%|████▍     | 32/73 [05:20<06:50, 10.01s/it]2025-04-30 08:10:38,830 - INFO - DOI not found in scholarly data for 'The use of deep learning in medical imaging to improve spine care: a scoping review of current literature and clinical applications'. Trying CrossRef fallback.
+2025-04-30 08:10:48,835 - WARNING - Timeout fetching DOI from CrossRef for title: 'The use of deep learning in medical imaging to improve spine care: a scoping review of current literature and clinical applications'
+Processing articles:  45%|████▌     | 33/73 [05:30<06:40, 10.01s/it]2025-04-30 08:10:48,835 - INFO - DOI not found in scholarly data for 'Artificial Intelligence in Radiology: Overview of Application Types, Design, and Challenges.'. Trying CrossRef fallback.
+2025-04-30 08:10:58,841 - WARNING - Timeout fetching DOI from CrossRef for title: 'Artificial Intelligence in Radiology: Overview of Application Types, Design, and Challenges.'
+Processing articles:  47%|████▋     | 34/73 [05:40<06:30, 10.01s/it]2025-04-30 08:10:58,842 - INFO - DOI not found in scholarly data for 'Deep learning artificial intelligence tool for automated radiographic determination of posterior tibial slope in patients with ACL injury'. Trying CrossRef fallback.
+2025-04-30 08:11:08,847 - WARNING - Timeout fetching DOI from CrossRef for title: 'Deep learning artificial intelligence tool for automated radiographic determination of posterior tibial slope in patients with ACL injury'
+Processing articles:  48%|████▊     | 35/73 [05:50<06:20, 10.01s/it]2025-04-30 08:11:08,848 - INFO - DOI not found in scholarly data for 'Emerging HIV drug resistance in the resource-poor world: Challenges and strategies.'. Trying CrossRef fallback.
+2025-04-30 08:11:18,852 - WARNING - Timeout fetching DOI from CrossRef for title: 'Emerging HIV drug resistance in the resource-poor world: Challenges and strategies.'
+Processing articles:  49%|████▉     | 36/73 [06:00<06:10, 10.01s/it]2025-04-30 08:11:18,853 - INFO - DOI not found in scholarly data for 'THA-net: a deep learning solution for next-generation templating and patient-specific surgical execution'. Trying CrossRef fallback.
+2025-04-30 08:11:28,857 - WARNING - Timeout fetching DOI from CrossRef for title: 'THA-net: a deep learning solution for next-generation templating and patient-specific surgical execution'
+Processing articles:  51%|█████     | 37/73 [06:10<06:00, 10.01s/it]2025-04-30 08:11:28,858 - INFO - DOI not found in scholarly data for 'Machine learning in cardiovascular imaging: a scoping review of published literature'. Trying CrossRef fallback.
+2025-04-30 08:11:38,863 - WARNING - Timeout fetching DOI from CrossRef for title: 'Machine learning in cardiovascular imaging: a scoping review of published literature'
+Processing articles:  52%|█████▏    | 38/73 [06:20<05:50, 10.01s/it]2025-04-30 08:11:38,864 - INFO - DOI not found in scholarly data for 'Checklist for reproducibility of deep learning in medical imaging'. Trying CrossRef fallback.
+2025-04-30 08:11:48,907 - WARNING - Timeout fetching DOI from CrossRef for title: 'Checklist for reproducibility of deep learning in medical imaging'
+Processing articles:  53%|█████▎    | 39/73 [06:30<05:40, 10.02s/it]2025-04-30 08:11:48,908 - INFO - DOI not found in scholarly data for 'Explaining explainability: The role of XAI in medical imaging'. Trying CrossRef fallback.
+2025-04-30 08:11:58,914 - WARNING - Timeout fetching DOI from CrossRef for title: 'Explaining explainability: The role of XAI in medical imaging'
+Processing articles:  55%|█████▍    | 40/73 [06:40<05:30, 10.01s/it]2025-04-30 08:11:58,915 - INFO - DOI not found in scholarly data for 'A multi-view deep learning model for thyroid nodules detection and characterization in ultrasound imaging'. Trying CrossRef fallback.
+2025-04-30 08:12:08,919 - WARNING - Timeout fetching DOI from CrossRef for title: 'A multi-view deep learning model for thyroid nodules detection and characterization in ultrasound imaging'
+Processing articles:  56%|█████▌    | 41/73 [06:50<05:20, 10.01s/it]2025-04-30 08:12:08,921 - INFO - DOI not found in scholarly data for 'CONFLARE: CONFormal LArge language model REtrieval'. Trying CrossRef fallback.
+2025-04-30 08:12:18,925 - WARNING - Timeout fetching DOI from CrossRef for title: 'CONFLARE: CONFormal LArge language model REtrieval'
+Processing articles:  58%|█████▊    | 42/73 [07:00<05:10, 10.01s/it]2025-04-30 08:12:18,926 - INFO - DOI not found in scholarly data for 'Machine Learning and Deep Learning in Cardiothoracic Imaging: A Scoping Review'. Trying CrossRef fallback.
+2025-04-30 08:12:28,931 - WARNING - Timeout fetching DOI from CrossRef for title: 'Machine Learning and Deep Learning in Cardiothoracic Imaging: A Scoping Review'
+Processing articles:  59%|█████▉    | 43/73 [07:10<05:00, 10.01s/it]2025-04-30 08:12:28,932 - INFO - DOI not found in scholarly data for 'Persistent homology approach distinguishes potential pattern between “Early” and “Not Early” hepatic decompensation groups using MRI modalities'. Trying CrossRef fallback.
+2025-04-30 08:12:38,936 - WARNING - Timeout fetching DOI from CrossRef for title: 'Persistent homology approach distinguishes potential pattern between “Early” and “Not Early” hepatic decompensation groups using MRI modalities'
+Processing articles:  60%|██████    | 44/73 [07:20<04:50, 10.01s/it]2025-04-30 08:12:38,937 - INFO - DOI not found in scholarly data for 'Analyzing Racial Differences in Imaging Joint Replacement Registries Using Generative Artificial Intelligence: Advancing Orthopaedic Data Equity'. Trying CrossRef fallback.
+2025-04-30 08:12:48,943 - WARNING - Timeout fetching DOI from CrossRef for title: 'Analyzing Racial Differences in Imaging Joint Replacement Registries Using Generative Artificial Intelligence: Advancing Orthopaedic Data Equity'
+Processing articles:  62%|██████▏   | 45/73 [07:30<04:40, 10.01s/it]2025-04-30 08:12:48,944 - INFO - DOI not found in scholarly data for 'A guideline for open-source tools to make medical imaging data ready for artificial intelligence applications: A society of imaging informatics in medicine (siim) survey'. Trying CrossRef fallback.
+2025-04-30 08:12:58,949 - WARNING - Timeout fetching DOI from CrossRef for title: 'A guideline for open-source tools to make medical imaging data ready for artificial intelligence applications: A society of imaging informatics in medicine (siim) survey'
+Processing articles:  63%|██████▎   | 46/73 [07:40<04:30, 10.01s/it]2025-04-30 08:12:58,949 - INFO - DOI not found in scholarly data for 'U100: an innovative USERN platform for education and research without borders'. Trying CrossRef fallback.
+2025-04-30 08:13:08,953 - WARNING - Timeout fetching DOI from CrossRef for title: 'U100: an innovative USERN platform for education and research without borders'
+Processing articles:  64%|██████▍   | 47/73 [07:50<04:20, 10.01s/it]2025-04-30 08:13:08,954 - INFO - DOI not found in scholarly data for 'Preparing Radiologists for an Artificial Intelligence–enhanced Future: Tips for Trainees'. Trying CrossRef fallback.
+2025-04-30 08:13:18,959 - WARNING - Timeout fetching DOI from CrossRef for title: 'Preparing Radiologists for an Artificial Intelligence–enhanced Future: Tips for Trainees'
+Processing articles:  66%|██████▌   | 48/73 [08:00<04:10, 10.01s/it]2025-04-30 08:13:18,960 - INFO - DOI not found in scholarly data for 'Invited commentary: the double-edged sword of bias in medical imaging artificial intelligence'. Trying CrossRef fallback.
+2025-04-30 08:13:28,965 - WARNING - Timeout fetching DOI from CrossRef for title: 'Invited commentary: the double-edged sword of bias in medical imaging artificial intelligence'
+Processing articles:  67%|██████▋   | 49/73 [08:10<04:00, 10.01s/it]2025-04-30 08:13:28,966 - INFO - DOI not found in scholarly data for 'Development of a deep learning model for the automated detection of green pixels indicative of gout on dual energy CT scan'. Trying CrossRef fallback.
+2025-04-30 08:13:38,972 - WARNING - Timeout fetching DOI from CrossRef for title: 'Development of a deep learning model for the automated detection of green pixels indicative of gout on dual energy CT scan'
+Processing articles:  68%|██████▊   | 50/73 [08:20<03:50, 10.01s/it]2025-04-30 08:13:38,973 - INFO - DOI not found in scholarly data for 'Uncertainty-Aware Deep Learning Characterization of Knee Radiographs for Large-Scale Registry Creation'. Trying CrossRef fallback.
+2025-04-30 08:13:48,978 - WARNING - Timeout fetching DOI from CrossRef for title: 'Uncertainty-Aware Deep Learning Characterization of Knee Radiographs for Large-Scale Registry Creation'
+Processing articles:  70%|██████▉   | 51/73 [08:30<03:40, 10.01s/it]2025-04-30 08:13:48,978 - INFO - DOI not found in scholarly data for 'Deep learning classification of pediatric spinal radiographs for use in large scale imaging registries'. Trying CrossRef fallback.
+2025-04-30 08:13:58,984 - WARNING - Timeout fetching DOI from CrossRef for title: 'Deep learning classification of pediatric spinal radiographs for use in large scale imaging registries'
+Processing articles:  71%|███████   | 52/73 [08:40<03:30, 10.01s/it]2025-04-30 08:13:58,986 - INFO - DOI not found in scholarly data for 'The era of artificial intelligence in radiology: how to prepare for a different future'. Trying CrossRef fallback.
+2025-04-30 08:14:08,991 - WARNING - Timeout fetching DOI from CrossRef for title: 'The era of artificial intelligence in radiology: how to prepare for a different future'
+Processing articles:  73%|███████▎  | 53/73 [08:50<03:20, 10.01s/it]2025-04-30 08:14:08,992 - INFO - DOI not found in scholarly data for 'A stepwise approach to analyzing musculoskeletal imaging data with artificial intelligence'. Trying CrossRef fallback.
+2025-04-30 08:14:18,997 - WARNING - Timeout fetching DOI from CrossRef for title: 'A stepwise approach to analyzing musculoskeletal imaging data with artificial intelligence'
+Processing articles:  74%|███████▍  | 54/73 [09:00<03:10, 10.01s/it]2025-04-30 08:14:18,998 - INFO - DOI not found in scholarly data for 'PATIENT-SPECIFIC TOTAL HIP ARTHROPLASTY DISLOCATION RISK CALCULATOR'. Trying CrossRef fallback.
+2025-04-30 08:14:29,004 - WARNING - Timeout fetching DOI from CrossRef for title: 'PATIENT-SPECIFIC TOTAL HIP ARTHROPLASTY DISLOCATION RISK CALCULATOR'
+Processing articles:  75%|███████▌  | 55/73 [09:10<03:00, 10.01s/it]2025-04-30 08:14:29,004 - INFO - DOI not found in scholarly data for 'Bone Appetit: Skellytour Sets the Table for Robust Skeletal Segmentation'. Trying CrossRef fallback.
+2025-04-30 08:14:39,008 - WARNING - Timeout fetching DOI from CrossRef for title: 'Bone Appetit: Skellytour Sets the Table for Robust Skeletal Segmentation'
+Processing articles:  77%|███████▋  | 56/73 [09:20<02:50, 10.01s/it]2025-04-30 08:14:39,009 - INFO - DOI not found in scholarly data for 'Teaching Radiology: An Evidence-based Overview for Radiology Residents'. Trying CrossRef fallback.
+2025-04-30 08:14:49,014 - WARNING - Timeout fetching DOI from CrossRef for title: 'Teaching Radiology: An Evidence-based Overview for Radiology Residents'
+Processing articles:  78%|███████▊  | 57/73 [09:30<02:40, 10.01s/it]2025-04-30 08:14:49,015 - INFO - DOI not found in scholarly data for 'LatteReview: A Multi-Agent Framework for Systematic Review Automation Using Large Language Models'. Trying CrossRef fallback.
+2025-04-30 08:14:59,021 - WARNING - Timeout fetching DOI from CrossRef for title: 'LatteReview: A Multi-Agent Framework for Systematic Review Automation Using Large Language Models'
+Processing articles:  79%|███████▉  | 58/73 [09:40<02:30, 10.01s/it]2025-04-30 08:14:59,022 - INFO - DOI not found in scholarly data for 'TKA-AID: An Uncertainty-Aware Deep Learning Classifier to Identify Total Knee Arthroplasty Implants'. Trying CrossRef fallback.
+2025-04-30 08:15:09,028 - WARNING - Timeout fetching DOI from CrossRef for title: 'TKA-AID: An Uncertainty-Aware Deep Learning Classifier to Identify Total Knee Arthroplasty Implants'
+Processing articles:  81%|████████  | 59/73 [09:50<02:20, 10.01s/it]2025-04-30 08:15:09,029 - INFO - DOI not found in scholarly data for 'Characterizing hip joint morphology using a multitask deep learning model'. Trying CrossRef fallback.
+2025-04-30 08:15:19,035 - WARNING - Timeout fetching DOI from CrossRef for title: 'Characterizing hip joint morphology using a multitask deep learning model'
+Processing articles:  82%|████████▏ | 60/73 [10:00<02:10, 10.01s/it]2025-04-30 08:15:19,036 - INFO - DOI not found in scholarly data for 'Impact of Leg Position on Measurements Used to Detect Femoral Component Subsidence in THA'. Trying CrossRef fallback.
+2025-04-30 08:15:29,042 - WARNING - Timeout fetching DOI from CrossRef for title: 'Impact of Leg Position on Measurements Used to Detect Femoral Component Subsidence in THA'
+Processing articles:  84%|████████▎ | 61/73 [10:10<02:00, 10.01s/it]2025-04-30 08:15:29,043 - INFO - DOI not found in scholarly data for 'RIDGE: Reproducibility, Integrity, Dependability, Generalizability, and Efficiency Assessment of Medical Image Segmentation Models'. Trying CrossRef fallback.
+2025-04-30 08:15:39,048 - WARNING - Timeout fetching DOI from CrossRef for title: 'RIDGE: Reproducibility, Integrity, Dependability, Generalizability, and Efficiency Assessment of Medical Image Segmentation Models'
+Processing articles:  85%|████████▍ | 62/73 [10:20<01:50, 10.01s/it]2025-04-30 08:15:39,049 - INFO - DOI not found in scholarly data for 'Exploring the Effect of Domain-Specific Transfer Learning for Thyroid Nodule Classification'. Trying CrossRef fallback.
+2025-04-30 08:15:49,053 - WARNING - Timeout fetching DOI from CrossRef for title: 'Exploring the Effect of Domain-Specific Transfer Learning for Thyroid Nodule Classification'
+Processing articles:  86%|████████▋ | 63/73 [10:30<01:40, 10.01s/it]2025-04-30 08:15:49,054 - INFO - DOI not found in scholarly data for 'Choosing a Career after Radiology Training: Academic, Private Practice, or Industry?'. Trying CrossRef fallback.
+2025-04-30 08:15:59,060 - WARNING - Timeout fetching DOI from CrossRef for title: 'Choosing a Career after Radiology Training: Academic, Private Practice, or Industry?'
+Processing articles:  88%|████████▊ | 64/73 [10:40<01:30, 10.01s/it]2025-04-30 08:15:59,061 - INFO - DOI not found in scholarly data for 'Ovarian Fibromatosis'. Trying CrossRef fallback.
+2025-04-30 08:16:09,066 - WARNING - Timeout fetching DOI from CrossRef for title: 'Ovarian Fibromatosis'
+Processing articles:  89%|████████▉ | 65/73 [10:50<01:20, 10.01s/it]2025-04-30 08:16:09,066 - INFO - DOI not found in scholarly data for 'RadRotator: 3D Rotation of Radiographs with Diffusion Models'. Trying CrossRef fallback.
+2025-04-30 08:16:19,072 - WARNING - Timeout fetching DOI from CrossRef for title: 'RadRotator: 3D Rotation of Radiographs with Diffusion Models'
+Processing articles:  90%|█████████ | 66/73 [11:00<01:10, 10.01s/it]2025-04-30 08:16:19,073 - INFO - DOI not found in scholarly data for 'Trainee Research Prizes from the 2023 RSNA Scientific Assembly and Annual Meeting'. Trying CrossRef fallback.
+2025-04-30 08:16:29,077 - WARNING - Timeout fetching DOI from CrossRef for title: 'Trainee Research Prizes from the 2023 RSNA Scientific Assembly and Annual Meeting'
+Processing articles:  92%|█████████▏| 67/73 [11:10<01:00, 10.01s/it]2025-04-30 08:16:29,078 - INFO - DOI not found in scholarly data for 'Diagnostic Value of Shear Wave Elastography in Differentiation between Benign from Malignant Cervical Lymph Nodes'. Trying CrossRef fallback.
+2025-04-30 08:16:39,082 - WARNING - Timeout fetching DOI from CrossRef for title: 'Diagnostic Value of Shear Wave Elastography in Differentiation between Benign from Malignant Cervical Lymph Nodes'
+Processing articles:  93%|█████████▎| 68/73 [11:20<00:50, 10.01s/it]2025-04-30 08:16:39,083 - INFO - DOI not found in scholarly data for '224 EXTERNAL VALIDATION OF A DEEP LEARNING MODEL FOR WHOLE SLIDE IMAGE ANALYSIS IN THE HISTOLOGIC DIAGNOSIS OF DYSPLASTIC BARRETT'S ESOPHAGUS'. Trying CrossRef fallback.
+2025-04-30 08:16:49,089 - WARNING - Timeout fetching DOI from CrossRef for title: '224 EXTERNAL VALIDATION OF A DEEP LEARNING MODEL FOR WHOLE SLIDE IMAGE ANALYSIS IN THE HISTOLOGIC DIAGNOSIS OF DYSPLASTIC BARRETT'S ESOPHAGUS'
+Processing articles:  95%|█████████▍| 69/73 [11:30<00:40, 10.01s/it]2025-04-30 08:16:49,089 - INFO - DOI not found in scholarly data for 'NEIM-02 DEVELOPMENT OF A DEEP LEARNING MODEL FOR DISCRIMINATING TRUE PROGRESSION FROM PSEUDOPROGRESSION IN GLIOBLASTOMA PATIENTS'. Trying CrossRef fallback.
+2025-04-30 08:16:59,095 - WARNING - Timeout fetching DOI from CrossRef for title: 'NEIM-02 DEVELOPMENT OF A DEEP LEARNING MODEL FOR DISCRIMINATING TRUE PROGRESSION FROM PSEUDOPROGRESSION IN GLIOBLASTOMA PATIENTS'
+Processing articles:  96%|█████████▌| 70/73 [11:40<00:30, 10.01s/it]2025-04-30 08:16:59,096 - INFO - DOI not found in scholarly data for 'Development of a Deep Learning Model for Whole Slide Image Analysis in the Histologic Diagnosis of Dysplastic Barrett’s Esophagus'. Trying CrossRef fallback.
+2025-04-30 08:17:09,102 - WARNING - Timeout fetching DOI from CrossRef for title: 'Development of a Deep Learning Model for Whole Slide Image Analysis in the Histologic Diagnosis of Dysplastic Barrett’s Esophagus'
+Processing articles:  97%|█████████▋| 71/73 [11:50<00:20, 10.01s/it]2025-04-30 08:17:09,103 - INFO - DOI not found in scholarly data for 'TOTAL HIP ARTHROPLASTY DISLOCATION RISK USING A MACHINE-LEARNING ALGORITHM'. Trying CrossRef fallback.
+2025-04-30 08:17:19,108 - WARNING - Timeout fetching DOI from CrossRef for title: 'TOTAL HIP ARTHROPLASTY DISLOCATION RISK USING A MACHINE-LEARNING ALGORITHM'
+Processing articles:  99%|█████████▊| 72/73 [12:00<00:10, 10.01s/it]2025-04-30 08:17:19,109 - INFO - DOI not found in scholarly data for 'Diagnostic Value of Shear Wave Elastography in Differentiation between Benign from Malignant Cervical Lymph Nodes'. Trying CrossRef fallback.
+2025-04-30 08:17:29,114 - WARNING - Timeout fetching DOI from CrossRef for title: 'Diagnostic Value of Shear Wave Elastography in Differentiation between Benign from Malignant Cervical Lymph Nodes'
+Processing articles: 100%|██████████| 73/73 [12:10<00:00, 10.01s/it]Processing articles: 100%|██████████| 73/73 [12:10<00:00, 10.01s/it]
+2025-04-30 08:17:29,116 - INFO - DOI Source Summary: Found in Scholarly=0, Found via CrossRef=0, Missing=73
+2025-04-30 08:17:29,116 - INFO - Final article count after deduplication: 72
+2025-04-30 08:17:29,123 - INFO - Data successfully saved to public/content/research.json
+Python script executed successfully. Updating Git...
+tab 1 of window id 56629
+Git update process initiated. Check Terminal for results.
+===== Job completed at Wed Apr 30 08:17:29 EDT 2025 =====
