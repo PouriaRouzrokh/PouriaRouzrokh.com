@@ -10,10 +10,10 @@ import { Card, CardContent } from "@/components/ui/card";
 import { SectionHeading } from "@/components/ui/section-heading";
 
 interface PublicationDetailProps {
-  doi: string;
+  articleId: string;
 }
 
-export function PublicationDetail({ doi }: PublicationDetailProps) {
+export function PublicationDetail({ articleId }: PublicationDetailProps) {
   const [publication, setPublication] = useState<Article | null>(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
@@ -23,8 +23,8 @@ export function PublicationDetail({ doi }: PublicationDetailProps) {
     async function fetchPublicationData() {
       try {
         setLoading(true);
-        // Use the main research endpoint and filter by DOI client-side
-        // instead of using the individual DOI endpoint
+        // Use the main research endpoint and filter by article_id client-side
+        // instead of using the individual article_id endpoint
         const response = await fetch("/api/content/research");
 
         if (!response.ok) {
@@ -32,13 +32,13 @@ export function PublicationDetail({ doi }: PublicationDetailProps) {
         }
 
         const data = await response.json();
-        const decodedDoi = decodeURIComponent(doi);
+        const decodedArticleId = decodeURIComponent(articleId);
 
         // Find the matching article from all articles
         const article = data.articles.find(
           (article: Article) =>
-            article.doi === decodedDoi ||
-            article.doi.toLowerCase() === decodedDoi.toLowerCase()
+            article.article_id === decodedArticleId ||
+            article.article_id.toLowerCase() === decodedArticleId.toLowerCase()
         );
 
         if (!article) {
@@ -59,10 +59,10 @@ export function PublicationDetail({ doi }: PublicationDetailProps) {
       }
     }
 
-    if (doi) {
+    if (articleId) {
       fetchPublicationData();
     }
-  }, [doi]);
+  }, [articleId]);
 
   const handleCopyBibTeX = () => {
     if (publication?.bibtex) {

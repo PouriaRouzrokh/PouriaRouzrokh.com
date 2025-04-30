@@ -82,10 +82,20 @@ export function ResearchList() {
         article.abstract?.toLowerCase().includes(lowerQuery) ?? false;
       const journalMatch =
         article.journal?.toLowerCase().includes(lowerQuery) ?? false;
+      // Include DOI in search only if it exists
       const doiMatch = article.doi?.toLowerCase().includes(lowerQuery) ?? false;
+      // Also check article_id
+      const articleIdMatch = article.article_id
+        .toLowerCase()
+        .includes(lowerQuery);
 
       return (
-        titleMatch || authorsMatch || abstractMatch || journalMatch || doiMatch
+        titleMatch ||
+        authorsMatch ||
+        abstractMatch ||
+        journalMatch ||
+        doiMatch ||
+        articleIdMatch
       );
     });
   }, []);
@@ -253,7 +263,7 @@ export function ResearchList() {
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
             {filteredArticles.length > 0 ? (
               filteredArticles.map((article) => (
-                <ResearchCard key={article.doi} article={article} />
+                <ResearchCard key={article.article_id} article={article} />
               ))
             ) : (
               <div className="col-span-full py-12 text-center">

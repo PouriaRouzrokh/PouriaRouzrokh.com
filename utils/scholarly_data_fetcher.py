@@ -1,6 +1,7 @@
 import json
 import requests
 import time
+import hashlib
 from typing import Dict, List, Optional, Union
 from scholarly import scholarly
 from tqdm.auto import tqdm
@@ -85,56 +86,39 @@ class ScholarlyDataFetcher:
         self.articles = filled_articles
         logging.info(f"Successfully fetched details for {len(self.articles)} articles.")
 
-
     @staticmethod
-    def get_doi_fallback(session: requests.Session, title: str, authors: Optional[str] = None, year: Optional[Union[str, int]] = None) -> Optional[str]:
-        """
-        Fetch DOI for an article using CrossRef API as a fallback.
-        Uses more specific query parameters if available.
-        """
+    def generate_article_id(title: str, year: Union[str, int] = None, authors: str = None) -> str:
+        """Generate a URL-friendly unique ID for an article based on title, year, and first author."""
         if not title:
-            return None
-
-        url = "https://api.crossref.org/works"
-
-        # Construct a more specific query
-        query_parts = [title]
-        if authors:
-            # Extract first author's last name if possible
+            return "unknown-article"
+            
+        # Create a base for the ID
+        base = title.lower().strip()
+        
+        # Add year if available
+        if year:
+            base = f"{base}-{year}"
+            
+        # Add first author last name if available
+        if authors and isinstance(authors, str) and ',' in authors:
             try:
-                first_author_last_name = authors.split(',')[0].split()[-1]
-                query_parts.append(first_author_last_name)
-            except IndexError:
-                query_parts.append(authors.split(',')[0]) # Use whatever is first
-
-        params = {
-            'query.bibliographic': " ".join(query_parts), # More robust query field
-            'rows': 1, # We only want the best match
-            'select': 'DOI,title,author' # Select author too for verification if needed
-        }
-
-        try:
-            response = session.get(url, params=params, timeout=10)
-            response.raise_for_status() # Raises HTTPError for bad responses (4xx or 5xx)
-
-            data = response.json()
-            items = data.get('message', {}).get('items', [])
-
-            if items:
-                return items[0].get('DOI')
-            else:
-                logging.info(f"No DOI found on CrossRef for title query: '{params['query.bibliographic']}'")
-                return None
-
-        except requests.exceptions.Timeout:
-             logging.warning(f"Timeout fetching DOI from CrossRef for title: '{title}'")
-             return None
-        except requests.exceptions.RequestException as e:
-            logging.warning(f"Error fetching DOI from CrossRef for title '{title}': {e}")
-            return None
-        except (KeyError, IndexError, TypeError) as e:
-            logging.warning(f"Error parsing CrossRef response for title '{title}': {e}")
-            return None
+                first_author = authors.split(',')[0].strip()
+                last_name = first_author.split()[-1].lower()
+                base = f"{base}-{last_name}"
+            except (IndexError, AttributeError):
+                pass
+        
+        # Create a hash of the base string
+        hash_obj = hashlib.md5(base.encode('utf-8'))
+        hash_str = hash_obj.hexdigest()[:8]  # Use first 8 chars of hash
+        
+        # Create a URL-friendly slug from the title
+        slug = ''.join(c if c.isalnum() else '-' for c in title.lower())
+        slug = '-'.join(filter(None, slug.split('-')))  # Remove empty segments
+        slug = slug[:40]  # Limit length
+        
+        # Combine slug with hash for uniqueness
+        return f"{slug}-{hash_str}"
 
     @staticmethod
     def sanitize_text(text: Union[str, None],
@@ -188,10 +172,10 @@ class ScholarlyDataFetcher:
             'volume': 'volume',
             'number': 'number',
             'pages': 'pages',
-            'doi': 'doi',
+            'article_id': 'note', # Store article_id in the note field
             'url': 'url',
             'abstract': 'abstract', # Can include abstract if desired
-            # Add other fields if available/needed: publisher, booktitle, etc.
+            # DOI is removed from BibTeX generation
         }
 
         bibtex = [f"@article{{{citation_key},"] # Default to article, change if needed based on publication type
@@ -217,11 +201,8 @@ class ScholarlyDataFetcher:
         """Process and clean article data for frontend consumption."""
         logging.info("Processing articles...")
         cleaned_articles = []
-        dois_found_scholarly = 0
-        dois_found_crossref = 0
-        dois_missing = 0
         
-        # Create a dictionary to track duplicates by title/DOI
+        # Create a dictionary to track duplicates by title
         duplicate_tracker = {}
         
         for article in tqdm(self.articles, desc="Processing articles"):
@@ -230,22 +211,6 @@ class ScholarlyDataFetcher:
             if not title: # Skip articles without titles
                 logging.warning("Skipping article with missing title.")
                 continue
-
-            # 1. Try getting DOI directly from scholarly's bib data
-            doi = bib.get('doi')
-
-            if doi:
-                dois_found_scholarly += 1
-            else:
-                # 2. Fallback: Try getting DOI from CrossRef (use the session)
-                logging.info(f"DOI not found in scholarly data for '{title}'. Trying CrossRef fallback.")
-                authors = bib.get('author') # Scholarly uses 'author' field in bib
-                year = bib.get('pub_year')
-                doi = self.get_doi_fallback(self.session, title, authors, year)
-                if doi:
-                    dois_found_crossref += 1
-                else:
-                    dois_missing += 1
 
             # Prepare authors string
             authors_str = bib.get('author', '')
@@ -269,6 +234,9 @@ class ScholarlyDataFetcher:
             except (ValueError, TypeError):
                 num_citations = 0
 
+            # Generate unique article ID instead of using DOI
+            article_id = self.generate_article_id(title, year, authors_str)
+
             cleaned_article = {
                 'title': title,
                 'authors': display_authors, # Use comma-separated for display
@@ -282,7 +250,7 @@ class ScholarlyDataFetcher:
                 'num_citations': num_citations,
                 # Prefer eprint_url if pub_url is generic (like scholar link)
                 'url': article.get('eprint_url') or article.get('pub_url'),
-                'doi': doi # Use the DOI we found (either from scholarly or CrossRef)
+                'article_id': article_id  # Use our generated ID instead of DOI
             }
 
             # Create a dict suitable for BibTeX generation (using 'and' for authors)
@@ -295,9 +263,8 @@ class ScholarlyDataFetcher:
 
             cleaned_article['bibtex'] = self.create_bibtex(bibtex_input)
             
-            # Create a key for duplicate detection
-            # Use DOI as primary key if available, otherwise use normalized title
-            duplicate_key = doi.lower() if doi else title.lower().strip()
+            # Create a key for duplicate detection using normalized title as the key
+            duplicate_key = title.lower().strip()
             
             # Check if we've already seen this paper
             if duplicate_key in duplicate_tracker:
@@ -331,7 +298,7 @@ class ScholarlyDataFetcher:
         # Sort articles by year (newest first) as default order, citations as secondary sort
         cleaned_articles.sort(key=lambda x: (-(x.get('year') or 0), -(x.get('num_citations') or 0)))
         
-        logging.info(f"DOI Source Summary: Found in Scholarly={dois_found_scholarly}, Found via CrossRef={dois_found_crossref}, Missing={dois_missing}")
+        logging.info(f"Generated article IDs for {len(cleaned_articles)} articles")
         logging.info(f"Final article count after deduplication: {len(cleaned_articles)}")
         
         return cleaned_articles
@@ -350,7 +317,7 @@ class ScholarlyDataFetcher:
         if article.get('pages'): score += 1
         if article.get('abstract'): score += 1
         if article.get('url'): score += 1
-        if article.get('doi'): score += 2  # DOI is important so weighted higher
+        if article.get('article_id'): score += 2  # article_id is important so weighted higher
         return score
 
     def save_to_json(self) -> None:

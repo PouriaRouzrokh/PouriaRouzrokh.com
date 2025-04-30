@@ -141,7 +141,10 @@ export function ResearchCard({ article, className }: ResearchCardProps) {
           )}
         </div>
 
-        <Link href={`/research/${encodeURIComponent(article.doi)}`} passHref>
+        <Link
+          href={`/research/${encodeURIComponent(article.article_id)}`}
+          passHref
+        >
           <Button variant="secondary" size="sm">
             <Info className="h-4 w-4 mr-1" />
             Details

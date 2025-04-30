@@ -96,7 +96,8 @@ export interface Article {
   abstract?: string;
   num_citations: number;
   url?: string;
-  doi: string;
+  article_id: string;
+  doi?: string;
   bibtex: string;
 }
 

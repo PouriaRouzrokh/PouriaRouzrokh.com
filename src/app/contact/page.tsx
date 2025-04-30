@@ -29,7 +29,8 @@ export default function ContactPage() {
           </h1>
           <p className="text-muted-foreground text-lg">
             Have a question or want to discuss a potential collaboration? Use
-            the form below to get in touch.
+            the form below to get in touch. Please note that the form may not go
+            through if you are using a VPN, proxy, or Tor.
           </p>
         </div>
 
