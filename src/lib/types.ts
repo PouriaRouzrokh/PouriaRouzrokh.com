@@ -248,6 +248,7 @@ export interface RawResearchData {
     url?: string;
     doi: string;
     bibtex: string;
+    article_id?: string;
     [key: string]: unknown;
   }>;
   total_articles?: number;

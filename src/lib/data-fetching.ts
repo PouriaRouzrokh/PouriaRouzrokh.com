@@ -1,5 +1,6 @@
 import fs from "fs";
 import path from "path";
+import crypto from "crypto";
 import {
   ProfileData,
   EducationItem,
@@ -14,6 +15,7 @@ import {
   RawAchievementData,
   RawResearchData,
   RawAcknowledgmentData,
+  Article,
 } from "./types";
 
 // Helper function to read and parse JSON files - only used on server
@@ -237,9 +239,43 @@ export async function getResearch(): Promise<ResearchData> {
   );
 
   // Calculate total articles and citations if not provided
-  const articles = Array.isArray(researchData.articles)
+  const rawArticles = Array.isArray(researchData.articles)
     ? researchData.articles
     : [];
+
+  // Generate article_id for articles that don't have one
+  const articles = rawArticles.map((article) => {
+    // If the article already has article_id, use it
+    if ("article_id" in article) {
+      return article as unknown as Article;
+    }
+
+    // Otherwise, generate an article_id
+    const title = article.title;
+    const year = article.year;
+
+    // Create a URL-friendly slug from the title
+    const baseSlug = title
+      .toLowerCase()
+      .replace(/[^\w\s-]/g, "")
+      .replace(/\s+/g, "-")
+      .substring(0, 40);
+
+    // Create a unique ID by combining slug with a hash of title+year
+    const hash = crypto
+      .createHash("md5")
+      .update(`${title}-${year}`)
+      .digest("hex")
+      .substring(0, 8);
+
+    const article_id = `${baseSlug}-${hash}`;
+
+    // Return article with new article_id
+    return {
+      ...article,
+      article_id,
+    } as unknown as Article;
+  });
 
   // Use processed totals from the JSON file if available, otherwise calculate from articles
   const totalArticles =
