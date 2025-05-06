@@ -46,5 +46,65 @@ export default function sitemap(): MetadataRoute.Sitemap {
       changeFrequency: "yearly",
       priority: 0.5,
     },
+    {
+      url: `${baseUrl}/portfolio/personal-portfolio-blog-pouriarouzrokh-com`,
+      lastModified,
+      changeFrequency: "monthly",
+      priority: 0.8,
+    },
+    {
+      url: `${baseUrl}/portfolio/automated-hip-cup-angle-measurement-ai`,
+      lastModified,
+      changeFrequency: "yearly",
+      priority: 0.8,
+    },
+    {
+      url: `${baseUrl}/portfolio/multitask-brain-tumor-inpainting-diffusion`,
+      lastModified,
+      changeFrequency: "yearly",
+      priority: 0.8,
+    },
+    {
+      url: `${baseUrl}/portfolio/lattereview-ai-literature-review`,
+      lastModified,
+      changeFrequency: "yearly",
+      priority: 0.8,
+    },
+    {
+      url: `${baseUrl}/portfolio/radrotator-3d-rotation-radiographs`,
+      lastModified,
+      changeFrequency: "yearly",
+      priority: 0.8,
+    },
+    {
+      url: `${baseUrl}/portfolio/ai-hip-implant-subsidence`,
+      lastModified,
+      changeFrequency: "yearly",
+      priority: 0.8,
+    },
+    {
+      url: `${baseUrl}/portfolio/building-hip-xray-registry-ai`,
+      lastModified,
+      changeFrequency: "yearly",
+      priority: 0.8,
+    },
+    {
+      url: `${baseUrl}/portfolio/tha-aid-hip-implant-identification`,
+      lastModified,
+      changeFrequency: "yearly",
+      priority: 0.8,
+    },
+    {
+      url: `${baseUrl}/portfolio/tha-net-hip-templating-ai`,
+      lastModified,
+      changeFrequency: "yearly",
+      priority: 0.8,
+    },
+    {
+      url: `${baseUrl}/portfolio/videoinstruct-ai-documentation-from-videos`,
+      lastModified,
+      changeFrequency: "yearly",
+      priority: 0.8,
+    },
   ];
 }
