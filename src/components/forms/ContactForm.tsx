@@ -3,7 +3,7 @@
 import React, { useState, useRef } from "react";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
-import ReCAPTCHA from "react-google-recaptcha";
+import ReCAPTCHA from "react-google-recaptcha-enterprise";
 import { cn } from "@/lib/utils";
 import { Button } from "@/components/ui/button";
 import {
@@ -51,8 +51,15 @@ export function ContactForm() {
     message?: string;
   } | null>(null);
 
-  // reCAPTCHA reference
+  // reCAPTCHA reference and state
   const recaptchaRef = useRef<ReCAPTCHA>(null);
+  const [recaptchaLoaded, setRecaptchaLoaded] = useState(false);
+
+  // Handle reCAPTCHA load event
+  const handleRecaptchaLoad = () => {
+    setRecaptchaLoaded(true);
+    console.log("reCAPTCHA Enterprise loaded successfully");
+  };
 
   // Handle form submission
   const onSubmit = async (data: ContactFormData) => {
@@ -60,6 +67,16 @@ export function ContactForm() {
     setSubmitResult(null);
 
     try {
+      // Check if reCAPTCHA is loaded
+      if (!recaptchaLoaded) {
+        setSubmitResult({
+          success: false,
+          message: "Please wait for reCAPTCHA to load and try again.",
+        });
+        setIsSubmitting(false);
+        return;
+      }
+      
       // Execute reCAPTCHA to get token
       if (recaptchaRef.current) {
         const token = await recaptchaRef.current.executeAsync();
@@ -137,11 +154,13 @@ export function ContactForm() {
             )}
           />
 
-          {/* Google reCAPTCHA v3 - invisible */}
+          {/* Google reCAPTCHA Enterprise - invisible */}
           <ReCAPTCHA
             ref={recaptchaRef}
             size="invisible"
             sitekey={process.env.NEXT_PUBLIC_RECAPTCHA_SITE_KEY || ""}
+            onLoad={handleRecaptchaLoad}
+            action="contact_form_submit"
           />
 
           {/* Subject field */}
