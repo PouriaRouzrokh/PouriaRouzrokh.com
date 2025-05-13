@@ -51,15 +51,8 @@ export function ContactForm() {
     message?: string;
   } | null>(null);
 
-  // reCAPTCHA reference and state
+  // reCAPTCHA reference
   const recaptchaRef = useRef<ReCAPTCHA>(null);
-  const [recaptchaLoaded, setRecaptchaLoaded] = useState(false);
-
-  // Handle reCAPTCHA load event
-  const handleRecaptchaLoad = () => {
-    setRecaptchaLoaded(true);
-    console.log("reCAPTCHA Enterprise loaded successfully");
-  };
 
   // Handle form submission
   const onSubmit = async (data: ContactFormData) => {
@@ -67,19 +60,16 @@ export function ContactForm() {
     setSubmitResult(null);
 
     try {
-      // Check if reCAPTCHA is loaded
-      if (!recaptchaLoaded) {
-        setSubmitResult({
-          success: false,
-          message: "Please wait for reCAPTCHA to load and try again.",
-        });
-        setIsSubmitting(false);
-        return;
-      }
-      
       // Execute reCAPTCHA to get token
+      let token = "";
       if (recaptchaRef.current) {
-        const token = await recaptchaRef.current.executeAsync();
+        try {
+          const result = await recaptchaRef.current.executeAsync();
+          token = result || "";
+          console.log("reCAPTCHA token generated successfully");
+        } catch (error) {
+          console.error("Error executing reCAPTCHA:", error);
+        }
         data.recaptchaToken = token || "";
       }
 
@@ -159,7 +149,6 @@ export function ContactForm() {
             ref={recaptchaRef}
             size="invisible"
             sitekey={process.env.NEXT_PUBLIC_RECAPTCHA_SITE_KEY || ""}
-            onLoad={handleRecaptchaLoad}
           />
 
           {/* Subject field */}
