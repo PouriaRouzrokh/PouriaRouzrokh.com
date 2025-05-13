@@ -59,25 +59,44 @@ function formatConsultationAreas(data: ContactFormData): string {
   return areas;
 }
 
-import { verifyRecaptchaToken } from "../recaptcha";
-
-// Verify reCAPTCHA token with Google Enterprise API
+// Verify reCAPTCHA token with Google
 async function verifyRecaptcha(token: string): Promise<boolean> {
   try {
-    // Use the new Enterprise verification method
-    const result = await verifyRecaptchaToken(token, "contact_form_submit");
-    
-    if (!result.success) {
-      console.error("reCAPTCHA verification failed");
+    const recaptchaSecret = process.env.RECAPTCHA_SECRET_KEY;
+
+    if (!recaptchaSecret) {
+      console.error("reCAPTCHA secret key is not configured");
       return false;
     }
-    
-    // Check if the risk score is acceptable (0.5 or higher is typically considered human behavior)
-    if (result.score < 0.5) {
-      console.warn("reCAPTCHA score too low:", result.score, "Reasons:", result.reasons);
+
+    const response = await fetch(
+      "https://www.google.com/recaptcha/api/siteverify",
+      {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/x-www-form-urlencoded",
+        },
+        body: new URLSearchParams({
+          secret: recaptchaSecret,
+          response: token,
+        }).toString(),
+      }
+    );
+
+    const data = await response.json();
+
+    if (!data.success) {
+      console.error("reCAPTCHA verification failed:", data["error-codes"]);
       return false;
     }
-    
+
+    // Google recommends checking the score for v3
+    // A score of 0.5 or higher is typically considered human behavior
+    if (data.score < 0.5) {
+      console.warn("reCAPTCHA score too low:", data.score);
+      return false;
+    }
+
     return true;
   } catch (error) {
     console.error("reCAPTCHA verification error:", error);
