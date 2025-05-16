@@ -8,6 +8,11 @@
     "i10_index": 35,
     "cited_by_5_years": 1208
   },
+  "total_articles": 74,
+  "total_citations": 1217,
+  "total_articles_processed": 74,
+  "total_citations_processed": 1217,
+  "fetched_at": "2025-05-16 13:30:13 UTC",
   "articles": [
     {
       "title": "Uncertainty-Aware Deep Learning Characterization of Knee Radiographs for Large-Scale Registry Creation",
@@ -965,10 +970,5 @@
       "article_id": "emerging-hiv-drug-resistance-in-the-reso-85292300",
       "bibtex": "@article{emamzadehfard2013emerging,\n    author = {K Paydary and S Esmaeeli and SAS Alinaghi and P Rouzrokh and S Emamzadeh-Fard},\n    title = {Emerging HIV drug resistance in the resource-poor world: Challenges and strategies.},\n    year = {2013},\n    number = {Suppl. 5},\n    pages = {006},\n    note = {emerging-hiv-drug-resistance-in-the-reso-85292300},\n    url = {https://www.researchgate.net/profile/Shooka-Esmaeeli/publication/286054291\\_Emerging\\_HIV\\_drug\\_resistance\\_in\\_the\\_Resource-Poor\\_World\\_Challenges\\_and\\_strategies/links/5c37c2e9299bf12be3be2ebc/Emerging-HIV-drug-resistance-in-the-Resource-Poor-World-Challenges-and-strategies.pdf},\n    abstract = {At the end of 2011, more than 8 million People Living with HIV (PLWH) were receiving Anti-retroviral Therapy (ART) in low-and middle-income countries 1. Accordingly, the advent and extensive use of Highly Active Anti-retroviral Therapy (HAART) has dramatically reduced the mortality and morbidity associated with the HIV infection worldwide 2. However, many factors such as missing doses of medications, interruptions in ART and mono-therapy in the pre-HAART era may ultimately result in clinical drug resistance and virologic failure 3-8.Many virological, immunological and pharmacological factors may play role in the development of Anti-retroviral Drug Resistance (ADR). First, the rate of viral duplication and turnover associated with HIV infection is too high 4, 9-11. In addition, circulating viral quasispecies may be extremely heterogonous. In fact, the lack of proofreading and an infidel reverse transcriptase can give rise to a genotypically heterogonous horde of circulating viral quasi-species soon after the infection has been established 12, 13. It is noteworthy that developing ADR requires accumulation of genomic changes within host bodily systems 4, 14-18. The consequent genetic diversity may result in the phenotypic drug resistance to various ART agents. Therefore, HIV shows unpredictable patterns of drug resistance in vivo, mainly due to its different adaptation mechanisms to local cellular environments, drugs varying selective pressure, immune system reactions and many other virologic factors 19, 20.},\n}"
     }
-  ],
-  "total_articles": 73,
-  "total_citations": 1194,
-  "total_articles_processed": 73,
-  "total_citations_processed": 1194,
-  "fetched_at": "2025-05-06 12:43:14 UTC"
+  ]
 }
