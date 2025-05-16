@@ -1,6 +1,30 @@
 {
   "awards": [
     {
+      "title": "Recognition for Peer-reviewer with Special Distinction",
+      "organization": "RadioGraphics Journal, Radiological Society of North America (RSNA)",
+      "year": "2025",
+      "description": "Awarded for peer-reviewing articles for RadioGraphics Journal."
+    },
+    {
+      "title": "Recognition for Peer-reviewer with Distinction",
+      "organization": "Radiology: Artificial Intelligence Journal, Radiological Society of North America (RSNA)",
+      "year": "2025",
+      "description": "Awarded for peer-reviewing articles for Radiology: Artificial Intelligence."
+    },
+    {
+      "title": "Recognition for Peer-reviewer with Special Distinction",
+      "organization": "RadioGraphics Journal, Radiological Society of North America (RSNA)",
+      "year": "2024",
+      "description": "Awarded for peer-reviewing articles for RadioGraphics Journal."
+    },
+    {
+      "title": "Trainee Research Prize",
+      "organization": "Radiological Society of North America (RSNA)",
+      "year": "2023",
+      "description": "Awarded for presenting on \"Employing Generative AI to Visualize Ideal Total Hip Arthroplasty and Conduct Patient-Specific Surgical Templating on Plain Radiographs.\""
+    },
+    {
       "title": "Trainee Research Prize",
       "organization": "Radiological Society of North America (RSNA)",
       "year": "2023",
