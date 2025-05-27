@@ -1,0 +1,21 @@
+===== Job started at Tue May 27 08:09:50 EDT 2025 =====
+Running: uv run utils/scholarly_data_fetcher.py
+2025-05-27 08:09:51,759 - INFO - Searching for author: Pouria Rouzrokh
+2025-05-27 08:09:51,759 - INFO - Getting https://scholar.google.com/citations?hl=en&view_op=search_authors&mauthors=Pouria%20Rouzrokh
+2025-05-27 08:09:53,692 - INFO - HTTP Request: GET https://scholar.google.com/citations?hl=en&view_op=search_authors&mauthors=Pouria%20Rouzrokh "HTTP/1.1 302 Found"
+2025-05-27 08:09:53,919 - INFO - HTTP Request: GET https://accounts.google.com/Login?hl=en&continue=https://scholar.google.com/citations%3Fhl%3Den%26view_op%3Dsearch_authors%26mauthors%3DPouria%2520Rouzrokh&service=citations "HTTP/1.1 302 Found"
+2025-05-27 08:09:53,987 - INFO - HTTP Request: GET https://accounts.google.com/InteractiveLogin?continue=https://scholar.google.com/citations?hl%3Den%26view_op%3Dsearch_authors%26mauthors%3DPouria%2520Rouzrokh&hl=en&service=citations&ifkv=AdBytiPYJsSN4rruNMiaiP1lw_Y2fFqejv2Z9tRAfPCM0TIBRT8G7Wpy9faI1v3HAw44j_m-aXV_JA "HTTP/1.1 302 Moved Temporarily"
+2025-05-27 08:09:54,080 - INFO - HTTP Request: GET https://accounts.google.com/v3/signin/identifier?continue=https%3A%2F%2Fscholar.google.com%2Fcitations%3Fhl%3Den%26view_op%3Dsearch_authors%26mauthors%3DPouria%2520Rouzrokh&hl=en&ifkv=AdBytiPnp2AHZ5meO4GIgoUZF0D4eQgzbhten5xnZKivHHQkCiRPZzyG67o-lUEmurnApGQZivUw&service=citations&flowName=GlifWebSignIn&flowEntry=ServiceLogin&dsh=S1008123305%3A1748347794016830 "HTTP/1.1 200 OK"
+2025-05-27 08:09:54,215 - INFO - Found 0 authors
+2025-05-27 08:09:54,216 - INFO - No more author pages
+2025-05-27 08:09:54,216 - ERROR - Author 'Pouria Rouzrokh' not found.
+2025-05-27 08:09:54,216 - ERROR - An error occurred during author data fetching: Author 'Pouria Rouzrokh' not found.
+Traceback (most recent call last):
+  File "/Users/pouria/Documents/Coding/pouriarouzrokh.com/utils/scholarly_data_fetcher.py", line 42, in fetch_author_data
+    raise ValueError(f"Author '{self.author_name}' not found.")
+ValueError: Author 'Pouria Rouzrokh' not found.
+2025-05-27 08:09:54,217 - ERROR - Configuration or Data Error: Author 'Pouria Rouzrokh' not found.
+Python script executed successfully. Updating Git...
+tab 1 of window id 2055
+Git update process initiated. Check Terminal for results.
+===== Job completed at Tue May 27 08:09:54 EDT 2025 =====
