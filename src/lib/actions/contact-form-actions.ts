@@ -12,25 +12,32 @@ import { headers } from "next/headers";
 // Initialize Resend client
 const resend = new Resend(process.env.RESEND_API_KEY);
 
-// Initialize Redis client for rate limiting
-const redis = new Redis({
-  url: process.env.UPSTASH_REDIS_REST_URL || "",
-  token: process.env.UPSTASH_REDIS_REST_TOKEN || "",
-});
+// Initialize Redis client for rate limiting (only if credentials are available)
+const redis =
+  process.env.UPSTASH_REDIS_REST_URL && process.env.UPSTASH_REDIS_REST_TOKEN
+    ? new Redis({
+        url: process.env.UPSTASH_REDIS_REST_URL,
+        token: process.env.UPSTASH_REDIS_REST_TOKEN,
+      })
+    : null;
 
 // Create rate limiter for IP-based rate limiting (5 submissions per day)
-const ipRatelimit = new Ratelimit({
-  redis,
-  limiter: Ratelimit.slidingWindow(25, "1d"),
-  prefix: "ratelimit:ip",
-});
+const ipRatelimit = redis
+  ? new Ratelimit({
+      redis,
+      limiter: Ratelimit.slidingWindow(25, "1d"),
+      prefix: "ratelimit:ip",
+    })
+  : null;
 
 // Create rate limiter for daily submission count (25 submissions per day)
-const dailyEmailLimit = new Ratelimit({
-  redis,
-  limiter: Ratelimit.fixedWindow(50, "1d"),
-  prefix: "ratelimit:daily",
-});
+const dailyEmailLimit = redis
+  ? new Ratelimit({
+      redis,
+      limiter: Ratelimit.fixedWindow(50, "1d"),
+      prefix: "ratelimit:daily",
+    })
+  : null;
 
 // Spam patterns to filter out
 const spamPatterns = [
@@ -57,6 +64,21 @@ function formatConsultationAreas(data: ContactFormData): string {
   }
 
   return areas;
+}
+
+// Validate required environment variables
+function validateEnvironmentVariables(): {
+  isValid: boolean;
+  missingVars: string[];
+} {
+  const requiredVars = ["RESEND_API_KEY", "CONTACT_RECIPIENT_EMAIL"];
+
+  const missingVars = requiredVars.filter((varName) => !process.env[varName]);
+
+  return {
+    isValid: missingVars.length === 0,
+    missingVars,
+  };
 }
 
 // Verify reCAPTCHA token with Google
@@ -115,6 +137,20 @@ export async function submitContactForm(formData: ContactFormData) {
   }
 
   try {
+    // Validate required environment variables
+    const envValidation = validateEnvironmentVariables();
+    if (!envValidation.isValid) {
+      console.error(
+        "Missing required environment variables:",
+        envValidation.missingVars
+      );
+      return {
+        success: false,
+        message:
+          "The contact form is not properly configured. Please contact the administrator.",
+      };
+    }
+
     // Validate form data against schema
     const validatedData = contactFormSchema.parse(formData);
 
@@ -143,24 +179,28 @@ export async function submitContactForm(formData: ContactFormData) {
       };
     }
 
-    // Check IP-based rate limit
-    const ipRateLimit = await ipRatelimit.limit(ip);
-    if (!ipRateLimit.success) {
-      return {
-        success: false,
-        message:
-          "You've reached the maximum number of submissions for today. Please try again tomorrow.",
-      };
+    // Check IP-based rate limit (only if Redis is available)
+    if (ipRatelimit) {
+      const ipRateLimit = await ipRatelimit.limit(ip);
+      if (!ipRateLimit.success) {
+        return {
+          success: false,
+          message:
+            "You've reached the maximum number of submissions for today. Please try again tomorrow.",
+        };
+      }
     }
 
-    // Check daily email count limit
-    const dailyLimit = await dailyEmailLimit.limit("global");
-    if (!dailyLimit.success) {
-      return {
-        success: false,
-        message:
-          "We've reached our daily message limit. Please try again tomorrow.",
-      };
+    // Check daily email count limit (only if Redis is available)
+    if (dailyEmailLimit) {
+      const dailyLimit = await dailyEmailLimit.limit("global");
+      if (!dailyLimit.success) {
+        return {
+          success: false,
+          message:
+            "We've reached our daily message limit. Please try again tomorrow.",
+        };
+      }
     }
 
     // Check for spam content in message and subject
@@ -219,7 +259,25 @@ export async function submitContactForm(formData: ContactFormData) {
     };
   } catch (error) {
     if (error instanceof Error) {
-      console.error("Contact form error:", error.message);
+      console.error("Contact form error:", error.message, error.stack);
+
+      // Check for specific error types to provide better user feedback
+      if (error.message.includes("RESEND_API_KEY")) {
+        return {
+          success: false,
+          message:
+            "Email service is not configured. Please contact the administrator.",
+        };
+      }
+
+      if (error.message.includes("UPSTASH")) {
+        return {
+          success: false,
+          message:
+            "Rate limiting service is not configured. Please try again later.",
+        };
+      }
+
       return {
         success: false,
         message:
