@@ -2,9 +2,14 @@
   "author": "Pouria Rouzrokh",
   "affiliation": "Assistant Professor, Department of Radiology, Mayo Clinic, MN, USA",
   "google_scholar_id": "Ksv9I0sAAAAJ",
-  "metrics": { "citations": 1616, "h_index": 22, "i10_index": 41, "cited_by_5_years": 1605 },
+  "metrics": {
+    "citations": 1623,
+    "h_index": 23,
+    "i10_index": 41,
+    "cited_by_5_years": 1612
+  },
   "total_articles": 80,
-  "total_citations": 1616,
+  "total_citations": 1623,
   "total_articles_processed": 80,
   "total_citations_processed": 1604,
   "fetched_at": "2025-05-16 13:30:13 UTC",
