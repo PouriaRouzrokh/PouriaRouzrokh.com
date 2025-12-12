@@ -27,10 +27,13 @@ export default function HeroSection({ profileData }: HeroSectionProps) {
     },
   };
 
+  // Clean image path - remove query parameters that might cause issues
+  const cleanImagePath = profile.image
+    ? profile.image.split("?")[0]
+    : "/placeholder-profile.jpg";
+
   // State to handle image loading failures
-  const [imgSrc, setImgSrc] = useState(
-    profile.image || "/placeholder-profile.jpg"
-  );
+  const [imgSrc, setImgSrc] = useState(cleanImagePath);
   const [imgError, setImgError] = useState(false);
 
   // Split titles by pipe character for better display
@@ -102,7 +105,8 @@ export default function HeroSection({ profileData }: HeroSectionProps) {
                 fill
                 className="object-cover"
                 priority
-                onError={() => {
+                onError={(e) => {
+                  console.error("Image load error:", e);
                   // If profile image fails, try the default placeholder
                   if (imgSrc !== "/placeholder-profile.jpg") {
                     console.log(
@@ -116,6 +120,9 @@ export default function HeroSection({ profileData }: HeroSectionProps) {
                     );
                     setImgError(true);
                   }
+                }}
+                onLoadingComplete={() => {
+                  console.log("Image loaded successfully:", imgSrc);
                 }}
               />
             ) : (
