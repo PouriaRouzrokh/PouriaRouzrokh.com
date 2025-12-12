@@ -3,20 +3,21 @@ import { PublicationDetail } from "@/components/sections/PublicationDetail";
 import { getResearch } from "@/lib/data-fetching";
 
 interface PublicationPageProps {
-  params: {
+  params: Promise<{
     article_id: string;
-  };
+  }>;
 }
 
 export async function generateMetadata({
   params,
 }: {
-  params: { article_id: string };
+  params: Promise<{ article_id: string }>;
 }): Promise<Metadata> {
   try {
-    const rawArticleId = params.article_id;
+    const { article_id } = await params;
+    const rawArticleId = article_id;
     console.log("Generating metadata for article ID param:", rawArticleId);
-    const decodedArticleId = decodeURIComponent(params.article_id);
+    const decodedArticleId = decodeURIComponent(article_id);
     console.log("Decoded article ID for metadata:", decodedArticleId);
 
     // Server component can directly use the data fetching function
@@ -78,7 +79,8 @@ export async function generateMetadata({
   }
 }
 
-export default function PublicationPage({ params }: PublicationPageProps) {
-  console.log("Rendering PublicationPage with article ID:", params.article_id);
-  return <PublicationDetail articleId={params.article_id} />;
+export default async function PublicationPage({ params }: PublicationPageProps) {
+  const { article_id } = await params;
+  console.log("Rendering PublicationPage with article ID:", article_id);
+  return <PublicationDetail articleId={article_id} />;
 }

@@ -3,11 +3,12 @@ import { getResearch } from "@/lib/data-fetching";
 
 export async function GET(
   request: Request,
-  { params }: { params: { article_id: string } }
+  { params }: { params: Promise<{ article_id: string }> }
 ) {
   try {
-    const rawArticleId = params.article_id;
-    const decodedArticleId = decodeURIComponent(params.article_id);
+    const { article_id } = await params;
+    const rawArticleId = article_id;
+    const decodedArticleId = decodeURIComponent(article_id);
     const data = await getResearch();
 
     console.log("Raw article_id from params:", rawArticleId);

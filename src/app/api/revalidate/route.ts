@@ -26,7 +26,7 @@ export async function POST(request: NextRequest) {
     revalidatePath(path);
 
     // Also revalidate the notion-data tag
-    revalidateTag("notion-data");
+    revalidateTag("notion-data", "max");
 
     return NextResponse.json(
       {

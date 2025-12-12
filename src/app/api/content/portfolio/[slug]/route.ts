@@ -5,10 +5,10 @@ import { PortfolioItem } from "@/lib/types";
 
 export async function GET(
   request: NextRequest,
-  { params }: { params: { slug: string } }
+  { params }: { params: Promise<{ slug: string }> }
 ) {
   try {
-    const slug = params.slug;
+    const { slug } = await params;
     console.log("API: Fetching portfolio item with slug:", slug);
 
     const portfolioDir = path.join(process.cwd(), "public/content/portfolio");

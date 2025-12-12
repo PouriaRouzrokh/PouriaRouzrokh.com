@@ -3,20 +3,21 @@ import { PortfolioDetail } from "@/components/sections/PortfolioDetail";
 import { getPortfolio } from "@/lib/data-fetching";
 
 interface PortfolioItemPageProps {
-  params: {
+  params: Promise<{
     slug: string;
-  };
+  }>;
 }
 
 export async function generateMetadata({
   params,
 }: {
-  params: { slug: string };
+  params: Promise<{ slug: string }>;
 }): Promise<Metadata> {
   try {
-    const rawSlug = params.slug;
+    const { slug } = await params;
+    const rawSlug = slug;
     console.log("Generating metadata for slug param:", rawSlug);
-    const decodedSlug = decodeURIComponent(params.slug);
+    const decodedSlug = decodeURIComponent(slug);
     console.log("Decoded slug for metadata:", decodedSlug);
 
     // Server component can directly use the data fetching function
@@ -67,7 +68,8 @@ export async function generateMetadata({
   }
 }
 
-export default function PortfolioItemPage({ params }: PortfolioItemPageProps) {
-  console.log("Rendering PortfolioItemPage with slug:", params.slug);
-  return <PortfolioDetail slug={params.slug} />;
+export default async function PortfolioItemPage({ params }: PortfolioItemPageProps) {
+  const { slug } = await params;
+  console.log("Rendering PortfolioItemPage with slug:", slug);
+  return <PortfolioDetail slug={slug} />;
 }

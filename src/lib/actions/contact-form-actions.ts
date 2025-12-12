@@ -155,7 +155,7 @@ export async function submitContactForm(formData: ContactFormData) {
     const validatedData = contactFormSchema.parse(formData);
 
     // Get client IP for rate limiting
-    const headersList = headers();
+    const headersList = await headers();
     const ip = headersList.get("x-forwarded-for")?.split(",")[0] || "127.0.0.1";
 
     // Verify reCAPTCHA
