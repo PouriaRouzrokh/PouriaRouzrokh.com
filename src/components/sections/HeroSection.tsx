@@ -39,6 +39,11 @@ export default function HeroSection({ profileData }: HeroSectionProps) {
   // Split titles by pipe character for better display
   const titles = profile.title.split(" - ");
 
+  // Filter out titles mentioning "assistant professor" (commented out for now)
+  const filteredTitles = titles.filter(
+    (title) => !title.toLowerCase().includes("assistant professor")
+  );
+
   // Console log for debugging
   console.log("Profile data in hero:", profileData);
 
@@ -59,14 +64,17 @@ export default function HeroSection({ profileData }: HeroSectionProps) {
 
           {/* First title with primary styling */}
           <div className="pt-1">
-            <p className="text-xl font-medium text-primary mb-1.5">
-              {titles[0]}
-            </p>
+            {filteredTitles.length > 0 && (
+              <p className="text-xl font-medium text-primary mb-1.5">
+                {filteredTitles[0]}
+              </p>
+            )}
 
             {/* Secondary titles with compact styling */}
-            {titles.length > 1 && (
+            {/* Commented out: titles mentioning "assistant professor" are filtered out */}
+            {filteredTitles.length > 1 && (
               <div className="text-sm text-muted-foreground leading-tight space-y-1">
-                {titles.slice(1).map((title, index) => (
+                {filteredTitles.slice(1).map((title, index) => (
                   <p key={index}>{title}</p>
                 ))}
               </div>

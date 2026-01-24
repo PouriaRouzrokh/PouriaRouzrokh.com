@@ -12,6 +12,11 @@ export default function ExperienceSection({
   // Ensure we always have an array to work with
   const experienceItems = Array.isArray(experienceData) ? experienceData : [];
 
+  // Filter out experience items mentioning "assistant professor" (commented out for now)
+  const filteredExperienceItems = experienceItems.filter(
+    (item) => !item.role?.toLowerCase().includes("assistant professor")
+  );
+
   // Console log for debugging
   console.log("Experience data:", experienceData);
 
@@ -22,8 +27,8 @@ export default function ExperienceSection({
         subtitle="Professional roles and accomplishments"
       />
       <div className="space-y-6">
-        {experienceItems.length > 0 ? (
-          experienceItems.map((item, index) => (
+        {filteredExperienceItems.length > 0 ? (
+          filteredExperienceItems.map((item, index) => (
             <div
               key={index}
               className="bg-card rounded-lg p-6 shadow-sm border hover:shadow-md transition-shadow duration-300"
@@ -57,6 +62,7 @@ export default function ExperienceSection({
             No experience data available
           </div>
         )}
+        {/* Commented out: Experience items mentioning "assistant professor" are filtered out above */}
       </div>
     </section>
   );
