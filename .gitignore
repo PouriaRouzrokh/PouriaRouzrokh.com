@@ -27,6 +27,7 @@ venv/
 .DS_Store
 *.pem
 .cursor/
+.playwright-mcp/
 
 # debug
 npm-debug.log*
