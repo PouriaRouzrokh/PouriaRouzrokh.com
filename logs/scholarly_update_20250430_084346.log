@@ -1,168 +1,0 @@
-===== Job started at Wed Apr 30 08:43:46 EDT 2025 =====
-Running: uv run utils/scholarly_data_fetcher.py
-2025-04-30 08:43:46,433 - INFO - Searching for author: Pouria Rouzrokh
-2025-04-30 08:43:46,433 - INFO - Getting https://scholar.google.com/citations?hl=en&view_op=search_authors&mauthors=Pouria%20Rouzrokh
-2025-04-30 08:43:48,294 - INFO - HTTP Request: GET https://scholar.google.com/citations?hl=en&view_op=search_authors&mauthors=Pouria%20Rouzrokh "HTTP/1.1 200 OK"
-2025-04-30 08:43:48,332 - INFO - Found 1 authors
-2025-04-30 08:43:48,333 - INFO - Found author: Pouria Rouzrokh. Fetching details...
-2025-04-30 08:43:48,333 - INFO - Getting https://scholar.google.com/citations?hl=en&user=Ksv9I0sAAAAJ&pagesize=100
-2025-04-30 08:43:50,327 - INFO - HTTP Request: GET https://scholar.google.com/citations?hl=en&user=Ksv9I0sAAAAJ&pagesize=100 "HTTP/1.1 200 OK"
-2025-04-30 08:43:50,376 - INFO - Successfully fetched data for Pouria Rouzrokh
-2025-04-30 08:43:50,376 - INFO - Fetching detailed data for 73 articles...
-Fetching article details:   0%|          | 0/73 [00:00<?, ?it/s]2025-04-30 08:43:50,386 - INFO - Getting https://scholar.google.com/citations?hl=en&view_op=view_citation&citation_for_view=Ksv9I0sAAAAJ:kNdYIx-mwKoC
-2025-04-30 08:43:51,490 - INFO - HTTP Request: GET https://scholar.google.com/citations?hl=en&view_op=view_citation&citation_for_view=Ksv9I0sAAAAJ:kNdYIx-mwKoC "HTTP/1.1 200 OK"
-Fetching article details:   1%|▏         | 1/73 [00:01<01:20,  1.12s/it]2025-04-30 08:43:51,504 - INFO - Getting https://scholar.google.com/citations?hl=en&view_op=view_citation&citation_for_view=Ksv9I0sAAAAJ:WF5omc3nYNoC
-2025-04-30 08:43:53,267 - INFO - HTTP Request: GET https://scholar.google.com/citations?hl=en&view_op=view_citation&citation_for_view=Ksv9I0sAAAAJ:WF5omc3nYNoC "HTTP/1.1 200 OK"
-Fetching article details:   3%|▎         | 2/73 [00:02<01:47,  1.51s/it]2025-04-30 08:43:53,284 - INFO - Getting https://scholar.google.com/citations?hl=en&view_op=view_citation&citation_for_view=Ksv9I0sAAAAJ:Y0pCki6q_DkC
-2025-04-30 08:43:54,641 - INFO - HTTP Request: GET https://scholar.google.com/citations?hl=en&view_op=view_citation&citation_for_view=Ksv9I0sAAAAJ:Y0pCki6q_DkC "HTTP/1.1 200 OK"
-Fetching article details:   4%|▍         | 3/73 [00:04<01:41,  1.44s/it]2025-04-30 08:43:54,655 - INFO - Getting https://scholar.google.com/citations?hl=en&view_op=view_citation&citation_for_view=Ksv9I0sAAAAJ:KlAtU1dfN6UC
-2025-04-30 08:43:56,586 - INFO - HTTP Request: GET https://scholar.google.com/citations?hl=en&view_op=view_citation&citation_for_view=Ksv9I0sAAAAJ:KlAtU1dfN6UC "HTTP/1.1 200 OK"
-Fetching article details:   5%|▌         | 4/73 [00:06<01:53,  1.64s/it]2025-04-30 08:43:56,602 - INFO - Getting https://scholar.google.com/citations?hl=en&view_op=view_citation&citation_for_view=Ksv9I0sAAAAJ:3fE2CSJIrl8C
-2025-04-30 08:43:58,376 - INFO - HTTP Request: GET https://scholar.google.com/citations?hl=en&view_op=view_citation&citation_for_view=Ksv9I0sAAAAJ:3fE2CSJIrl8C "HTTP/1.1 200 OK"
-Fetching article details:   7%|▋         | 5/73 [00:08<01:55,  1.70s/it]2025-04-30 08:43:58,392 - INFO - Getting https://scholar.google.com/citations?hl=en&view_op=view_citation&citation_for_view=Ksv9I0sAAAAJ:Tyk-4Ss8FVUC
-2025-04-30 08:44:00,110 - INFO - HTTP Request: GET https://scholar.google.com/citations?hl=en&view_op=view_citation&citation_for_view=Ksv9I0sAAAAJ:Tyk-4Ss8FVUC "HTTP/1.1 200 OK"
-Fetching article details:   8%|▊         | 6/73 [00:09<01:54,  1.71s/it]2025-04-30 08:44:00,119 - INFO - Getting https://scholar.google.com/citations?hl=en&view_op=view_citation&citation_for_view=Ksv9I0sAAAAJ:7PzlFSSx8tAC
-2025-04-30 08:44:01,676 - INFO - HTTP Request: GET https://scholar.google.com/citations?hl=en&view_op=view_citation&citation_for_view=Ksv9I0sAAAAJ:7PzlFSSx8tAC "HTTP/1.1 200 OK"
-Fetching article details:  10%|▉         | 7/73 [00:11<01:49,  1.66s/it]2025-04-30 08:44:01,687 - INFO - Getting https://scholar.google.com/citations?hl=en&view_op=view_citation&citation_for_view=Ksv9I0sAAAAJ:hqOjcs7Dif8C
-2025-04-30 08:44:03,621 - INFO - HTTP Request: GET https://scholar.google.com/citations?hl=en&view_op=view_citation&citation_for_view=Ksv9I0sAAAAJ:hqOjcs7Dif8C "HTTP/1.1 200 OK"
-Fetching article details:  11%|█         | 8/73 [00:13<01:53,  1.75s/it]2025-04-30 08:44:03,636 - INFO - Getting https://scholar.google.com/citations?hl=en&view_op=view_citation&citation_for_view=Ksv9I0sAAAAJ:zYLM7Y9cAGgC
-2025-04-30 08:44:05,370 - INFO - HTTP Request: GET https://scholar.google.com/citations?hl=en&view_op=view_citation&citation_for_view=Ksv9I0sAAAAJ:zYLM7Y9cAGgC "HTTP/1.1 200 OK"
-Fetching article details:  12%|█▏        | 9/73 [00:14<01:52,  1.75s/it]2025-04-30 08:44:05,384 - INFO - Getting https://scholar.google.com/citations?hl=en&view_op=view_citation&citation_for_view=Ksv9I0sAAAAJ:5nxA0vEk-isC
-2025-04-30 08:44:07,346 - INFO - HTTP Request: GET https://scholar.google.com/citations?hl=en&view_op=view_citation&citation_for_view=Ksv9I0sAAAAJ:5nxA0vEk-isC "HTTP/1.1 200 OK"
-Fetching article details:  14%|█▎        | 10/73 [00:16<01:54,  1.82s/it]2025-04-30 08:44:07,361 - INFO - Getting https://scholar.google.com/citations?hl=en&view_op=view_citation&citation_for_view=Ksv9I0sAAAAJ:roLk4NBRz8UC
-2025-04-30 08:44:08,701 - INFO - HTTP Request: GET https://scholar.google.com/citations?hl=en&view_op=view_citation&citation_for_view=Ksv9I0sAAAAJ:roLk4NBRz8UC "HTTP/1.1 200 OK"
-Fetching article details:  15%|█▌        | 11/73 [00:18<01:44,  1.68s/it]2025-04-30 08:44:08,717 - INFO - Getting https://scholar.google.com/citations?hl=en&view_op=view_citation&citation_for_view=Ksv9I0sAAAAJ:2osOgNQ5qMEC
-2025-04-30 08:44:10,100 - INFO - HTTP Request: GET https://scholar.google.com/citations?hl=en&view_op=view_citation&citation_for_view=Ksv9I0sAAAAJ:2osOgNQ5qMEC "HTTP/1.1 200 OK"
-Fetching article details:  16%|█▋        | 12/73 [00:19<01:37,  1.59s/it]2025-04-30 08:44:10,113 - INFO - Getting https://scholar.google.com/citations?hl=en&view_op=view_citation&citation_for_view=Ksv9I0sAAAAJ:_kc_bZDykSQC
-2025-04-30 08:44:11,332 - INFO - HTTP Request: GET https://scholar.google.com/citations?hl=en&view_op=view_citation&citation_for_view=Ksv9I0sAAAAJ:_kc_bZDykSQC "HTTP/1.1 200 OK"
-Fetching article details:  18%|█▊        | 13/73 [00:20<01:29,  1.48s/it]2025-04-30 08:44:11,346 - INFO - Getting https://scholar.google.com/citations?hl=en&view_op=view_citation&citation_for_view=Ksv9I0sAAAAJ:Zph67rFs4hoC
-2025-04-30 08:44:13,337 - INFO - HTTP Request: GET https://scholar.google.com/citations?hl=en&view_op=view_citation&citation_for_view=Ksv9I0sAAAAJ:Zph67rFs4hoC "HTTP/1.1 200 OK"
-Fetching article details:  19%|█▉        | 14/73 [00:22<01:36,  1.64s/it]2025-04-30 08:44:13,357 - INFO - Getting https://scholar.google.com/citations?hl=en&view_op=view_citation&citation_for_view=Ksv9I0sAAAAJ:9yKSN-GCB0IC
-2025-04-30 08:44:14,815 - INFO - HTTP Request: GET https://scholar.google.com/citations?hl=en&view_op=view_citation&citation_for_view=Ksv9I0sAAAAJ:9yKSN-GCB0IC "HTTP/1.1 200 OK"
-Fetching article details:  21%|██        | 15/73 [00:24<01:32,  1.59s/it]2025-04-30 08:44:14,827 - INFO - Getting https://scholar.google.com/citations?hl=en&view_op=view_citation&citation_for_view=Ksv9I0sAAAAJ:MXK_kJrjxJIC
-2025-04-30 08:44:16,571 - INFO - HTTP Request: GET https://scholar.google.com/citations?hl=en&view_op=view_citation&citation_for_view=Ksv9I0sAAAAJ:MXK_kJrjxJIC "HTTP/1.1 200 OK"
-Fetching article details:  22%|██▏       | 16/73 [00:26<01:33,  1.64s/it]2025-04-30 08:44:16,589 - INFO - Getting https://scholar.google.com/citations?hl=en&view_op=view_citation&citation_for_view=Ksv9I0sAAAAJ:Se3iqnhoufwC
-2025-04-30 08:44:17,782 - INFO - HTTP Request: GET https://scholar.google.com/citations?hl=en&view_op=view_citation&citation_for_view=Ksv9I0sAAAAJ:Se3iqnhoufwC "HTTP/1.1 200 OK"
-Fetching article details:  23%|██▎       | 17/73 [00:27<01:24,  1.51s/it]2025-04-30 08:44:17,798 - INFO - Getting https://scholar.google.com/citations?hl=en&view_op=view_citation&citation_for_view=Ksv9I0sAAAAJ:M3ejUd6NZC8C
-2025-04-30 08:44:19,498 - INFO - HTTP Request: GET https://scholar.google.com/citations?hl=en&view_op=view_citation&citation_for_view=Ksv9I0sAAAAJ:M3ejUd6NZC8C "HTTP/1.1 200 OK"
-Fetching article details:  25%|██▍       | 18/73 [00:29<01:26,  1.57s/it]2025-04-30 08:44:19,512 - INFO - Getting https://scholar.google.com/citations?hl=en&view_op=view_citation&citation_for_view=Ksv9I0sAAAAJ:u-x6o8ySG0sC
-2025-04-30 08:44:21,183 - INFO - HTTP Request: GET https://scholar.google.com/citations?hl=en&view_op=view_citation&citation_for_view=Ksv9I0sAAAAJ:u-x6o8ySG0sC "HTTP/1.1 200 OK"
-Fetching article details:  26%|██▌       | 19/73 [00:30<01:26,  1.61s/it]2025-04-30 08:44:21,197 - INFO - Getting https://scholar.google.com/citations?hl=en&view_op=view_citation&citation_for_view=Ksv9I0sAAAAJ:UebtZRa9Y70C
-2025-04-30 08:44:22,390 - INFO - HTTP Request: GET https://scholar.google.com/citations?hl=en&view_op=view_citation&citation_for_view=Ksv9I0sAAAAJ:UebtZRa9Y70C "HTTP/1.1 200 OK"
-Fetching article details:  27%|██▋       | 20/73 [00:32<01:18,  1.49s/it]2025-04-30 08:44:22,404 - INFO - Getting https://scholar.google.com/citations?hl=en&view_op=view_citation&citation_for_view=Ksv9I0sAAAAJ:aqlVkmm33-oC
-2025-04-30 08:44:24,443 - INFO - HTTP Request: GET https://scholar.google.com/citations?hl=en&view_op=view_citation&citation_for_view=Ksv9I0sAAAAJ:aqlVkmm33-oC "HTTP/1.1 200 OK"
-Fetching article details:  29%|██▉       | 21/73 [00:34<01:26,  1.66s/it]2025-04-30 08:44:24,458 - INFO - Getting https://scholar.google.com/citations?hl=en&view_op=view_citation&citation_for_view=Ksv9I0sAAAAJ:hC7cP41nSMkC
-2025-04-30 08:44:26,120 - INFO - HTTP Request: GET https://scholar.google.com/citations?hl=en&view_op=view_citation&citation_for_view=Ksv9I0sAAAAJ:hC7cP41nSMkC "HTTP/1.1 200 OK"
-Fetching article details:  30%|███       | 22/73 [00:35<01:24,  1.66s/it]2025-04-30 08:44:26,134 - INFO - Getting https://scholar.google.com/citations?hl=en&view_op=view_citation&citation_for_view=Ksv9I0sAAAAJ:blknAaTinKkC
-2025-04-30 08:44:27,897 - INFO - HTTP Request: GET https://scholar.google.com/citations?hl=en&view_op=view_citation&citation_for_view=Ksv9I0sAAAAJ:blknAaTinKkC "HTTP/1.1 200 OK"
-Fetching article details:  32%|███▏      | 23/73 [00:37<01:24,  1.70s/it]2025-04-30 08:44:27,911 - INFO - Getting https://scholar.google.com/citations?hl=en&view_op=view_citation&citation_for_view=Ksv9I0sAAAAJ:mB3voiENLucC
-2025-04-30 08:44:29,612 - INFO - HTTP Request: GET https://scholar.google.com/citations?hl=en&view_op=view_citation&citation_for_view=Ksv9I0sAAAAJ:mB3voiENLucC "HTTP/1.1 200 OK"
-Fetching article details:  33%|███▎      | 24/73 [00:39<01:23,  1.70s/it]2025-04-30 08:44:29,622 - INFO - Getting https://scholar.google.com/citations?hl=en&view_op=view_citation&citation_for_view=Ksv9I0sAAAAJ:dhFuZR0502QC
-2025-04-30 08:44:30,896 - INFO - HTTP Request: GET https://scholar.google.com/citations?hl=en&view_op=view_citation&citation_for_view=Ksv9I0sAAAAJ:dhFuZR0502QC "HTTP/1.1 200 OK"
-Fetching article details:  34%|███▍      | 25/73 [00:40<01:15,  1.58s/it]2025-04-30 08:44:30,912 - INFO - Getting https://scholar.google.com/citations?hl=en&view_op=view_citation&citation_for_view=Ksv9I0sAAAAJ:_FxGoFyzp5QC
-2025-04-30 08:44:31,991 - INFO - HTTP Request: GET https://scholar.google.com/citations?hl=en&view_op=view_citation&citation_for_view=Ksv9I0sAAAAJ:_FxGoFyzp5QC "HTTP/1.1 200 OK"
-Fetching article details:  36%|███▌      | 26/73 [00:41<01:07,  1.43s/it]2025-04-30 08:44:32,004 - INFO - Getting https://scholar.google.com/citations?hl=en&view_op=view_citation&citation_for_view=Ksv9I0sAAAAJ:9ZlFYXVOiuMC
-2025-04-30 08:44:33,447 - INFO - HTTP Request: GET https://scholar.google.com/citations?hl=en&view_op=view_citation&citation_for_view=Ksv9I0sAAAAJ:9ZlFYXVOiuMC "HTTP/1.1 200 OK"
-Fetching article details:  37%|███▋      | 27/73 [00:43<01:06,  1.44s/it]2025-04-30 08:44:33,463 - INFO - Getting https://scholar.google.com/citations?hl=en&view_op=view_citation&citation_for_view=Ksv9I0sAAAAJ:4DMP91E08xMC
-2025-04-30 08:44:34,752 - INFO - HTTP Request: GET https://scholar.google.com/citations?hl=en&view_op=view_citation&citation_for_view=Ksv9I0sAAAAJ:4DMP91E08xMC "HTTP/1.1 200 OK"
-Fetching article details:  38%|███▊      | 28/73 [00:44<01:02,  1.40s/it]2025-04-30 08:44:34,764 - INFO - Getting https://scholar.google.com/citations?hl=en&view_op=view_citation&citation_for_view=Ksv9I0sAAAAJ:d1gkVwhDpl0C
-2025-04-30 08:44:35,848 - INFO - HTTP Request: GET https://scholar.google.com/citations?hl=en&view_op=view_citation&citation_for_view=Ksv9I0sAAAAJ:d1gkVwhDpl0C "HTTP/1.1 200 OK"
-Fetching article details:  40%|███▉      | 29/73 [00:45<00:57,  1.31s/it]2025-04-30 08:44:35,859 - INFO - Getting https://scholar.google.com/citations?hl=en&view_op=view_citation&citation_for_view=Ksv9I0sAAAAJ:qUcmZB5y_30C
-2025-04-30 08:44:37,076 - INFO - HTTP Request: GET https://scholar.google.com/citations?hl=en&view_op=view_citation&citation_for_view=Ksv9I0sAAAAJ:qUcmZB5y_30C "HTTP/1.1 200 OK"
-Fetching article details:  41%|████      | 30/73 [00:46<00:55,  1.29s/it]2025-04-30 08:44:37,093 - INFO - Getting https://scholar.google.com/citations?hl=en&view_op=view_citation&citation_for_view=Ksv9I0sAAAAJ:IWHjjKOFINEC
-2025-04-30 08:44:38,975 - INFO - HTTP Request: GET https://scholar.google.com/citations?hl=en&view_op=view_citation&citation_for_view=Ksv9I0sAAAAJ:IWHjjKOFINEC "HTTP/1.1 200 OK"
-Fetching article details:  42%|████▏     | 31/73 [00:48<01:01,  1.47s/it]2025-04-30 08:44:38,992 - INFO - Getting https://scholar.google.com/citations?hl=en&view_op=view_citation&citation_for_view=Ksv9I0sAAAAJ:YOwf2qJgpHMC
-2025-04-30 08:44:40,295 - INFO - HTTP Request: GET https://scholar.google.com/citations?hl=en&view_op=view_citation&citation_for_view=Ksv9I0sAAAAJ:YOwf2qJgpHMC "HTTP/1.1 200 OK"
-Fetching article details:  44%|████▍     | 32/73 [00:49<00:58,  1.42s/it]2025-04-30 08:44:40,310 - INFO - Getting https://scholar.google.com/citations?hl=en&view_op=view_citation&citation_for_view=Ksv9I0sAAAAJ:Wp0gIr-vW9MC
-2025-04-30 08:44:41,901 - INFO - HTTP Request: GET https://scholar.google.com/citations?hl=en&view_op=view_citation&citation_for_view=Ksv9I0sAAAAJ:Wp0gIr-vW9MC "HTTP/1.1 200 OK"
-Fetching article details:  45%|████▌     | 33/73 [00:51<00:59,  1.48s/it]2025-04-30 08:44:41,914 - INFO - Getting https://scholar.google.com/citations?hl=en&view_op=view_citation&citation_for_view=Ksv9I0sAAAAJ:qxL8FJ1GzNcC
-2025-04-30 08:44:43,907 - INFO - HTTP Request: GET https://scholar.google.com/citations?hl=en&view_op=view_citation&citation_for_view=Ksv9I0sAAAAJ:qxL8FJ1GzNcC "HTTP/1.1 200 OK"
-Fetching article details:  47%|████▋     | 34/73 [00:53<01:03,  1.64s/it]2025-04-30 08:44:43,920 - INFO - Getting https://scholar.google.com/citations?hl=en&view_op=view_citation&citation_for_view=Ksv9I0sAAAAJ:HDshCWvjkbEC
-2025-04-30 08:44:44,992 - INFO - HTTP Request: GET https://scholar.google.com/citations?hl=en&view_op=view_citation&citation_for_view=Ksv9I0sAAAAJ:HDshCWvjkbEC "HTTP/1.1 200 OK"
-Fetching article details:  48%|████▊     | 35/73 [00:54<00:55,  1.47s/it]2025-04-30 08:44:45,004 - INFO - Getting https://scholar.google.com/citations?hl=en&view_op=view_citation&citation_for_view=Ksv9I0sAAAAJ:u5HHmVD_uO8C
-2025-04-30 08:44:46,727 - INFO - HTTP Request: GET https://scholar.google.com/citations?hl=en&view_op=view_citation&citation_for_view=Ksv9I0sAAAAJ:u5HHmVD_uO8C "HTTP/1.1 200 OK"
-Fetching article details:  49%|████▉     | 36/73 [00:56<00:57,  1.55s/it]2025-04-30 08:44:46,743 - INFO - Getting https://scholar.google.com/citations?hl=en&view_op=view_citation&citation_for_view=Ksv9I0sAAAAJ:L8Ckcad2t8MC
-2025-04-30 08:44:48,338 - INFO - HTTP Request: GET https://scholar.google.com/citations?hl=en&view_op=view_citation&citation_for_view=Ksv9I0sAAAAJ:L8Ckcad2t8MC "HTTP/1.1 200 OK"
-Fetching article details:  51%|█████     | 37/73 [00:57<00:56,  1.57s/it]2025-04-30 08:44:48,352 - INFO - Getting https://scholar.google.com/citations?hl=en&view_op=view_citation&citation_for_view=Ksv9I0sAAAAJ:4TOpqqG69KYC
-2025-04-30 08:44:49,601 - INFO - HTTP Request: GET https://scholar.google.com/citations?hl=en&view_op=view_citation&citation_for_view=Ksv9I0sAAAAJ:4TOpqqG69KYC "HTTP/1.1 200 OK"
-Fetching article details:  52%|█████▏    | 38/73 [00:59<00:51,  1.48s/it]2025-04-30 08:44:49,616 - INFO - Getting https://scholar.google.com/citations?hl=en&view_op=view_citation&citation_for_view=Ksv9I0sAAAAJ:_Qo2XoVZTnwC
-2025-04-30 08:44:51,045 - INFO - HTTP Request: GET https://scholar.google.com/citations?hl=en&view_op=view_citation&citation_for_view=Ksv9I0sAAAAJ:_Qo2XoVZTnwC "HTTP/1.1 200 OK"
-Fetching article details:  53%|█████▎    | 39/73 [01:00<00:49,  1.47s/it]2025-04-30 08:44:51,061 - INFO - Getting https://scholar.google.com/citations?hl=en&view_op=view_citation&citation_for_view=Ksv9I0sAAAAJ:bEWYMUwI8FkC
-2025-04-30 08:44:52,854 - INFO - HTTP Request: GET https://scholar.google.com/citations?hl=en&view_op=view_citation&citation_for_view=Ksv9I0sAAAAJ:bEWYMUwI8FkC "HTTP/1.1 200 OK"
-Fetching article details:  55%|█████▍    | 40/73 [01:02<00:51,  1.57s/it]2025-04-30 08:44:52,870 - INFO - Getting https://scholar.google.com/citations?hl=en&view_op=view_citation&citation_for_view=Ksv9I0sAAAAJ:TFP_iSt0sucC
-2025-04-30 08:44:54,278 - INFO - HTTP Request: GET https://scholar.google.com/citations?hl=en&view_op=view_citation&citation_for_view=Ksv9I0sAAAAJ:TFP_iSt0sucC "HTTP/1.1 200 OK"
-Fetching article details:  56%|█████▌    | 41/73 [01:03<00:48,  1.53s/it]2025-04-30 08:44:54,293 - INFO - Getting https://scholar.google.com/citations?hl=en&view_op=view_citation&citation_for_view=Ksv9I0sAAAAJ:4JMBOYKVnBMC
-2025-04-30 08:44:55,691 - INFO - HTTP Request: GET https://scholar.google.com/citations?hl=en&view_op=view_citation&citation_for_view=Ksv9I0sAAAAJ:4JMBOYKVnBMC "HTTP/1.1 200 OK"
-Fetching article details:  58%|█████▊    | 42/73 [01:05<00:46,  1.49s/it]2025-04-30 08:44:55,707 - INFO - Getting https://scholar.google.com/citations?hl=en&view_op=view_citation&citation_for_view=Ksv9I0sAAAAJ:ULOm3_A8WrAC
-2025-04-30 08:44:57,524 - INFO - HTTP Request: GET https://scholar.google.com/citations?hl=en&view_op=view_citation&citation_for_view=Ksv9I0sAAAAJ:ULOm3_A8WrAC "HTTP/1.1 200 OK"
-Fetching article details:  59%|█████▉    | 43/73 [01:07<00:47,  1.59s/it]2025-04-30 08:44:57,536 - INFO - Getting https://scholar.google.com/citations?hl=en&view_op=view_citation&citation_for_view=Ksv9I0sAAAAJ:LkGwnXOMwfcC
-2025-04-30 08:44:58,718 - INFO - HTTP Request: GET https://scholar.google.com/citations?hl=en&view_op=view_citation&citation_for_view=Ksv9I0sAAAAJ:LkGwnXOMwfcC "HTTP/1.1 200 OK"
-Fetching article details:  60%|██████    | 44/73 [01:08<00:42,  1.47s/it]2025-04-30 08:44:58,731 - INFO - Getting https://scholar.google.com/citations?hl=en&view_op=view_citation&citation_for_view=Ksv9I0sAAAAJ:NMxIlDl6LWMC
-2025-04-30 08:45:00,213 - INFO - HTTP Request: GET https://scholar.google.com/citations?hl=en&view_op=view_citation&citation_for_view=Ksv9I0sAAAAJ:NMxIlDl6LWMC "HTTP/1.1 200 OK"
-Fetching article details:  62%|██████▏   | 45/73 [01:09<00:41,  1.48s/it]2025-04-30 08:45:00,226 - INFO - Getting https://scholar.google.com/citations?hl=en&view_op=view_citation&citation_for_view=Ksv9I0sAAAAJ:RHpTSmoSYBkC
-2025-04-30 08:45:01,932 - INFO - HTTP Request: GET https://scholar.google.com/citations?hl=en&view_op=view_citation&citation_for_view=Ksv9I0sAAAAJ:RHpTSmoSYBkC "HTTP/1.1 200 OK"
-Fetching article details:  63%|██████▎   | 46/73 [01:11<00:41,  1.55s/it]2025-04-30 08:45:01,942 - INFO - Getting https://scholar.google.com/citations?hl=en&view_op=view_citation&citation_for_view=Ksv9I0sAAAAJ:ufrVoPGSRksC
-2025-04-30 08:45:03,330 - INFO - HTTP Request: GET https://scholar.google.com/citations?hl=en&view_op=view_citation&citation_for_view=Ksv9I0sAAAAJ:ufrVoPGSRksC "HTTP/1.1 200 OK"
-Fetching article details:  64%|██████▍   | 47/73 [01:12<00:39,  1.51s/it]2025-04-30 08:45:03,346 - INFO - Getting https://scholar.google.com/citations?hl=en&view_op=view_citation&citation_for_view=Ksv9I0sAAAAJ:maZDTaKrznsC
-2025-04-30 08:45:04,559 - INFO - HTTP Request: GET https://scholar.google.com/citations?hl=en&view_op=view_citation&citation_for_view=Ksv9I0sAAAAJ:maZDTaKrznsC "HTTP/1.1 200 OK"
-Fetching article details:  66%|██████▌   | 48/73 [01:14<00:35,  1.42s/it]2025-04-30 08:45:04,572 - INFO - Getting https://scholar.google.com/citations?hl=en&view_op=view_citation&citation_for_view=Ksv9I0sAAAAJ:j3f4tGmQtD8C
-2025-04-30 08:45:06,156 - INFO - HTTP Request: GET https://scholar.google.com/citations?hl=en&view_op=view_citation&citation_for_view=Ksv9I0sAAAAJ:j3f4tGmQtD8C "HTTP/1.1 200 OK"
-Fetching article details:  67%|██████▋   | 49/73 [01:15<00:35,  1.48s/it]2025-04-30 08:45:06,171 - INFO - Getting https://scholar.google.com/citations?hl=en&view_op=view_citation&citation_for_view=Ksv9I0sAAAAJ:e5wmG9Sq2KIC
-2025-04-30 08:45:07,735 - INFO - HTTP Request: GET https://scholar.google.com/citations?hl=en&view_op=view_citation&citation_for_view=Ksv9I0sAAAAJ:e5wmG9Sq2KIC "HTTP/1.1 200 OK"
-Fetching article details:  68%|██████▊   | 50/73 [01:17<00:34,  1.51s/it]2025-04-30 08:45:07,750 - INFO - Getting https://scholar.google.com/citations?hl=en&view_op=view_citation&citation_for_view=Ksv9I0sAAAAJ:YFjsv_pBGBYC
-2025-04-30 08:45:09,008 - INFO - HTTP Request: GET https://scholar.google.com/citations?hl=en&view_op=view_citation&citation_for_view=Ksv9I0sAAAAJ:YFjsv_pBGBYC "HTTP/1.1 200 OK"
-Fetching article details:  70%|██████▉   | 51/73 [01:18<00:31,  1.44s/it]2025-04-30 08:45:09,023 - INFO - Getting https://scholar.google.com/citations?hl=en&view_op=view_citation&citation_for_view=Ksv9I0sAAAAJ:M3NEmzRMIkIC
-2025-04-30 08:45:10,976 - INFO - HTTP Request: GET https://scholar.google.com/citations?hl=en&view_op=view_citation&citation_for_view=Ksv9I0sAAAAJ:M3NEmzRMIkIC "HTTP/1.1 200 OK"
-Fetching article details:  71%|███████   | 52/73 [01:20<00:33,  1.60s/it]2025-04-30 08:45:10,989 - INFO - Getting https://scholar.google.com/citations?hl=en&view_op=view_citation&citation_for_view=Ksv9I0sAAAAJ:R3hNpaxXUhUC
-2025-04-30 08:45:12,859 - INFO - HTTP Request: GET https://scholar.google.com/citations?hl=en&view_op=view_citation&citation_for_view=Ksv9I0sAAAAJ:R3hNpaxXUhUC "HTTP/1.1 200 OK"
-Fetching article details:  73%|███████▎  | 53/73 [01:22<00:33,  1.68s/it]2025-04-30 08:45:12,870 - INFO - Getting https://scholar.google.com/citations?hl=en&view_op=view_citation&citation_for_view=Ksv9I0sAAAAJ:-f6ydRqryjwC
-2025-04-30 08:45:14,481 - INFO - HTTP Request: GET https://scholar.google.com/citations?hl=en&view_op=view_citation&citation_for_view=Ksv9I0sAAAAJ:-f6ydRqryjwC "HTTP/1.1 200 OK"
-Fetching article details:  74%|███████▍  | 54/73 [01:24<00:31,  1.66s/it]2025-04-30 08:45:14,494 - INFO - Getting https://scholar.google.com/citations?hl=en&view_op=view_citation&citation_for_view=Ksv9I0sAAAAJ:RYcK_YlVTxYC
-2025-04-30 08:45:15,840 - INFO - HTTP Request: GET https://scholar.google.com/citations?hl=en&view_op=view_citation&citation_for_view=Ksv9I0sAAAAJ:RYcK_YlVTxYC "HTTP/1.1 200 OK"
-Fetching article details:  75%|███████▌  | 55/73 [01:25<00:28,  1.57s/it]2025-04-30 08:45:15,854 - INFO - Getting https://scholar.google.com/citations?hl=en&view_op=view_citation&citation_for_view=Ksv9I0sAAAAJ:J_g5lzvAfSwC
-2025-04-30 08:45:16,974 - INFO - HTTP Request: GET https://scholar.google.com/citations?hl=en&view_op=view_citation&citation_for_view=Ksv9I0sAAAAJ:J_g5lzvAfSwC "HTTP/1.1 200 OK"
-Fetching article details:  77%|███████▋  | 56/73 [01:26<00:24,  1.44s/it]2025-04-30 08:45:16,983 - INFO - Getting https://scholar.google.com/citations?hl=en&view_op=view_citation&citation_for_view=Ksv9I0sAAAAJ:ns9cj8rnVeAC
-2025-04-30 08:45:18,151 - INFO - HTTP Request: GET https://scholar.google.com/citations?hl=en&view_op=view_citation&citation_for_view=Ksv9I0sAAAAJ:ns9cj8rnVeAC "HTTP/1.1 200 OK"
-Fetching article details:  78%|███████▊  | 57/73 [01:27<00:21,  1.37s/it]2025-04-30 08:45:18,188 - INFO - Getting https://scholar.google.com/citations?hl=en&view_op=view_citation&citation_for_view=Ksv9I0sAAAAJ:O3NaXMp0MMsC
-2025-04-30 08:45:19,341 - INFO - HTTP Request: GET https://scholar.google.com/citations?hl=en&view_op=view_citation&citation_for_view=Ksv9I0sAAAAJ:O3NaXMp0MMsC "HTTP/1.1 200 OK"
-Fetching article details:  79%|███████▉  | 58/73 [01:28<00:19,  1.31s/it]2025-04-30 08:45:19,355 - INFO - Getting https://scholar.google.com/citations?hl=en&view_op=view_citation&citation_for_view=Ksv9I0sAAAAJ:RGFaLdJalmkC
-2025-04-30 08:45:21,216 - INFO - HTTP Request: GET https://scholar.google.com/citations?hl=en&view_op=view_citation&citation_for_view=Ksv9I0sAAAAJ:RGFaLdJalmkC "HTTP/1.1 200 OK"
-Fetching article details:  81%|████████  | 59/73 [01:30<00:20,  1.48s/it]2025-04-30 08:45:21,228 - INFO - Getting https://scholar.google.com/citations?hl=en&view_op=view_citation&citation_for_view=Ksv9I0sAAAAJ:GnPB-g6toBAC
-2025-04-30 08:45:23,252 - INFO - HTTP Request: GET https://scholar.google.com/citations?hl=en&view_op=view_citation&citation_for_view=Ksv9I0sAAAAJ:GnPB-g6toBAC "HTTP/1.1 200 OK"
-Fetching article details:  82%|████████▏ | 60/73 [01:32<00:21,  1.65s/it]2025-04-30 08:45:23,264 - INFO - Getting https://scholar.google.com/citations?hl=en&view_op=view_citation&citation_for_view=Ksv9I0sAAAAJ:BqipwSGYUEgC
-2025-04-30 08:45:24,614 - INFO - HTTP Request: GET https://scholar.google.com/citations?hl=en&view_op=view_citation&citation_for_view=Ksv9I0sAAAAJ:BqipwSGYUEgC "HTTP/1.1 200 OK"
-Fetching article details:  84%|████████▎ | 61/73 [01:34<00:18,  1.56s/it]2025-04-30 08:45:24,626 - INFO - Getting https://scholar.google.com/citations?hl=en&view_op=view_citation&citation_for_view=Ksv9I0sAAAAJ:TQgYirikUcIC
-2025-04-30 08:45:26,445 - INFO - HTTP Request: GET https://scholar.google.com/citations?hl=en&view_op=view_citation&citation_for_view=Ksv9I0sAAAAJ:TQgYirikUcIC "HTTP/1.1 200 OK"
-Fetching article details:  85%|████████▍ | 62/73 [01:36<00:18,  1.64s/it]2025-04-30 08:45:26,462 - INFO - Getting https://scholar.google.com/citations?hl=en&view_op=view_citation&citation_for_view=Ksv9I0sAAAAJ:isC4tDSrTZIC
-2025-04-30 08:45:28,304 - INFO - HTTP Request: GET https://scholar.google.com/citations?hl=en&view_op=view_citation&citation_for_view=Ksv9I0sAAAAJ:isC4tDSrTZIC "HTTP/1.1 200 OK"
-Fetching article details:  86%|████████▋ | 63/73 [01:37<00:17,  1.71s/it]2025-04-30 08:45:28,318 - INFO - Getting https://scholar.google.com/citations?hl=en&view_op=view_citation&citation_for_view=Ksv9I0sAAAAJ:hMod-77fHWUC
-2025-04-30 08:45:29,683 - INFO - HTTP Request: GET https://scholar.google.com/citations?hl=en&view_op=view_citation&citation_for_view=Ksv9I0sAAAAJ:hMod-77fHWUC "HTTP/1.1 200 OK"
-Fetching article details:  88%|████████▊ | 64/73 [01:39<00:14,  1.61s/it]2025-04-30 08:45:29,696 - INFO - Getting https://scholar.google.com/citations?hl=en&view_op=view_citation&citation_for_view=Ksv9I0sAAAAJ:JV2RwH3_ST0C
-2025-04-30 08:45:30,913 - INFO - HTTP Request: GET https://scholar.google.com/citations?hl=en&view_op=view_citation&citation_for_view=Ksv9I0sAAAAJ:JV2RwH3_ST0C "HTTP/1.1 200 OK"
-Fetching article details:  89%|████████▉ | 65/73 [01:40<00:11,  1.50s/it]2025-04-30 08:45:30,931 - INFO - Getting https://scholar.google.com/citations?hl=en&view_op=view_citation&citation_for_view=Ksv9I0sAAAAJ:iH-uZ7U-co4C
-2025-04-30 08:45:32,188 - INFO - HTTP Request: GET https://scholar.google.com/citations?hl=en&view_op=view_citation&citation_for_view=Ksv9I0sAAAAJ:iH-uZ7U-co4C "HTTP/1.1 200 OK"
-Fetching article details:  90%|█████████ | 66/73 [01:41<00:10,  1.43s/it]2025-04-30 08:45:32,203 - INFO - Getting https://scholar.google.com/citations?hl=en&view_op=view_citation&citation_for_view=Ksv9I0sAAAAJ:k_IJM867U9cC
-2025-04-30 08:45:33,836 - INFO - HTTP Request: GET https://scholar.google.com/citations?hl=en&view_op=view_citation&citation_for_view=Ksv9I0sAAAAJ:k_IJM867U9cC "HTTP/1.1 200 OK"
-Fetching article details:  92%|█████████▏| 67/73 [01:43<00:08,  1.49s/it]2025-04-30 08:45:33,851 - INFO - Getting https://scholar.google.com/citations?hl=en&view_op=view_citation&citation_for_view=Ksv9I0sAAAAJ:ZeXyd9-uunAC
-2025-04-30 08:45:35,452 - INFO - HTTP Request: GET https://scholar.google.com/citations?hl=en&view_op=view_citation&citation_for_view=Ksv9I0sAAAAJ:ZeXyd9-uunAC "HTTP/1.1 200 OK"
-Fetching article details:  93%|█████████▎| 68/73 [01:45<00:07,  1.53s/it]2025-04-30 08:45:35,466 - INFO - Getting https://scholar.google.com/citations?hl=en&view_op=view_citation&citation_for_view=Ksv9I0sAAAAJ:QIV2ME_5wuYC
-2025-04-30 08:45:36,869 - INFO - HTTP Request: GET https://scholar.google.com/citations?hl=en&view_op=view_citation&citation_for_view=Ksv9I0sAAAAJ:QIV2ME_5wuYC "HTTP/1.1 200 OK"
-Fetching article details:  95%|█████████▍| 69/73 [01:46<00:05,  1.50s/it]2025-04-30 08:45:36,885 - INFO - Getting https://scholar.google.com/citations?hl=en&view_op=view_citation&citation_for_view=Ksv9I0sAAAAJ:8k81kl-MbHgC
-2025-04-30 08:45:38,860 - INFO - HTTP Request: GET https://scholar.google.com/citations?hl=en&view_op=view_citation&citation_for_view=Ksv9I0sAAAAJ:8k81kl-MbHgC "HTTP/1.1 200 OK"
-Fetching article details:  96%|█████████▌| 70/73 [01:48<00:04,  1.64s/it]2025-04-30 08:45:38,872 - INFO - Getting https://scholar.google.com/citations?hl=en&view_op=view_citation&citation_for_view=Ksv9I0sAAAAJ:0EnyYjriUFMC
-2025-04-30 08:45:40,814 - INFO - HTTP Request: GET https://scholar.google.com/citations?hl=en&view_op=view_citation&citation_for_view=Ksv9I0sAAAAJ:0EnyYjriUFMC "HTTP/1.1 200 OK"
-Fetching article details:  97%|█████████▋| 71/73 [01:50<00:03,  1.74s/it]2025-04-30 08:45:40,828 - INFO - Getting https://scholar.google.com/citations?hl=en&view_op=view_citation&citation_for_view=Ksv9I0sAAAAJ:eQOLeE2rZwMC
-2025-04-30 08:45:42,521 - INFO - HTTP Request: GET https://scholar.google.com/citations?hl=en&view_op=view_citation&citation_for_view=Ksv9I0sAAAAJ:eQOLeE2rZwMC "HTTP/1.1 200 OK"
-Fetching article details:  99%|█████████▊| 72/73 [01:52<00:01,  1.73s/it]2025-04-30 08:45:42,535 - INFO - Getting https://scholar.google.com/citations?hl=en&view_op=view_citation&citation_for_view=Ksv9I0sAAAAJ:r0BpntZqJG4C
-2025-04-30 08:45:44,162 - INFO - HTTP Request: GET https://scholar.google.com/citations?hl=en&view_op=view_citation&citation_for_view=Ksv9I0sAAAAJ:r0BpntZqJG4C "HTTP/1.1 200 OK"
-Fetching article details: 100%|██████████| 73/73 [01:53<00:00,  1.70s/it]Fetching article details: 100%|██████████| 73/73 [01:53<00:00,  1.56s/it]
-2025-04-30 08:45:44,175 - INFO - Successfully fetched details for 73 articles.
-2025-04-30 08:45:44,175 - INFO - Processing articles...
-Processing articles:   0%|          | 0/73 [00:00<?, ?it/s]Processing articles: 100%|██████████| 73/73 [00:00<00:00, 9664.91it/s]
-2025-04-30 08:45:44,183 - INFO - Generated article IDs for 72 articles
-2025-04-30 08:45:44,183 - INFO - Final article count after deduplication: 72
-2025-04-30 08:45:44,186 - INFO - Data successfully saved to public/content/research.json
-Python script executed successfully. Updating Git...
-tab 1 of window id 57058
-Git update process initiated. Check Terminal for results.
-===== Job completed at Wed Apr 30 08:46:24 EDT 2025 =====

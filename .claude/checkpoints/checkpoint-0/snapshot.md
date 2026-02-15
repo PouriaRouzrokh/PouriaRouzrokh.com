@@ -33,7 +33,7 @@ The site showcases research publications, portfolio projects, education, experie
 | Bot Protection | Google reCAPTCHA v3 |
 | Theming | next-themes 0.2.1 (dark/light) |
 | Deployment | Vercel |
-| Data Scripts | Python (scholarly library for Google Scholar) |
+| Data Scripts | Claude Code headless + Playwright MCP (Google Scholar) |
 
 ---
 
@@ -136,17 +136,14 @@ pouriarouzrokh.com/
 │   └── placeholder-profile.jpg
 │
 ├── utils/                            # Maintenance & data scripts
-│   ├── scholarly_data_fetcher.py     # Google Scholar data fetcher (Python)
+│   ├── update-research-prompt.md     # Headless prompt for research data update
+│   ├── update-research-cron.sh       # Cron wrapper (24h cooldown, logging)
+│   ├── setup-research-cron.sh        # One-time cron setup for VPS
 │   ├── validate_json.py
 │   ├── fix_json.py
 │   ├── collect_scripts.py
 │   ├── toggle-maintenance.js
 │   └── vercel-maintenance.mjs
-│
-├── deploy.sh                         # Deployment automation
-├── run_scholarly_update.sh           # Scheduled research data updates
-├── update_research_data.sh           # Manual research update
-├── git_update.sh                     # Git operations automation
 │
 ├── next.config.js                    # Cloudinary image domains, strict mode
 ├── tailwind.config.ts                # Custom theme, animations, dark mode
@@ -287,7 +284,7 @@ BlogPost { id, slug, title, date, summary, tags[], featuredImage, published,
 | **Upstash Redis** | Rate limiting | `UPSTASH_REDIS_REST_URL`, `UPSTASH_REDIS_REST_TOKEN` |
 | **Google reCAPTCHA v3** | Bot protection | `NEXT_PUBLIC_RECAPTCHA_SITE_KEY`, `RECAPTCHA_SECRET_KEY` |
 | **Vercel** | Hosting & deployment | `.vercel/project.json` |
-| **Google Scholar** (via Python) | Research publication data | `utils/scholarly_data_fetcher.py` |
+| **Google Scholar** (via Claude Code headless) | Research publication data | `utils/update-research-cron.sh` + Playwright MCP |
 
 ---
 
@@ -317,7 +314,7 @@ npm run toggle-maintenance  # Toggle maintenance mode
 
 - **Vercel Config**: Region `sfo1`, install with `--legacy-peer-deps`
 - **ISR**: Home (1hr), Blog posts (12hr), on-demand via `/api/revalidate`
-- **Shell scripts**: `deploy.sh`, `run_scholarly_update.sh`, `update_research_data.sh`, `git_update.sh`
+- **Research update**: `utils/update-research-cron.sh` (daily cron at 2:00 AM UTC)
 
 ---
 
@@ -337,12 +334,14 @@ npm run toggle-maintenance  # Toggle maintenance mode
 
 ### Research Data
 ```
-Google Scholar → scholarly_data_fetcher.py → research.json → data-fetching.ts → Components
+Google Scholar → Claude Code headless (Playwright MCP) → research.json → data-fetching.ts → Components
 ```
-- Python `scholarly` library fetches author metrics + publications
-- Generates article IDs (URL slug + MD5 hash)
-- Creates BibTeX entries
+- Claude Code runs headless via cron (daily 2:00 AM UTC on VPS)
+- Uses Playwright MCP to browse Google Scholar profile page like a real browser
+- Extracts author metrics, publications, and citation counts
+- Generates article IDs (URL slug + MD5 hash) and BibTeX entries
 - Output stored as `public/content/research.json`
+- Commits and pushes changes, then verifies Vercel deployment
 
 ### Blog Content
 ```
@@ -406,7 +405,7 @@ JSON files in public/content/ → data-fetching.ts → Server/Client Components
 - Responsive design across all breakpoints
 - Well-typed data models with TypeScript interfaces
 - Dual data-fetching strategy (server-side fs reads + client-side API)
-- Automated research data pipeline (Python + Google Scholar)
+- Automated research data pipeline (Claude Code headless + Playwright MCP, daily cron)
 - Maintenance mode system with polling
 
 ### Potential Improvements

@@ -7,7 +7,7 @@
 set -euo pipefail
 
 REPO_DIR="/home/pouria/projects/pouriarouzrokh.com"
-LOG_DIR="$HOME/logs/research-update"
+LOG_DIR="$REPO_DIR/logs"
 CRON_SCHEDULE="0 2 * * *"  # 2:00 AM UTC daily
 
 echo "=== Research Update Cron Setup ==="
@@ -67,7 +67,7 @@ echo ""
 # --- Install crontab entry ---
 echo "Installing crontab entry..."
 
-CRON_CMD="$CRON_SCHEDULE cd $REPO_DIR && bash utils/update-research-cron.sh >> $LOG_DIR/cron.log 2>&1"
+CRON_CMD="$CRON_SCHEDULE bash $REPO_DIR/utils/update-research-cron.sh >> $LOG_DIR/cron.log 2>&1"
 
 # Check if already installed
 if crontab -l 2>/dev/null | grep -qF "update-research-cron.sh"; then

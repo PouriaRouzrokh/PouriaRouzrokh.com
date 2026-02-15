@@ -52,7 +52,7 @@ src/
 public/content/             # JSON data files (profile, education, experience, etc.)
 public/content/portfolio/   # Individual portfolio project JSON files
 
-utils/                      # Python & JS maintenance/data scripts
+utils/                      # Maintenance/data scripts (JS + Claude Code headless)
 ```
 
 ## Architecture Patterns
@@ -97,8 +97,8 @@ Manually maintained JSON files in `public/content/`: `profile.json`, `education.
 ### Blog (Notion)
 Notion database → `@notionhq/client` → `notion-to-md` → `react-markdown` → UI. In-memory caching with configurable TTL. Revalidation via `/api/revalidate`.
 
-### Research Data (Python Pipeline)
-Google Scholar → `utils/scholarly_data_fetcher.py` → `public/content/research.json`. Shell scripts: `run_scholarly_update.sh`, `update_research_data.sh`.
+### Research Data (Claude Code Headless + Playwright)
+Google Scholar → Claude Code headless (Playwright MCP) → `public/content/research.json`. Runs daily at 2:00 AM UTC via cron on VPS. Scripts: `utils/update-research-cron.sh` (cron wrapper), `utils/update-research-prompt.md` (headless prompt), `utils/setup-research-cron.sh` (one-time setup).
 
 ## External Services
 

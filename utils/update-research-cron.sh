@@ -10,7 +10,7 @@ set -euo pipefail
 # --- Configuration ---
 REPO_DIR="/home/pouria/projects/pouriarouzrokh.com"
 LAST_RUN_FILE="$HOME/.scholarly-update-last-run"
-LOG_DIR="$HOME/logs/research-update"
+LOG_DIR="$REPO_DIR/logs"
 COOLDOWN_SECONDS=86400  # 24 hours
 
 # --- Setup ---
