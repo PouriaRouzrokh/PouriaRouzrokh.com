@@ -165,9 +165,9 @@ Build the updated JSON:
    - For any field where data is unavailable, use an empty string `""` (except `year` which should be `0` and `num_citations` which should be `0`)
 4. Sort all articles: by year descending first, then by num_citations descending as tiebreaker
 5. Update the top-level fields:
-   - `metrics`: use the values extracted in Step 2b
-   - `total_articles`: count of all articles
-   - `total_citations`: sum of all `num_citations`
+   - `metrics`: use the values extracted in Step 2b (directly from the Google Scholar profile sidebar)
+   - `total_articles`: count of all articles in the articles array
+   - `total_citations`: use `metrics.citations` (the "All" column total from the profile sidebar — do NOT sum individual article citations, as that inflates the count due to duplicates)
    - `total_articles_processed`: same as `total_articles`
    - `total_citations_processed`: same as `total_citations`
    - `fetched_at`: current UTC timestamp in format `"YYYY-MM-DD HH:MM:SS UTC"`
