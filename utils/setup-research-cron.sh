@@ -25,15 +25,6 @@ else
     exit 1
 fi
 
-# ANTHROPIC_API_KEY
-if [[ -n "${ANTHROPIC_API_KEY:-}" ]]; then
-    echo "  [OK] ANTHROPIC_API_KEY is set in current environment"
-else
-    echo "  [WARN] ANTHROPIC_API_KEY is not set in current shell."
-    echo "         Make sure it's exported in ~/.bashrc or ~/.profile so cron can access it."
-    echo "         Add this line: export ANTHROPIC_API_KEY='your-key-here'"
-fi
-
 # Repo directory
 if [[ -d "$REPO_DIR" ]]; then
     echo "  [OK] Repo directory exists: $REPO_DIR"
@@ -96,14 +87,6 @@ echo "Current crontab:"
 crontab -l 2>/dev/null | grep "update-research" || echo "  (none found — something went wrong)"
 echo ""
 
-# --- Run immediately ---
-echo "Running first update with --force..."
-echo "(This may take several minutes. Check logs at $LOG_DIR/)"
-echo ""
-
-bash "$REPO_DIR/utils/update-research-cron.sh" --force
-
-echo ""
 echo "=== Setup Complete ==="
 echo ""
 echo "Summary:"

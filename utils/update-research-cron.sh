@@ -46,18 +46,12 @@ log "Force mode: $FORCE"
 
 cd "$REPO_DIR"
 
-# Source environment for API key (cron doesn't load profile)
+# Source environment (cron doesn't load profile)
 if [[ -f "$HOME/.bashrc" ]]; then
     source "$HOME/.bashrc" 2>/dev/null || true
 fi
 if [[ -f "$HOME/.profile" ]]; then
     source "$HOME/.profile" 2>/dev/null || true
-fi
-
-# Verify API key is available
-if [[ -z "${ANTHROPIC_API_KEY:-}" ]]; then
-    log "ERROR: ANTHROPIC_API_KEY is not set. Add it to ~/.bashrc or ~/.profile."
-    exit 1
 fi
 
 # Pull latest changes before running
