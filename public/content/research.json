@@ -3,16 +3,16 @@
   "affiliation": "Assistant Professor, Department of Radiology, Mayo Clinic, MN, USA",
   "google_scholar_id": "Ksv9I0sAAAAJ",
   "metrics": {
-    "citations": 1776,
+    "citations": 1777,
     "h_index": 24,
     "i10_index": 42,
-    "cited_by_5_years": 1762
+    "cited_by_5_years": 1763
   },
   "total_articles": 84,
-  "total_citations": 1776,
+  "total_citations": 1777,
   "total_articles_processed": 84,
-  "total_citations_processed": 1776,
-  "fetched_at": "2026-02-17 07:05:13 UTC",
+  "total_citations_processed": 1777,
+  "fetched_at": "2026-02-19 07:05:23 UTC",
   "articles": [
     {
       "title": "Agentic AI in Radiology: Evolution from Large Language Models to Future Clinical Integration",
@@ -956,7 +956,7 @@
       "number": "Suppl 3",
       "pages": "51-55",
       "abstract": "Electronic health records (EHRs) have created great opportunities to collect various information from clinical patient encounters. However, most EHR data are stored in unstructured form (eg, clinical notes, surgical notes, and medication instructions), and researchers need data to be in computable form (structured) to extract meaningful relationships involving variables that can influence patient outcomes. Clinical natural language processing (NLP) is the field of extracting structured data from unstructured text documents in EHRs. Clinical text has several characteristics that mandate the use of special techniques to extract structured information from them compared with generic NLP methods. In this article, we define clinical NLP models, introduce different methods of information extraction from unstructured data using NLP, and describe the basic technical aspects of how deep learning-based NLP models work. We",
-      "num_citations": 17,
+      "num_citations": 18,
       "url": "https://journals.lww.com/jbjsjournal/fulltext/2022/10191/Getting_More_Out_of_Large_Databases_and_EHRs_with.12.aspx",
       "article_id": "getting-more-out-of-large-databases-and--249282b2",
       "bibtex": "@article{erickson2022getting,\n    author = {Bardia Khosravi and Pouria Rouzrokh and Bradley J Erickson},\n    title = {Getting more out of large databases and EHRs with natural language processing and artificial intelligence: the future is here},\n    year = {2022},\n    volume = {104},\n    number = {Suppl 3},\n    pages = {51-55},\n    note = {getting-more-out-of-large-databases-and--249282b2},\n    url = {https://journals.lww.com/jbjsjournal/fulltext/2022/10191/Getting\\_More\\_Out\\_of\\_Large\\_Databases\\_and\\_EHRs\\_with.12.aspx},\n    abstract = {Electronic health records (EHRs) have created great opportunities to collect various information from clinical patient encounters. However, most EHR data are stored in unstructured form (eg, clinical notes, surgical notes, and medication instructions), and researchers need data to be in computable form (structured) to extract meaningful relationships involving variables that can influence patient outcomes. Clinical natural language processing (NLP) is the field of extracting structured data from unstructured text documents in EHRs. Clinical text has several characteristics that mandate the use of special techniques to extract structured information from them compared with generic NLP methods. In this article, we define clinical NLP models, introduce different methods of information extraction from unstructured data using NLP, and describe the basic technical aspects of how deep learning-based NLP models work. We},\n}"
