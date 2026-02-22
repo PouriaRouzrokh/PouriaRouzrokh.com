@@ -2,7 +2,7 @@
 # update-research-cron.sh — Cron wrapper for Claude Code headless research updates
 #
 # Usage:
-#   bash utils/update-research-cron.sh          # Normal run (respects 24h cooldown)
+#   bash utils/update-research-cron.sh          # Normal run (respects 22h cooldown)
 #   bash utils/update-research-cron.sh --force  # Skip cooldown check
 
 set -euo pipefail
@@ -11,7 +11,7 @@ set -euo pipefail
 REPO_DIR="/home/pouria/projects/pouriarouzrokh.com"
 LAST_RUN_FILE="$HOME/.scholarly-update-last-run"
 LOG_DIR="$REPO_DIR/logs"
-COOLDOWN_SECONDS=86400  # 24 hours
+COOLDOWN_SECONDS=79200  # 22 hours — ensures daily 2AM cron always clears cooldown
 
 # --- Setup ---
 mkdir -p "$LOG_DIR"

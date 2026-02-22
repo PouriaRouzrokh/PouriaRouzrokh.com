@@ -103,13 +103,24 @@ Navigate to: `https://scholar.google.com/citations?user=Ksv9I0sAAAAJ&hl=en`
 
 Take a snapshot to see the page structure. If you see a CAPTCHA or "unusual traffic" message, **abort immediately** — do not modify any files and report the error.
 
-### 2b. Extract author metrics
+### 2b. Extract author metrics (via screenshot)
 
-From the profile page, extract:
-- Total citations (all time)
-- h-index
-- i10-index
-- Citations in the last 5 years (the "Since 20XX" column)
+**Important:** Google Scholar's metrics sidebar (`#gsc_rsb_st`) is NOT reliably captured by accessibility tree snapshots or DOM parsing. You MUST use screenshots to read these values.
+
+1. Use `browser_take_screenshot` to capture the full Google Scholar profile page
+2. Visually inspect the screenshot to find the **metrics table** on the right side of the profile — it contains rows for "Citations", "h-index", and "i10-index", each with an "All" column and a "Since 20XX" column
+3. Extract from the screenshot:
+   - Total citations — the "All" column value in the "Citations" row
+   - h-index — the "All" column value in the "h-index" row
+   - i10-index — the "All" column value in the "i10-index" row
+   - Citations in the last 5 years — the "Since 20XX" column value in the "Citations" row
+4. **Validation:** Compare extracted values against the previous values in `research.json`:
+   - If total citations is 0 or significantly lower than the previous value (more than 20% decrease), **abort immediately** — do not write bad data. Report the issue.
+   - If h-index or i10-index is 0, abort and report.
+   - Small increases or unchanged values are expected and acceptable.
+5. If the screenshot is unclear or metrics are not visible, take another screenshot at a different viewport size. If still unreadable, abort and report the issue.
+
+**Never rely on accessibility tree snapshots or DOM element text for metrics extraction — always use screenshots.**
 
 ### 2c. Load ALL publications
 
