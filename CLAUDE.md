@@ -98,7 +98,7 @@ Manually maintained JSON files in `public/content/`: `profile.json`, `education.
 Notion database → `@notionhq/client` → `notion-to-md` → `react-markdown` → UI. In-memory caching with configurable TTL. Revalidation via `/api/revalidate`.
 
 ### Research Data (Claude Code Headless + Playwright)
-Google Scholar → Claude Code headless (Playwright MCP) → `public/content/research.json`. Runs daily at 2:00 AM UTC via cron on VPS. Scripts: `utils/update-research-cron.sh` (cron wrapper), `utils/update-research-prompt.md` (headless prompt), `utils/setup-research-cron.sh` (one-time setup).
+Google Scholar → Claude Code headless (Playwright MCP screenshots) → `public/content/research.json`. Runs daily at 2:00 AM UTC via cron on VPS. Each run creates a per-job directory under `logs/run_YYYYMMDD_HHMMSS/` with screenshots and logs (7-day retention, gitignored). Scripts: `utils/update-research-cron.sh` (cron wrapper, `--force` schedules via `systemd-run`), `utils/update-research-prompt.md` (headless prompt, screenshot-only extraction), `utils/setup-research-cron.sh` (one-time setup).
 
 ## External Services
 

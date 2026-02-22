@@ -4,6 +4,25 @@ You are running as an automated headless agent. Your job is to update `public/co
 
 ---
 
+## Step 0 — Set Up Screenshot Directory
+
+Create a per-job screenshot directory for this run. Check if the environment variable `RESEARCH_JOB_DIR` is set:
+
+```bash
+echo "${RESEARCH_JOB_DIR:-}"
+```
+
+- If `RESEARCH_JOB_DIR` is set and non-empty, use it as the screenshot directory: `$RESEARCH_JOB_DIR`
+- If it is NOT set, create a fallback directory:
+  ```bash
+  mkdir -p logs/run_$(date +%Y%m%d_%H%M%S)
+  ```
+  Use that directory for all screenshots.
+
+All screenshots in subsequent steps must be saved into this directory with descriptive filenames.
+
+---
+
 ## Step 1 — Read Current State
 
 Read the file `public/content/research.json` and note:
@@ -95,32 +114,30 @@ For NEW articles, generate BibTeX following this exact format (matching existing
 
 ## Step 2 — Browse Google Scholar with Playwright
 
-Use the Playwright MCP browser tools for all web browsing.
+Use the Playwright MCP browser tools for all web browsing. Use **screenshots only** for data extraction — do NOT use `browser_evaluate` or JavaScript DOM queries.
 
 ### 2a. Navigate to the profile
 
 Navigate to: `https://scholar.google.com/citations?user=Ksv9I0sAAAAJ&hl=en`
 
-Take a snapshot to see the page structure. If you see a CAPTCHA or "unusual traffic" message, **abort immediately** — do not modify any files and report the error.
+Take a screenshot and save it to the screenshot directory as `01-profile.png`. If you see a CAPTCHA or "unusual traffic" message, **abort immediately** — do not modify any files and report the error.
 
 ### 2b. Extract author metrics (via screenshot)
 
-**Important:** Google Scholar's metrics sidebar (`#gsc_rsb_st`) is NOT reliably captured by accessibility tree snapshots or DOM parsing. You MUST use screenshots to read these values.
-
-1. Use `browser_take_screenshot` to capture the full Google Scholar profile page
-2. Visually inspect the screenshot to find the **metrics table** on the right side of the profile — it contains rows for "Citations", "h-index", and "i10-index", each with an "All" column and a "Since 20XX" column
-3. Extract from the screenshot:
-   - Total citations — the "All" column value in the "Citations" row
-   - h-index — the "All" column value in the "h-index" row
-   - i10-index — the "All" column value in the "i10-index" row
-   - Citations in the last 5 years — the "Since 20XX" column value in the "Citations" row
+1. Resize the browser to a wide viewport so the metrics sidebar is visible:
+   ```
+   browser_resize(width=1400, height=900)
+   ```
+2. Take a screenshot and save it to the screenshot directory as `02-metrics.png`
+3. Visually read the metrics table from the screenshot. Extract:
+   - **Citations** (All column) → `metrics.citations`
+   - **Citations** (Since 2021 column) → `metrics.cited_by_5_years`
+   - **h-index** (All column) → `metrics.h_index`
+   - **i10-index** (All column) → `metrics.i10_index`
 4. **Validation:** Compare extracted values against the previous values in `research.json`:
    - If total citations is 0 or significantly lower than the previous value (more than 20% decrease), **abort immediately** — do not write bad data. Report the issue.
    - If h-index or i10-index is 0, abort and report.
    - Small increases or unchanged values are expected and acceptable.
-5. If the screenshot is unclear or metrics are not visible, take another screenshot at a different viewport size. If still unreadable, abort and report the issue.
-
-**Never rely on accessibility tree snapshots or DOM element text for metrics extraction — always use screenshots.**
 
 ### 2c. Load ALL publications
 
@@ -128,14 +145,16 @@ The profile page initially shows only 20 publications. You must click the "Show 
 
 Keep clicking "Show more" until the button disappears or is no longer clickable. Then take a snapshot to confirm all publications are loaded.
 
-### 2d. Extract publication listing
+### 2d. Extract publication listing (via full-page screenshot)
 
-From the fully loaded publication list, extract for EACH publication:
-- Title
-- Authors (as shown — may be truncated with "...")
-- Venue/journal (the line below the authors)
-- Year
-- Citation count (the number in the rightmost column)
+After all articles are loaded (Show more is disabled/gone):
+
+1. Take a **full-page screenshot** and save it to the screenshot directory as `03-articles-full.png`
+2. Visually read each article row from the screenshot. For each article, extract:
+   - **Title** — the article title text
+   - **Citations** — the citation count number on the right
+   - **Year** — the year on the far right
+3. Note: Authors and venue are NOT needed from the listing page — only title, citations, and year are used for matching and updating existing articles.
 
 ---
 
@@ -158,6 +177,7 @@ Compare the extracted titles against the titles in the existing `research.json`:
   - Publisher
   - Description/abstract
   - URL (prefer non-Scholar links — look for "Article" or publisher links)
+- Take a screenshot of each new article's detail page and save it to the screenshot directory as `04-new-article-detail-N.png` (where N is 1, 2, 3, etc.)
 - After extracting details, navigate back to the profile page
 - If there are many new articles, handle them one at a time
 
@@ -219,8 +239,9 @@ If `git push` fails, report the error but do not retry.
 
 1. Wait 60 seconds for Vercel to deploy
 2. Use Playwright to navigate to `https://pouriarouzrokh.com/research`
-3. Take a snapshot and verify the page loads successfully and shows publications
-4. Report the final status: how many articles total, how many new articles added, and whether the deployment verification succeeded
+3. Take a screenshot and save it to the screenshot directory as `05-deployment.png`
+4. Verify the page loads successfully and shows publications
+5. Report the final status: how many articles total, how many new articles added, and whether the deployment verification succeeded
 
 ---
 
