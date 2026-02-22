@@ -8,11 +8,11 @@
     "i10_index": 42,
     "cited_by_5_years": 1778
   },
-  "total_articles": 84,
+  "total_articles": 85,
   "total_citations": 1792,
-  "total_articles_processed": 84,
+  "total_articles_processed": 85,
   "total_citations_processed": 1792,
-  "fetched_at": "2026-02-22 21:54:39 UTC",
+  "fetched_at": "2026-02-22 22:14:34 UTC",
   "articles": [
     {
       "title": "Agentic AI in Radiology: Evolution from Large Language Models to Future Clinical Integration",
@@ -585,6 +585,21 @@
       "url": "https://profiles.wustl.edu/en/publications/trainee-research-prizes-from-the-2023-rsna-scientific-assembly-an",
       "article_id": "trainee-research-prizes-from-the-2023-rs-4e423695",
       "bibtex": "@article{dong2024trainee,\n    author = {Berat Bersu Ozcan and Leyla Zeitouni and João Manoel Miranda Magalhaes Santos and Yuki Arita and Pouria Rouzrokh and Cristina Marrocchio and Ashwin Singh Parihar and Kamyar Moradi and Prabhvir S Marway and Ngoc Anh Tran and Burak B Ozkara and Emiliano Garza Frias and Heying Duan and Camilo A Calixto and Mahdie Hosseini and Jeannette R Wong-Siegel and Mangun Randhawa and Yulu Liu and Hau Wai Wong and Anika Walia and Nathan Sarkar and Nika Elmi and Daniel H Kim and Wei Chen and Dallin Judd and Shreyas Kulkarni and Abinaya Ramakrishnan and Tongtong Chen and Vandan Patel and Simone Kaltenhauser and Brittany Q Dang and Daniel Kwon and Alexis M Medema and Huiling Xiang and Joseph Bae and Yang Zhang and Logan Hubbard and Xiaorui Xiang and John Andrew Knopf and Suvrankar Datta and Shankar Kumar and Aditi Chaurasia and Alessandra de Pinho Pimenta Borges and Bryan Quah and Yifan Wang and Bingjie Zheng and Anika Dutta and Alexander Rau and Amar Prasad Gupta and Catherine Meyer and Bailey Lyttle and Vidya Sankar Viswanathan and Dan Bushe and Emily Koons and Joseph Lee and Jim Zhong and Huiming Dong},\n    title = {Trainee Research Prizes from the 2023 RSNA Scientific Assembly and Annual Meeting},\n    year = {2024},\n    journal = {Radiology},\n    volume = {310},\n    number = {2},\n    note = {trainee-research-prizes-from-the-2023-rs-4e423695},\n    url = {https://profiles.wustl.edu/en/publications/trainee-research-prizes-from-the-2023-rsna-scientific-assembly-an},\n    abstract = {Trainee Research Prizes from the 2023 RSNA Scientific Assembly and Annual Meeting - Research Profiles at Washington University School of Medicine Skip to main navigation Skip to search Skip to main content Research Profiles at Washington University School of Medicine Home Research Profiles at Washington University School of Medicine Logo Help FAQ Home Profiles Departments, Divisions and Centers Research output Search by expertise, name or affiliation Trainee Research Prizes from the 2023 RSNA Scientific Assembly and Annual Meeting Berat Bersu Ozcan, Leyla Zeitouni, João Manoel Miranda Magalhaes Santos, Yuki Arita, Pouria Rouzrokh, Cristina Marrocchio, Ashwin Singh Parihar, Kamyar Moradi, Prabhvir S. Marway, Ngoc Anh Tran, Burak B. Ozkara, Emiliano Garza Frias, Heying Duan, Camilo A. Calixto, Mahdie Hosseini, Jeannette R. Wong-Siegel, Mangun Randhawa, Yulu Liu, Hau Wai},\n}"
+    },
+    {
+      "title": "A guideline for tools to make medical imaging data ready for Artificial Intelligence applications: A Society of Imaging Informatics in Medicine (SIIM) survey",
+      "authors": "Sanaz Vahdati, Bardia Khosravi, Elham Mahmoudi, Kuan Zhang, Pouria Rouzrokh, Shahriar Faghani, Mana Moassefi, Aylin Tahmasebi, KP Andriole, P Chang, Keyvan Farahani, MG Flores, L Folio, S Houshmand, ML Giger, JW Gichoya, BJ Erickson",
+      "year": 2024,
+      "journal": "Journal of Imaging Informatics in Medicine",
+      "volume": "",
+      "number": "",
+      "pages": "1-10",
+      "publisher": "",
+      "abstract": "",
+      "num_citations": 0,
+      "url": "https://utsouthwestern.elsevierpure.com/en/publications/a-guideline-for-tools-to-make-medical-imaging-data-ready-for-arti/",
+      "article_id": "a-guideline-for-tools-to-make-medical-im-7b226ee1",
+      "bibtex": "@article{vahdati2024a,\n  author = {Sanaz Vahdati and Bardia Khosravi and Elham Mahmoudi and Kuan Zhang and Pouria Rouzrokh and Shahriar Faghani and Mana Moassefi and Aylin Tahmasebi and KP Andriole and P Chang and Keyvan Farahani and MG Flores and L Folio and S Houshmand and ML Giger and JW Gichoya and BJ Erickson},\n  title = {A guideline for tools to make medical imaging data ready for Artificial Intelligence applications: A Society of Imaging Informatics in Medicine (SIIM) survey},\n  journal = {Journal of Imaging Informatics in Medicine},\n  pages = {1-10},\n  year = {2024},\n  url = {https://utsouthwestern.elsevierpure.com/en/publications/a-guideline-for-tools-to-make-medical-imaging-data-ready-for-arti/}\n}"
     },
     {
       "title": "Quantifying uncertainty in deep learning of radiologic images",
