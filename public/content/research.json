@@ -3,16 +3,16 @@
   "affiliation": "Assistant Professor, Department of Radiology, Mayo Clinic, MN, USA",
   "google_scholar_id": "Ksv9I0sAAAAJ",
   "metrics": {
-    "citations": 1792,
+    "citations": 1797,
     "h_index": 24,
     "i10_index": 42,
-    "cited_by_5_years": 1778
+    "cited_by_5_years": 1783
   },
   "total_articles": 85,
-  "total_citations": 1792,
+  "total_citations": 1797,
   "total_articles_processed": 85,
-  "total_citations_processed": 1792,
-  "fetched_at": "2026-02-22 23:31:06 UTC",
+  "total_citations_processed": 1797,
+  "fetched_at": "2026-02-24 07:04:06 UTC",
   "articles": [
     {
       "title": "Agentic AI in Radiology: Evolution from Large Language Models to Future Clinical Integration",
@@ -70,6 +70,21 @@
       "bibtex": "@article{shariatnia2025lattereview,\n    author = {Pouria Rouzrokh and Moein Shariatnia},\n    title = {LatteReview: A Multi-Agent Framework for Systematic Review Automation Using Large Language Models},\n    year = {2025},\n    note = {lattereview-a-multi-agent-framework-for--41d9d912},\n    url = {https://arxiv.org/abs/2501.05468},\n    abstract = {Systematic literature reviews and meta-analyses are essential for synthesizing research insights, but they remain time-intensive and labor-intensive due to the iterative processes of screening, evaluation, and data extraction. This paper introduces and evaluates LatteReview, a Python-based framework that leverages large language models (LLMs) and multi-agent systems to automate key elements of the systematic review process. Designed to streamline workflows while maintaining rigor, LatteReview utilizes modular agents for tasks such as title and abstract screening, relevance scoring, and structured data extraction. These agents operate within orchestrated workflows, supporting sequential and parallel review rounds, dynamic decision-making, and iterative refinement based on user feedback. LatteReview's architecture integrates LLM providers, enabling compatibility with both cloud-based and locally hosted models. The framework supports features such as Retrieval-Augmented Generation (RAG) for incorporating external context, multimodal reviews, Pydantic-based validation for structured inputs and outputs, and asynchronous programming for handling large-scale datasets. The framework is available on the GitHub repository, with detailed documentation and an installable package.},\n}"
     },
     {
+      "title": "Uncover This Tech Term: Agentic Artificial Intelligence in Radiology",
+      "authors": "Shahriar Faghani, Mana Moassefi, Pouria Rouzrokh, Bardia Khosravi, Bradley J Erickson",
+      "year": 2025,
+      "journal": "Korean Journal of Radiology",
+      "volume": "26",
+      "number": "9",
+      "pages": "888",
+      "publisher": "",
+      "abstract": "Uncover This Tech Term: Agentic Artificial Intelligence in Radiology",
+      "num_citations": 6,
+      "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC12394819/",
+      "article_id": "uncover-this-tech-term-agentic-artificia-a596726a",
+      "bibtex": "@article{faghani2025uncover,\n  author = {Shahriar Faghani and Mana Moassefi and Pouria Rouzrokh and Bardia Khosravi and Bradley J Erickson},\n  title = {Uncover This Tech Term: Agentic Artificial Intelligence in Radiology},\n  journal = {Korean Journal of Radiology},\n  volume = {26},\n  number = {9},\n  pages = {888},\n  year = {2025},\n  url = {https://pmc.ncbi.nlm.nih.gov/articles/PMC12394819/}\n}"
+    },
+    {
       "title": "Physician-in-the-loop active learning in radiology artificial intelligence workflows: opportunities, challenges, and future directions",
       "authors": "Monica Luo, Fereshteh Yousefirizi, Pouria Rouzrokh, Weina Jin, Ian Alberts, Claire Gowdy, Yassine Bouchareb, Ghassan Hamarneh, Ivan Klyuzhin, Arman Rahmim",
       "year": 2025,
@@ -98,21 +113,6 @@
       "url": "https://ajronline.org/doi/abs/10.2214/AJR.25.33364",
       "article_id": "physician-in-the-loop-active-learning-in-radiology-artificial-intelligence-workflows",
       "bibtex": "@article{luo2025physician,\n  author = {Monica Luo and Fereshteh Yousefirizi and Pouria Rouzrokh and Weina Jin and Ian Alberts and Claire Gowdy and Yassine Bouchareb and Ghassan Hamarneh and Ivan Klyuzhin and Arman Rahmim},\n  title = {Physician-in-the-Loop Active Learning in Radiology Artificial Intelligence Workflows: Opportunities, Challenges, and Future Directions},\n  journal = {American Journal of Roentgenology},\n  year = {2025},\n  publisher = {American Roentgen Ray Society},\n  url = {https://ajronline.org/doi/abs/10.2214/AJR.25.33364}\n}"
-    },
-    {
-      "title": "Uncover This Tech Term: Agentic Artificial Intelligence in Radiology",
-      "authors": "Shahriar Faghani, Mana Moassefi, Pouria Rouzrokh, Bardia Khosravi, Bradley J Erickson",
-      "year": 2025,
-      "journal": "Korean Journal of Radiology",
-      "volume": "26",
-      "number": "9",
-      "pages": "888",
-      "publisher": "",
-      "abstract": "Uncover This Tech Term: Agentic Artificial Intelligence in Radiology",
-      "num_citations": 5,
-      "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC12394819/",
-      "article_id": "uncover-this-tech-term-agentic-artificia-a596726a",
-      "bibtex": "@article{faghani2025uncover,\n  author = {Shahriar Faghani and Mana Moassefi and Pouria Rouzrokh and Bardia Khosravi and Bradley J Erickson},\n  title = {Uncover This Tech Term: Agentic Artificial Intelligence in Radiology},\n  journal = {Korean Journal of Radiology},\n  volume = {26},\n  number = {9},\n  pages = {888},\n  year = {2025},\n  url = {https://pmc.ncbi.nlm.nih.gov/articles/PMC12394819/}\n}"
     },
     {
       "title": "TKA-AID: An uncertainty-aware deep learning classifier to identify total knee arthroplasty implants",
@@ -534,6 +534,21 @@
       "bibtex": "@article{wyles2024radrotator,\n    author = {Pouria Rouzrokh and Bardia Khosravi and Shahriar Faghani and Kellen L Mulford and Michael J Taunton and Bradley J Erickson and Cody C Wyles},\n    title = {RadRotator: 3D Rotation of Radiographs with Diffusion Models},\n    year = {2024},\n    journal = {arXiv preprint arXiv:2404.13000},\n    note = {radrotator-3d-rotation-of-radiographs-wi-e5612c1a},\n    url = {https://arxiv.org/abs/2404.13000},\n    abstract = {Transforming two-dimensional (2D) images into three-dimensional (3D) volumes is a well-known yet challenging problem for the computer vision community. In the medical domain, a few previous studies attempted to convert two or more input radiographs into computed tomography (CT) volumes. Following their effort, we introduce a diffusion model-based technology that can rotate the anatomical content of any input radiograph in 3D space, potentially enabling the visualization of the entire anatomical content of the radiograph from any viewpoint in 3D. Similar to previous studies, we used CT volumes to create Digitally Reconstructed Radiographs (DRRs) as the training data for our model. However, we addressed two significant limitations encountered in previous studies: 1. We utilized conditional diffusion models with classifier-free guidance instead of Generative Adversarial Networks (GANs) to achieve higher mode coverage and improved output image quality, with the only trade-off being slower inference time, which is often less critical in medical applications; and 2. We demonstrated that the unreliable output of style transfer deep learning (DL) models, such as Cycle-GAN, to transfer the style of actual radiographs to DRRs could be replaced with a simple yet effective training transformation that randomly changes the pixel intensity histograms of the input and ground-truth imaging data during training. This transformation makes the diffusion model agnostic to any distribution variations of the input data pixel intensity, enabling the reliable training of a DL model on input DRRs and applying the exact same model to conventional radiographs (or},\n}"
     },
     {
+      "title": "A guideline for tools to make medical imaging data ready for Artificial Intelligence applications: A Society of Imaging Informatics in Medicine (SIIM) survey",
+      "authors": "Sanaz Vahdati, Bardia Khosravi, Elham Mahmoudi, Kuan Zhang, Pouria Rouzrokh, Shahriar Faghani, Mana Moassefi, Aylin Tahmasebi, KP Andriole, P Chang, Keyvan Farahani, MG Flores, L Folio, S Houshmand, ML Giger, JW Gichoya, BJ Erickson",
+      "year": 2024,
+      "journal": "Journal of Imaging Informatics in Medicine",
+      "volume": "",
+      "number": "",
+      "pages": "1-10",
+      "publisher": "",
+      "abstract": "",
+      "num_citations": 1,
+      "url": "https://utsouthwestern.elsevierpure.com/en/publications/a-guideline-for-tools-to-make-medical-imaging-data-ready-for-arti/",
+      "article_id": "a-guideline-for-tools-to-make-medical-im-7b226ee1",
+      "bibtex": "@article{vahdati2024a,\n  author = {Sanaz Vahdati and Bardia Khosravi and Elham Mahmoudi and Kuan Zhang and Pouria Rouzrokh and Shahriar Faghani and Mana Moassefi and Aylin Tahmasebi and KP Andriole and P Chang and Keyvan Farahani and MG Flores and L Folio and S Houshmand and ML Giger and JW Gichoya and BJ Erickson},\n  title = {A guideline for tools to make medical imaging data ready for Artificial Intelligence applications: A Society of Imaging Informatics in Medicine (SIIM) survey},\n  journal = {Journal of Imaging Informatics in Medicine},\n  pages = {1-10},\n  year = {2024},\n  url = {https://utsouthwestern.elsevierpure.com/en/publications/a-guideline-for-tools-to-make-medical-imaging-data-ready-for-arti/}\n}"
+    },
+    {
       "title": "Impact of Leg Position on Measurements Used to Detect Femoral Component Subsidence in THA",
       "authors": "Elizabeth S Kaji, Austin F Grove, Eva Lehtonen, Kellen L Mulford, Pouria Rouzrokh, Charles P Hannon, Michael J Taunton, Cody C Wyles",
       "year": 2024,
@@ -587,21 +602,6 @@
       "bibtex": "@article{dong2024trainee,\n    author = {Berat Bersu Ozcan and Leyla Zeitouni and João Manoel Miranda Magalhaes Santos and Yuki Arita and Pouria Rouzrokh and Cristina Marrocchio and Ashwin Singh Parihar and Kamyar Moradi and Prabhvir S Marway and Ngoc Anh Tran and Burak B Ozkara and Emiliano Garza Frias and Heying Duan and Camilo A Calixto and Mahdie Hosseini and Jeannette R Wong-Siegel and Mangun Randhawa and Yulu Liu and Hau Wai Wong and Anika Walia and Nathan Sarkar and Nika Elmi and Daniel H Kim and Wei Chen and Dallin Judd and Shreyas Kulkarni and Abinaya Ramakrishnan and Tongtong Chen and Vandan Patel and Simone Kaltenhauser and Brittany Q Dang and Daniel Kwon and Alexis M Medema and Huiling Xiang and Joseph Bae and Yang Zhang and Logan Hubbard and Xiaorui Xiang and John Andrew Knopf and Suvrankar Datta and Shankar Kumar and Aditi Chaurasia and Alessandra de Pinho Pimenta Borges and Bryan Quah and Yifan Wang and Bingjie Zheng and Anika Dutta and Alexander Rau and Amar Prasad Gupta and Catherine Meyer and Bailey Lyttle and Vidya Sankar Viswanathan and Dan Bushe and Emily Koons and Joseph Lee and Jim Zhong and Huiming Dong},\n    title = {Trainee Research Prizes from the 2023 RSNA Scientific Assembly and Annual Meeting},\n    year = {2024},\n    journal = {Radiology},\n    volume = {310},\n    number = {2},\n    note = {trainee-research-prizes-from-the-2023-rs-4e423695},\n    url = {https://profiles.wustl.edu/en/publications/trainee-research-prizes-from-the-2023-rsna-scientific-assembly-an},\n    abstract = {Trainee Research Prizes from the 2023 RSNA Scientific Assembly and Annual Meeting - Research Profiles at Washington University School of Medicine Skip to main navigation Skip to search Skip to main content Research Profiles at Washington University School of Medicine Home Research Profiles at Washington University School of Medicine Logo Help FAQ Home Profiles Departments, Divisions and Centers Research output Search by expertise, name or affiliation Trainee Research Prizes from the 2023 RSNA Scientific Assembly and Annual Meeting Berat Bersu Ozcan, Leyla Zeitouni, João Manoel Miranda Magalhaes Santos, Yuki Arita, Pouria Rouzrokh, Cristina Marrocchio, Ashwin Singh Parihar, Kamyar Moradi, Prabhvir S. Marway, Ngoc Anh Tran, Burak B. Ozkara, Emiliano Garza Frias, Heying Duan, Camilo A. Calixto, Mahdie Hosseini, Jeannette R. Wong-Siegel, Mangun Randhawa, Yulu Liu, Hau Wai},\n}"
     },
     {
-      "title": "A guideline for tools to make medical imaging data ready for Artificial Intelligence applications: A Society of Imaging Informatics in Medicine (SIIM) survey",
-      "authors": "Sanaz Vahdati, Bardia Khosravi, Elham Mahmoudi, Kuan Zhang, Pouria Rouzrokh, Shahriar Faghani, Mana Moassefi, Aylin Tahmasebi, KP Andriole, P Chang, Keyvan Farahani, MG Flores, L Folio, S Houshmand, ML Giger, JW Gichoya, BJ Erickson",
-      "year": 2024,
-      "journal": "Journal of Imaging Informatics in Medicine",
-      "volume": "",
-      "number": "",
-      "pages": "1-10",
-      "publisher": "",
-      "abstract": "",
-      "num_citations": 0,
-      "url": "https://utsouthwestern.elsevierpure.com/en/publications/a-guideline-for-tools-to-make-medical-imaging-data-ready-for-arti/",
-      "article_id": "a-guideline-for-tools-to-make-medical-im-7b226ee1",
-      "bibtex": "@article{vahdati2024a,\n  author = {Sanaz Vahdati and Bardia Khosravi and Elham Mahmoudi and Kuan Zhang and Pouria Rouzrokh and Shahriar Faghani and Mana Moassefi and Aylin Tahmasebi and KP Andriole and P Chang and Keyvan Farahani and MG Flores and L Folio and S Houshmand and ML Giger and JW Gichoya and BJ Erickson},\n  title = {A guideline for tools to make medical imaging data ready for Artificial Intelligence applications: A Society of Imaging Informatics in Medicine (SIIM) survey},\n  journal = {Journal of Imaging Informatics in Medicine},\n  pages = {1-10},\n  year = {2024},\n  url = {https://utsouthwestern.elsevierpure.com/en/publications/a-guideline-for-tools-to-make-medical-imaging-data-ready-for-arti/}\n}"
-    },
-    {
       "title": "Quantifying uncertainty in deep learning of radiologic images",
       "authors": "Shahriar Faghani, Mana Moassefi, Pouria Rouzrokh, Bardia Khosravi, Francis I Baffour, Michael D Ringler, Bradley J Erickson",
       "year": 2023,
@@ -609,7 +609,7 @@
       "number": "2",
       "pages": "e222217",
       "abstract": "In recent years, deep learning (DL) has shown impressive performance in radiologic image analysis. However, for a DL model to be useful in a real-world setting, its confidence in a prediction must also be known. Each DL models output has an estimated probability, and these estimated probabilities are not always reliable. Uncertainty represents the trustworthiness (validity) of estimated probabilities. The higher the uncertainty, the lower the validity. Uncertainty quantification (UQ) methods determine the uncertainty level of each prediction. Predictions made without UQ methods are generally not trustworthy. By implementing UQ in medical DL models, users can be alerted when a model does not have enough information to make a confident decision. Consequently, a medical expert could reevaluate the",
-      "num_citations": 92,
+      "num_citations": 93,
       "url": "https://pubs.rsna.org/doi/abs/10.1148/radiol.222217",
       "article_id": "quantifying-uncertainty-in-deep-learning-4db78810",
       "bibtex": "@article{erickson2023quantifying,\n    author = {Shahriar Faghani and Mana Moassefi and Pouria Rouzrokh and Bardia Khosravi and Francis I Baffour and Michael D Ringler and Bradley J Erickson},\n    title = {Quantifying uncertainty in deep learning of radiologic images},\n    year = {2023},\n    volume = {308},\n    number = {2},\n    pages = {e222217},\n    note = {quantifying-uncertainty-in-deep-learning-4db78810},\n    url = {https://pubs.rsna.org/doi/abs/10.1148/radiol.222217},\n    abstract = {In recent years, deep learning (DL) has shown impressive performance in radiologic image analysis. However, for a DL model to be useful in a real-world setting, its confidence in a prediction must also be known. Each DL models output has an estimated probability, and these estimated probabilities are not always reliable. Uncertainty represents the trustworthiness (validity) of estimated probabilities. The higher the uncertainty, the lower the validity. Uncertainty quantification (UQ) methods determine the uncertainty level of each prediction. Predictions made without UQ methods are generally not trustworthy. By implementing UQ in medical DL models, users can be alerted when a model does not have enough information to make a confident decision. Consequently, a medical expert could reevaluate the},\n}"
@@ -824,7 +824,7 @@
       "number": "2",
       "pages": "905-919",
       "abstract": "There is a growing demand for high-resolution (HR) medical images for both clinical and research applications. Image quality is inevitably traded off with acquisition time, which in turn impacts patient comfort, examination costs, dose, and motion-induced artifacts. For many image-based tasks, increasing the apparent spatial resolution in the perpendicular plane to produce multi-planar reformats or 3D images is commonly used. Single-image super-resolution (SR) is a promising technique to provide HR images based on deep learning to increase the resolution of a 2D image, but there are few reports on 3D SR. Further, perceptual loss is proposed in the literature to better capture the textural details and edges versus pixel-wise loss functions, by comparing the semantic distances in the high-dimensional feature space of a pre-trained 2D network (e.g., VGG). However, it is not clear how one should generalize it to 3D medical images, and the attendant implications are unclear. In this paper, we propose a framework called SOUP-GAN: Super-resolution Optimized Using Perceptual-tuned Generative Adversarial Network (GAN), in order to produce thinner slices (e.g., higher resolution in the Z plane) with anti-aliasing and deblurring. The proposed method outperforms other conventional resolution-enhancement methods and previous SR work on medical images based on both qualitative and quantitative comparisons. Moreover, we examine the model in terms of its generalization for arbitrarily user-selected SR ratios and imaging modalities. Our model shows promise as a novel 3D SR interpolation technique, providing potential applications for both",
-      "num_citations": 119,
+      "num_citations": 120,
       "url": "https://www.mdpi.com/2379-139X/8/2/73",
       "article_id": "soup-gan-super-resolution-mri-using-gene-d8f785c9",
       "bibtex": "@article{erickson2022soupgan,\n    author = {Kuan Zhang and Haoji Hu and Kenneth Philbrick and Gian Marco Conte and Joseph D Sobek and Pouria Rouzrokh and Bradley J Erickson},\n    title = {SOUP-GAN: Super-resolution MRI using generative adversarial networks},\n    year = {2022},\n    journal = {Tomography},\n    volume = {8},\n    number = {2},\n    pages = {905-919},\n    note = {soup-gan-super-resolution-mri-using-gene-d8f785c9},\n    url = {https://www.mdpi.com/2379-139X/8/2/73},\n    abstract = {There is a growing demand for high-resolution (HR) medical images for both clinical and research applications. Image quality is inevitably traded off with acquisition time, which in turn impacts patient comfort, examination costs, dose, and motion-induced artifacts. For many image-based tasks, increasing the apparent spatial resolution in the perpendicular plane to produce multi-planar reformats or 3D images is commonly used. Single-image super-resolution (SR) is a promising technique to provide HR images based on deep learning to increase the resolution of a 2D image, but there are few reports on 3D SR. Further, perceptual loss is proposed in the literature to better capture the textural details and edges versus pixel-wise loss functions, by comparing the semantic distances in the high-dimensional feature space of a pre-trained 2D network (e.g., VGG). However, it is not clear how one should generalize it to 3D medical images, and the attendant implications are unclear. In this paper, we propose a framework called SOUP-GAN: Super-resolution Optimized Using Perceptual-tuned Generative Adversarial Network (GAN), in order to produce thinner slices (e.g., higher resolution in the Z plane) with anti-aliasing and deblurring. The proposed method outperforms other conventional resolution-enhancement methods and previous SR work on medical images based on both qualitative and quantitative comparisons. Moreover, we examine the model in terms of its generalization for arbitrarily user-selected SR ratios and imaging modalities. Our model shows promise as a novel 3D SR interpolation technique, providing potential applications for both},\n}"
@@ -1129,7 +1129,7 @@
       "authors": "Sara Momtazmanesh, Farzaneh Rahmani, Farnaz Delavari, Zahra Vahed, Saleheh Ebadirad, Mahsa KeshavarzFath, László Rosivall, Hans Ochs, Nima Rezaei",
       "year": 2020,
       "abstract": "Here in the Universal Scientific Education and Research Network (USERN), we relate to the former school, introducing the \"U100\", a collaborative USERN 2 Acta Medica Iranica, Vol. 58, No. 1 (2020) platform for research among at least 100 scientific centers around the glob",
-      "num_citations": 5,
+      "num_citations": 6,
       "url": "http://ir.nuozu.edu.ua:8080/bitstream/lib/2601/1/USERN_%D1%81%D1%82%D0%B0%D1%82%D1%82%D1%8F.pdf",
       "article_id": "u100-an-innovative-usern-platform-for-ed-d4d578c1",
       "bibtex": "@article{rezaei2020u100,\n    author = {Sara Momtazmanesh and Farzaneh Rahmani and Farnaz Delavari and Zahra Vahed and Saleheh Ebadirad and Mahsa KeshavarzFath and László Rosivall and Hans Ochs and Nima Rezaei},\n    title = {U100: an innovative USERN platform for education and research without borders},\n    year = {2020},\n    note = {u100-an-innovative-usern-platform-for-ed-d4d578c1},\n    url = {http://ir.nuozu.edu.ua:8080/bitstream/lib/2601/1/USERN\\_\\%D1\\%81\\%D1\\%82\\%D0\\%B0\\%D1\\%82\\%D1\\%82\\%D1\\%8F.pdf},\n    abstract = {Here in the Universal Scientific Education and Research Network (USERN), we relate to the former school, introducing the \"U100\", a collaborative USERN 2 Acta Medica Iranica, Vol. 58, No. 1 (2020) platform for research among at least 100 scientific centers around the glob},\n}"
