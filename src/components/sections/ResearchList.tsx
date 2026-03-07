@@ -184,7 +184,19 @@ export function ResearchList() {
     <div className="container mx-auto py-12">
       <SectionHeading
         title="Research"
-        subtitle="Academic publications and citations"
+        subtitle={
+          <>
+            Academic publications and citations{" "}
+            <a
+              href="https://scholar.google.com/citations?user=Ksv9I0sAAAAJ&hl=en"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-primary hover:underline"
+            >
+              (Google Scholar)
+            </a>
+          </>
+        }
         className="mb-8"
       />
 
