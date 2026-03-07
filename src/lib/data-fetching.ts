@@ -127,7 +127,9 @@ export async function getExperience(): Promise<ExperienceItem[]> {
     experienceData.positions &&
     Array.isArray(experienceData.positions)
   ) {
-    return experienceData.positions.map(
+    return experienceData.positions.filter(
+      (position: { hidden?: boolean }) => !position.hidden
+    ).map(
       (position: {
         title: string;
         organization: string;
