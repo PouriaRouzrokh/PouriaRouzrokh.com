@@ -182,23 +182,29 @@ export function ResearchList() {
 
   return (
     <div className="container mx-auto py-12">
-      <SectionHeading
-        title="Research"
-        subtitle={
-          <>
-            Academic publications and citations{" "}
-            <a
-              href="https://scholar.google.com/citations?user=Ksv9I0sAAAAJ&hl=en"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="text-primary hover:underline"
-            >
-              (Google Scholar)
-            </a>
-          </>
-        }
-        className="mb-8"
-      />
+      <div className="mb-8">
+        <SectionHeading
+          title="Research"
+          subtitle="Academic publications and citations"
+          className="mb-2"
+        />
+        <a
+          href="https://scholar.google.com/citations?user=Ksv9I0sAAAAJ&hl=en"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="inline-flex items-center gap-1.5 rounded-full border border-border bg-muted/50 px-3 py-1 text-xs text-muted-foreground hover:bg-muted hover:text-foreground transition-colors"
+        >
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            viewBox="0 0 24 24"
+            fill="currentColor"
+            className="w-3.5 h-3.5"
+          >
+            <path d="M5.242 13.769 0 9.5 12 0l12 9.5-5.242 4.269C17.548 11.249 14.978 9.5 12 9.5c-2.977 0-5.548 1.748-6.758 4.269zM12 10a7 7 0 1 0 0 14 7 7 0 0 0 0-14z" />
+          </svg>
+          Google Scholar Profile
+        </a>
+      </div>
 
       {researchData && (
         <>
