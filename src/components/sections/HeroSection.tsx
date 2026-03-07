@@ -43,7 +43,7 @@ export default function HeroSection({ profileData }: HeroSectionProps) {
     <section className="relative py-16 md:py-24">
       {/* SVG Background */}
       <div className="absolute inset-0 z-0 overflow-hidden hidden md:block">
-        <HeroBackground className="w-full h-full opacity-20 dark:opacity-30" />
+        <HeroBackground className="w-full h-full opacity-20 dark:opacity-20" />
       </div>
 
       <div className="relative z-10 grid md:grid-cols-2 gap-8 items-center">
