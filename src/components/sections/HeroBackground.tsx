@@ -98,20 +98,20 @@ export default function HeroBackground({ className }: HeroBackgroundProps) {
         <line x1="480" y1="350" x2="650" y2="300" opacity="0.15" />
       </g>
 
-      {/* Animated data flow paths */}
+      {/* Animated data flow paths — follow static line segments exactly */}
       <g stroke="url(#hero-grad)" fill="none" strokeWidth="1.5">
         <path
-          d="M 620 120 Q 700 200 780 280 Q 850 320 920 420"
+          d="M 620 120 L 680 180 L 780 280 L 880 350 L 920 420"
           opacity="0.6"
           className="svg-dash"
         />
         <path
-          d="M 920 100 Q 960 140 1000 180 Q 1040 230 1080 280"
+          d="M 920 100 L 1000 180 L 1080 280"
           opacity="0.5"
           className="svg-dash svg-dash-d1"
         />
         <path
-          d="M 780 280 Q 830 310 880 350 Q 900 380 920 420 Q 980 440 1040 460"
+          d="M 780 280 L 880 350 L 920 420 L 1040 460"
           opacity="0.5"
           className="svg-dash svg-dash-d2"
         />
