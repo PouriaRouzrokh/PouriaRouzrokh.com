@@ -31,7 +31,7 @@ export default function EducationSection({
               <div className="flex flex-col md:flex-row md:justify-between md:items-start gap-2">
                 <div className="flex items-center gap-3">
                   {item.logoUrl && (
-                    <div className="relative h-12 w-12 shrink-0 rounded-full overflow-hidden border bg-background">
+                    <div className="relative h-12 w-12 shrink-0 rounded-full overflow-hidden border bg-white">
                       <Image
                         src={item.logoUrl}
                         alt={`${item.institution} logo`}
