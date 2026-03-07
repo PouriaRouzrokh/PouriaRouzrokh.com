@@ -42,7 +42,7 @@ export default function HeroSection({ profileData }: HeroSectionProps) {
   return (
     <section className="relative overflow-hidden py-16 md:py-24">
       {/* SVG Background */}
-      <HeroBackground className="absolute inset-0 z-0 w-full h-full opacity-[0.07] dark:opacity-[0.12] hidden md:block" />
+      <HeroBackground className="absolute inset-0 z-0 w-full h-full opacity-30 dark:opacity-40 hidden md:block" />
 
       <div className="relative z-10 grid md:grid-cols-2 gap-8 items-center">
         <div className="space-y-5">
@@ -98,7 +98,7 @@ export default function HeroSection({ profileData }: HeroSectionProps) {
         </div>
 
         <div className="flex justify-center md:justify-end">
-          <div className="relative w-64 h-64 md:w-96 md:h-96 rounded-full overflow-hidden bg-muted ring-1 ring-border shadow-lg opacity-0 animate-scale-in [animation-delay:200ms]">
+          <div className="relative w-64 h-64 md:w-96 md:h-96 rounded-full overflow-hidden bg-muted shadow-lg opacity-0 animate-scale-in [animation-delay:200ms]">
             {!imgError ? (
               <Image
                 src={imgSrc}
