@@ -29,7 +29,7 @@ export async function GET() {
       // Check if the data has a positions array and use it
       if (jsonData && jsonData.positions && Array.isArray(jsonData.positions)) {
         // Map the positions data to match the expected ExperienceItem format
-        data = jsonData.positions.filter((position: RawPosition) => !position.hidden).map((position: RawPosition) => {
+        data = jsonData.positions.map((position: RawPosition) => {
           return {
             role: position.title,
             organization: position.organization,
