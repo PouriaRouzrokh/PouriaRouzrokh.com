@@ -3,16 +3,16 @@
   "affiliation": "Assistant Professor, Department of Radiology, Mayo Clinic, MN, USA",
   "google_scholar_id": "Ksv9I0sAAAAJ",
   "metrics": {
-    "citations": 1838,
+    "citations": 1846,
     "h_index": 25,
     "i10_index": 42,
-    "cited_by_5_years": 1824
+    "cited_by_5_years": 1832
   },
   "total_articles": 83,
-  "total_citations": 1838,
+  "total_citations": 1846,
   "total_articles_processed": 83,
-  "total_citations_processed": 1838,
-  "fetched_at": "2026-03-13 06:04:33 UTC",
+  "total_citations_processed": 1846,
+  "fetched_at": "2026-03-14 06:04:02 UTC",
   "articles": [
     {
       "title": "Agentic AI in Radiology: Evolution from Large Language Models to Future Clinical Integration",
@@ -332,7 +332,7 @@
       "volume": "29",
       "pages": "101503",
       "abstract": "BackgroundDiscrepancies in medical data sets can perpetuate bias, especially when training deep learning models, potentially leading to biased outcomes in clinical applications. Understanding these biases is crucial for the development of equitable healthcare technologies. This study employs generative deep learning technology to explore and understand radiographic differences based on race among patients undergoing total hip arthroplasty.MethodsUtilizing a large institutional registry, we retrospectively analyzed pelvic radiographs from total hip arthroplasty patients, characterized by demographics and image features. Denoising diffusion probabilistic models generated radiographs conditioned on demographic and imaging characteristics. Fréchet Inception Distance assessed the generated image quality, showing the diversity and realism of the generated images. Sixty transition videos were generated that",
-      "num_citations": 12,
+      "num_citations": 13,
       "url": "https://www.sciencedirect.com/science/article/pii/S2352344124001882",
       "article_id": "analyzing-racial-differences-in-imaging--d81d4389",
       "bibtex": "@article{wyles2024analyzing,\n    author = {Bardia Khosravi and Pouria Rouzrokh and Bradley J Erickson and Hillary W Garner and Doris E Wenger and Michael J Taunton and Cody C Wyles},\n    title = {Analyzing Racial Differences in Imaging Joint Replacement Registries Using Generative Artificial Intelligence: Advancing Orthopaedic Data Equity},\n    year = {2024},\n    journal = {Arthroplasty Today},\n    volume = {29},\n    pages = {101503},\n    note = {analyzing-racial-differences-in-imaging--d81d4389},\n    url = {https://www.sciencedirect.com/science/article/pii/S2352344124001882},\n    abstract = {BackgroundDiscrepancies in medical data sets can perpetuate bias, especially when training deep learning models, potentially leading to biased outcomes in clinical applications. Understanding these biases is crucial for the development of equitable healthcare technologies. This study employs generative deep learning technology to explore and understand radiographic differences based on race among patients undergoing total hip arthroplasty.MethodsUtilizing a large institutional registry, we retrospectively analyzed pelvic radiographs from total hip arthroplasty patients, characterized by demographics and image features. Denoising diffusion probabilistic models generated radiographs conditioned on demographic and imaging characteristics. Fréchet Inception Distance assessed the generated image quality, showing the diversity and realism of the generated images. Sixty transition videos were generated that},\n}"
@@ -626,7 +626,7 @@
       "number": "7",
       "pages": "S2-S10",
       "abstract": "Many risk factors have been described for periprosthetic femur fracture (PPFFx) following total hip arthroplasty (THA), yet a patient-specific risk assessment tool remains elusive. The purpose of this study was to develop a high-dimensional, patient-specific risk-stratification nomogram that allows dynamic risk modification based on operative decisions.We evaluated 16,696 primary nononcologic THAs performed between 1998 and 2018. During a mean 6-year follow-up, 558 patients (3.3) sustained a PPFFx. Patients were characterized by individual natural language processing-assisted chart review on nonmodifiable factors (demographics, THA indication, and comorbidities), and modifiable operative decisions (femoral fixation cementeduncemented, surgical approach direct anterior, lateral, and posterior, and implant type collaredcollarless). Multivariable Cox regression models and",
-      "num_citations": 26,
+      "num_citations": 27,
       "url": "https://www.sciencedirect.com/science/article/pii/S0883540323002449",
       "article_id": "frank-stinchfield-award-creation-of-a-pa-858fc634",
       "bibtex": "@article{abdel2023frank,\n    author = {Cody C Wyles and Hilal Maradit-Kremers and Kristin M Fruth and Dirk R Larson and Bardia Khosravi and Pouria Rouzrokh and Quinn J Johnson and Daniel J Berry and Rafael J Sierra and Michael J Taunton and Matthew P Abdel},\n    title = {Frank stinchfield award: creation of a patient-specific total hip arthroplasty periprosthetic fracture risk calculator},\n    year = {2023},\n    journal = {The Journal of arthroplasty},\n    volume = {38},\n    number = {7},\n    pages = {S2-S10},\n    note = {frank-stinchfield-award-creation-of-a-pa-858fc634},\n    url = {https://www.sciencedirect.com/science/article/pii/S0883540323002449},\n    abstract = {Many risk factors have been described for periprosthetic femur fracture (PPFFx) following total hip arthroplasty (THA), yet a patient-specific risk assessment tool remains elusive. The purpose of this study was to develop a high-dimensional, patient-specific risk-stratification nomogram that allows dynamic risk modification based on operative decisions.We evaluated 16,696 primary nononcologic THAs performed between 1998 and 2018. During a mean 6-year follow-up, 558 patients (3.3) sustained a PPFFx. Patients were characterized by individual natural language processing-assisted chart review on nonmodifiable factors (demographics, THA indication, and comorbidities), and modifiable operative decisions (femoral fixation cementeduncemented, surgical approach direct anterior, lateral, and posterior, and implant type collaredcollarless). Multivariable Cox regression models and},\n}"
@@ -772,7 +772,7 @@
       "number": "5",
       "pages": "e210290",
       "abstract": "Minimizing bias is critical to adoption and implementation of machine learning (ML) in clinical practice. Systematic mathematical biases produce consistent and reproducible differences between the observed and expected performance of ML systems, resulting in suboptimal performance. Such biases can be traced back to various phases of ML development: data handling, model development, and performance evaluation. This report presents 12 suboptimal practices during data handling of an ML study, explains how those practices can lead to biases, and describes what may be done to mitigate them. Authors employ an arbitrary and simplified framework that splits ML data handling into four steps: data collection, data investigation, data splitting, and feature engineering. Examples from the available",
-      "num_citations": 150,
+      "num_citations": 152,
       "url": "https://pubs.rsna.org/doi/abs/10.1148/ryai.210290",
       "article_id": "mitigating-bias-in-radiology-machine-lea-0aea1c69",
       "bibtex": "@article{erickson2022mitigating,\n    author = {Pouria Rouzrokh and Bardia Khosravi and Shahriar Faghani and Mana Moassefi and Diana V Vera Garcia and Yashbir Singh and Kuan Zhang and Gian Marco Conte and Bradley J Erickson},\n    title = {Mitigating bias in radiology machine learning: 1. Data handling},\n    year = {2022},\n    journal = {Radiology: Artificial Intelligence},\n    volume = {4},\n    number = {5},\n    pages = {e210290},\n    note = {mitigating-bias-in-radiology-machine-lea-0aea1c69},\n    url = {https://pubs.rsna.org/doi/abs/10.1148/ryai.210290},\n    abstract = {Minimizing bias is critical to adoption and implementation of machine learning (ML) in clinical practice. Systematic mathematical biases produce consistent and reproducible differences between the observed and expected performance of ML systems, resulting in suboptimal performance. Such biases can be traced back to various phases of ML development: data handling, model development, and performance evaluation. This report presents 12 suboptimal practices during data handling of an ML study, explains how those practices can lead to biases, and describes what may be done to mitigate them. Authors employ an arbitrary and simplified framework that splits ML data handling into four steps: data collection, data investigation, data splitting, and feature engineering. Examples from the available},\n}"
@@ -800,7 +800,7 @@
       "number": "5",
       "pages": "e220061",
       "abstract": "The increasing use of machine learning (ML) algorithms in clinical settings raises concerns about bias in ML models. Bias can arise at any step of ML creation, including data handling, model development, and performance evaluation. Potential biases in the ML model can be minimized by implementing these steps correctly. This report focuses on performance evaluation and discusses model fitness, as well as a set of performance evaluation toolboxes: namely, performance metrics, performance interpretation maps, and uncertainty quantification. By discussing the strengths and limitations of each toolbox, our report highlights strategies and considerations to mitigate and detect biases during performance evaluations of radiology artificial intelligence models.Keywords: Segmentation, Diagnosis",
-      "num_citations": 105,
+      "num_citations": 107,
       "url": "https://pubs.rsna.org/doi/abs/10.1148/ryai.220061",
       "article_id": "mitigating-bias-in-radiology-machine-lea-39a11210",
       "bibtex": "@article{erickson2022mitigating,\n    author = {Shahriar Faghani and Bardia Khosravi and Kuan Zhang and Mana Moassefi and Jaidip Manikrao Jagtap and Fred Nugen and Sanaz Vahdati and Shiba P Kuanar and Seyed Moein Rassoulinejad-Mousavi and Yashbir Singh and Diana V Vera Garcia and Pouria Rouzrokh and Bradley J Erickson},\n    title = {Mitigating bias in radiology machine learning: 3. Performance metrics},\n    year = {2022},\n    journal = {Radiology: Artificial Intelligence},\n    volume = {4},\n    number = {5},\n    pages = {e220061},\n    note = {mitigating-bias-in-radiology-machine-lea-39a11210},\n    url = {https://pubs.rsna.org/doi/abs/10.1148/ryai.220061},\n    abstract = {The increasing use of machine learning (ML) algorithms in clinical settings raises concerns about bias in ML models. Bias can arise at any step of ML creation, including data handling, model development, and performance evaluation. Potential biases in the ML model can be minimized by implementing these steps correctly. This report focuses on performance evaluation and discusses model fitness, as well as a set of performance evaluation toolboxes: namely, performance metrics, performance interpretation maps, and uncertainty quantification. By discussing the strengths and limitations of each toolbox, our report highlights strategies and considerations to mitigate and detect biases during performance evaluations of radiology artificial intelligence models.Keywords: Segmentation, Diagnosis},\n}"
@@ -813,7 +813,7 @@
       "number": "5",
       "pages": "e220010",
       "abstract": "There are increasing concerns about the bias and fairness of artificial intelligence (AI) models as they are put into clinical practice. Among the steps for implementing machine learning tools into clinical workflow, model development is an important stage where different types of biases can occur. This report focuses on four aspects of model development where such bias may arise: data augmentation, model and loss function, optimizers, and transfer learning. This report emphasizes appropriate considerations and practices that can mitigate biases in radiology AI studies.Keywords: Model, Bias, Machine Learning, Deep Learning, Radiology RSNA, 2022",
-      "num_citations": 93,
+      "num_citations": 94,
       "url": "https://pubs.rsna.org/doi/abs/10.1148/ryai.220010",
       "article_id": "mitigating-bias-in-radiology-machine-lea-b5dd976c",
       "bibtex": "@article{erickson2022mitigating,\n    author = {Kuan Zhang and Bardia Khosravi and Sanaz Vahdati and Shahriar Faghani and Fred Nugen and Seyed Moein Rassoulinejad-Mousavi and Mana Moassefi and Jaidip Manikrao M Jagtap and Yashbir Singh and Pouria Rouzrokh and Bradley J Erickson},\n    title = {Mitigating bias in radiology machine learning: 2. Model development},\n    year = {2022},\n    volume = {4},\n    number = {5},\n    pages = {e220010},\n    note = {mitigating-bias-in-radiology-machine-lea-b5dd976c},\n    url = {https://pubs.rsna.org/doi/abs/10.1148/ryai.220010},\n    abstract = {There are increasing concerns about the bias and fairness of artificial intelligence (AI) models as they are put into clinical practice. Among the steps for implementing machine learning tools into clinical workflow, model development is an important stage where different types of biases can occur. This report focuses on four aspects of model development where such bias may arise: data augmentation, model and loss function, optimizers, and transfer learning. This report emphasizes appropriate considerations and practices that can mitigate biases in radiology AI studies.Keywords: Model, Bias, Machine Learning, Deep Learning, Radiology RSNA, 2022},\n}"
@@ -900,6 +900,18 @@
       "bibtex": "@article{berry2022redefining,\n    author = {Mario Hevesi and Cody C Wyles and Pouria Rouzrokh and Bradley J Erickson and Hilal Maradit-Kremers and David G Lewallen and Michael J Taunton and Robert T Trousdale and Daniel J Berry},\n    title = {Redefining the 3D topography of the acetabular safe zone: a multivariable study evaluating prosthetic hip stability},\n    year = {2022},\n    journal = {JBJS},\n    volume = {104},\n    number = {3},\n    pages = {239-245},\n    note = {redefining-the-3d-topography-of-the-acet-84c74909},\n    url = {https://journals.lww.com/jbjsjournal/fulltext/2022/02020/redefining\\_the\\_3d\\_topography\\_of\\_the\\_acetabular.6.aspx},\n    abstract = {Background:Dislocation is the most common reason for early revision following total hip arthroplasty (THA). More than 40 years ago, Lewinnek et al. proposed an acetabular safe zone to avoid dislocation. While novel at the time, their study was substantially limited according to modern standards. The purpose of this study was to determine optimal acetabular cup positioning during THA as well as the effect of surgical approach on the topography of the acetabular safe zone and the hazard of dislocation.Methods:Primary THAs that had been performed at a single institution from 2000 to 2017 were reviewed. Acetabular inclination and anteversion were measured using an artificial intelligence neural network; they were validated with performance testing and comparison with blinded grading by 2 orthopaedic surgeons. Patient demographics and dislocation were noted during follow-up. Multivariable Cox proportional},\n}"
     },
     {
+      "title": "Diagnostic performance of clinical examination versus ultrasonography in the detection of developmental dysplasia of hip: A systematic review and meta-analysis",
+      "authors": "Mohammadreza Chavoshi, Ghazaleh Soltani, Shekoufe Shafiei Zargar, Cody Clayton Wyles, Hilal Maradit Kremers, Pouria Rouzrokh",
+      "year": 2022,
+      "volume": "10",
+      "number": "5",
+      "pages": "403",
+      "num_citations": 25,
+      "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC9194706/",
+      "article_id": "diagnostic-performance-of-clinical-exami-006d2a9f",
+      "bibtex": "@article{rouzrokh2022diagnostic,\n    author = {Mohammadreza Chavoshi and Ghazaleh Soltani and Shekoufe Shafiei Zargar and Cody Clayton Wyles and Hilal Maradit Kremers and Pouria Rouzrokh},\n    title = {Diagnostic performance of clinical examination versus ultrasonography in the detection of developmental dysplasia of hip: A systematic review and meta-analysis},\n    year = {2022},\n    volume = {10},\n    number = {5},\n    pages = {403},\n    note = {diagnostic-performance-of-clinical-exami-006d2a9f},\n    url = {https://pmc.ncbi.nlm.nih.gov/articles/PMC9194706/},\n}"
+    },
+    {
       "title": "Deep learning for radiographic measurement of femoral component subsidence following total hip arthroplasty",
       "authors": "Pouria Rouzrokh, Cody C Wyles, Shyam J Kurian, Taghi Ramazanian, Jason C Cai, Qiao Huang, Kuan Zhang, Michael J Taunton, Hilal Maradit Kremers, Bradley J Erickson",
       "year": 2022,
@@ -912,18 +924,6 @@
       "url": "https://pubs.rsna.org/doi/abs/10.1148/ryai.210206",
       "article_id": "deep-learning-for-radiographic-measureme-fe73463e",
       "bibtex": "@article{erickson2022deep,\n    author = {Pouria Rouzrokh and Cody C Wyles and Shyam J Kurian and Taghi Ramazanian and Jason C Cai and Qiao Huang and Kuan Zhang and Michael J Taunton and Hilal Maradit Kremers and Bradley J Erickson},\n    title = {Deep learning for radiographic measurement of femoral component subsidence following total hip arthroplasty},\n    year = {2022},\n    journal = {Radiology: Artificial Intelligence},\n    volume = {4},\n    number = {3},\n    pages = {e210206},\n    note = {deep-learning-for-radiographic-measureme-fe73463e},\n    url = {https://pubs.rsna.org/doi/abs/10.1148/ryai.210206},\n    abstract = {Femoral component subsidence following total hip arthroplasty (THA) is a worrisome radiographic finding. This study developed and evaluated a deep learning tool to automatically quantify femoral component subsidence between two serial anteroposterior (AP) hip radiographs. The authors institutional arthroplasty registry was used to retrospectively identify patients who underwent primary THA from 2000 to 2020. A deep learning dynamic U-Net model was trained to automatically segment femur, implant, and magnification markers on a dataset of 500 randomly selected AP hip radiographs from 386 patients with polished tapered cemented femoral stems. An image processing algorithm was then developed to measure subsidence by automatically annotating reference points on the femur and implant},\n}"
-    },
-    {
-      "title": "Diagnostic performance of clinical examination versus ultrasonography in the detection of developmental dysplasia of hip: A systematic review and meta-analysis",
-      "authors": "Mohammadreza Chavoshi, Ghazaleh Soltani, Shekoufe Shafiei Zargar, Cody Clayton Wyles, Hilal Maradit Kremers, Pouria Rouzrokh",
-      "year": 2022,
-      "volume": "10",
-      "number": "5",
-      "pages": "403",
-      "num_citations": 24,
-      "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC9194706/",
-      "article_id": "diagnostic-performance-of-clinical-exami-006d2a9f",
-      "bibtex": "@article{rouzrokh2022diagnostic,\n    author = {Mohammadreza Chavoshi and Ghazaleh Soltani and Shekoufe Shafiei Zargar and Cody Clayton Wyles and Hilal Maradit Kremers and Pouria Rouzrokh},\n    title = {Diagnostic performance of clinical examination versus ultrasonography in the detection of developmental dysplasia of hip: A systematic review and meta-analysis},\n    year = {2022},\n    volume = {10},\n    number = {5},\n    pages = {403},\n    note = {diagnostic-performance-of-clinical-exami-006d2a9f},\n    url = {https://pmc.ncbi.nlm.nih.gov/articles/PMC9194706/},\n}"
     },
     {
       "title": "Getting more out of large databases and EHRs with natural language processing and artificial intelligence: the future is here",
@@ -1132,7 +1132,7 @@
       "pages": "",
       "publisher": "",
       "abstract": "To develop the REporting checklist for FoundatIon and large laNguagE models (REFINE), an international reporting guideline for transparent and reproducible reporting of foundation model (FM) and large language model (LLM) studies in medical research, including imaging artificial intelligence (AI) applications. The protocol was prespecified and publicly archived. A modified Delphi process was conducted to establish reporting standards for unimodal and multimodal FM and LLM applications involving text, imaging, and structured data. The steering committee coordinated protocol development, expert recruitment, all Delphi rounds, and the harmonization phase. Decisions were made based on predefined consensus thresholds. In Rounds 1 and 2, structured ratings and free-text feedback informed iterative revisions. In the post-Delphi harmonization phase, terminology was standardized.",
-      "num_citations": 0,
+      "num_citations": 1,
       "url": "https://pubmed.ncbi.nlm.nih.gov/41742713/",
       "article_id": "reporting-checklist-for-foundation-and-l-f6675a07",
       "bibtex": "@article{mesereporting,\n  author = {Ismail Mese and Tugba Akinci D'Antonoli and Christian Bluethgen and Keno Bressem and Renato Cuocolo and Akshay Chaudhari and Ali S Tejani and Amanda Isaac and Andrea Ponsiglione and Aymen Meddeb and Bardia Khosravi and Bastien Le Guellec and Charles E Kahn Jr and Chong Hyun Suh and Daniel Pinto Dos Santos and Dow-Mu Koh and Eleftherios Tzanis and Elmar Kotter and Errol Colak and Felipe Kitamura and Felix Busch and Felix Nensa and Guang Yang and Henning Müller and Jakob Nikolas Kather and Jawed Nawabi and Jens Kleesiek and Jingyu Zhong and João Santinha and Johannes Haubold and José Guilherme de Almeida and Karim Lekadir and Kostas Marias and Lara Noelle Reiner and Lena Maier-Hein and Linda Moy and Lisa C Adams and Luis Martí-Bonmatí and Magdalini Paschali and Mana Moassefi and Matthias Dietzel and Merel Huisman and Michael Ingrisch and Michail E Klontzas and Nikolaos Papanikolaou and Oliver Diaz and Paulo Kuriki and Philipp Seeböck and Pouria Rouzrokh and Quirin D Strotzer and Seong Ho Park and Shahriar Faghani and Soroosh Tayebi Arasteh and Su Hwan Kim and Vasantha Kumar Venugopal and Woojin Kim and Burak Kocak},\n  title = {Reporting checklist for foundation and large language models in medical research (REFINE): an international consensus guideline},\n  journal = {Diagnostic and interventional radiology (Ankara, Turkey)},\n  url = {https://pubmed.ncbi.nlm.nih.gov/41742713/}\n}"
