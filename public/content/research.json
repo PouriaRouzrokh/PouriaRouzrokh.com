@@ -12,7 +12,7 @@
   "total_citations": 1858,
   "total_articles_processed": 83,
   "total_citations_processed": 1858,
-  "fetched_at": "2026-03-18 06:04:11 UTC",
+  "fetched_at": "2026-03-19 06:05:18 UTC",
   "articles": [
     {
       "title": "Reporting checklist for foundation and large language models in medical research (REFINE): an international consensus guideline",
@@ -259,19 +259,6 @@
       "url": "https://pubs.rsna.org/doi/abs/10.1148/radiol.232635",
       "article_id": "fully-automated-deep-learning-model-to-d-d756a99a",
       "bibtex": "@article{takahashi2024fully,\n    author = {Jason C Cai and Hirotsugu Nakai and Shiba Kuanar and Adam T Froemming and Candice W Bolan and Akira Kawashima and Hiroaki Takahashi and Lance A Mynderse and Chandler D Dora and Mitchell R Humphreys and Panagiotis Korfiatis and Pouria Rouzrokh and Alexander K Bratt and Gian Marco Conte and Bradley J Erickson and Naoki Takahashi},\n    title = {Fully automated deep learning model to detect clinically significant prostate cancer at MRI},\n    year = {2024},\n    journal = {Radiology},\n    volume = {312},\n    number = {2},\n    pages = {e232635},\n    note = {fully-automated-deep-learning-model-to-d-d756a99a},\n    url = {https://pubs.rsna.org/doi/abs/10.1148/radiol.232635},\n    abstract = {Multiparametric MRI can help identify clinically significant prostate cancer (csPCa) (Gleason score 7) but is limited by reader experience and interobserver variability. In contrast, deep learning (DL) produces deterministic outputs.To develop a DL model to predict the presence of csPCa by using patient-level labels without information about tumor location and to compare its performance with that of radiologists.Data from patients without known csPCa who underwent MRI from January 2017 to December 2019 at one of multiple sites of a single academic institution were retrospectively reviewed. A convolutional neural},\n}"
-    },
-    {
-      "title": "Development of a deep learning model for the automated detection of green pixels indicative of gout on dual energy CT scan",
-      "authors": "Shahriar Faghani, Rhodes G Nicholas, Soham Patel, Francis I Baffour, Mana Moassefi, Pouria Rouzrokh, Bardia Khosravi, Garret M Powell, Shuai Leng, Katrina N Glazebrook, Bradley J Erickson, Christin A Tiegs-Heiden",
-      "year": 2024,
-      "journal": "Research in Diagnostic and Interventional Imaging",
-      "volume": "9",
-      "pages": "100044",
-      "abstract": "Dual-energy CT (DECT) is a non-invasive way to determine the presence of monosodium urate (MSU) crystals in the workup of gout. Color-coding distinguishes MSU from calcium following material decomposition and post-processing. Most software labels MSU as green and calcium as blue. There are limitations in the current image processing methods of segmenting green-encoded pixels. Additionally, identifying green foci is tedious, and automated detection would improve workflow. This study aimed to determine the optimal deep learning (DL) algorithm for segmenting green-encoded pixels of MSU crystals on DECTs.DECT images of positive and negative gout cases were retrospectively collected. The dataset was split into train (N 28) and held-out test (N 30) sets. To perform cross-validation, the train set was split into seven folds. The images were presented to two musculoskeletal",
-      "num_citations": 56,
-      "url": "https://www.sciencedirect.com/science/article/pii/S277265252400005X",
-      "article_id": "development-of-a-deep-learning-model-for-b6e87ca2",
-      "bibtex": "@article{tiegsheiden2024development,\n    author = {Shahriar Faghani and Rhodes G Nicholas and Soham Patel and Francis I Baffour and Mana Moassefi and Pouria Rouzrokh and Bardia Khosravi and Garret M Powell and Shuai Leng and Katrina N Glazebrook and Bradley J Erickson and Christin A Tiegs-Heiden},\n    title = {Development of a deep learning model for the automated detection of green pixels indicative of gout on dual energy CT scan},\n    year = {2024},\n    journal = {Research in Diagnostic and Interventional Imaging},\n    volume = {9},\n    pages = {100044},\n    note = {development-of-a-deep-learning-model-for-b6e87ca2},\n    url = {https://www.sciencedirect.com/science/article/pii/S277265252400005X},\n    abstract = {Dual-energy CT (DECT) is a non-invasive way to determine the presence of monosodium urate (MSU) crystals in the workup of gout. Color-coding distinguishes MSU from calcium following material decomposition and post-processing. Most software labels MSU as green and calcium as blue. There are limitations in the current image processing methods of segmenting green-encoded pixels. Additionally, identifying green foci is tedious, and automated detection would improve workflow. This study aimed to determine the optimal deep learning (DL) algorithm for segmenting green-encoded pixels of MSU crystals on DECTs.DECT images of positive and negative gout cases were retrospectively collected. The dataset was split into train (N 28) and held-out test (N 30) sets. To perform cross-validation, the train set was split into seven folds. The images were presented to two musculoskeletal},\n}"
     },
     {
       "title": "Synthetically enhanced: unveiling synthetic data's potential in medical imaging research",
@@ -524,6 +511,19 @@
       "url": "https://utsouthwestern.elsevierpure.com/en/publications/a-guideline-for-tools-to-make-medical-imaging-data-ready-for-arti/",
       "article_id": "a-guideline-for-tools-to-make-medical-im-7b226ee1",
       "bibtex": "@article{vahdati2024a,\n  author = {Sanaz Vahdati and Bardia Khosravi and Elham Mahmoudi and Kuan Zhang and Pouria Rouzrokh and Shahriar Faghani and Mana Moassefi and Aylin Tahmasebi and KP Andriole and P Chang and Keyvan Farahani and MG Flores and L Folio and S Houshmand and ML Giger and JW Gichoya and BJ Erickson},\n  title = {A guideline for tools to make medical imaging data ready for Artificial Intelligence applications: A Society of Imaging Informatics in Medicine (SIIM) survey},\n  journal = {Journal of Imaging Informatics in Medicine},\n  pages = {1-10},\n  year = {2024},\n  url = {https://utsouthwestern.elsevierpure.com/en/publications/a-guideline-for-tools-to-make-medical-imaging-data-ready-for-arti/}\n}"
+    },
+    {
+      "title": "Development of a deep learning model for the automated detection of green pixels indicative of gout on dual energy CT scan",
+      "authors": "Shahriar Faghani, Rhodes G Nicholas, Soham Patel, Francis I Baffour, Mana Moassefi, Pouria Rouzrokh, Bardia Khosravi, Garret M Powell, Shuai Leng, Katrina N Glazebrook, Bradley J Erickson, Christin A Tiegs-Heiden",
+      "year": 2024,
+      "journal": "Research in Diagnostic and Interventional Imaging",
+      "volume": "9",
+      "pages": "100044",
+      "abstract": "Dual-energy CT (DECT) is a non-invasive way to determine the presence of monosodium urate (MSU) crystals in the workup of gout. Color-coding distinguishes MSU from calcium following material decomposition and post-processing. Most software labels MSU as green and calcium as blue. There are limitations in the current image processing methods of segmenting green-encoded pixels. Additionally, identifying green foci is tedious, and automated detection would improve workflow. This study aimed to determine the optimal deep learning (DL) algorithm for segmenting green-encoded pixels of MSU crystals on DECTs.DECT images of positive and negative gout cases were retrospectively collected. The dataset was split into train (N 28) and held-out test (N 30) sets. To perform cross-validation, the train set was split into seven folds. The images were presented to two musculoskeletal",
+      "num_citations": 0,
+      "url": "https://www.sciencedirect.com/science/article/pii/S277265252400005X",
+      "article_id": "development-of-a-deep-learning-model-for-b6e87ca2",
+      "bibtex": "@article{tiegsheiden2024development,\n    author = {Shahriar Faghani and Rhodes G Nicholas and Soham Patel and Francis I Baffour and Mana Moassefi and Pouria Rouzrokh and Bardia Khosravi and Garret M Powell and Shuai Leng and Katrina N Glazebrook and Bradley J Erickson and Christin A Tiegs-Heiden},\n    title = {Development of a deep learning model for the automated detection of green pixels indicative of gout on dual energy CT scan},\n    year = {2024},\n    journal = {Research in Diagnostic and Interventional Imaging},\n    volume = {9},\n    pages = {100044},\n    note = {development-of-a-deep-learning-model-for-b6e87ca2},\n    url = {https://www.sciencedirect.com/science/article/pii/S277265252400005X},\n    abstract = {Dual-energy CT (DECT) is a non-invasive way to determine the presence of monosodium urate (MSU) crystals in the workup of gout. Color-coding distinguishes MSU from calcium following material decomposition and post-processing. Most software labels MSU as green and calcium as blue. There are limitations in the current image processing methods of segmenting green-encoded pixels. Additionally, identifying green foci is tedious, and automated detection would improve workflow. This study aimed to determine the optimal deep learning (DL) algorithm for segmenting green-encoded pixels of MSU crystals on DECTs.DECT images of positive and negative gout cases were retrospectively collected. The dataset was split into train (N 28) and held-out test (N 30) sets. To perform cross-validation, the train set was split into seven folds. The images were presented to two musculoskeletal},\n}"
     },
     {
       "title": "Impact of Leg Position on Measurements Used to Detect Femoral Component Subsidence in THA",
