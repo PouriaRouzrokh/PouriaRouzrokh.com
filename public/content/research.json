@@ -3,16 +3,16 @@
   "affiliation": "Assistant Professor, Department of Radiology, Mayo Clinic, MN, USA",
   "google_scholar_id": "Ksv9I0sAAAAJ",
   "metrics": {
-    "citations": 1884,
+    "citations": 1885,
+    "cited_by_5_years": 1871,
     "h_index": 25,
-    "i10_index": 44,
-    "cited_by_5_years": 1870
+    "i10_index": 44
   },
   "total_articles": 83,
-  "total_citations": 1884,
+  "total_citations": 1885,
   "total_articles_processed": 83,
-  "total_citations_processed": 1884,
-  "fetched_at": "2026-04-01 06:07:20 UTC",
+  "total_citations_processed": 1885,
+  "fetched_at": "2026-04-02 06:01:59 UTC",
   "articles": [
     {
       "title": "Reporting checklist for foundation and large language models in medical research (REFINE): an international consensus guideline",
@@ -1044,7 +1044,7 @@
       "number": "5",
       "pages": "e190183",
       "abstract": "To develop a deep learning model that segments intracranial structures on head CT scans.In this retrospective study, a primary dataset containing 62 normal noncontrast head CT scans from 62 patients (mean age, 73 years; age range, 2795 years) acquired between August and December 2018 was used for model development. Eleven intracranial structures were manually annotated on the axial oblique series. The dataset was split into 40 scans for training, 10 for validation, and 12 for testing. After initial training, eight model configurations were evaluated on the validation dataset and the highest performing model was evaluated on the test dataset",
-      "num_citations": 58,
+      "num_citations": 59,
       "url": "https://pubs.rsna.org/doi/abs/10.1148/ryai.2020190183",
       "article_id": "fully-automated-segmentation-of-head-ct--d962da09",
       "bibtex": "@article{erickson2020fully,\n    author = {Jason C Cai and Zeynettin Akkus and Kenneth A Philbrick and Arunnit Boonrod and Safa Hoodeshenas and Alexander D Weston and Pouria Rouzrokh and Gian Marco Conte and Atefeh Zeinoddini and David C Vogelsang and Qiao Huang and Bradley J Erickson},\n    title = {Fully automated segmentation of head CT neuroanatomy using deep learning},\n    year = {2020},\n    journal = {Radiology: Artificial Intelligence},\n    volume = {2},\n    number = {5},\n    pages = {e190183},\n    note = {fully-automated-segmentation-of-head-ct--d962da09},\n    url = {https://pubs.rsna.org/doi/abs/10.1148/ryai.2020190183},\n    abstract = {To develop a deep learning model that segments intracranial structures on head CT scans.In this retrospective study, a primary dataset containing 62 normal noncontrast head CT scans from 62 patients (mean age, 73 years; age range, 2795 years) acquired between August and December 2018 was used for model development. Eleven intracranial structures were manually annotated on the axial oblique series. The dataset was split into 40 scans for training, 10 for validation, and 12 for testing. After initial training, eight model configurations were evaluated on the validation dataset and the highest performing model was evaluated on the test dataset},\n}"
