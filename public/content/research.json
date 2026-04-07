@@ -3,16 +3,16 @@
   "affiliation": "Assistant Professor, Department of Radiology, Mayo Clinic, MN, USA",
   "google_scholar_id": "Ksv9I0sAAAAJ",
   "metrics": {
-    "citations": 1894,
+    "citations": 1895,
+    "cited_by_5_years": 1881,
     "h_index": 25,
-    "i10_index": 44,
-    "cited_by_5_years": 1880
+    "i10_index": 44
   },
   "total_articles": 83,
-  "total_citations": 1894,
+  "total_citations": 1895,
   "total_articles_processed": 83,
-  "total_citations_processed": 1894,
-  "fetched_at": "2026-04-06 06:05:21 UTC",
+  "total_citations_processed": 1895,
+  "fetched_at": "2026-04-07 06:03:22 UTC",
   "articles": [
     {
       "title": "Reporting checklist for foundation and large language models in medical research (REFINE): an international consensus guideline",
@@ -680,7 +680,7 @@
       "volume": "242",
       "pages": "107832",
       "abstract": "BackgroundMedical image analysis pipelines often involve segmentation, which requires a large amount of annotated training data, which is time-consuming and costly. To address this issue, we proposed leveraging generative models to achieve few-shot image segmentation.MethodsWe trained a denoising diffusion probabilistic model (DDPM) on 480,407 pelvis radiographs to generate 256 256 px synthetic images. The DDPM was conditioned on demographic and radiologic characteristics and was rigorously validated by domain experts and objective image quality metrics (Frechet inception distance FID and inception score IS). For the next step, three landmarks (greater trochanter GT, lesser trochanter LT, and obturator foramen OF) were annotated on 45 real-patient radiographs; 25 for training and 20 for testing. To extract features, each image was passed through the pre-trained DDPM at three",
-      "num_citations": 22,
+      "num_citations": 23,
       "url": "https://www.sciencedirect.com/science/article/pii/S0169260723004984",
       "article_id": "few-shot-biomedical-image-segmentation-u-88d11feb",
       "bibtex": "@article{wyles2023fewshot,\n    author = {Bardia Khosravi and Pouria Rouzrokh and John P Mickley and Shahriar Faghani and Kellen Mulford and Linjun Yang and A Noelle Larson and Benjamin M Howe and Bradley J Erickson and Michael J Taunton and Cody C Wyles},\n    title = {Few-shot biomedical image segmentation using diffusion models: beyond image generation},\n    year = {2023},\n    journal = {Computer Methods and Programs in Biomedicine},\n    volume = {242},\n    pages = {107832},\n    note = {few-shot-biomedical-image-segmentation-u-88d11feb},\n    url = {https://www.sciencedirect.com/science/article/pii/S0169260723004984},\n    abstract = {BackgroundMedical image analysis pipelines often involve segmentation, which requires a large amount of annotated training data, which is time-consuming and costly. To address this issue, we proposed leveraging generative models to achieve few-shot image segmentation.MethodsWe trained a denoising diffusion probabilistic model (DDPM) on 480,407 pelvis radiographs to generate 256 256 px synthetic images. The DDPM was conditioned on demographic and radiologic characteristics and was rigorously validated by domain experts and objective image quality metrics (Frechet inception distance FID and inception score IS). For the next step, three landmarks (greater trochanter GT, lesser trochanter LT, and obturator foramen OF) were annotated on 45 real-patient radiographs; 25 for training and 20 for testing. To extract features, each image was passed through the pre-trained DDPM at three},\n}"
