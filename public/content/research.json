@@ -3,16 +3,16 @@
   "affiliation": "Assistant Professor, Department of Radiology, Mayo Clinic, MN, USA",
   "google_scholar_id": "Ksv9I0sAAAAJ",
   "metrics": {
-    "citations": 1907,
-    "cited_by_5_years": 1893,
+    "citations": 1910,
+    "cited_by_5_years": 1896,
     "h_index": 25,
     "i10_index": 44
   },
   "total_articles": 83,
-  "total_citations": 1907,
+  "total_citations": 1910,
   "total_articles_processed": 83,
-  "total_citations_processed": 1907,
-  "fetched_at": "2026-04-13 06:02:05 UTC",
+  "total_citations_processed": 1910,
+  "fetched_at": "2026-04-14 06:02:35 UTC",
   "articles": [
     {
       "title": "Reporting checklist for foundation and large language models in medical research (REFINE): an international consensus guideline",
@@ -135,7 +135,7 @@
       "pages": "",
       "publisher": "Churchill Livingstone",
       "abstract": "Background\nA drastic increase in the volume of primary total knee arthroplasties (TKAs) performed nationwide will inevitably lead to higher volumes of revision TKAs in which the primary knee implant must be removed. An important step in preoperative planning for revision TKA is implant identification, which is time-consuming and difficult even for experienced surgeons. We sought to develop a deep learning algorithm to automatically identify the most common models of primary TKA implants.\nMethods\nWe used an institutional total joint registry to pull images and implant data for 9,651 patients (N = 111,519 images). We trained a deep learning model based on the EfficientNet architecture to identify nine different TKA systems across all common knee radiographic views. Model performance was assessed on internal held-out test set and external test set. Conformal prediction was employed to provide uncertainty …",
-      "num_citations": 2,
+      "num_citations": 3,
       "url": "https://www.sciencedirect.com/science/article/pii/S0883540325000348",
       "article_id": "tka-aid-an-uncertainty-aware-deep-learning",
       "bibtex": "@article{mulford2025tka,\n  author = {Kellen L Mulford and Sami Saniei and Elizabeth S Kaji and Austin F Grove and Miguel Girod-Hoffman and Pouria Rouzrokh and Matthew P Abdel and Michael J Taunton and Cody C Wyles},\n  title = {TKA-AID: An uncertainty-aware deep learning classifier to identify total knee arthroplasty implants},\n  journal = {The Journal of Arthroplasty},\n  year = {2025},\n  publisher = {Churchill Livingstone},\n  url = {https://www.sciencedirect.com/science/article/pii/S0883540325000348}\n}"
@@ -659,6 +659,19 @@
       "bibtex": "@article{larson2023the,\n    author = {Caroline Constant and Carl-Eric Aubin and Hilal Maradit Kremers and Diana V Vera Garcia and Cody C Wyles and Pouria Rouzrokh and Annalise Noelle Larson},\n    title = {The use of deep learning in medical imaging to improve spine care: a scoping review of current literature and clinical applications},\n    year = {2023},\n    volume = {15},\n    pages = {100236},\n    note = {the-use-of-deep-learning-in-medical-imag-4953c71c},\n    url = {https://www.sciencedirect.com/science/article/pii/S2666548423000380},\n    abstract = {Artificial intelligence is a revolutionary technology that promises to assist clinicians in improving patient care. In radiology, deep learning (DL) is widely used in clinical decision aids due to its ability to analyze complex patterns and images. It allows for rapid, enhanced data, and imaging analysis, from diagnosis to outcome prediction. The purpose of this study was to evaluate the current literature and clinical utilization of DL in spine imaging.This study is a scoping review and utilized the Preferred Reporting Items for Systematic Reviews and Meta-Analyses (PRISMA) methodology to review the scientific literature from 2012 to 2021. A search in PubMed, Web of Science, Embased, and IEEE Xplore databases with syntax specific for DL and medical imaging in spine care applications was conducted to collect all original publications on the subject. Specific data was extracted from the available},\n}"
     },
     {
+      "title": "Few-shot biomedical image segmentation using diffusion models: beyond image generation",
+      "authors": "Bardia Khosravi, Pouria Rouzrokh, John P Mickley, Shahriar Faghani, Kellen Mulford, Linjun Yang, A Noelle Larson, Benjamin M Howe, Bradley J Erickson, Michael J Taunton, Cody C Wyles",
+      "year": 2023,
+      "journal": "Computer Methods and Programs in Biomedicine",
+      "volume": "242",
+      "pages": "107832",
+      "abstract": "BackgroundMedical image analysis pipelines often involve segmentation, which requires a large amount of annotated training data, which is time-consuming and costly. To address this issue, we proposed leveraging generative models to achieve few-shot image segmentation.MethodsWe trained a denoising diffusion probabilistic model (DDPM) on 480,407 pelvis radiographs to generate 256 256 px synthetic images. The DDPM was conditioned on demographic and radiologic characteristics and was rigorously validated by domain experts and objective image quality metrics (Frechet inception distance FID and inception score IS). For the next step, three landmarks (greater trochanter GT, lesser trochanter LT, and obturator foramen OF) were annotated on 45 real-patient radiographs; 25 for training and 20 for testing. To extract features, each image was passed through the pre-trained DDPM at three",
+      "num_citations": 24,
+      "url": "https://www.sciencedirect.com/science/article/pii/S0169260723004984",
+      "article_id": "few-shot-biomedical-image-segmentation-u-88d11feb",
+      "bibtex": "@article{wyles2023fewshot,\n    author = {Bardia Khosravi and Pouria Rouzrokh and John P Mickley and Shahriar Faghani and Kellen Mulford and Linjun Yang and A Noelle Larson and Benjamin M Howe and Bradley J Erickson and Michael J Taunton and Cody C Wyles},\n    title = {Few-shot biomedical image segmentation using diffusion models: beyond image generation},\n    year = {2023},\n    journal = {Computer Methods and Programs in Biomedicine},\n    volume = {242},\n    pages = {107832},\n    note = {few-shot-biomedical-image-segmentation-u-88d11feb},\n    url = {https://www.sciencedirect.com/science/article/pii/S0169260723004984},\n    abstract = {BackgroundMedical image analysis pipelines often involve segmentation, which requires a large amount of annotated training data, which is time-consuming and costly. To address this issue, we proposed leveraging generative models to achieve few-shot image segmentation.MethodsWe trained a denoising diffusion probabilistic model (DDPM) on 480,407 pelvis radiographs to generate 256 256 px synthetic images. The DDPM was conditioned on demographic and radiologic characteristics and was rigorously validated by domain experts and objective image quality metrics (Frechet inception distance FID and inception score IS). For the next step, three landmarks (greater trochanter GT, lesser trochanter LT, and obturator foramen OF) were annotated on 45 real-patient radiographs; 25 for training and 20 for testing. To extract features, each image was passed through the pre-trained DDPM at three},\n}"
+    },
+    {
       "title": "Developing and validating a national set of standards for undergraduate medical education using the WFME framework: the experience of an accreditation system in Iran",
       "authors": "Roghayeh Gandomkar, Tahereh Changiz, Athar Omid, Mahasti Alizadeh, Majid Khazaei, Abtin Heidarzadah, Pouria Rouzrokh, Mitra Amini, Hamid Honarpisheh, Reza Laripour, Farshid Abedi, Babak Sabet, Azim Mirzazadeh",
       "year": 2023,
@@ -671,19 +684,6 @@
       "url": "https://link.springer.com/article/10.1186/s12909-023-04343-9",
       "article_id": "developing-and-validating-a-national-set-b3dbaa1f",
       "bibtex": "@article{mirzazadeh2023developing,\n    author = {Roghayeh Gandomkar and Tahereh Changiz and Athar Omid and Mahasti Alizadeh and Majid Khazaei and Abtin Heidarzadah and Pouria Rouzrokh and Mitra Amini and Hamid Honarpisheh and Reza Laripour and Farshid Abedi and Babak Sabet and Azim Mirzazadeh},\n    title = {Developing and validating a national set of standards for undergraduate medical education using the WFME framework: the experience of an accreditation system in Iran},\n    year = {2023},\n    journal = {BMC Medical Education},\n    volume = {23},\n    number = {1},\n    pages = {379},\n    note = {developing-and-validating-a-national-set-b3dbaa1f},\n    url = {https://link.springer.com/article/10.1186/s12909-023-04343-9},\n    abstract = {Defining standards is the first step toward quality assurance and improvement of educational programs. This study aimed at developing and validating a set of national standards for the Undergraduate Medical Education (UME) program through an accreditation system in Iran using the World Federation for Medical Education (WFME) framework.The first draft of standards was prepared through consultative workshops with the participation of different UME program stakeholders. Subsequently, standards were sent to medical schools and UME directors were asked to complete a web-based survey. The content validity index at the item level (I-CVI) was computed using criteria including clarity, relevance, optimization and evaluability for each standard. Afterward, a full-day consultative workshop was held and a wide range of UME stakeholders across the country (n 150) discussed the survey},\n}"
-    },
-    {
-      "title": "Few-shot biomedical image segmentation using diffusion models: beyond image generation",
-      "authors": "Bardia Khosravi, Pouria Rouzrokh, John P Mickley, Shahriar Faghani, Kellen Mulford, Linjun Yang, A Noelle Larson, Benjamin M Howe, Bradley J Erickson, Michael J Taunton, Cody C Wyles",
-      "year": 2023,
-      "journal": "Computer Methods and Programs in Biomedicine",
-      "volume": "242",
-      "pages": "107832",
-      "abstract": "BackgroundMedical image analysis pipelines often involve segmentation, which requires a large amount of annotated training data, which is time-consuming and costly. To address this issue, we proposed leveraging generative models to achieve few-shot image segmentation.MethodsWe trained a denoising diffusion probabilistic model (DDPM) on 480,407 pelvis radiographs to generate 256 256 px synthetic images. The DDPM was conditioned on demographic and radiologic characteristics and was rigorously validated by domain experts and objective image quality metrics (Frechet inception distance FID and inception score IS). For the next step, three landmarks (greater trochanter GT, lesser trochanter LT, and obturator foramen OF) were annotated on 45 real-patient radiographs; 25 for training and 20 for testing. To extract features, each image was passed through the pre-trained DDPM at three",
-      "num_citations": 23,
-      "url": "https://www.sciencedirect.com/science/article/pii/S0169260723004984",
-      "article_id": "few-shot-biomedical-image-segmentation-u-88d11feb",
-      "bibtex": "@article{wyles2023fewshot,\n    author = {Bardia Khosravi and Pouria Rouzrokh and John P Mickley and Shahriar Faghani and Kellen Mulford and Linjun Yang and A Noelle Larson and Benjamin M Howe and Bradley J Erickson and Michael J Taunton and Cody C Wyles},\n    title = {Few-shot biomedical image segmentation using diffusion models: beyond image generation},\n    year = {2023},\n    journal = {Computer Methods and Programs in Biomedicine},\n    volume = {242},\n    pages = {107832},\n    note = {few-shot-biomedical-image-segmentation-u-88d11feb},\n    url = {https://www.sciencedirect.com/science/article/pii/S0169260723004984},\n    abstract = {BackgroundMedical image analysis pipelines often involve segmentation, which requires a large amount of annotated training data, which is time-consuming and costly. To address this issue, we proposed leveraging generative models to achieve few-shot image segmentation.MethodsWe trained a denoising diffusion probabilistic model (DDPM) on 480,407 pelvis radiographs to generate 256 256 px synthetic images. The DDPM was conditioned on demographic and radiologic characteristics and was rigorously validated by domain experts and objective image quality metrics (Frechet inception distance FID and inception score IS). For the next step, three landmarks (greater trochanter GT, lesser trochanter LT, and obturator foramen OF) were annotated on 45 real-patient radiographs; 25 for training and 20 for testing. To extract features, each image was passed through the pre-trained DDPM at three},\n}"
     },
     {
       "title": "A deep learning tool for automated landmark annotation on hip and pelvis radiographs",
@@ -787,7 +787,7 @@
       "number": "5",
       "pages": "e210290",
       "abstract": "Minimizing bias is critical to adoption and implementation of machine learning (ML) in clinical practice. Systematic mathematical biases produce consistent and reproducible differences between the observed and expected performance of ML systems, resulting in suboptimal performance. Such biases can be traced back to various phases of ML development: data handling, model development, and performance evaluation. This report presents 12 suboptimal practices during data handling of an ML study, explains how those practices can lead to biases, and describes what may be done to mitigate them. Authors employ an arbitrary and simplified framework that splits ML data handling into four steps: data collection, data investigation, data splitting, and feature engineering. Examples from the available",
-      "num_citations": 157,
+      "num_citations": 158,
       "url": "https://pubs.rsna.org/doi/abs/10.1148/ryai.210290",
       "article_id": "mitigating-bias-in-radiology-machine-lea-0aea1c69",
       "bibtex": "@article{erickson2022mitigating,\n    author = {Pouria Rouzrokh and Bardia Khosravi and Shahriar Faghani and Mana Moassefi and Diana V Vera Garcia and Yashbir Singh and Kuan Zhang and Gian Marco Conte and Bradley J Erickson},\n    title = {Mitigating bias in radiology machine learning: 1. Data handling},\n    year = {2022},\n    journal = {Radiology: Artificial Intelligence},\n    volume = {4},\n    number = {5},\n    pages = {e210290},\n    note = {mitigating-bias-in-radiology-machine-lea-0aea1c69},\n    url = {https://pubs.rsna.org/doi/abs/10.1148/ryai.210290},\n    abstract = {Minimizing bias is critical to adoption and implementation of machine learning (ML) in clinical practice. Systematic mathematical biases produce consistent and reproducible differences between the observed and expected performance of ML systems, resulting in suboptimal performance. Such biases can be traced back to various phases of ML development: data handling, model development, and performance evaluation. This report presents 12 suboptimal practices during data handling of an ML study, explains how those practices can lead to biases, and describes what may be done to mitigate them. Authors employ an arbitrary and simplified framework that splits ML data handling into four steps: data collection, data investigation, data splitting, and feature engineering. Examples from the available},\n}"
