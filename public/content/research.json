@@ -3,16 +3,16 @@
   "affiliation": "Assistant Professor, Department of Radiology, Mayo Clinic, MN, USA",
   "google_scholar_id": "Ksv9I0sAAAAJ",
   "metrics": {
-    "citations": 1962,
-    "cited_by_5_years": 1948,
+    "citations": 1961,
+    "cited_by_5_years": 1947,
     "h_index": 26,
     "i10_index": 44
   },
   "total_articles": 83,
-  "total_citations": 1962,
+  "total_citations": 1961,
   "total_articles_processed": 83,
-  "total_citations_processed": 1962,
-  "fetched_at": "2026-04-28 06:05:02 UTC",
+  "total_citations_processed": 1961,
+  "fetched_at": "2026-04-29 06:05:39 UTC",
   "articles": [
     {
       "title": "Reporting checklist for foundation and large language models in medical research (REFINE): an international consensus guideline",
@@ -1056,7 +1056,7 @@
       "journal": "MedRxiv",
       "pages": "2020.10. 30.20223024",
       "abstract": "Studies have shown that CT could be valuable for prognostic issues in COVID-19to investigate the prognostic factors of early chest CT findings in COVID-19 patients.This retrospective study included 91 patients (34 women, and 57 men) of RT-PCR positive COVID-19 from 3 hospitals in Iran between February 25, 2020, to march 15, 2020. Patients were divided into two groups as good prognosis, discharged from the hospital and alive without symptoms (48 patients), and poor prognosis, died or needed ICU care (43 patients). The first CT images of both groups that were obtained during the first 8 days of the disease presentation were evaluated considering the pattern, distribution, and underlying disease. The total CT-score was calculated for each patient. Univariate and multivariate analysis with IBM SPSS Statistics v.26 was used to find the prognostic factors.There was a significant correlation between poor prognosis and older ages, dyspnea, presence of comorbidities, especially cardiovascular and pulmonary. Considering CT features, peripheral and diffuse distribution, anterior and paracardiac involvement, crazy paving pattern, and pleural effusion were correlated with poor prognosis. There was a correlation between total CT-score and prognosis and an 11.5 score was suggested as a cut-off with 67.4 sensitivity and 68.7 specificity in differentiation of poor prognosis patients (patients who needed ICU admission or died. Multivariate analysis revealed that a model consisting of age, male gender, underlying comorbidity, diffused lesions, total CT-score, and dyspnea would predict the",
-      "num_citations": 30,
+      "num_citations": 29,
       "url": "https://www.medrxiv.org/content/10.1101/2020.10.30.20223024.abstract",
       "article_id": "prognostic-factors-of-chest-ct-findings--83fbca82",
       "bibtex": "@article{abdollahi2020prognostic,\n    author = {Mohammad Ali Kazemi and Hossein Ghanaati and Behnaz Moradi and Mohammadreza Chavoshi and Hassan Hashemi and Samira Hemmati and Pouria Rouzrokh and Masoumeh Gity and Zahra Ahmadinejad and Hamed Abdollahi},\n    title = {Prognostic factors of chest CT findings for ICU admission and mortality in patients with COVID-19 pneumonia},\n    year = {2020},\n    journal = {MedRxiv},\n    pages = {2020.10. 30.20223024},\n    note = {prognostic-factors-of-chest-ct-findings--83fbca82},\n    url = {https://www.medrxiv.org/content/10.1101/2020.10.30.20223024.abstract},\n    abstract = {Studies have shown that CT could be valuable for prognostic issues in COVID-19to investigate the prognostic factors of early chest CT findings in COVID-19 patients.This retrospective study included 91 patients (34 women, and 57 men) of RT-PCR positive COVID-19 from 3 hospitals in Iran between February 25, 2020, to march 15, 2020. Patients were divided into two groups as good prognosis, discharged from the hospital and alive without symptoms (48 patients), and poor prognosis, died or needed ICU care (43 patients). The first CT images of both groups that were obtained during the first 8 days of the disease presentation were evaluated considering the pattern, distribution, and underlying disease. The total CT-score was calculated for each patient. Univariate and multivariate analysis with IBM SPSS Statistics v.26 was used to find the prognostic factors.There was a significant correlation between poor prognosis and older ages, dyspnea, presence of comorbidities, especially cardiovascular and pulmonary. Considering CT features, peripheral and diffuse distribution, anterior and paracardiac involvement, crazy paving pattern, and pleural effusion were correlated with poor prognosis. There was a correlation between total CT-score and prognosis and an 11.5 score was suggested as a cut-off with 67.4 sensitivity and 68.7 specificity in differentiation of poor prognosis patients (patients who needed ICU admission or died. Multivariate analysis revealed that a model consisting of age, male gender, underlying comorbidity, diffused lesions, total CT-score, and dyspnea would predict the},\n}"
