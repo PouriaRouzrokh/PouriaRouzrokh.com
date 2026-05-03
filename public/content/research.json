@@ -3,16 +3,16 @@
   "affiliation": "Assistant Professor, Department of Radiology, Mayo Clinic, MN, USA",
   "google_scholar_id": "Ksv9I0sAAAAJ",
   "metrics": {
-    "citations": 1970,
-    "cited_by_5_years": 1956,
+    "citations": 1974,
+    "cited_by_5_years": 1960,
     "h_index": 26,
     "i10_index": 46
   },
   "total_articles": 83,
-  "total_citations": 1970,
+  "total_citations": 1974,
   "total_articles_processed": 83,
-  "total_citations_processed": 1970,
-  "fetched_at": "2026-05-02 06:06:18 UTC",
+  "total_citations_processed": 1974,
+  "fetched_at": "2026-05-03 06:05:03 UTC",
   "articles": [
     {
       "title": "Reporting checklist for foundation and large language models in medical research (REFINE): an international consensus guideline",
@@ -266,7 +266,7 @@
       "number": "2",
       "pages": "e232635",
       "abstract": "Multiparametric MRI can help identify clinically significant prostate cancer (csPCa) (Gleason score 7) but is limited by reader experience and interobserver variability. In contrast, deep learning (DL) produces deterministic outputs.To develop a DL model to predict the presence of csPCa by using patient-level labels without information about tumor location and to compare its performance with that of radiologists.Data from patients without known csPCa who underwent MRI from January 2017 to December 2019 at one of multiple sites of a single academic institution were retrospectively reviewed. A convolutional neural",
-      "num_citations": 73,
+      "num_citations": 74,
       "url": "https://pubs.rsna.org/doi/abs/10.1148/radiol.232635",
       "article_id": "fully-automated-deep-learning-model-to-d-d756a99a",
       "bibtex": "@article{takahashi2024fully,\n    author = {Jason C Cai and Hirotsugu Nakai and Shiba Kuanar and Adam T Froemming and Candice W Bolan and Akira Kawashima and Hiroaki Takahashi and Lance A Mynderse and Chandler D Dora and Mitchell R Humphreys and Panagiotis Korfiatis and Pouria Rouzrokh and Alexander K Bratt and Gian Marco Conte and Bradley J Erickson and Naoki Takahashi},\n    title = {Fully automated deep learning model to detect clinically significant prostate cancer at MRI},\n    year = {2024},\n    journal = {Radiology},\n    volume = {312},\n    number = {2},\n    pages = {e232635},\n    note = {fully-automated-deep-learning-model-to-d-d756a99a},\n    url = {https://pubs.rsna.org/doi/abs/10.1148/radiol.232635},\n    abstract = {Multiparametric MRI can help identify clinically significant prostate cancer (csPCa) (Gleason score 7) but is limited by reader experience and interobserver variability. In contrast, deep learning (DL) produces deterministic outputs.To develop a DL model to predict the presence of csPCa by using patient-level labels without information about tumor location and to compare its performance with that of radiologists.Data from patients without known csPCa who underwent MRI from January 2017 to December 2019 at one of multiple sites of a single academic institution were retrospectively reviewed. A convolutional neural},\n}"
@@ -787,7 +787,7 @@
       "number": "5",
       "pages": "e210290",
       "abstract": "Minimizing bias is critical to adoption and implementation of machine learning (ML) in clinical practice. Systematic mathematical biases produce consistent and reproducible differences between the observed and expected performance of ML systems, resulting in suboptimal performance. Such biases can be traced back to various phases of ML development: data handling, model development, and performance evaluation. This report presents 12 suboptimal practices during data handling of an ML study, explains how those practices can lead to biases, and describes what may be done to mitigate them. Authors employ an arbitrary and simplified framework that splits ML data handling into four steps: data collection, data investigation, data splitting, and feature engineering. Examples from the available",
-      "num_citations": 162,
+      "num_citations": 163,
       "url": "https://pubs.rsna.org/doi/abs/10.1148/ryai.210290",
       "article_id": "mitigating-bias-in-radiology-machine-lea-0aea1c69",
       "bibtex": "@article{erickson2022mitigating,\n    author = {Pouria Rouzrokh and Bardia Khosravi and Shahriar Faghani and Mana Moassefi and Diana V Vera Garcia and Yashbir Singh and Kuan Zhang and Gian Marco Conte and Bradley J Erickson},\n    title = {Mitigating bias in radiology machine learning: 1. Data handling},\n    year = {2022},\n    journal = {Radiology: Artificial Intelligence},\n    volume = {4},\n    number = {5},\n    pages = {e210290},\n    note = {mitigating-bias-in-radiology-machine-lea-0aea1c69},\n    url = {https://pubs.rsna.org/doi/abs/10.1148/ryai.210290},\n    abstract = {Minimizing bias is critical to adoption and implementation of machine learning (ML) in clinical practice. Systematic mathematical biases produce consistent and reproducible differences between the observed and expected performance of ML systems, resulting in suboptimal performance. Such biases can be traced back to various phases of ML development: data handling, model development, and performance evaluation. This report presents 12 suboptimal practices during data handling of an ML study, explains how those practices can lead to biases, and describes what may be done to mitigate them. Authors employ an arbitrary and simplified framework that splits ML data handling into four steps: data collection, data investigation, data splitting, and feature engineering. Examples from the available},\n}"
@@ -815,7 +815,7 @@
       "number": "5",
       "pages": "e220061",
       "abstract": "The increasing use of machine learning (ML) algorithms in clinical settings raises concerns about bias in ML models. Bias can arise at any step of ML creation, including data handling, model development, and performance evaluation. Potential biases in the ML model can be minimized by implementing these steps correctly. This report focuses on performance evaluation and discusses model fitness, as well as a set of performance evaluation toolboxes: namely, performance metrics, performance interpretation maps, and uncertainty quantification. By discussing the strengths and limitations of each toolbox, our report highlights strategies and considerations to mitigate and detect biases during performance evaluations of radiology artificial intelligence models.Keywords: Segmentation, Diagnosis",
-      "num_citations": 110,
+      "num_citations": 111,
       "url": "https://pubs.rsna.org/doi/abs/10.1148/ryai.220061",
       "article_id": "mitigating-bias-in-radiology-machine-lea-39a11210",
       "bibtex": "@article{erickson2022mitigating,\n    author = {Shahriar Faghani and Bardia Khosravi and Kuan Zhang and Mana Moassefi and Jaidip Manikrao Jagtap and Fred Nugen and Sanaz Vahdati and Shiba P Kuanar and Seyed Moein Rassoulinejad-Mousavi and Yashbir Singh and Diana V Vera Garcia and Pouria Rouzrokh and Bradley J Erickson},\n    title = {Mitigating bias in radiology machine learning: 3. Performance metrics},\n    year = {2022},\n    journal = {Radiology: Artificial Intelligence},\n    volume = {4},\n    number = {5},\n    pages = {e220061},\n    note = {mitigating-bias-in-radiology-machine-lea-39a11210},\n    url = {https://pubs.rsna.org/doi/abs/10.1148/ryai.220061},\n    abstract = {The increasing use of machine learning (ML) algorithms in clinical settings raises concerns about bias in ML models. Bias can arise at any step of ML creation, including data handling, model development, and performance evaluation. Potential biases in the ML model can be minimized by implementing these steps correctly. This report focuses on performance evaluation and discusses model fitness, as well as a set of performance evaluation toolboxes: namely, performance metrics, performance interpretation maps, and uncertainty quantification. By discussing the strengths and limitations of each toolbox, our report highlights strategies and considerations to mitigate and detect biases during performance evaluations of radiology artificial intelligence models.Keywords: Segmentation, Diagnosis},\n}"
@@ -828,7 +828,7 @@
       "number": "5",
       "pages": "e220010",
       "abstract": "There are increasing concerns about the bias and fairness of artificial intelligence (AI) models as they are put into clinical practice. Among the steps for implementing machine learning tools into clinical workflow, model development is an important stage where different types of biases can occur. This report focuses on four aspects of model development where such bias may arise: data augmentation, model and loss function, optimizers, and transfer learning. This report emphasizes appropriate considerations and practices that can mitigate biases in radiology AI studies.Keywords: Model, Bias, Machine Learning, Deep Learning, Radiology RSNA, 2022",
-      "num_citations": 95,
+      "num_citations": 96,
       "url": "https://pubs.rsna.org/doi/abs/10.1148/ryai.220010",
       "article_id": "mitigating-bias-in-radiology-machine-lea-b5dd976c",
       "bibtex": "@article{erickson2022mitigating,\n    author = {Kuan Zhang and Bardia Khosravi and Sanaz Vahdati and Shahriar Faghani and Fred Nugen and Seyed Moein Rassoulinejad-Mousavi and Mana Moassefi and Jaidip Manikrao M Jagtap and Yashbir Singh and Pouria Rouzrokh and Bradley J Erickson},\n    title = {Mitigating bias in radiology machine learning: 2. Model development},\n    year = {2022},\n    volume = {4},\n    number = {5},\n    pages = {e220010},\n    note = {mitigating-bias-in-radiology-machine-lea-b5dd976c},\n    url = {https://pubs.rsna.org/doi/abs/10.1148/ryai.220010},\n    abstract = {There are increasing concerns about the bias and fairness of artificial intelligence (AI) models as they are put into clinical practice. Among the steps for implementing machine learning tools into clinical workflow, model development is an important stage where different types of biases can occur. This report focuses on four aspects of model development where such bias may arise: data augmentation, model and loss function, optimizers, and transfer learning. This report emphasizes appropriate considerations and practices that can mitigate biases in radiology AI studies.Keywords: Model, Bias, Machine Learning, Deep Learning, Radiology RSNA, 2022},\n}"
