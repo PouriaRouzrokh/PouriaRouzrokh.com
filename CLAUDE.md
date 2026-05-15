@@ -1,136 +1,122 @@
 # CLAUDE.md — pouriarouzrokh.com
 
-## Project Overview
+Personal academic portfolio and blog for Pouria Rouzrokh (Next.js 16, TypeScript, Vercel).
 
-Personal academic portfolio and blog for Pouria Rouzrokh. Built with **Next.js 16** (App Router) + **React 19** on **TypeScript**, deployed to **Vercel**.
+## Context Loading Instructions
 
-The site showcases research publications, portfolio projects, education, experience, achievements, and a Notion-backed blog with a contact form.
+To understand this project, read the documentation in this order:
 
-## Development Commands
+### 1. Find the Latest Checkpoint
+
+```bash
+ls -d .claude/checkpoints/checkpoint-* 2>/dev/null | sort -V | tail -1
+```
+
+### 2. Read Project Context
+
+- **If a snapshot exists** in the latest checkpoint: Read `snapshot.md` first — it contains the current technical state
+- **If no snapshot exists**: Read the PRD at `.claude/checkpoints/checkpoint-0/prd.md` for project vision and requirements
+
+### 3. Read All RFDs
+
+Check the latest checkpoint's `rfd/` folder for Request for Development documents:
+
+```bash
+find .claude/checkpoints/checkpoint-*/rfd -name "*.md" 2>/dev/null | sort -V
+```
+
+### Priority Order
+
+1. Latest snapshot (current state)
+2. PRD (original vision)
+3. Recent RFDs (feature details)
+
+## Quick Commands
 
 ```bash
 npm run dev              # Start dev server
 npm run build            # Production build
-npm run start            # Run production server
 npm run lint             # ESLint
-npm run toggle-maintenance  # Toggle maintenance mode
 ```
 
-Install with `--legacy-peer-deps` (required for some dependency compatibility).
-
-## Project Structure
-
-```
-src/
-├── app/                    # Next.js App Router pages & API routes
-│   ├── layout.tsx          # Root layout (Navbar, Footer, ThemeProvider)
-│   ├── page.tsx            # Home (SSR, ISR 3600s)
-│   ├── globals.css         # Global styles + CSS variables
-│   ├── about/              # Static about page
-│   ├── blog/               # Notion-backed blog (SSG + ISR)
-│   ├── contact/            # Contact form (client component)
-│   ├── portfolio/          # Portfolio projects (client-side fetch)
-│   ├── research/           # Publications (client-side fetch)
-│   └── api/                # API routes for content, research, config, revalidation
-├── components/
-│   ├── layout/             # Navbar, Footer, ThemeProvider, MaintenanceWrapper
-│   ├── sections/           # Page section components (HeroSection, ResearchList, etc.)
-│   ├── ui/                 # Shadcn/Radix UI primitives
-│   ├── forms/              # ContactForm with reCAPTCHA
-│   ├── media/              # YouTubeEmbed, VideoPlayer, ImageGallery
-│   └── seo/                # JSON-LD structured data
-├── lib/
-│   ├── data-fetching.ts    # Core data layer (fs reads server-side, API fetch client-side)
-│   ├── notion.ts           # Notion blog integration (with in-memory cache)
-│   ├── types.ts            # All TypeScript interfaces
-│   ├── media.ts            # Cloudinary URLs, YouTube embeds, reading time
-│   ├── utils.ts            # cn() class merge utility
-│   ├── actions/            # Server actions (contact form)
-│   └── schemas/            # Zod validation schemas
-└── middleware.ts           # Subdomain redirects
-
-public/content/             # JSON data files (profile, education, experience, etc.)
-public/content/portfolio/   # Individual portfolio project JSON files
-
-utils/                      # Maintenance/data scripts (JS + Claude Code headless)
-```
-
-## Architecture Patterns
-
-### Data Fetching (Dual Strategy)
-
-`lib/data-fetching.ts` auto-detects environment via `typeof window`:
-- **Server components** (Home, Blog): Direct `fs.readFileSync()` from `public/content/`
-- **Client components** (Portfolio, Research): `fetch('/api/content/*')` which reads same JSON files
-
-### Rendering Strategy
-
-| Route | Rendering | Revalidation |
-|-------|-----------|--------------|
-| `/` (Home) | SSR | ISR 3600s (1 hr) |
-| `/blog` | Server Component | In-memory 5-min TTL |
-| `/blog/[slug]` | SSG + ISR | 43200s (12 hr) |
-| `/portfolio`, `/research` | Client Component | On-demand |
-
-### Component Model
-- **Server components** for static/SSR pages (Home, About, Blog listing)
-- **Client components** for interactive pages (Portfolio, Research, Contact)
-- **No global state library** — local `useState`/`useEffect`, `ThemeProvider` context, React Hook Form
-- Path alias: `@/*` maps to `./src/*`
-
-## Styling Conventions
-
-- **Tailwind CSS 3.4** with utility-first approach
-- **CSS variables** (HSL-based) in `globals.css` for light/dark themes
-- **Dark mode**: CSS class strategy (`.dark`) via `next-themes`
-- **cn() utility** (`clsx` + `tailwind-merge`) for conditional class composition
-- **Font**: Inter (Google Fonts, weights 400-800)
-- **Responsive**: Mobile-first with `md:` / `lg:` breakpoints
-- **UI primitives**: Shadcn/Radix UI components in `components/ui/`
-- No CSS Modules or styled-components
-
-## Content Management
-
-### Static Content (JSON)
-Manually maintained JSON files in `public/content/`: `profile.json`, `education.json`, `experience.json`, `achievements.json`, `acknowledgments.json`, `research.json`, and individual portfolio files in `public/content/portfolio/`.
-
-### Blog (Notion)
-Notion database → `@notionhq/client` → `notion-to-md` → `react-markdown` → UI. In-memory caching with configurable TTL. Revalidation via `/api/revalidate`.
-
-### Research Data (Claude Code Headless + Playwright)
-Google Scholar → Claude Code headless (Playwright MCP screenshots) → `public/content/research.json`. Runs daily at 2:00 AM UTC via cron on VPS. Each run creates a per-job directory under `logs/run_YYYYMMDD_HHMMSS/` with screenshots and logs (7-day retention, gitignored). Scripts: `utils/update-research-cron.sh` (cron wrapper, `--force` schedules via `systemd-run`), `utils/update-research-prompt.md` (headless prompt, screenshot-only extraction), `utils/setup-research-cron.sh` (one-time setup).
-
-## External Services
-
-| Service | Purpose | Env Vars |
-|---------|---------|----------|
-| Notion | Blog CMS | `NOTION_SECRET`, `NOTION_DATABASE_ID` |
-| Resend | Contact form email | `RESEND_API_KEY` |
-| Cloudinary | Image CDN | `NEXT_PUBLIC_CLOUDINARY_CLOUD_NAME` |
-| Upstash Redis | Rate limiting | `UPSTASH_REDIS_REST_URL`, `UPSTASH_REDIS_REST_TOKEN` |
-| reCAPTCHA v3 | Bot protection | `NEXT_PUBLIC_RECAPTCHA_SITE_KEY`, `RECAPTCHA_SECRET_KEY` |
-| Vercel | Hosting | Configured via `.vercel/project.json` |
-
-Additional env vars: `CONTACT_EMAIL`, `REVALIDATION_SECRET`.
-
-## Security Notes
-
-Contact form has 5-layer protection: Zod validation, honeypot field, reCAPTCHA v3 (score >= 0.5), spam pattern regex, IP-based rate limiting (25/day per IP, 50/day global). ISR revalidation is protected by `REVALIDATION_SECRET`.
+Install with `--legacy-peer-deps`.
 
 ## Key Files
 
-- `src/lib/data-fetching.ts` — Central data access layer
-- `src/lib/notion.ts` — Blog integration with caching
-- `src/lib/types.ts` — All TypeScript interfaces
+- `src/lib/data-fetching.ts` — Central data access layer (dual server/client strategy)
+- `src/lib/types.ts` — All TypeScript interfaces (Raw/Clean two-layer design)
+- `src/lib/notion.ts` — Blog integration with in-memory caching
+- `src/lib/actions/contact-form-actions.ts` — Contact form server action (5-layer security)
 - `src/app/layout.tsx` — Root layout composition
-- `src/lib/actions/contact-form-actions.ts` — Contact form server action
-- `next.config.js` — Cloudinary domains, strict mode
-- `tailwind.config.ts` — Custom theme, animations, dark mode
-- `components.json` — Shadcn UI configuration
+- `public/content/` — JSON data files
+- `utils/update-research-prompt.md` — Headless agent for Scholar scraping
 
-## Documentation
+## Development Principles
 
-- `.claude/checkpoints/` — Technical snapshots of the codebase
-- `.claude/checkpoints/checkpoint-0/snapshot.md` — Full technical snapshot
-- `.claude/checkpoints/checkpoint-0/rfd/` — Request for Discussion documents
-- `.claude/references/` — Reference materials
+### Multi-Agent Strategy
+
+When a task benefits from running multiple agents, choose the right approach:
+
+- **Subagents (default)**: Lightweight workers that report results back. Use for independent parallel tasks.
+- **Agent teams**: Independent sessions with inter-agent messaging. Use only when agents need to communicate or coordinate.
+
+### Leveraging Available Tools
+
+Before starting any task, check what skills and MCP servers are available:
+
+- Review available skills for specialized capabilities
+- Check available MCP servers for enhanced functionality
+
+### RFD Documentation
+
+For significant changes (features, bug fixes, architectural changes — not one-line fixes), create or update an RFD:
+
+- **Path**: `.claude/checkpoints/checkpoint-{N}/rfd/{N}-{feature-slug}/rfd-{YYYY-MM-DD}-{HHMM}.md`
+- **Workflow**: Write question → Document plan → Implement → Update RFD with results
+
+### Planning First
+
+Always plan before implementation:
+
+- Write RFD first for features requiring them
+- Think through approach before coding
+- Consider edge cases, error handling, testing upfront
+
+### Package Documentation
+
+When working with unfamiliar packages:
+
+1. **First**: Check available MCP servers for documentation tools
+2. **Second**: Search online for documentation
+3. **Third**: Ask the user for clarification
+
+### UI/Web Testing
+
+For frontend development:
+
+- Use Playwright for browser automation and testing, if available
+- Take screenshots to verify visual changes
+- Test user flows and form interactions
+
+### Testing Requirements
+
+Before handing off work:
+
+- Run `npm run build` to verify no build errors
+- Run `npm run lint` to check for lint issues
+- Verify changes work as expected
+
+## Documentation Hierarchy
+
+```
+.claude/checkpoints/
+├── checkpoint-0/          # Initial state
+│   ├── snapshot.md        # Technical codebase snapshot
+│   └── rfd/               # Feature tracking
+│       └── {N}-{slug}/    # Individual feature RFDs
+└── checkpoint-N/          # Future milestones
+    ├── snapshot.md
+    └── rfd/
+```
+
+**Document relationships**: Snapshots (state) → RFDs (features) → CLAUDE.md (quick reference)
