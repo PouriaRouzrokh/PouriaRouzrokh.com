@@ -48,6 +48,9 @@ next-env.d.ts
 # logs
 logs/
 
+# Playwright test artifacts
+test-results/
+
 # Docs
 docs/
 

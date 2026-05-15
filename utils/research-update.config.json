@@ -1,0 +1,12 @@
+{
+  "schedule": "0 2 * * *",
+  "model": "claude-opus-4-7",
+  "cooldown_seconds": 79200,
+  "max_runtime_seconds": 1800,
+  "max_retries": 2,
+  "retry_delay_seconds": 600,
+  "log_retention_days": 7,
+  "failure_log_retention_days": 30,
+  "playwright_mcp_retention_days": 7,
+  "cron_log_max_bytes": 1048576
+}
