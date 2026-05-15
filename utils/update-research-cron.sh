@@ -79,7 +79,7 @@ mkdir -p "$JOB_DIR"
 LOG_FILE="$JOB_DIR/update.log"
 
 log() {
-    echo "[$(date '+%Y-%m-%d %H:%M:%S UTC')] $*" | tee -a "$LOG_FILE"
+    echo "[$(date '+%Y-%m-%d %H:%M:%S %Z')] $*" | tee -a "$LOG_FILE"
 }
 
 # --- Cleanup: rotate cron.log if oversized ---
@@ -129,7 +129,7 @@ write_status() {
     cat > "$STATUS_FILE" <<EOF
 # Research Update — Last Run Status
 
-- **Time**: $(date '+%Y-%m-%d %H:%M:%S UTC')
+- **Time**: $(date '+%Y-%m-%d %H:%M:%S %Z')
 - **Result**: $result
 - **Mode**: $MODE
 - **Model**: $MODEL
