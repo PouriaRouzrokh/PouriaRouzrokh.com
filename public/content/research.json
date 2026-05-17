@@ -3,16 +3,16 @@
   "affiliation": "Assistant Professor, Department of Radiology, Mayo Clinic, MN, USA",
   "google_scholar_id": "Ksv9I0sAAAAJ",
   "metrics": {
-    "citations": 2013,
-    "cited_by_5_years": 1999,
+    "citations": 2015,
+    "cited_by_5_years": 2001,
     "h_index": 26,
     "i10_index": 46
   },
   "total_articles": 83,
-  "total_citations": 2013,
+  "total_citations": 2015,
   "total_articles_processed": 83,
-  "total_citations_processed": 2013,
-  "fetched_at": "2026-05-16 06:04:33 UTC",
+  "total_citations_processed": 2015,
+  "fetched_at": "2026-05-17 06:03:54 UTC",
   "articles": [
     {
       "title": "Reporting checklist for foundation and large language models in medical research (REFINE): an international consensus guideline",
@@ -266,7 +266,7 @@
       "number": "2",
       "pages": "e232635",
       "abstract": "Multiparametric MRI can help identify clinically significant prostate cancer (csPCa) (Gleason score 7) but is limited by reader experience and interobserver variability. In contrast, deep learning (DL) produces deterministic outputs.To develop a DL model to predict the presence of csPCa by using patient-level labels without information about tumor location and to compare its performance with that of radiologists.Data from patients without known csPCa who underwent MRI from January 2017 to December 2019 at one of multiple sites of a single academic institution were retrospectively reviewed. A convolutional neural",
-      "num_citations": 77,
+      "num_citations": 78,
       "url": "https://pubs.rsna.org/doi/abs/10.1148/radiol.232635",
       "article_id": "fully-automated-deep-learning-model-to-d-d756a99a",
       "bibtex": "@article{takahashi2024fully,\n    author = {Jason C Cai and Hirotsugu Nakai and Shiba Kuanar and Adam T Froemming and Candice W Bolan and Akira Kawashima and Hiroaki Takahashi and Lance A Mynderse and Chandler D Dora and Mitchell R Humphreys and Panagiotis Korfiatis and Pouria Rouzrokh and Alexander K Bratt and Gian Marco Conte and Bradley J Erickson and Naoki Takahashi},\n    title = {Fully automated deep learning model to detect clinically significant prostate cancer at MRI},\n    year = {2024},\n    journal = {Radiology},\n    volume = {312},\n    number = {2},\n    pages = {e232635},\n    note = {fully-automated-deep-learning-model-to-d-d756a99a},\n    url = {https://pubs.rsna.org/doi/abs/10.1148/radiol.232635},\n    abstract = {Multiparametric MRI can help identify clinically significant prostate cancer (csPCa) (Gleason score 7) but is limited by reader experience and interobserver variability. In contrast, deep learning (DL) produces deterministic outputs.To develop a DL model to predict the presence of csPCa by using patient-level labels without information about tumor location and to compare its performance with that of radiologists.Data from patients without known csPCa who underwent MRI from January 2017 to December 2019 at one of multiple sites of a single academic institution were retrospectively reviewed. A convolutional neural},\n}"
@@ -424,7 +424,7 @@
       "volume": "9",
       "pages": "100044",
       "abstract": "Dual-energy CT (DECT) is a non-invasive way to determine the presence of monosodium urate (MSU) crystals in the workup of gout. Color-coding distinguishes MSU from calcium following material decomposition and post-processing. Most software labels MSU as green and calcium as blue. There are limitations in the current image processing methods of segmenting green-encoded pixels. Additionally, identifying green foci is tedious, and automated detection would improve workflow. This study aimed to determine the optimal deep learning (DL) algorithm for segmenting green-encoded pixels of MSU crystals on DECTs.DECT images of positive and negative gout cases were retrospectively collected. The dataset was split into train (N 28) and held-out test (N 30) sets. To perform cross-validation, the train set was split into seven folds. The images were presented to two musculoskeletal",
-      "num_citations": 4,
+      "num_citations": 5,
       "url": "https://www.sciencedirect.com/science/article/pii/S277265252400005X",
       "article_id": "development-of-a-deep-learning-model-for-b6e87ca2",
       "bibtex": "@article{tiegsheiden2024development,\n    author = {Shahriar Faghani and Rhodes G Nicholas and Soham Patel and Francis I Baffour and Mana Moassefi and Pouria Rouzrokh and Bardia Khosravi and Garret M Powell and Shuai Leng and Katrina N Glazebrook and Bradley J Erickson and Christin A Tiegs-Heiden},\n    title = {Development of a deep learning model for the automated detection of green pixels indicative of gout on dual energy CT scan},\n    year = {2024},\n    journal = {Research in Diagnostic and Interventional Imaging},\n    volume = {9},\n    pages = {100044},\n    note = {development-of-a-deep-learning-model-for-b6e87ca2},\n    url = {https://www.sciencedirect.com/science/article/pii/S277265252400005X},\n    abstract = {Dual-energy CT (DECT) is a non-invasive way to determine the presence of monosodium urate (MSU) crystals in the workup of gout. Color-coding distinguishes MSU from calcium following material decomposition and post-processing. Most software labels MSU as green and calcium as blue. There are limitations in the current image processing methods of segmenting green-encoded pixels. Additionally, identifying green foci is tedious, and automated detection would improve workflow. This study aimed to determine the optimal deep learning (DL) algorithm for segmenting green-encoded pixels of MSU crystals on DECTs.DECT images of positive and negative gout cases were retrospectively collected. The dataset was split into train (N 28) and held-out test (N 30) sets. To perform cross-validation, the train set was split into seven folds. The images were presented to two musculoskeletal},\n}"
