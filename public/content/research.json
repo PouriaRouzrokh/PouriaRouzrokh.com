@@ -3,16 +3,16 @@
   "affiliation": "Assistant Professor, Department of Radiology, Mayo Clinic, MN, USA",
   "google_scholar_id": "Ksv9I0sAAAAJ",
   "metrics": {
-    "citations": 2025,
-    "cited_by_5_years": 2010,
+    "citations": 2026,
+    "cited_by_5_years": 2011,
     "h_index": 26,
     "i10_index": 46
   },
   "total_articles": 83,
-  "total_citations": 2025,
+  "total_citations": 2026,
   "total_articles_processed": 83,
-  "total_citations_processed": 2025,
-  "fetched_at": "2026-05-20 06:05:38 UTC",
+  "total_citations_processed": 2026,
+  "fetched_at": "2026-05-21 06:04:11 UTC",
   "articles": [
     {
       "title": "Reporting checklist for foundation and large language models in medical research (REFINE): an international consensus guideline",
@@ -331,7 +331,7 @@
       "number": "4",
       "pages": "1664-1673",
       "abstract": "The application of deep learning (DL) in medicine introduces transformative tools with the potential to enhance prognosis, diagnosis, and treatment planning. However, ensuring transparent documentation is essential for researchers to enhance reproducibility and refine techniques. Our study addresses the unique challenges presented by DL in medical imaging by developing a comprehensive checklist using the Delphi method to enhance reproducibility and reliability in this dynamic field. We compiled a preliminary checklist based on a comprehensive review of existing checklists and relevant literature. A panel of 11 experts in medical imaging and DL assessed these items using Likert scales, with two survey rounds to refine responses and gauge consensus. We also employed the content validity ratio with a cutoff of 0.59 to determine item face and content validity. Round 1 included a 27-item questionnaire, with",
-      "num_citations": 16,
+      "num_citations": 17,
       "url": "https://link.springer.com/article/10.1007/s10278-024-01065-2",
       "article_id": "checklist-for-reproducibility-of-deep-le-14401134",
       "bibtex": "@article{faghani2024checklist,\n    author = {Mana Moassefi and Yashbir Singh and Gian Marco Conte and Bardia Khosravi and Pouria Rouzrokh and Sanaz Vahdati and Nabile Safdar and Linda Moy and Felipe Kitamura and Amilcare Gentili and Paras Lakhani and Nina Kottler and Safwan S Halabi and Joseph H Yacoub and Yuankai Hou and Khaled Younis and Bradley J Erickson and Elizabeth Krupinski and Shahriar Faghani},\n    title = {Checklist for reproducibility of deep learning in medical imaging},\n    year = {2024},\n    volume = {37},\n    number = {4},\n    pages = {1664-1673},\n    note = {checklist-for-reproducibility-of-deep-le-14401134},\n    url = {https://link.springer.com/article/10.1007/s10278-024-01065-2},\n    abstract = {The application of deep learning (DL) in medicine introduces transformative tools with the potential to enhance prognosis, diagnosis, and treatment planning. However, ensuring transparent documentation is essential for researchers to enhance reproducibility and refine techniques. Our study addresses the unique challenges presented by DL in medical imaging by developing a comprehensive checklist using the Delphi method to enhance reproducibility and reliability in this dynamic field. We compiled a preliminary checklist based on a comprehensive review of existing checklists and relevant literature. A panel of 11 experts in medical imaging and DL assessed these items using Likert scales, with two survey rounds to refine responses and gauge consensus. We also employed the content validity ratio with a cutoff of 0.59 to determine item face and content validity. Round 1 included a 27-item questionnaire, with},\n}"
