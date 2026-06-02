@@ -3,16 +3,16 @@
   "affiliation": "Assistant Professor, Department of Radiology, Mayo Clinic, MN, USA",
   "google_scholar_id": "Ksv9I0sAAAAJ",
   "metrics": {
-    "citations": 2068,
-    "cited_by_5_years": 2053,
+    "citations": 2072,
+    "cited_by_5_years": 2057,
     "h_index": 26,
     "i10_index": 47
   },
-  "total_articles": 83,
-  "total_citations": 2068,
-  "total_articles_processed": 83,
-  "total_citations_processed": 2068,
-  "fetched_at": "2026-06-01 06:05:05 UTC",
+  "total_articles": 84,
+  "total_citations": 2072,
+  "total_articles_processed": 84,
+  "total_citations_processed": 2072,
+  "fetched_at": "2026-06-02 06:06:57 UTC",
   "articles": [
     {
       "title": "Reporting checklist for foundation and large language models in medical research (REFINE): an international consensus guideline",
@@ -58,6 +58,21 @@
       "url": "https://link.springer.com/article/10.1007/s00256-025-05078-y",
       "article_id": "diagnostic-performance-x-ray-based-deep-learning",
       "bibtex": "@article{pahlevan-fallahy2025diagnostic,\n  author = {Mohammad-Taha Pahlevan-Fallahy and Nasim Hosseinzadeh and Farhad Shaker and Amir-Mohammad Asgari and Mohammad Mobin Teymouri Athar and Pouria Rouzrokh},\n  title = {Diagnostic performance of X-ray-based deep learning models for detecting ankle and foot fractures: a systematic review and meta-analysis},\n  journal = {Skeletal Radiology},\n  pages = {1-14},\n  year = {2025},\n  publisher = {Springer Berlin Heidelberg},\n  url = {https://link.springer.com/article/10.1007/s00256-025-05078-y}\n}"
+    },
+    {
+      "title": "Evaluation Practices for Large Language Models in Healthcare: A Systematic Scoping Review",
+      "authors": "Ehsan Safaee, Ali Mehrabi, M Moein Shariatnia, Parsa Rouzrokh, Pouria Rouzrokh",
+      "year": 2026,
+      "journal": "Research Square",
+      "volume": "",
+      "number": "",
+      "pages": "",
+      "publisher": "Research Square",
+      "abstract": "The rapid integration of Large Language Models (LLMs) into clinical workflows has outpaced the establishment of rigorous frameworks to ensure patient safety and model reliability. We conducted a systematic scoping review of n= 1,054 full-text articles published between 2017 and 2025 to characterize the current landscape of LLM evaluation in healthcare. Using an automated extraction pipeline validated for high-fidelity data retrieval, we mapped study characteristics across the MedHELM taxonomy and 16 distinct evaluation constructs.",
+      "num_citations": 0,
+      "url": "https://www.researchsquare.com/article/rs-9576482/latest",
+      "article_id": "evaluation-practices-for-large-language-3050c58e",
+      "bibtex": "@article{safaee2026evaluation,\n  author = {Ehsan Safaee and Ali Mehrabi and M Moein Shariatnia and Parsa Rouzrokh and Pouria Rouzrokh},\n  title = {Evaluation Practices for Large Language Models in Healthcare: A Systematic Scoping Review},\n  journal = {Research Square},\n  year = {2026},\n  publisher = {Research Square},\n  url = {https://www.researchsquare.com/article/rs-9576482/latest}\n}"
     },
     {
       "title": "A Current Review of Generative AI in Medicine: Core Concepts, Applications, and Current Limitations",
@@ -304,7 +319,7 @@
       "number": "7",
       "pages": "648",
       "abstract": "Thyroid Ultrasound (US) is the primary method to evaluate thyroid nodules. Deep learning (DL) has been playing a significant role in evaluating thyroid cancer. We propose a DL-based pipeline to detect and classify thyroid nodules into benign or malignant groups relying on two views of US imaging. Transverse and longitudinal US images of thyroid nodules from 983 patients were collected retrospectively. Eighty-one cases were held out as a testing set, and the rest of the data were used in five-fold cross-validation (CV). Two You Look Only Once (YOLO) v5 models were trained to detect nodules and classify them. For each view, five models were developed during the CV, which was ensembled by using non-max suppression (NMS) to boost their collective generalizability. An extreme gradient boosting (XGBoost) model was trained on the outputs of the ensembled models for both views to yield a final prediction of malignancy for each nodule. The test set was evaluated by an expert radiologist using the American College of Radiology Thyroid Imaging Reporting and Data System (ACR-TIRADS). The ensemble models for each view achieved a mAP0.5 of 0.797 (transverse) and 0.716 (longitudinal). The whole pipeline reached an AUROC of 0.84 (CI 95: 0.750.91) with sensitivity and specificity of 84 and 63, respectively, while the ACR-TIRADS evaluation of the same set had a sensitivity of 76 and specificity of 34 (p-value 0.003). Our proposed work demonstrated the potential possibility of a deep learning model to achieve diagnostic performance for thyroid nodule evaluation.",
-      "num_citations": 33,
+      "num_citations": 34,
       "url": "https://www.mdpi.com/2306-5354/11/7/648",
       "article_id": "a-multi-view-deep-learning-model-for-thy-4d6ea65e",
       "bibtex": "@article{erickson2024a,\n    author = {Sanaz Vahdati and Bardia Khosravi and Kathryn A Robinson and Pouria Rouzrokh and Mana Moassefi and Zeynettin Akkus and Bradley J Erickson},\n    title = {A multi-view deep learning model for thyroid nodules detection and characterization in ultrasound imaging},\n    year = {2024},\n    journal = {Bioengineering},\n    volume = {11},\n    number = {7},\n    pages = {648},\n    note = {a-multi-view-deep-learning-model-for-thy-4d6ea65e},\n    url = {https://www.mdpi.com/2306-5354/11/7/648},\n    abstract = {Thyroid Ultrasound (US) is the primary method to evaluate thyroid nodules. Deep learning (DL) has been playing a significant role in evaluating thyroid cancer. We propose a DL-based pipeline to detect and classify thyroid nodules into benign or malignant groups relying on two views of US imaging. Transverse and longitudinal US images of thyroid nodules from 983 patients were collected retrospectively. Eighty-one cases were held out as a testing set, and the rest of the data were used in five-fold cross-validation (CV). Two You Look Only Once (YOLO) v5 models were trained to detect nodules and classify them. For each view, five models were developed during the CV, which was ensembled by using non-max suppression (NMS) to boost their collective generalizability. An extreme gradient boosting (XGBoost) model was trained on the outputs of the ensembled models for both views to yield a final prediction of malignancy for each nodule. The test set was evaluated by an expert radiologist using the American College of Radiology Thyroid Imaging Reporting and Data System (ACR-TIRADS). The ensemble models for each view achieved a mAP0.5 of 0.797 (transverse) and 0.716 (longitudinal). The whole pipeline reached an AUROC of 0.84 (CI 95: 0.750.91) with sensitivity and specificity of 84 and 63, respectively, while the ACR-TIRADS evaluation of the same set had a sensitivity of 76 and specificity of 34 (p-value 0.003). Our proposed work demonstrated the potential possibility of a deep learning model to achieve diagnostic performance for thyroid nodule evaluation.},\n}"
@@ -586,7 +601,7 @@
       "number": "2",
       "pages": "e222217",
       "abstract": "In recent years, deep learning (DL) has shown impressive performance in radiologic image analysis. However, for a DL model to be useful in a real-world setting, its confidence in a prediction must also be known. Each DL models output has an estimated probability, and these estimated probabilities are not always reliable. Uncertainty represents the trustworthiness (validity) of estimated probabilities. The higher the uncertainty, the lower the validity. Uncertainty quantification (UQ) methods determine the uncertainty level of each prediction. Predictions made without UQ methods are generally not trustworthy. By implementing UQ in medical DL models, users can be alerted when a model does not have enough information to make a confident decision. Consequently, a medical expert could reevaluate the",
-      "num_citations": 113,
+      "num_citations": 114,
       "url": "https://pubs.rsna.org/doi/abs/10.1148/radiol.222217",
       "article_id": "quantifying-uncertainty-in-deep-learning-4db78810",
       "bibtex": "@article{erickson2023quantifying,\n    author = {Shahriar Faghani and Mana Moassefi and Pouria Rouzrokh and Bardia Khosravi and Francis I Baffour and Michael D Ringler and Bradley J Erickson},\n    title = {Quantifying uncertainty in deep learning of radiologic images},\n    year = {2023},\n    volume = {308},\n    number = {2},\n    pages = {e222217},\n    note = {quantifying-uncertainty-in-deep-learning-4db78810},\n    url = {https://pubs.rsna.org/doi/abs/10.1148/radiol.222217},\n    abstract = {In recent years, deep learning (DL) has shown impressive performance in radiologic image analysis. However, for a DL model to be useful in a real-world setting, its confidence in a prediction must also be known. Each DL models output has an estimated probability, and these estimated probabilities are not always reliable. Uncertainty represents the trustworthiness (validity) of estimated probabilities. The higher the uncertainty, the lower the validity. Uncertainty quantification (UQ) methods determine the uncertainty level of each prediction. Predictions made without UQ methods are generally not trustworthy. By implementing UQ in medical DL models, users can be alerted when a model does not have enough information to make a confident decision. Consequently, a medical expert could reevaluate the},\n}"
@@ -639,7 +654,7 @@
       "volume": "15",
       "pages": "100236",
       "abstract": "Artificial intelligence is a revolutionary technology that promises to assist clinicians in improving patient care. In radiology, deep learning (DL) is widely used in clinical decision aids due to its ability to analyze complex patterns and images. It allows for rapid, enhanced data, and imaging analysis, from diagnosis to outcome prediction. The purpose of this study was to evaluate the current literature and clinical utilization of DL in spine imaging.This study is a scoping review and utilized the Preferred Reporting Items for Systematic Reviews and Meta-Analyses (PRISMA) methodology to review the scientific literature from 2012 to 2021. A search in PubMed, Web of Science, Embased, and IEEE Xplore databases with syntax specific for DL and medical imaging in spine care applications was conducted to collect all original publications on the subject. Specific data was extracted from the available",
-      "num_citations": 30,
+      "num_citations": 31,
       "url": "https://www.sciencedirect.com/science/article/pii/S2666548423000380",
       "article_id": "the-use-of-deep-learning-in-medical-imag-4953c71c",
       "bibtex": "@article{larson2023the,\n    author = {Caroline Constant and Carl-Eric Aubin and Hilal Maradit Kremers and Diana V Vera Garcia and Cody C Wyles and Pouria Rouzrokh and Annalise Noelle Larson},\n    title = {The use of deep learning in medical imaging to improve spine care: a scoping review of current literature and clinical applications},\n    year = {2023},\n    volume = {15},\n    pages = {100236},\n    note = {the-use-of-deep-learning-in-medical-imag-4953c71c},\n    url = {https://www.sciencedirect.com/science/article/pii/S2666548423000380},\n    abstract = {Artificial intelligence is a revolutionary technology that promises to assist clinicians in improving patient care. In radiology, deep learning (DL) is widely used in clinical decision aids due to its ability to analyze complex patterns and images. It allows for rapid, enhanced data, and imaging analysis, from diagnosis to outcome prediction. The purpose of this study was to evaluate the current literature and clinical utilization of DL in spine imaging.This study is a scoping review and utilized the Preferred Reporting Items for Systematic Reviews and Meta-Analyses (PRISMA) methodology to review the scientific literature from 2012 to 2021. A search in PubMed, Web of Science, Embased, and IEEE Xplore databases with syntax specific for DL and medical imaging in spine care applications was conducted to collect all original publications on the subject. Specific data was extracted from the available},\n}"
@@ -787,7 +802,7 @@
       "number": "5",
       "pages": "e210290",
       "abstract": "Minimizing bias is critical to adoption and implementation of machine learning (ML) in clinical practice. Systematic mathematical biases produce consistent and reproducible differences between the observed and expected performance of ML systems, resulting in suboptimal performance. Such biases can be traced back to various phases of ML development: data handling, model development, and performance evaluation. This report presents 12 suboptimal practices during data handling of an ML study, explains how those practices can lead to biases, and describes what may be done to mitigate them. Authors employ an arbitrary and simplified framework that splits ML data handling into four steps: data collection, data investigation, data splitting, and feature engineering. Examples from the available",
-      "num_citations": 166,
+      "num_citations": 167,
       "url": "https://pubs.rsna.org/doi/abs/10.1148/ryai.210290",
       "article_id": "mitigating-bias-in-radiology-machine-lea-0aea1c69",
       "bibtex": "@article{erickson2022mitigating,\n    author = {Pouria Rouzrokh and Bardia Khosravi and Shahriar Faghani and Mana Moassefi and Diana V Vera Garcia and Yashbir Singh and Kuan Zhang and Gian Marco Conte and Bradley J Erickson},\n    title = {Mitigating bias in radiology machine learning: 1. Data handling},\n    year = {2022},\n    journal = {Radiology: Artificial Intelligence},\n    volume = {4},\n    number = {5},\n    pages = {e210290},\n    note = {mitigating-bias-in-radiology-machine-lea-0aea1c69},\n    url = {https://pubs.rsna.org/doi/abs/10.1148/ryai.210290},\n    abstract = {Minimizing bias is critical to adoption and implementation of machine learning (ML) in clinical practice. Systematic mathematical biases produce consistent and reproducible differences between the observed and expected performance of ML systems, resulting in suboptimal performance. Such biases can be traced back to various phases of ML development: data handling, model development, and performance evaluation. This report presents 12 suboptimal practices during data handling of an ML study, explains how those practices can lead to biases, and describes what may be done to mitigate them. Authors employ an arbitrary and simplified framework that splits ML data handling into four steps: data collection, data investigation, data splitting, and feature engineering. Examples from the available},\n}"
