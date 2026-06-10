@@ -3,16 +3,16 @@
   "affiliation": "Assistant Professor, Department of Radiology, Mayo Clinic, MN, USA",
   "google_scholar_id": "Ksv9I0sAAAAJ",
   "metrics": {
-    "citations": 2088,
-    "h_index": 27,
+    "citations": 2087,
+    "h_index": 26,
     "i10_index": 47,
-    "cited_by_5_years": 2073
+    "cited_by_5_years": 2072
   },
   "total_articles": 84,
-  "total_citations": 2088,
+  "total_citations": 2087,
   "total_articles_processed": 84,
-  "total_citations_processed": 2088,
-  "fetched_at": "2026-06-09 06:05:12 UTC",
+  "total_citations_processed": 2087,
+  "fetched_at": "2026-06-10 06:04:37 UTC",
   "articles": [
     {
       "title": "Reporting checklist for foundation and large language models in medical research (REFINE): an international consensus guideline",
@@ -802,7 +802,7 @@
       "number": "5",
       "pages": "e210290",
       "abstract": "Minimizing bias is critical to adoption and implementation of machine learning (ML) in clinical practice. Systematic mathematical biases produce consistent and reproducible differences between the observed and expected performance of ML systems, resulting in suboptimal performance. Such biases can be traced back to various phases of ML development: data handling, model development, and performance evaluation. This report presents 12 suboptimal practices during data handling of an ML study, explains how those practices can lead to biases, and describes what may be done to mitigate them. Authors employ an arbitrary and simplified framework that splits ML data handling into four steps: data collection, data investigation, data splitting, and feature engineering. Examples from the available",
-      "num_citations": 168,
+      "num_citations": 169,
       "url": "https://pubs.rsna.org/doi/abs/10.1148/ryai.210290",
       "article_id": "mitigating-bias-in-radiology-machine-lea-0aea1c69",
       "bibtex": "@article{erickson2022mitigating,\n    author = {Pouria Rouzrokh and Bardia Khosravi and Shahriar Faghani and Mana Moassefi and Diana V Vera Garcia and Yashbir Singh and Kuan Zhang and Gian Marco Conte and Bradley J Erickson},\n    title = {Mitigating bias in radiology machine learning: 1. Data handling},\n    year = {2022},\n    journal = {Radiology: Artificial Intelligence},\n    volume = {4},\n    number = {5},\n    pages = {e210290},\n    note = {mitigating-bias-in-radiology-machine-lea-0aea1c69},\n    url = {https://pubs.rsna.org/doi/abs/10.1148/ryai.210290},\n    abstract = {Minimizing bias is critical to adoption and implementation of machine learning (ML) in clinical practice. Systematic mathematical biases produce consistent and reproducible differences between the observed and expected performance of ML systems, resulting in suboptimal performance. Such biases can be traced back to various phases of ML development: data handling, model development, and performance evaluation. This report presents 12 suboptimal practices during data handling of an ML study, explains how those practices can lead to biases, and describes what may be done to mitigate them. Authors employ an arbitrary and simplified framework that splits ML data handling into four steps: data collection, data investigation, data splitting, and feature engineering. Examples from the available},\n}"
@@ -936,7 +936,7 @@
       "volume": "10",
       "number": "5",
       "pages": "403",
-      "num_citations": 27,
+      "num_citations": 26,
       "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC9194706/",
       "article_id": "diagnostic-performance-of-clinical-exami-006d2a9f",
       "bibtex": "@article{rouzrokh2022diagnostic,\n    author = {Mohammadreza Chavoshi and Ghazaleh Soltani and Shekoufe Shafiei Zargar and Cody Clayton Wyles and Hilal Maradit Kremers and Pouria Rouzrokh},\n    title = {Diagnostic performance of clinical examination versus ultrasonography in the detection of developmental dysplasia of hip: A systematic review and meta-analysis},\n    year = {2022},\n    volume = {10},\n    number = {5},\n    pages = {403},\n    note = {diagnostic-performance-of-clinical-exami-006d2a9f},\n    url = {https://pmc.ncbi.nlm.nih.gov/articles/PMC9194706/},\n}"
@@ -1031,7 +1031,7 @@
       "number": "6",
       "pages": "2197-2203. e3",
       "abstract": "Dislocation is a common complication following total hip arthroplasty (THA), and accounts for a high percentage of subsequent revisions. The purpose of this study is to illustrate the potential of a convolutional neural network model to assess the risk of hip dislocation based on postoperative anteroposterior pelvis radiographs.We retrospectively evaluated radiographs for a cohort of 13,970 primary THAs with 374 dislocations over 5 years of follow-up. Overall, 1490 radiographs from dislocated and 91,094 from non-dislocated THAs were included in the analysis. A convolutional neural network object detection model (YOLO-V3) was trained to crop the images by centering on the femoral head. A ResNet18 classifier was trained to predict subsequent hip dislocation from the cropped imaging. The ResNet18 classifier was initialized with ImageNet weights and trained using FastAI (V1.0) running on",
-      "num_citations": 84,
+      "num_citations": 83,
       "url": "https://www.sciencedirect.com/science/article/pii/S0883540321001674",
       "article_id": "deep-learning-artificial-intelligence-mo-9f79f547",
       "bibtex": "@article{erickson2021deep,\n    author = {Pouria Rouzrokh and Taghi Ramazanian and Cody C Wyles and Kenneth A Philbrick and Jason C Cai and Michael J Taunton and Hilal Maradit Kremers and David G Lewallen and Bradley J Erickson},\n    title = {Deep learning artificial intelligence model for assessment of hip dislocation risk following primary total hip arthroplasty from postoperative radiographs},\n    year = {2021},\n    journal = {The Journal of arthroplasty},\n    volume = {36},\n    number = {6},\n    pages = {2197-2203. e3},\n    note = {deep-learning-artificial-intelligence-mo-9f79f547},\n    url = {https://www.sciencedirect.com/science/article/pii/S0883540321001674},\n    abstract = {Dislocation is a common complication following total hip arthroplasty (THA), and accounts for a high percentage of subsequent revisions. The purpose of this study is to illustrate the potential of a convolutional neural network model to assess the risk of hip dislocation based on postoperative anteroposterior pelvis radiographs.We retrospectively evaluated radiographs for a cohort of 13,970 primary THAs with 374 dislocations over 5 years of follow-up. Overall, 1490 radiographs from dislocated and 91,094 from non-dislocated THAs were included in the analysis. A convolutional neural network object detection model (YOLO-V3) was trained to crop the images by centering on the femoral head. A ResNet18 classifier was trained to predict subsequent hip dislocation from the cropped imaging. The ResNet18 classifier was initialized with ImageNet weights and trained using FastAI (V1.0) running on},\n}"
