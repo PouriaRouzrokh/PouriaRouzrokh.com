@@ -191,6 +191,45 @@ auto_unstash() {
     fi
 }
 
+# --- Verify the Vercel production deployment for a pushed commit ---
+# Uses the GitHub "Vercel" commit status (no Vercel CLI auth needed).
+# Returns: 0 = deploy succeeded, 1 = deploy FAILED, 2 = inconclusive (timeout / gh unavailable).
+verify_deployment() {
+    local sha="$1"
+    local repo_slug state elapsed=0
+    local timeout_s=600 interval=20
+
+    repo_slug=$(git -C "$REPO_DIR" remote get-url origin 2>/dev/null \
+        | sed -E 's#^git@github.com:##; s#^https://github.com/##; s#\.git$##')
+    if [[ -z "$repo_slug" ]]; then
+        log "WARNING: could not determine GitHub repo slug; skipping deploy verification"
+        return 2
+    fi
+    if ! command -v gh >/dev/null 2>&1 || ! gh auth status >/dev/null 2>&1; then
+        log "WARNING: gh CLI unavailable/unauthenticated; cannot verify deployment for ${sha:0:7}"
+        return 2
+    fi
+
+    log "Verifying Vercel deployment for commit ${sha:0:7} (timeout ${timeout_s}s)..."
+    while (( elapsed < timeout_s )); do
+        state=$(gh api "repos/$repo_slug/commits/$sha/status" \
+            --jq '([.statuses[] | select(.context=="Vercel")] | last | .state) // "pending"' \
+            2>/dev/null || echo "unknown")
+        case "$state" in
+            success)
+                log "Vercel deployment for ${sha:0:7} succeeded."
+                return 0 ;;
+            failure|error)
+                log "ERROR: Vercel deployment for ${sha:0:7} reported state=$state"
+                return 1 ;;
+            *)
+                sleep "$interval"; elapsed=$(( elapsed + interval )) ;;
+        esac
+    done
+    log "WARNING: Vercel deployment for ${sha:0:7} did not reach a terminal state within ${timeout_s}s (last: ${state:-unknown})"
+    return 2
+}
+
 # --- Dry-run: validate config + cleanup, then exit without running the agent ---
 if [[ "$MODE" == "dry-run" ]]; then
     log "===== Dry-run started ====="
@@ -231,6 +270,9 @@ else
     log "WARNING: git pull failed, continuing with current state"
 fi
 auto_unstash
+
+# Record HEAD before the agent runs, so we can tell whether a new commit was pushed.
+PRE_SHA=$(git -C "$REPO_DIR" rev-parse HEAD 2>/dev/null || echo "")
 
 START_TS=$(date +%s)
 SUMMARY=""
@@ -276,10 +318,36 @@ END_TS=$(date +%s)
 DURATION=$((END_TS - START_TS))
 
 if [[ "$RESULT" == "success" ]]; then
+    # The agent exited 0 (data committed & pushed). That is NOT proof the site
+    # actually deployed — verify the Vercel production deployment for the new commit.
+    POST_SHA=$(git -C "$REPO_DIR" rev-parse HEAD 2>/dev/null || echo "")
+    DEPLOY_NOTE=""
+    if [[ -n "$POST_SHA" && "$POST_SHA" != "$PRE_SHA" ]]; then
+        if verify_deployment "$POST_SHA"; then
+            DEPLOY_NOTE="Vercel deployment verified (commit ${POST_SHA:0:7})."
+        else
+            VERIFY_RC=$?
+            if [[ $VERIFY_RC -eq 1 ]]; then
+                log "===== Agent succeeded but the Vercel DEPLOYMENT FAILED (commit ${POST_SHA:0:7}) ====="
+                touch "$JOB_DIR/FAILED"
+                SUMMARY="Data was committed & pushed (${POST_SHA:0:7}) but the Vercel production deployment FAILED. The live site is still serving the previous deployment. Investigate vercel.json / the Vercel dashboard."
+                write_status "failure" "$SUMMARY"
+                write_history "deploy_failed" "$ATTEMPT" "$DURATION" "$SUMMARY"
+                ln -sfn "$JOB_DIR" "$LOG_DIR/latest"
+                exit 1
+            fi
+            DEPLOY_NOTE="Deployment verification inconclusive (rc=$VERIFY_RC) — confirm on the Vercel dashboard."
+        fi
+    else
+        DEPLOY_NOTE="No new commit pushed; deployment verification skipped."
+    fi
     log "===== Research update completed successfully (attempts: $ATTEMPT, ${DURATION}s) ====="
+    log "$DEPLOY_NOTE"
     date +%s > "$LAST_RUN_FILE"
-    write_status "success" "$SUMMARY"
-    write_history "success" "$ATTEMPT" "$DURATION" "$SUMMARY"
+    write_status "success" "$SUMMARY
+
+$DEPLOY_NOTE"
+    write_history "success" "$ATTEMPT" "$DURATION" "$SUMMARY $DEPLOY_NOTE"
     # Symlink latest run for easy access
     ln -sfn "$JOB_DIR" "$LOG_DIR/latest"
     exit 0
