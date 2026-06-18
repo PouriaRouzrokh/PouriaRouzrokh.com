@@ -34,7 +34,7 @@ export const contactFormSchema = z
       .string()
       .min(10, "Message must be at least 10 characters")
       .max(1000, "Message must be less than 1000 characters"),
-    requestConsultation: z.boolean().default(false),
+    requestConsultation: z.boolean(),
     consultationAreas: z.array(z.enum(consultationAreas)).optional(),
     otherConsultationArea: z.string().optional(),
     honeypot: z.string().max(0, "This field should be left empty"),

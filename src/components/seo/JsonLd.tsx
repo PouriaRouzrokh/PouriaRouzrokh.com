@@ -8,6 +8,9 @@ interface JsonLdProps {
 }
 
 export const JsonLd: React.FC<JsonLdProps> = ({ data }) => {
+  // Stable, SSR-consistent id (avoids hydration mismatch from Math.random)
+  const id = React.useId();
+
   // Safely stringify the JSON-LD data, handling circular references
   const safeStringify = (obj: Record<string, unknown>): string => {
     // Handle circular references
@@ -25,7 +28,7 @@ export const JsonLd: React.FC<JsonLdProps> = ({ data }) => {
 
   return (
     <Script
-      id={`json-ld-${Math.random().toString(36).substring(2, 9)}`}
+      id={`json-ld-${id}`}
       type="application/ld+json"
       dangerouslySetInnerHTML={{ __html: safeStringify(data) }}
       strategy="afterInteractive"

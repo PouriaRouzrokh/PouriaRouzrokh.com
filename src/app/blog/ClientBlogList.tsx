@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { useState, useEffect, useMemo } from "react";
 import BlogCard from "@/components/sections/BlogCard";
 import BlogTagFilter from "@/components/sections/BlogTagFilter";
 import { BlogPostMetadata } from "@/lib/types";
@@ -17,8 +17,6 @@ export default function ClientBlogList({
 }: ClientBlogListProps) {
   const [searchTerm, setSearchTerm] = useState("");
   const [selectedTags, setSelectedTags] = useState<string[]>([]);
-  const [displayedPosts, setDisplayedPosts] =
-    useState<BlogPostMetadata[]>(initialPosts);
   const router = useRouter();
 
   // Handle tag selection/deselection
@@ -32,8 +30,8 @@ export default function ClientBlogList({
     });
   };
 
-  // Filter posts based on search term and selected tags
-  useEffect(() => {
+  // Filter posts based on search term and selected tags (derived during render)
+  const displayedPosts = useMemo(() => {
     let filtered = initialPosts;
 
     // Filter by search term
@@ -54,7 +52,7 @@ export default function ClientBlogList({
       );
     }
 
-    setDisplayedPosts(filtered);
+    return filtered;
   }, [searchTerm, selectedTags, initialPosts]);
 
   // Preload blog post data for all visible posts
