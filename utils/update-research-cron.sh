@@ -12,8 +12,8 @@
 #   bash utils/update-research-cron.sh --test-alert # Send a test failure email and exit
 #
 # Failure alerts:
-#   Any run that exits non-zero emails CONTACT_RECIPIENT_EMAIL via Resend, using the
-#   same RESEND_API_KEY / CONTACT_FROM_EMAIL as the site's contact form (.env.local).
+#   Any run that exits non-zero emails CONTACT_RECIPIENT_EMAIL (.env.local) through
+#   Gmail SMTP, using the radar Gmail account's app password (~/projects/radar/.env).
 #
 # Outputs:
 #   logs/run_<timestamp>/update.log     # Per-run detailed log
@@ -35,6 +35,7 @@ STATUS_FILE="$LOG_DIR/STATUS.md"
 HISTORY_FILE="$LOG_DIR/history.jsonl"
 CRON_LOG="$LOG_DIR/cron.log"
 ENV_FILE="$REPO_DIR/.env.local"
+ALERT_ENV_FILE="/home/pouria/projects/radar/.env"
 
 # --- Parse flags ---
 MODE="normal"
@@ -47,28 +48,38 @@ case "${1:-}" in
     *)            echo "Unknown flag: $1" >&2; exit 2 ;;
 esac
 
-# --- Failure alert: email via Resend ---
+# --- Failure alert: email via Gmail SMTP ---
+# Resend (the contact form's sender) accepts mail to this address but it is never
+# delivered, so alerts go through the radar Gmail account's app password instead.
 env_val() {
-    sed -nE "s/^$1=[\"']?([^\"']*)[\"']?[[:space:]]*\$/\1/p" "$ENV_FILE" 2>/dev/null | tail -1
+    sed -nE "s/^$2=[\"']?([^\"']*)[\"']?[[:space:]]*\$/\1/p" "$1" 2>/dev/null | tail -1
 }
 send_alert() {
     local subject="$1" body="$2"
-    local key from to payload code
-    key=$(env_val RESEND_API_KEY)
-    from=$(env_val CONTACT_FROM_EMAIL)
-    to=$(env_val CONTACT_RECIPIENT_EMAIL)
-    if [[ -z "$key" || -z "$from" || -z "$to" ]]; then
-        echo "[$(date '+%Y-%m-%d %H:%M:%S %Z')] WARNING: alert not sent (RESEND_API_KEY / CONTACT_FROM_EMAIL / CONTACT_RECIPIENT_EMAIL missing from $ENV_FILE)"
+    local user pass to out
+    user=$(env_val "$ALERT_ENV_FILE" RADAR_IMAP_USER)
+    pass=$(env_val "$ALERT_ENV_FILE" RADAR_IMAP_PASSWORD)
+    to=$(env_val "$ENV_FILE" CONTACT_RECIPIENT_EMAIL)
+    if [[ -z "$user" || -z "$pass" || -z "$to" ]]; then
+        echo "[$(date '+%Y-%m-%d %H:%M:%S %Z')] WARNING: alert not sent (Gmail credentials in $ALERT_ENV_FILE or CONTACT_RECIPIENT_EMAIL in $ENV_FILE missing)"
         return 0
     fi
-    payload=$(jq -n --arg from "Website research update <$from>" --arg to "$to" \
-        --arg subject "$subject" --arg text "$body" \
-        '{from: $from, to: [$to], subject: $subject, text: $text}')
-    code=$(curl -sS --max-time 30 -o /dev/null -w '%{http_code}' \
-        -X POST https://api.resend.com/emails \
-        -H "Authorization: Bearer $key" -H "Content-Type: application/json" \
-        -d "$payload" 2>/dev/null || echo "000")
-    echo "[$(date '+%Y-%m-%d %H:%M:%S %Z')] Alert email to $to: HTTP $code"
+    out=$(ALERT_USER="$user" ALERT_PASS="$pass" ALERT_TO="$to" \
+          ALERT_SUBJECT="$subject" ALERT_BODY="$body" python3 - <<'PY' 2>&1
+import os, smtplib
+from email.message import EmailMessage
+m = EmailMessage()
+m["From"] = "VPS research update <%s>" % os.environ["ALERT_USER"]
+m["To"] = os.environ["ALERT_TO"]
+m["Subject"] = os.environ["ALERT_SUBJECT"]
+m.set_content(os.environ["ALERT_BODY"])
+with smtplib.SMTP_SSL("smtp.gmail.com", 465, timeout=30) as s:
+    s.login(os.environ["ALERT_USER"], os.environ["ALERT_PASS"])
+    s.send_message(m)
+print("sent")
+PY
+    ) || true
+    echo "[$(date '+%Y-%m-%d %H:%M:%S %Z')] Alert email to $to: ${out##*$'\n'}"
 }
 
 # Any non-zero exit (failed attempts, failed deploy, missing config, a crash
