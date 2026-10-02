@@ -9,6 +9,11 @@
 #   bash utils/update-research-cron.sh --force      # Schedule a run in ~60s via systemd-run
 #   bash utils/update-research-cron.sh --scheduled  # Internal: skip cooldown, run directly
 #   bash utils/update-research-cron.sh --dry-run    # Verify config + cleanup; skip headless agent
+#   bash utils/update-research-cron.sh --test-alert # Send a test failure email and exit
+#
+# Failure alerts:
+#   Any run that exits non-zero emails CONTACT_RECIPIENT_EMAIL via Resend, using the
+#   same RESEND_API_KEY / CONTACT_FROM_EMAIL as the site's contact form (.env.local).
 #
 # Outputs:
 #   logs/run_<timestamp>/update.log     # Per-run detailed log
@@ -29,16 +34,69 @@ PLAYWRIGHT_MCP_DIR="$REPO_DIR/.playwright-mcp"
 STATUS_FILE="$LOG_DIR/STATUS.md"
 HISTORY_FILE="$LOG_DIR/history.jsonl"
 CRON_LOG="$LOG_DIR/cron.log"
+ENV_FILE="$REPO_DIR/.env.local"
 
 # --- Parse flags ---
 MODE="normal"
 case "${1:-}" in
-    --force)     MODE="force" ;;
-    --scheduled) MODE="scheduled" ;;
-    --dry-run)   MODE="dry-run" ;;
-    "")          MODE="normal" ;;
-    *)           echo "Unknown flag: $1" >&2; exit 2 ;;
+    --force)      MODE="force" ;;
+    --scheduled)  MODE="scheduled" ;;
+    --dry-run)    MODE="dry-run" ;;
+    --test-alert) MODE="test-alert" ;;
+    "")           MODE="normal" ;;
+    *)            echo "Unknown flag: $1" >&2; exit 2 ;;
 esac
+
+# --- Failure alert: email via Resend ---
+env_val() {
+    sed -nE "s/^$1=[\"']?([^\"']*)[\"']?[[:space:]]*\$/\1/p" "$ENV_FILE" 2>/dev/null | tail -1
+}
+send_alert() {
+    local subject="$1" body="$2"
+    local key from to payload code
+    key=$(env_val RESEND_API_KEY)
+    from=$(env_val CONTACT_FROM_EMAIL)
+    to=$(env_val CONTACT_RECIPIENT_EMAIL)
+    if [[ -z "$key" || -z "$from" || -z "$to" ]]; then
+        echo "[$(date '+%Y-%m-%d %H:%M:%S %Z')] WARNING: alert not sent (RESEND_API_KEY / CONTACT_FROM_EMAIL / CONTACT_RECIPIENT_EMAIL missing from $ENV_FILE)"
+        return 0
+    fi
+    payload=$(jq -n --arg from "Website research update <$from>" --arg to "$to" \
+        --arg subject "$subject" --arg text "$body" \
+        '{from: $from, to: [$to], subject: $subject, text: $text}')
+    code=$(curl -sS --max-time 30 -o /dev/null -w '%{http_code}' \
+        -X POST https://api.resend.com/emails \
+        -H "Authorization: Bearer $key" -H "Content-Type: application/json" \
+        -d "$payload" 2>/dev/null || echo "000")
+    echo "[$(date '+%Y-%m-%d %H:%M:%S %Z')] Alert email to $to: HTTP $code"
+}
+
+# Any non-zero exit (failed attempts, failed deploy, missing config, a crash
+# under `set -e`) sends one email. FAIL_REASON is set by the known failure paths.
+FAIL_REASON=""
+on_exit() {
+    local rc=$?
+    [[ $rc -eq 0 || "$MODE" == "force" ]] && return 0
+    local log_tail="" hint=""
+    if [[ -n "${LOG_FILE:-}" && -f "$LOG_FILE" ]]; then
+        log_tail=$(tail -n 25 "$LOG_FILE")
+        if grep -qiE "Failed to authenticate|not logged in|OAuth" "$LOG_FILE"; then
+            hint="Claude Code is logged out on the VPS. Fix: ssh prouz, run claude, type /login, then /exit.
+Re-run now with: bash $SCRIPT_PATH --force"
+        fi
+    fi
+    send_alert "Website research update FAILED ($(date '+%Y-%m-%d'))" \
+"The weekly Google Scholar update for pouriarouzrokh.com failed on the VPS (exit $rc).
+
+${FAIL_REASON:-See the log below.}
+
+${hint}
+
+Log: ${LOG_FILE:-$CRON_LOG}
+---
+${log_tail}"
+}
+trap on_exit EXIT
 
 # --- Load config ---
 if ! command -v jq >/dev/null 2>&1; then
@@ -59,6 +117,14 @@ LOG_RETENTION_DAYS=$(jq -r '.log_retention_days' "$CONFIG_FILE")
 FAILURE_LOG_RETENTION_DAYS=$(jq -r '.failure_log_retention_days' "$CONFIG_FILE")
 PLAYWRIGHT_MCP_RETENTION_DAYS=$(jq -r '.playwright_mcp_retention_days' "$CONFIG_FILE")
 CRON_LOG_MAX_BYTES=$(jq -r '.cron_log_max_bytes' "$CONFIG_FILE")
+
+# --- Test alert: send one email and exit ---
+if [[ "$MODE" == "test-alert" ]]; then
+    send_alert "TEST: website research update alert" \
+"This is a test of the failure alert for the weekly Google Scholar update on the VPS.
+If a real run fails, an email like this one arrives with the reason and the last lines of the log."
+    exit 0
+fi
 
 # --- Force mode: schedule via systemd-run and exit ---
 if [[ "$MODE" == "force" ]]; then
@@ -261,6 +327,19 @@ unset CLAUDECODE 2>/dev/null || true
 [[ -f "$HOME/.bashrc" ]] && source "$HOME/.bashrc" 2>/dev/null || true
 [[ -f "$HOME/.profile" ]] && source "$HOME/.profile" 2>/dev/null || true
 
+# Pre-flight: fail fast (and alert) if Claude Code is logged out, instead of
+# burning three retries on the same auth error.
+if ! claude auth status 2>/dev/null | jq -e '.loggedIn == true' >/dev/null 2>&1; then
+    log "ERROR: Claude Code is not logged in on this server (claude auth status)."
+    FAIL_REASON="Claude Code is not logged in on the VPS, so the update could not start."
+    echo "Failed to authenticate: claude auth status reports loggedIn=false" >> "$LOG_FILE"
+    touch "$JOB_DIR/FAILED"
+    write_status "failure" "$FAIL_REASON"
+    write_history "failure" 0 0 "$FAIL_REASON"
+    ln -sfn "$JOB_DIR" "$LOG_DIR/latest"
+    exit 1
+fi
+
 # Pull latest changes (with auto-stash to survive dirty trees)
 auto_stash
 log "Pulling latest changes..."
@@ -331,6 +410,7 @@ if [[ "$RESULT" == "success" ]]; then
                 log "===== Agent succeeded but the Vercel DEPLOYMENT FAILED (commit ${POST_SHA:0:7}) ====="
                 touch "$JOB_DIR/FAILED"
                 SUMMARY="Data was committed & pushed (${POST_SHA:0:7}) but the Vercel production deployment FAILED. The live site is still serving the previous deployment. Investigate vercel.json / the Vercel dashboard."
+                FAIL_REASON="$SUMMARY"
                 write_status "failure" "$SUMMARY"
                 write_history "deploy_failed" "$ATTEMPT" "$DURATION" "$SUMMARY"
                 ln -sfn "$JOB_DIR" "$LOG_DIR/latest"
@@ -355,6 +435,7 @@ else
     log "===== Research update FAILED after $ATTEMPT attempts (${DURATION}s) ====="
     touch "$JOB_DIR/FAILED"
     SUMMARY="All $ATTEMPT attempt(s) failed. See $LOG_FILE for details."
+    FAIL_REASON="$SUMMARY"
     write_status "failure" "$SUMMARY"
     write_history "failure" "$ATTEMPT" "$DURATION" "$SUMMARY"
     ln -sfn "$JOB_DIR" "$LOG_DIR/latest"
