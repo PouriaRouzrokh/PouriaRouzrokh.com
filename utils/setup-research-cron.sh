@@ -14,6 +14,12 @@ CRON_SCRIPT="$REPO_DIR/utils/update-research-cron.sh"
 LOG_DIR="$REPO_DIR/logs"
 CRON_LOG="$LOG_DIR/cron.log"
 
+# Server only: the cron must exist on the VPS alone, never on the Mac.
+if [[ ! -d "$REPO_DIR" ]]; then
+    echo "setup-research-cron.sh runs only on the VPS ($REPO_DIR not found). Not installing." >&2
+    exit 2
+fi
+
 echo "=== Research Update Cron Setup ==="
 echo ""
 

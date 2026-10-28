@@ -2,6 +2,26 @@
 
 Personal academic portfolio and blog for Pouria Rouzrokh (Next.js 16, TypeScript, Vercel).
 
+## Where work happens
+
+- **Develop, test and build on the Mac**, in `~/Developer/pouriarouzrokh.com`. Never build or test on the VPS: it is a small shared server that also runs his other live sites.
+- **Pull before you work.** The VPS commits `public/content/research.json` to `main` every Sunday, so start with `git pull --rebase`.
+- **Deploys:** Vercel builds and deploys every push to `main` (GitHub integration, Node 22). Nothing builds on the VPS. Run `scripts/deploy.sh` to ship: it refuses a dirty tree or another branch, pulls, runs lint + typecheck + build, then pushes.
+- **What stays on the VPS:** the weekly research update (cron, Sundays 09:00 ET: `utils/update-research-cron.sh` runs a headless Claude with Playwright to scrape Google Scholar, commits, pushes, checks the Vercel deploy and emails on failure). The checkout `~/projects/pouriarouzrokh.com` on the VPS exists only for this job; it holds no `node_modules`. The job's scripts refuse to run on the Mac. Never run the job or `utils/update-research-prompt.md` from the Mac: that would scrape and commit a second time.
+
+Mac commands (Node 22: `export PATH=/opt/homebrew/opt/node@22/bin:$PATH`):
+
+```bash
+npm ci                   # install (≈ 7 s)
+npm run dev              # dev server
+npm run lint             # ESLint (≈ 2 s)
+npm run typecheck        # tsc --noEmit (≈ 2 s)
+npm run build            # production build (≈ 9 s)
+scripts/deploy.sh        # check and push main; Vercel deploys it
+```
+
+There is no test suite; lint, typecheck and build are the checks.
+
 ## Context Loading Instructions
 
 To understand this project, read the documentation in this order:
@@ -33,13 +53,7 @@ find .claude/checkpoints/checkpoint-*/rfd -name "*.md" 2>/dev/null | sort -V
 
 ## Quick Commands
 
-```bash
-npm run dev              # Start dev server
-npm run build            # Production build
-npm run lint             # ESLint
-```
-
-Install with `--legacy-peer-deps`.
+See "Where work happens" above. `.npmrc` sets `legacy-peer-deps`, so a plain `npm ci` works.
 
 ## Key Files
 
@@ -102,8 +116,7 @@ For frontend development:
 
 Before handing off work:
 
-- Run `npm run build` to verify no build errors
-- Run `npm run lint` to check for lint issues
+- On the Mac, run `npm run lint`, `npm run typecheck` and `npm run build`
 - Verify changes work as expected
 
 ## Documentation Hierarchy

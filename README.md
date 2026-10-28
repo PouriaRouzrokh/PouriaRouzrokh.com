@@ -4,7 +4,7 @@ A personal website and portfolio showcasing projects, research, blog posts, and 
 
 ## Tech Stack
 
-- **Frontend**: Next.js 14 (App Router), React 18, TypeScript
+- **Frontend**: Next.js 16 (App Router), React 19, TypeScript
 - **Styling**: Tailwind CSS, shadcn UI, Radix UI components
 - **Content Management**: Notion integration, MDX support
 - **Image Handling**: Cloudinary
@@ -41,12 +41,10 @@ npm run toggle-maintenance
 
 ## Deployment
 
-The site is deployed to Vercel. Use the deploy script for a streamlined deployment process:
+Vercel builds and deploys every push to `main`. `scripts/deploy.sh` checks the tree, pulls, runs lint, typecheck and build, then pushes.
 
-```bash
-./deploy.sh
-```
+Research data (`public/content/research.json`) is updated by a weekly cron on the VPS, which commits to `main`. Pull before working.
 
 ## Requirements
 
-- Node.js 18.17.0 or higher
+- Node.js 22 (the version Vercel builds with)

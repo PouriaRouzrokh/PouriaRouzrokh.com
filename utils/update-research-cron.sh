@@ -37,6 +37,15 @@ CRON_LOG="$LOG_DIR/cron.log"
 ENV_FILE="$REPO_DIR/.env.local"
 ALERT_ENV_FILE="/home/pouria/projects/radar/.env"
 
+# --- Server only ---
+# This job is the site's one production automation and runs only on the VPS.
+# Development happens on the Mac, where this path does not exist: refuse there,
+# before the failure-alert trap is set, so a stray run never commits or emails.
+if [[ ! -d "$REPO_DIR" ]]; then
+    echo "update-research-cron.sh runs only on the VPS ($REPO_DIR not found). Not running." >&2
+    exit 2
+fi
+
 # --- Parse flags ---
 MODE="normal"
 case "${1:-}" in
