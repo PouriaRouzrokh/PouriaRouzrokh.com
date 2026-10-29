@@ -2,6 +2,15 @@
 
 This file tracks significant commits and changes to the project.
 
+### 10/29/2026 (main) — done by WatchTower (~/WatchTower) under Pouria's grant G-1
+
+- **Research update: Claude Sonnet 5.5, from the one model card**
+  - Pouria: all projects "get their models from ONE model card, which must always be up to date"; and the weekly Google Scholar job moves from Opus to Sonnet.
+  - `utils/research-update.config.json` `model`: `claude-opus-4-7` → `claude-sonnet-5-5`.
+  - `utils/update-research-cron.sh` takes the model from pr-ra's `model-card.json` (purpose `research_update`, at `/home/pouria/projects/pr-ra/model-card.json` on the VPS) and falls back to the config's `model` when the card is missing or has no such purpose. It resolves the model again **after** its `git pull`, so a pushed change applies on the same Sunday (before, the config was read before the pull, a week late). The run log, STATUS.md and history.jsonl name the model and where it came from. Nothing else in the script changed.
+  - Verified: `bash -n`; the resolver tested on the Mac against the real card, a missing, a broken and a purpose-less card; on the VPS, `claude -p --model claude-sonnet-5-5` answered "ok". RFD: `.claude/checkpoints/checkpoint-0/rfd/1-research-automation-hardening/rfd-2026-10-29-1600.md`.
+  - Left: push (WatchTower), after pr-ra's deploy puts `model-card.json` on the VPS; until then the config's value (the same model) is used.
+
 ### 2/15/2026 - 13:28 (main)
 
 - **Infra: Replace GitHub Actions with Claude Code headless cron for research updates**

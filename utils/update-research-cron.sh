@@ -3,6 +3,9 @@
 #
 # Configuration: utils/research-update.config.json
 #   - schedule, model, cooldown, retries, retention, max runtime
+# Model: the "research_update" purpose of the one model card, pr-ra's model-card.json
+#   (MODEL_CARD below; pr-ra is checked out on the VPS). The config's "model" is the
+#   fallback when the card is missing or has no such purpose. Read after the git pull.
 #
 # Usage:
 #   bash utils/update-research-cron.sh              # Normal run (respects cooldown)
@@ -36,6 +39,7 @@ HISTORY_FILE="$LOG_DIR/history.jsonl"
 CRON_LOG="$LOG_DIR/cron.log"
 ENV_FILE="$REPO_DIR/.env.local"
 ALERT_ENV_FILE="/home/pouria/projects/radar/.env"
+MODEL_CARD="/home/pouria/projects/pr-ra/model-card.json"
 
 # --- Server only ---
 # This job is the site's one production automation and runs only on the VPS.
@@ -128,7 +132,22 @@ if [[ ! -f "$CONFIG_FILE" ]]; then
     exit 1
 fi
 
-MODEL=$(jq -r '.model' "$CONFIG_FILE")
+# The model: the card's research_update if present, else the config's "model".
+# Called again after the git pull, so a pushed config change takes effect on the same run.
+resolve_model() {
+    local card_model=""
+    if [[ -f "$MODEL_CARD" ]]; then
+        card_model=$(jq -r '.purposes.research_update.model // empty' "$MODEL_CARD" 2>/dev/null || true)
+    fi
+    if [[ -n "$card_model" ]]; then
+        MODEL="$card_model"
+        MODEL_SOURCE="pr-ra model card"
+    else
+        MODEL=$(jq -r '.model' "$CONFIG_FILE")
+        MODEL_SOURCE="config ($MODEL_CARD missing or without research_update)"
+    fi
+}
+resolve_model
 COOLDOWN_SECONDS=$(jq -r '.cooldown_seconds' "$CONFIG_FILE")
 MAX_RUNTIME_SECONDS=$(jq -r '.max_runtime_seconds' "$CONFIG_FILE")
 MAX_RETRIES=$(jq -r '.max_retries' "$CONFIG_FILE")
@@ -319,7 +338,7 @@ verify_deployment() {
 # --- Dry-run: validate config + cleanup, then exit without running the agent ---
 if [[ "$MODE" == "dry-run" ]]; then
     log "===== Dry-run started ====="
-    log "Config OK: model=$MODEL cooldown=${COOLDOWN_SECONDS}s retries=$MAX_RETRIES max_runtime=${MAX_RUNTIME_SECONDS}s"
+    log "Config OK: model=$MODEL (from $MODEL_SOURCE) cooldown=${COOLDOWN_SECONDS}s retries=$MAX_RETRIES max_runtime=${MAX_RUNTIME_SECONDS}s"
     log "Retention: success=${LOG_RETENTION_DAYS}d failure=${FAILURE_LOG_RETENTION_DAYS}d playwright-mcp=${PLAYWRIGHT_MCP_RETENTION_DAYS}d"
     if [[ -d "$PLAYWRIGHT_MCP_DIR" ]]; then
         REMAINING=$(find "$PLAYWRIGHT_MCP_DIR" -maxdepth 1 -type f 2>/dev/null | wc -l)
@@ -369,6 +388,10 @@ else
     log "WARNING: git pull failed, continuing with current state"
 fi
 auto_unstash
+
+# Re-read the model now that the repo is up to date (the card is pr-ra's, deployed separately).
+resolve_model
+log "Model: $MODEL (from $MODEL_SOURCE)"
 
 # Record HEAD before the agent runs, so we can tell whether a new commit was pushed.
 PRE_SHA=$(git -C "$REPO_DIR" rev-parse HEAD 2>/dev/null || echo "")

@@ -9,6 +9,8 @@ Personal academic portfolio and blog for Pouria Rouzrokh (Next.js 16, TypeScript
 - **Deploys:** Vercel builds and deploys every push to `main` (GitHub integration, Node 22). Nothing builds on the VPS. Run `scripts/deploy.sh` to ship: it refuses a dirty tree or another branch, pulls, runs lint + typecheck + build, then pushes.
 - **What stays on the VPS:** the weekly research update (cron, Sundays 09:00 ET: `utils/update-research-cron.sh` runs a headless Claude with Playwright to scrape Google Scholar, commits, pushes, checks the Vercel deploy and emails on failure). The checkout `~/projects/pouriarouzrokh.com` on the VPS exists only for this job; it holds no `node_modules`. The job's scripts refuse to run on the Mac. Never run the job or `utils/update-research-prompt.md` from the Mac: that would scrape and commit a second time.
 
+**Models: one card.** The only model here is the research job's: it reads the `research_update` purpose of pr-ra's model card (`~/Developer/pr-ra/backend/app/agents/models.py`, exported to `model-card.json`; on the VPS `/home/pouria/projects/pr-ra/model-card.json`), with `utils/research-update.config.json` `model` as the fallback. Change the model in pr-ra's card, not here (keep the fallback equal). Never hard-code a model id elsewhere; the card is refreshed monthly with pr-ra's `/refresh-models` (WatchTower also checks monthly).
+
 Mac commands (Node 22: `export PATH=/opt/homebrew/opt/node@22/bin:$PATH`):
 
 ```bash

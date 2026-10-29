@@ -1,6 +1,6 @@
 {
   "schedule": "0 9 * * 0",
-  "model": "claude-opus-4-7",
+  "model": "claude-sonnet-5-5",
   "cooldown_seconds": 79200,
   "max_runtime_seconds": 1800,
   "max_retries": 2,
