@@ -2,6 +2,10 @@
 
 This file tracks significant commits and changes to the project.
 
+### 10/30/2026 (main) — done by WatchTower (~/WatchTower), Pouria approved
+
+- **Housekeeping (no code change):** deleted the untracked, gitignored `.env.local.backup` (April 2025) on the Mac. It held the same 11 variable names as `.env.local`, only older values, so nothing was lost. Nothing on Vercel or the VPS changed.
+
 ### 10/29/2026 (main) — done by WatchTower (~/WatchTower) under Pouria's grant G-1
 
 - **Research update: Claude Sonnet 5.5, from the one model card**
