@@ -9,7 +9,7 @@ export default function ThemeToggle() {
   return (
     <button
       onClick={() => setTheme(theme === "dark" ? "light" : "dark")}
-      className="rounded-md p-2 hover:bg-accent relative"
+      className="rounded-md p-3 hover:bg-accent relative"
       aria-label="Toggle theme"
     >
       <div className="relative w-5 h-5">

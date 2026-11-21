@@ -14,13 +14,13 @@ export function SocialLinks({
   iconSize = 18,
 }: SocialLinksProps) {
   return (
-    <div className={`flex items-center gap-4 ${className}`}>
+    <div className={`-mx-3 flex items-center ${className}`}>
       {social.GitHub && (
         <a
           href={social.GitHub}
           target="_blank"
           rel="noopener noreferrer"
-          className="text-muted-foreground hover:text-foreground transition-colors"
+          className="p-3 text-muted-foreground hover:text-foreground transition-colors"
           aria-label="GitHub"
         >
           <svg
@@ -46,7 +46,7 @@ export function SocialLinks({
           href={social.X}
           target="_blank"
           rel="noopener noreferrer"
-          className="text-muted-foreground hover:text-foreground transition-colors"
+          className="p-3 text-muted-foreground hover:text-foreground transition-colors"
           aria-label="X"
         >
           <svg
@@ -70,7 +70,7 @@ export function SocialLinks({
           href={social.LinkedIn}
           target="_blank"
           rel="noopener noreferrer"
-          className="text-muted-foreground hover:text-foreground transition-colors"
+          className="p-3 text-muted-foreground hover:text-foreground transition-colors"
           aria-label="LinkedIn"
         >
           <svg
@@ -97,7 +97,7 @@ export function SocialLinks({
           href={social.GoogleScholar}
           target="_blank"
           rel="noopener noreferrer"
-          className="text-muted-foreground hover:text-foreground transition-colors"
+          className="p-3 text-muted-foreground hover:text-foreground transition-colors"
           aria-label="Google Scholar"
         >
           <svg
@@ -118,7 +118,7 @@ export function SocialLinks({
           href={social.ResearchGate}
           target="_blank"
           rel="noopener noreferrer"
-          className="text-muted-foreground hover:text-foreground transition-colors"
+          className="p-3 text-muted-foreground hover:text-foreground transition-colors"
           aria-label="ResearchGate"
         >
           <svg
@@ -149,7 +149,7 @@ export function SocialLinks({
           href={social.ORCID}
           target="_blank"
           rel="noopener noreferrer"
-          className="text-muted-foreground hover:text-foreground transition-colors"
+          className="p-3 text-muted-foreground hover:text-foreground transition-colors"
           aria-label="ORCID"
         >
           <svg
