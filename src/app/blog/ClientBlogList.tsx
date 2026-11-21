@@ -97,7 +97,7 @@ export default function ClientBlogList({
                 placeholder="Search blog posts..."
                 value={searchTerm}
                 onChange={(e) => setSearchTerm(e.target.value)}
-                className="w-full rounded-md border border-input bg-background px-4 py-3 pr-10 text-sm placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-primary"
+                className="w-full rounded-md border border-input bg-background px-4 py-3 pr-10 text-base placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-primary"
               />
 
               {searchTerm && (

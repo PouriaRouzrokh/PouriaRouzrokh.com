@@ -23,7 +23,7 @@ export default function BlogTagFilter({
     : allTags;
 
   return (
-    <div className="sticky top-4">
+    <div className="md:sticky md:top-20">
       <div className="flex flex-col space-y-4">
         <h2 className="text-xl font-semibold">Filter by Tags</h2>
 
@@ -31,7 +31,7 @@ export default function BlogTagFilter({
         <div className="relative w-full">
           <input
             type="text"
-            className="w-full rounded-md border border-input bg-background px-3 py-2 text-sm placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-primary"
+            className="w-full rounded-md border border-input bg-background px-3 py-2 text-base placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-primary"
             placeholder="Search tags..."
             value={inputValue}
             onChange={(e) => setInputValue(e.target.value)}
