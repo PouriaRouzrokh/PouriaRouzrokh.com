@@ -8,7 +8,8 @@
     "start": "next start",
     "lint": "eslint .",
     "typecheck": "tsc --noEmit",
-    "toggle-maintenance": "node utils/toggle-maintenance.js"
+    "toggle-maintenance": "node utils/toggle-maintenance.js",
+    "check:layout": "node scripts/check-layout.mjs"
   },
   "dependencies": {
     "@cloudinary/url-gen": "1.22.0",
@@ -63,6 +64,7 @@
     "autoprefixer": "10.5.0",
     "eslint": "^9.0.0",
     "eslint-config-next": "16.2.9",
+    "playwright": "1.65.0",
     "postcss": "8.5.15",
     "prettier": "3.8.4",
     "prettier-plugin-tailwindcss": "0.8.0",

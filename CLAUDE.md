@@ -20,9 +20,12 @@ npm run lint             # ESLint (≈ 2 s)
 npm run typecheck        # tsc --noEmit (≈ 2 s)
 npm run build            # production build (≈ 9 s)
 scripts/deploy.sh        # check and push main; Vercel deploys it
+npm run check:layout     # phone layout check (needs `npm start` running; first run: npx playwright install webkit)
 ```
 
-There is no test suite; lint, typecheck and build are the checks.
+There is no test suite; lint, typecheck and build are the checks. After UI changes, also run `npm run check:layout`
+(`scripts/check-layout.mjs`): WebKit as a touch phone at the iPhone Duo's folded and unfolded viewports, failing on
+sideways scroll or off-screen controls, plus a live fold/unfold. It is not part of the Vercel build.
 
 ## Context Loading Instructions
 
