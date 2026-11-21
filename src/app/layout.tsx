@@ -88,7 +88,7 @@ export default function RootLayout({
           disableTransitionOnChange
         >
           <MaintenanceWrapper>
-            <div className="min-h-screen flex flex-col">
+            <div className="min-h-dvh flex flex-col">
               <Navbar />
               <main className="flex-grow">{children}</main>
               <Footer />

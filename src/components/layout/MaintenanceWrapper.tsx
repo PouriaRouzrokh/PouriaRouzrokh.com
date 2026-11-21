@@ -47,7 +47,7 @@ export default function MaintenanceWrapper({
   // Show loading spinner while checking status
   if (isLoading) {
     return (
-      <div className="min-h-screen flex flex-col items-center justify-center bg-background">
+      <div className="min-h-dvh flex flex-col items-center justify-center bg-background">
         <div className="w-16 h-16 border-t-4 border-primary rounded-full animate-spin"></div>
         <p className="mt-4 text-muted-foreground">Loading...</p>
       </div>
@@ -57,7 +57,7 @@ export default function MaintenanceWrapper({
   // Show maintenance page if in maintenance mode
   if (isMaintenanceMode) {
     return (
-      <div className="min-h-screen flex flex-col items-center justify-center bg-background p-8 text-center">
+      <div className="min-h-dvh flex flex-col items-center justify-center bg-background p-8 text-center">
         <h1 className="text-4xl font-bold mb-6">Coming Soon</h1>
         <p className="text-xl text-muted-foreground max-w-md mb-8">
           This website is currently under maintenance and will be back online

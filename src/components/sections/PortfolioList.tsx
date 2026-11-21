@@ -146,7 +146,7 @@ export function PortfolioList() {
       />
 
       {/* Search and Filters */}
-      <div className="flex flex-col md:flex-row gap-4 mb-8">
+      <div className="flex flex-col sm:flex-row gap-4 mb-8">
         <div className="flex-grow">
           <Input
             placeholder="Search projects..."
@@ -155,7 +155,7 @@ export function PortfolioList() {
             className="w-full"
           />
         </div>
-        <div className="w-full md:w-60">
+        <div className="w-full sm:w-60">
           <Select value={filterBy} onValueChange={handleFilterChange}>
             <SelectTrigger>
               <SelectValue placeholder="Filter by tag" />

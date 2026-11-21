@@ -59,20 +59,20 @@ export default function ResearchSummarySection({
         </Link>
       </div>
 
-      <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-        <div className="bg-card p-6 rounded-lg shadow-sm text-center border hover:shadow-md transition-shadow duration-300">
-          <h3 className="text-4xl font-bold">{researchMetrics.publications}</h3>
-          <p className="text-muted-foreground">Publications</p>
+      <div className="grid grid-cols-1 min-[440px]:grid-cols-3 gap-3 sm:gap-6">
+        <div className="bg-card p-4 sm:p-6 rounded-lg shadow-sm text-center border hover:shadow-md transition-shadow duration-300">
+          <h3 className="text-2xl sm:text-4xl font-bold">{researchMetrics.publications}</h3>
+          <p className="text-sm sm:text-base text-muted-foreground">Publications</p>
         </div>
 
-        <div className="bg-card p-6 rounded-lg shadow-sm text-center border hover:shadow-md transition-shadow duration-300">
-          <h3 className="text-4xl font-bold">{researchMetrics.citations}</h3>
-          <p className="text-muted-foreground">Citations</p>
+        <div className="bg-card p-4 sm:p-6 rounded-lg shadow-sm text-center border hover:shadow-md transition-shadow duration-300">
+          <h3 className="text-2xl sm:text-4xl font-bold">{researchMetrics.citations}</h3>
+          <p className="text-sm sm:text-base text-muted-foreground">Citations</p>
         </div>
 
-        <div className="bg-card p-6 rounded-lg shadow-sm text-center border hover:shadow-md transition-shadow duration-300">
-          <h3 className="text-4xl font-bold">{researchMetrics.h_index}</h3>
-          <p className="text-muted-foreground">H-Index</p>
+        <div className="bg-card p-4 sm:p-6 rounded-lg shadow-sm text-center border hover:shadow-md transition-shadow duration-300">
+          <h3 className="text-2xl sm:text-4xl font-bold">{researchMetrics.h_index}</h3>
+          <p className="text-sm sm:text-base text-muted-foreground">H-Index</p>
         </div>
       </div>
     </section>

@@ -165,7 +165,7 @@ export function ResearchList() {
     return (
       <div className="container mx-auto py-12 animate-pulse">
         <div className="h-12 w-1/3 bg-muted rounded mb-8"></div>
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
+        <div className="grid grid-cols-1 min-[440px]:grid-cols-3 gap-3 sm:gap-6 mb-8">
           {[1, 2, 3].map((i) => (
             <div key={i} className="h-32 bg-muted rounded shadow-sm"></div>
           ))}
@@ -209,10 +209,10 @@ export function ResearchList() {
       {researchData && (
         <>
           {/* Metrics Summary */}
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
+          <div className="grid grid-cols-1 min-[440px]:grid-cols-3 gap-3 sm:gap-6 mb-8">
             <Card>
-              <CardHeader className="pb-2">
-                <CardTitle className="text-4xl font-bold text-center">
+              <CardHeader className="p-4 pb-2 sm:p-6 sm:pb-2">
+                <CardTitle className="text-2xl sm:text-4xl font-bold text-center">
                   {formatNumber(researchData.total_articles)}
                 </CardTitle>
                 <CardDescription className="text-center">
@@ -222,8 +222,8 @@ export function ResearchList() {
             </Card>
 
             <Card>
-              <CardHeader className="pb-2">
-                <CardTitle className="text-4xl font-bold text-center">
+              <CardHeader className="p-4 pb-2 sm:p-6 sm:pb-2">
+                <CardTitle className="text-2xl sm:text-4xl font-bold text-center">
                   {formatNumber(researchData.total_citations)}
                 </CardTitle>
                 <CardDescription className="text-center">
@@ -233,8 +233,8 @@ export function ResearchList() {
             </Card>
 
             <Card>
-              <CardHeader className="pb-2">
-                <CardTitle className="text-4xl font-bold text-center">
+              <CardHeader className="p-4 pb-2 sm:p-6 sm:pb-2">
+                <CardTitle className="text-2xl sm:text-4xl font-bold text-center">
                   {researchData.metrics.h_index}
                 </CardTitle>
                 <CardDescription className="text-center">
@@ -245,7 +245,7 @@ export function ResearchList() {
           </div>
 
           {/* Search and Sort Controls */}
-          <div className="mb-8 flex flex-col md:flex-row gap-4">
+          <div className="mb-8 flex flex-col sm:flex-row gap-4">
             <div className="flex-grow">
               <Label htmlFor="search" className="mb-2 block">
                 Search Publications
@@ -260,7 +260,7 @@ export function ResearchList() {
               />
             </div>
 
-            <div className="w-full md:w-64">
+            <div className="w-full sm:w-64">
               <Label htmlFor="sort" className="mb-2 block">
                 Sort By
               </Label>
